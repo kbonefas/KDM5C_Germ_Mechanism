@@ -71,3 +71,23 @@ rule testisEXPR:
 		"results/figure_pieces/testisEXPR_green.pdf"
 	script:
 		"code/testisEXPR_mueller_green.R"
+
+
+#plotting ovary DEGs in germline-depleted ovary 
+#rule ovaryEXPR:
+
+
+#generate list of germline-enriched genes based on expression cutoff
+rule germgenes:
+	input:
+		"data/raw/Mueller_embryonicmouseWWvsequencing.xlsx", #FPKM of embryonic WWv (germline-depeleted) and WT testis
+		"data/raw/Mueller2013_adultWW_FPKM.txt", #FPKM adult WWv and WT testis
+			#raw data from https://pubmed.ncbi.nlm.nih.gov/23872635/  
+		"data/raw/Li_2017_Tissues_FPKMs.xlsx" #WT mouse tissue FPKM  
+			#raw data from https://pubmed.ncbi.nlm.nih.gov/28646208/ 
+	output:
+		"data/processed/germGENES20.csv" #high confidence germline genes that lose 80% of their maximum expression in WT somatic tissues and germline-depleted testis
+		#make graph of the total number of genes filtered to get the germline genes
+		#make graph of egg vs sperm germline genes
+	script:
+		"code/utilities/mouseGermlineGenes.R"
