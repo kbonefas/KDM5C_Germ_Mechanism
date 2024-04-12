@@ -54,3 +54,20 @@ rule tissue_genes:
 		"results/figure_pieces/TissueSpecific_bar_numbgenes.pdf"
 	script:
 		"code/TissueGenes_AmyHip.R"
+
+
+###################### Figure 2: Germline-enriched Genes ############################
+
+#test if DEGs are specific to germ cells or somatic cells in the testis
+rule testisEXPR:
+	input:
+		"data/raw/Mueller2013_adultWW_FPKM.txt", #FPKM adult WWv and WT testis
+			#raw data from https://pubmed.ncbi.nlm.nih.gov/23872635/  
+		"data/raw/Green2018_Testis_scRNAseq_Cell_Types.txt",
+			#raw data from https://pubmed.ncbi.nlm.nih.gov/30146481/
+		"data/processed/TestisDEGs_amyhip.csv"
+	output:
+		"results/figure_pieces/testisEXPR_mueller.pdf",
+		"results/figure_pieces/testisEXPR_green.pdf"
+	script:
+		"code/testisEXPR_mueller_green.R"
