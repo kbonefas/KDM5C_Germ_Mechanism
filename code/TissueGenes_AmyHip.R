@@ -52,3 +52,9 @@ p <- ggbarplot(countingdf, "tissue", "count", fill = "tissue", color = "tissue",
 
 pl <- ggpar(p, legend = "none", ylab = "# of genes", xlab = FALSE, title = paste0("Total Tissue Gene #") )
 ggsave(snakemake@output[[9]], plot = pl, width = 5, height = 5)
+
+### save tissue-specific DEGs in a dataframe
+for(i in 1:length(titles)){
+	tissDEG <- tissue_genes(i)
+	write.table(tissDEG, snakemake@output[[9+i]], sep = ",", row.names = FALSE)
+	}

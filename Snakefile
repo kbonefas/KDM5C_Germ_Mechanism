@@ -51,7 +51,9 @@ rule tissue_genes:
 		"results/figure_pieces/TissueSpecific_MAplot_hip5cKO.pdf",
 		"data/processed/TissueSpecific_AMYHIP_numberofgenesDEGs.csv",
 		"data/processed/TestisDEGs_amyhip.csv",
-		"results/figure_pieces/TissueSpecific_bar_numbgenes.pdf"
+		"results/figure_pieces/TissueSpecific_bar_numbgenes.pdf",
+		"data/processed/TissueDEGs_amy5CKO.csv",
+		"data/processed/TissueDEGs_hip5CKO.csv"
 	script:
 		"code/TissueGenes_AmyHip.R"
 
