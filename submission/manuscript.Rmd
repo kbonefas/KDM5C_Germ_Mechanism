@@ -1,0 +1,77 @@
+
+Title: Misexpression of germline programs with loss of the X-linked intellectual disability factor KDM5C
+
+
+Gaps in knowledge addressed: 
+* Are other tissue-specific genes dysregulated, or only testis, germline genes?
+* Curating a robust list of male and female germline genes
+	* Should talk about 2-cell genes vs germline genes - way to systematically categorize? 
+* Mechanism behind long-term germline gene misexpression
+	* Recent evidence suggests loss of KDM5C in ESCs express some germline genes
+		* Unclear if catalytic activity is required for long-term silencing
+		* Unclear if their dysregulation lasts throughout life or  the same between brain or not
+	* When in development does it begin? - Recent evidence suggests some germline genes expressed in 5CKO ESCs but unclear if their dysregulation lasts throughout differentiation and if the identity of germline genes are different compared to the brain
+* Are there functional consequences to germline gene misexpression?
+
+Introduction:
+* Chromatin regulators are important for cellular identity
+	* H3K4me1-3 linked to active gene promoters and enhancers
+	* Surprisingly, mutations in Chromatin regulators lead to many NDDs (including many H3K4 regulators)
+		* Recent studies have shown some chromatin regulators are important for regulating neuron-specific gene expression/chromatin stat_compare_means 
+	* However, loss of some chromatin regulators can also lead to ectopic expression of tissue-specific genes
+		* Very few studies have looked at these genes and it's unclear if these genes contribute to NDD impairments. 
+	* Necessary to first characterize the mechanism behind their derepression to identify molecular footholds into testing their contribution to neuronal impairments and potential for therapeutic intervention
+
+* Loss of KDM5C can result in the misexpression of genes typically only found in the testis
+	* Misexpression of tissue-specific genes hasn't been systematically characterized - Unclear if these genes are exceptions or if other tissue-specific genes are dysregulated
+	* Interestingly, these genes (Cyct, D1pas1) typically function in the germline
+	* Germ cells (meiotic cells) are typically distinguished from somatic cells very early on in embyrogenesis and is a key feature of multicellularity
+	* Chromatin regulators are very important for decommissioning germline genes and act successively the embryo implants into the uterine wall
+		* Most studies have focused on ESCs, which have a similar transcriptome to germ cells / 2-cells
+		* recently, KDM5C was shown to repress DAZL in ESCs, independent of its catalytic activity
+		* However, DNA methylation is lost in the mature 5CKO brain, DNA methylation is placed later and it's Unclear if it's required for long-term repression (maybe too specific, just trying to go into the fact that the mechanism is partially understood but unclear)
+	* Systematic characterization of ectopic germline genes hasn't been done
+		* unknown if other germline-enriched genes are dysregulated, including oocyte-specific genes
+		* Crucially, it's unknown if misexpression of the germline program leads to functional consequences in 5CKO cells.
+
+
+
+
+
+Outline of figures:
+**Figure 1: Misexpression of tissue-specific genes in the _Kdm5c_-KO brain**
+	* MA-plot and bar graphs of tissue-enriched genes
+	* Should we show an example bigwigs/NCBI of another tissue-specific gene or just focus on testis?
+	* Example testis-specific genes (NCBI and bigwigs)
+	* Overlap of testis DEGs between amygdala and hippocampus
+	* Gene ontology of amygdala and hippocampus - ontologies are germline ontologies
+
+**Figure 2: The male _Kdm5c_-KO brain expresses male and female germline-enriched genes**
+	* Expression of testis DEGs in germline-depleted testis (this is adult testis data)
+	* scRNAseq of testis - # of testis DEGs that are germline-specific markers
+	* Although far fewer, 5CKO brain also expresses ovary-enriched genes(NCBI and bigwigs of Zar1) 
+	* These ovary enriched genes are also germline specific (NCBI/Li tissues are in adult ovary, so it would be best to show they're oocyte-specific in adult ovary. But I don't think there's a published adult female W/Wv dataset. Could try looking at scRNAseq or just do TPM in embryonic W/Wv data since oocytes are developed at this point? Or both?)
+	* Defining what is/isn't a germline gene, and which are male/female biased using embryonic W/Wv data
+
+**Figure 3: Kdm5c-KO epiblast-like cells express master regulators of germline identity**
+	* Left - Morphology is unchanged, Right - 5CKO EpiLCs express EpiLC differentiation genes
+	* Male EpiLCs express germline genes (example Cyct again)
+	* Overlap between brain and EpiLC germline genes - show they're mostly unique
+	* GO of Brain and EpiLC germline genes (meiotic genes should be enriched) 
+	* Bigwigs or TPM of master regulators
+		* Show that while some are also 2-cell genes (Dazl), 2-cell specific genes aren't dysregulated (Zscan4). Important point because published KDM5C dazl paper is saying KDM5C is a 2-cell regulator, but as far as I can tell only genes shared between germline and 2-cell are dysregulated.  
+	* Staining of Dazl (+ Stra8 if I can get it to work)
+
+
+**Figure 4: Loss of KDM5C's catalytic activity impairs DNAme placement and long-term silencing of germline genes**
+	* Increase in H3K4me3 in Kdm5c-KO amygdala at germline genes
+	* Increase in H3K4me2 in EpiLCs at germline genes 
+	* Kdm5c binding in EpiLCs vs PNCs to show that germline repression is happening in early embryo
+	* Previous studies only looked at ESCs, unknown if catalytic activity is required for long-term repression, especially since DNA methylation is placed later). KDM5C RNA and protein ESC --> EpiLC (increasing then decreasing)
+	* RNA expression of germline genes with catalytic dead rescue (Ilakkiya)
+	* DNA methylation in WT and 5CKO EpiLCs (Ilakkiya)
+
+**Figure 5: Ectopic, germline-like phenotypes in Kdm5c-KO ESCs/EpiLCs**
+	* Sycp3 staining
+	* DDX4 staining and repression of retrotransposons
+	* Cilia??
