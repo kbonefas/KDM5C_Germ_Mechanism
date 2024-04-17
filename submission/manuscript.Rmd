@@ -1,5 +1,29 @@
+---
+title:  Misexpression of germline programs with loss of the X-linked intellectual disability factor KDM5C
+output: pdf_document
+geometry: margin = 0.5in
+font-size: 11pt
+header-includes:
+   - \usepackage{caption}
+   - \captionsetup[figure]{font=footnotesize, labelfont=bf}
+   - \usepackage{sectsty} 
+   - \usepackage{helvet}
+   - \renewcommand{\familydefault}{\sfdefault}
+   - \usepackage{lineno}
+   - \linenumbers
+   - \renewcommand\linenumberfont{\normalfont\small}
+   - \usepackage{setspace}
+   - \spacing{1.5}
+   - \pagenumbering{arabic}
 
-Title: Misexpression of germline programs with loss of the X-linked intellectual disability factor KDM5C
+bibliography: references.bib
+csl: cell-reports.csl
+indent: true
+editor_options:
+  chunk_output_type: console
+---
+
+
 
 
 Gaps in knowledge addressed: 
@@ -34,19 +58,108 @@ Introduction:
 		* unknown if other germline-enriched genes are dysregulated, including oocyte-specific genes
 		* Crucially, it's unknown if misexpression of the germline program leads to functional consequences in 5CKO cells.
 
+# Results
+
+## Tissue-specific genes, including testis genes, are enriched within the _Kdm5c_-KO brain
+
+
+*note: the 5CKO DEGs table we should make a column for if the gene is tissue-specific and which tissue it's in  
+	* see if any liver or muscle genes are dysregulated in both tissues, could add as a bigwig
+
+
+```{r, DESeq2_params, results='hide', echo = FALSE, warning=FALSE,message=FALSE,error=FALSE}
+#get the parameters used repeatedly, like the log2fold change cut off
+source("../code/utilities/parameters.R")
+
+```
+Previous RNA sequencing studies performed in the adult male _Kdm5c_ knockout (-KO) hippocampus identified aberrant transcription of genes that are typically only expressed in the testis[@scandagliaLossKdm5cCauses2017]. Given the high abundance of testis-enriched genes within the mouse transcriptome, it is currently unclear if their misexpression in the _Kdm5c_-KO brain is indicative of random de-repression throughout the genome or instead reflect widespread impairment of tissue identity. To distinguish these possibilities, we globally assessed if tissue-specific genes were significantly enriched in our previous mRNA-seq dataset of the _Kdm5c_-KO amygdala and hippocampus[@vallianatosMutuallySuppressiveRoles2020]. We classified differentially expressed genes (DEGs) as tissue-specific if they were significantly upregulated in the _Kdm5c_-KO brain compared to wild-type controls (DESeq2[@loveModeratedEstimationFold2014a], log2 fold change > `r l2fcco`, q < 0.1) and were previously identified as uniquely enriched within a given mouse tissue[@liComprehensiveMouseTranscriptomic2017]. 
+
+
+   
+```{r, tissue_genes, results='hide', echo = FALSE, warning=FALSE,message=FALSE,error=FALSE}
+#get the number and stats for tissue-specific gene expression
+tissue_res <- read.csv("../data/processed/TissueSpecific_AMYHIP_numberofgenesDEGs.csv", header = TRUE)
+
+#get the value you want to print 
+#col is which data column, tiss is which tissue
+gettissval <- function(col, tiss){
+	val <- subset(tissue_res, tissue == tiss)
+	val <- val[,col]
+	return(val)
+}
+
+```
+
+* Based on these criteria, we observed widespread misexpression of tissue-enriched genes within the _Kdm5c_-KO amygdala and hippocampus, with the majority of genes belonging to the testis (Figure 1A-C). 
+
+* Even though the testis has the largest number of tissue-specific genes compared to any other tissue (`r gettissval("count", "Testis")` genes), testis genes were significantly enriched for both brain regions (Amygdala p = `r signif(gettissval("Amygdala_pvalues", "Testis"), 3)`; Hippocampus p = `r signif(gettissval("Hippocampus_pvalues", "Testis"), 3)`, Fisher's Exact).
+
+* This dysregulation of tissue identity is not unique to the testis, as we also observed significant misexpression of ovary, liver, and muscle genes within the _Kdm5c_-KO brain (Figure 1A-E).
+
+Importantly, these tissue-specific genes show little to no expression in the wild-type brain and have no known brain functions, yet our mRNA-seq data indicates they are polyadenylated and spliced into mature transcripts (Figure 1C,G). 
+
+* Of note, we did not observe enrichment of brain-specific genes (Amygdala p = `r signif(gettissval("Amygdala_pvalues", "Brain"), 3)`; Hippocampus p = `r signif(gettissval("Hippocampus_pvalues", "Brain"), 3)`, Fisher's Exact), even though the brain has the second highest total number of tissue-enriched genes (`r gettissval("count", "Brain")` genes).
+
+* Together, these results suggest misexpression of testis and other tissue-specific genes within the _Kdm5c_-KO brain is not due to random de-repression of all genes, but rather due to a dysregulation of tissue identity.
+
+
+### Male and female germline genes are aberrantly expressed in the male _Kdm5c_-KO brain
+
+Intriguingly, many _Kdm5c_-KO testis-enriched DEGs have functions specific to male germ cells, such as _Cytochrome C, testis (Cyct)_, a (Figure 1C), a testis-specific cytochrome c isoform found in spermatozoa mitochondria and is important for flagellar beating[@goldbergCytochromeImmunofluorescentLocalization1977; @narisawaTestisSpecificCytochromeNull2002]. We therefore wondered if the high enrichment of testis genes within the _Kdm5c_-KO brain reflected a failure to demarcate the soma and germline, as the testis contains both germ cells (e.g. spermatogonia) as well as somatic cells (e.g. Leydig cells) that support hormone production and germline functions. Gene ontology analysis of testis DEGs revealed enrichment of germline-relevant ontologies in the _Kdm5c_-KO amygdala and hippocampus, including cellular process involved in reproduction in multicellular organism (GO:0022412), spermatid development (GO:0007286), and sperm axoneme assembly (GO:0007288) (Figure 1A). 
+
+To validate if these testis DEGs are truly germline genes, we then compared their expression in a published RNA-seq dataset of wild-type (WT) and germ cell-depleted (Kit^W/Wv^) mouse testes [@muellerIndependentSpecializationHuman2013]. We found almost all _Kdm5c_-KO testis-enriched DEGs lose their expression with germ cell depletion (Figure 1B). We additionally assessed testis DEG expression in a published single cell RNA-seq dataset that identified cell type-specific markers within the testis[@greenComprehensiveRoadmapMurine2018]. We found that while some testis-enriched DEGs were classified as specific markers for multiple stages of germ cell development - including spermatogonia, spermatocytes, round spermatids, and elongating spermatids, none marked somatic cells (Figure 1C). Altogether, these data suggest testis genes expressed within the _Kdm5c_-KO brain are actually male germ cell genes.
+
+Interestingly, we also observed significant enrichment of ovary genes within the male _Kdm5c_-KO brain (Amygdala p = `r signif(gettissval("Amygdala_pvalues", "Ovary"), 3)`; Hippocampus p = `r signif(gettissval("Hippocampus_pvalues", "Ovary"), 3)`, Fisher's Exact). Although there are relatively few ovary-enriched DEGs compared to testis-DEGs (Amygdala: `r gettissval("Amygdala_DEGnumb", "Testis")` testis DEGs, `r gettissval("Amygdala_DEGnumb", "Ovary")` ovary DEGs; Hippocampus: `r gettissval("Hippocampus_DEGnumb", "Testis")` testis DEGs, `r gettissval("Hippocampus_DEGnumb", "Ovary")` ovary DEGs), they also had known germline-specific functions. For example, _Zygotic arrest 1 (Zar1)_ was recently shown to regulate oocyte translation by sequestering mRNAs[@chengMammalianOocytesStore2022] (Figure 1D). 
+
+* To assess if ovary-enriched DEGs were also germline specific, we assessed their expression in wild-type and germline-depleted (Kit^W/Wv^) female embryos, when female germ cells undergo the initial stages of development and meiosis.
+	* We found XYZ.
+	* Altogether, these results indicate male _Kdm5c_-KO mice express both male and female germline genes within the amygdala and hippocampus.
+
+
+```{r, germgenes, results='hide', echo = FALSE, warning=FALSE,message=FALSE,error=FALSE}
+germgenes <- read.csv("../data/processed/germGENES20.csv")
+
+```
+* One difficulty in globally characterizing the misexpression of germline genes is a comprehensive list of mouse germline-specific genes is currently lacking. 
+
+* To facilitate downstream analyses, we generated a list of male and female germline-enriched genes by evaluating expression in wild-type and germline-depleted (Kit^W/Wv^) male and female mouse embryos from embryonic day 12, 14, and 16. 
+	* **note: need to figure out why these time points. We have P6 and adult for males but not females so it would be biased towards males if we included the later ages**
+
+We defined genes as germline-enriched if their expression met the following criteria: 1) their expression is greater than 1 FPKM in wild-type germline 2) their expression in any wild-type, non-gonadal tissue[@liComprehensiveMouseTranscriptomic2017] does not exceed 20% of maximum expression in wild-type germline, and 3) their expression in the germ cell-depleted germline, for any sex or time point, does not exceed 20% of their maximum expression in the wild-type germline. These criteria yielded `r nrow(germgenes)` germline-enriched genes. To more comprehensively assess the impact of sex on germline gene misexpression, we additionally categorized if germline-enriched genes displayed biased expression in the wild-type female (XX) or male germline. We defined sex-biased genes as those whose expression in the opposite sex, at any time point, is no greater than 20% of the gene's maximum expression in a given sex. This yielded `r nrow(subset(germgenes, sexBias == "XX"))` XX-biased, `r nrow(subset(germgenes, sexBias == "XY"))` XY-biased, and `r nrow(subset(germgenes, sexBias == "unbiased"))` unbiased germline-enriched genes, which is consistent with the testis overall having a more unique transcriptome than the ovary[@liComprehensiveMouseTranscriptomic2017].
+
+
+
+# Discussion
+
+* Papers to read/reference:
+	* Reconstitution of the Mouse Germ Cell Specification Pathway in Culture by Pluripotent Stem Cells: https://www.cell.com/fulltext/S0092-8674(11)00771-9
+	* two cell gene list used by Suzuki et al Max paper is based on 2 cell sequencing: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3395470/
 
 
 
 
-Outline of figures:
+# References
+<div id="refs"></div>
+
+\newpage
+# Figures and Tables
+
+\begin{figure}
+  \centering 
+  \includegraphics{../submission/compiled_figs/Brain_tissue_genes.pdf}
+  \caption[Misexpression of tissue-specific genes in the \textit{Kdm5c}-KO in the brain]{\textbf{Misexpression of tissue-specific genes in the \textit{Kdm5c}-KO in the brain} \textbf{A.} Expression of tissue-enriched genes in the male \textit{Kdm5c}-KO amygdala. Left - MA plot of mRNA-sequencing. Right - The number of tissue-enriched differentially expressed genes (DEGs). * p<0.05, ** p<0.01, *** p<0.001, Fisher's exact test \textbf{B.} Expression of tissue-enriched genes in the male \textit{Kdm5c}-KO hippocampus. \textbf{C.} Left - Bigwigs of an example aberrantly expressed testis-enriched gene, \textit{Cytochrome C, testis-specific (Cyct)} in the wild-type (WT) and \textit{Kdm5c}-KO (5CKO) amygdala (red) and hippocampus (teal). Right - Expression of \textit{Cyct} in wild-type tissues from NCBI Gene, with testis highlighted in blue and brain tissues highlighted in red. \textbf{D.} Left - Bigwigs of an example ovary-enriched germline DEG, \textit{Zygotic arrest 1 (Zar1)}. Right - Expression of \textit{Zar1} in wild-type tissues from NCBI Gene, with ovary highlighted in teal and brain tissues highlighted in red.}
+  \label{figurelabel}
+\end{figure}
+
 **Figure 1: Misexpression of tissue-specific genes in the _Kdm5c_-KO brain**
 	* MA-plot and bar graphs of tissue-enriched genes
-	* Should we show an example bigwigs/NCBI of another tissue-specific gene or just focus on testis?
 	* Example testis-specific genes (NCBI and bigwigs)
-	* Overlap of testis DEGs between amygdala and hippocampus
-	* Gene ontology of amygdala and hippocampus - ontologies are germline ontologies
+	* An example ovary tissue-specific gene 
+	* An example muscle/liver tissue-specific gene (NCBI and bigwigs)
+
 
 **Figure 2: The male _Kdm5c_-KO brain expresses male and female germline-enriched genes**
+	* Gene ontology of testis DEGs in the amygdala and hippocampus - ontologies are germline ontologies
 	* Expression of testis DEGs in germline-depleted testis (this is adult testis data)
 	* scRNAseq of testis - # of testis DEGs that are germline-specific markers
 	* Although far fewer, 5CKO brain also expresses ovary-enriched genes(NCBI and bigwigs of Zar1) 

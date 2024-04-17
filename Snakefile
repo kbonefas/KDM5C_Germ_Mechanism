@@ -91,3 +91,11 @@ rule germgenes:
 		#make graph of egg vs sperm germline genes
 	script:
 		"code/utilities/mouseGermlineGenes.R"
+
+
+
+
+###################### Render the manuscript ############################
+rule write_paper:
+	script:
+		"code/utilities/paper_render.R"
