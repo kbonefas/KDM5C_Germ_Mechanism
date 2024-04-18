@@ -221,3 +221,8 @@ write.table(germGENES20, file = snakemake@output[[1]], sep =",", row.names = FAL
 # checking <- subset(XXvsXY, select = c(ENSEMBL, SYMBOL.x, XX_avg, XY_avg, XXoverXY, sexBias))
 
 # XXvsXY <- subset(XXvsXY, select = c(ENSEMBL, sexBias))
+
+
+## make a snakey graph of filtering for germline-enriched genes
+#https://github.com/davidsjoberg/ggsankey
+#devtools::install_github("davidsjoberg/ggsankey")
