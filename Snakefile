@@ -121,6 +121,22 @@ rule EpiDESeq2:
 	script:
 		"code/DESeq2_EpiLC.R"
 
+#pull out germline DEGs in Kdm5c-KO EpiLCs and brain
+rule BrainEpi_germDEGs:
+	input:
+		"data/processed/germGENES20.csv",
+		"results/DESeq2/DEGs_EpiLC_XY5cKO.csv",
+		"results/DESeq2/DEGs_amy5cKO.csv",
+		"results/DESeq2/DEGs_hip5cKO.csv"
+	output: #make sure match the order of input files
+		"results/DESeq2/germDEGs/germDEGs_EpiLC_XY5cKO.csv",
+		"results/DESeq2/germDEGs/germDEGs_amy5cKO.csv",
+		"results/DESeq2/germDEGs/germDEGs_hip5cKO.csv"
+	params:
+		samplenumber = 3 #number of samples you're doing this on
+	script:
+		"code/utilities/germlineDEGs.R"
+
 
 ###################### Render the manuscript ############################
 rule write_paper:
