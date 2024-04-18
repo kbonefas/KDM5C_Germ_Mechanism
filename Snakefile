@@ -137,6 +137,18 @@ rule BrainEpi_germDEGs:
 	script:
 		"code/utilities/germlineDEGs.R"
 
+#upset plot of the overlap between germline DEGs in the brain and EpilC RNAseq datasets
+rule Brain_EpiLC_Upset:
+	input:
+		"data/processed/germGENES20.csv",
+		"results/DESeq2/DEGs_EpiLC_XY5cKO.csv",
+		"results/DESeq2/DEGs_amy5cKO.csv",
+		"results/DESeq2/DEGs_hip5cKO.csv"
+	output:
+		"results/figure_pieces/Upset_EpiLCBrain.pdf"
+	script:
+		"code/Upset_Brain_EpiLC.R"
+
 
 ###################### Render the manuscript ############################
 rule write_paper:
