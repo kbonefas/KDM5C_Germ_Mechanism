@@ -59,6 +59,14 @@ rule tissue_genes:
 
 
 ###################### Figure 2: Germline-enriched Genes ############################
+#gene ontology analysis of testis-enriched DEGs
+rule testisGO:
+	input:
+		"data/processed/TestisDEGs_amyhip.csv"
+	output:
+		"results/figure_pieces/TestisDEGs_GO.pdf"
+	script:
+		"code/GO_brain_testisDEGs.R"
 
 #test if DEGs are specific to germ cells or somatic cells in the testis
 rule testisEXPR:
