@@ -105,6 +105,23 @@ rule germgenes:
 
 
 
+
+
+###################### Figure 3: EpiLC germline genes ############################
+#DESeq2 on Kdm5c-KO EpiLCs
+rule EpiDESeq2:
+	input:
+		cts = "data/raw/EpiLC_gene_expected_count.txt"
+	output:
+		"data/raw/SampleInfo_EpiLC.csv",
+		"data/processed/restable_EpiLC_XY5cKO.csv",
+		"results/DESeq2/DEGs_EpiLC_XY5cKO.csv"
+	params:
+		alpha = PADJ
+	script:
+		"code/DESeq2_EpiLC.R"
+
+
 ###################### Render the manuscript ############################
 rule write_paper:
 	script:
