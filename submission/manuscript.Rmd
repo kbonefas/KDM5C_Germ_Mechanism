@@ -167,10 +167,11 @@ We defined genes as germline-enriched if their expression met the following crit
 	* Defining what is/isn't a germline gene, and which are male/female biased using embryonic W/Wv data
 
 **Figure 3: Kdm5c-KO epiblast-like cells express master regulators of germline identity**
-	* Left - Morphology is unchanged, Right - 5CKO EpiLCs express EpiLC differentiation genes
-	* Male EpiLCs express germline genes (example Cyct again)
+	* A) ESC to EpiLC differentiation Left - Morphology is unchanged, 
+	* B) 5CKO EpiLCs express EpiLC differentiation genes similar to WT lvls
+	* C) Male EpiLCs express germline genes (example Cyct again)
 	* Overlap between brain and EpiLC germline genes - show they're mostly unique
-	* GO of Brain and EpiLC germline genes (meiotic genes should be enriched) 
+	* GO of Brain and EpiLC germline genes (meiotic enriched) 
 	* Bigwigs or TPM of master regulators
 		* Show that while some are also 2-cell genes (Dazl), 2-cell specific genes aren't dysregulated (Zscan4). Important point because published KDM5C dazl paper is saying KDM5C is a 2-cell regulator, but as far as I can tell only genes shared between germline and 2-cell are dysregulated.  
 	* Staining of Dazl (+ Stra8 if I can get it to work)
