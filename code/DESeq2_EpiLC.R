@@ -5,7 +5,7 @@
 #       cts = counts file (.txt)                                                            #
 #       sampleinfo = sample information sheet #MAKE SURE THE SAMPLES MATCH THE CTS FILE NAMES
 # Libraries: DESeq2, ggplot2                                                                #
-# Outputs: PCA plot of samples and DESeq2 results tables (.csv)                             #
+# Outputs: DESeq2 results tables (.csv)                             #
 #                                                                                           #
 #############################################################################################
 #load the color palette utilities first
