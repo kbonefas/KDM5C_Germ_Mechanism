@@ -151,6 +151,19 @@ We defined genes as germline-enriched if their expression met the following crit
   \label{figurelabel}
 \end{figure}
 
+
+
+\begin{figure}
+  \centering 
+  \includegraphics{../submission/compiled_figs/What_are_germline_genes.pdf}
+  \caption[Misexpression of tissue-specific genes, including germline genes, in the \textit{Kdm5c}-KO in the brain]{\textbf{Ovary and testis germline genes are expressed in the \textit{Kdm5c}-KO in the brain.} \textbf{A.} enrichPlot gene ontology (GO) of \textit{Kdm5c}-KO amygdala and hippocampus testis-enriched DEGs \textbf{B.} Expression of testis DEGs in wild-type (WT) testis versus germ cell-depleted (W/Wv) testis. Expression is in Fragments Per Kilobase of transcript per Million mapped reads (FPKM). \textbf{C.} Number of testis DEGs that were classified as cell-type specific markers in a single cell RNA-seq dataset of the testis. Germline cell types are highlighted in green, somatic cell types in black. \textbf{D.} Expression of ovary-enriched DEGs in a wild-type versus germ cell-depleted testis }
+  \label{figurelabel}
+\end{figure}
+
+
+\newpage
+## Figure outline:
+
 **Figure 1: Misexpression of tissue-specific genes in the _Kdm5c_-KO brain**
 	* MA-plot and bar graphs of tissue-enriched genes
 	* Example testis-specific genes (NCBI and bigwigs)
