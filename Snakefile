@@ -149,6 +149,18 @@ rule Brain_EpiLC_Upset:
 	script:
 		"code/Upset_Brain_EpiLC.R"
 
+#plot the gene ontology of EpiLC and brain DEGs
+rule GO_EpiLC_vs_Brain:
+	input:
+		"results/DESeq2/germDEGs/germDEGs_EpiLC_XY5cKO.csv",
+		"results/DESeq2/germDEGs/germDEGs_amy5cKO.csv",
+		"results/DESeq2/germDEGs/germDEGs_hip5cKO.csv"
+	output:
+		"results/GO_EpiLC_vs_Brain.csv",
+		"results/figure_pieces/GO_EpiLC_vs_Brain.pdf"
+	script:
+		"code/GO_Compare_BrainEpiLC.R"
+
 
 ###################### Render the manuscript ############################
 rule write_paper:
