@@ -121,6 +121,17 @@ rule EpiDESeq2:
 	script:
 		"code/DESeq2_EpiLC.R"
 
+#plot the expression of ESC and EpiLC pluripotency markers in EpiLCs
+rule EpiLC_markers:
+	input:
+		"data/raw/EpiLC_gene_TPM.txt",
+		"data/raw/SampleInfo_EpiLC.csv"
+	output:
+		"results/figure_pieces/EpiLC_markers_box.pdf"
+	script:
+		"code/EpiLC_markers.R"
+
+
 #pull out germline DEGs in Kdm5c-KO EpiLCs and brain
 rule BrainEpi_germDEGs:
 	input:
