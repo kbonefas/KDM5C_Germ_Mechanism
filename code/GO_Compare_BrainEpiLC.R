@@ -24,7 +24,7 @@ ck <- compareCluster(geneCluster = germDEGs, fun = enrichGO,  OrgDb = "org.Mm.eg
 #ck <- setReadable(ck, OrgDb = "org.Mm.eg.db", keyType="ENSEMBL")
 head(ck) 
 
-write.table(data.frame(ck), snakemake@output[[1]], row.names = FALSE)
+write.table(ck, snakemake@output[[1]], row.names = FALSE, sep = ",")
 
 ggsave(snakemake@output[[2]], plot = dotplot(ck, size = "Count"), width = 9, height = 5.5)
 
