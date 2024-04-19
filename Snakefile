@@ -187,6 +187,17 @@ rule GO_EpiLC_vs_Brain:
 	script:
 		"code/GO_Compare_BrainEpiLC.R"
 
+#plot the expression of primordial germ cell markers in EpiLCs
+rule EpiLC_PGC:
+	input:
+		"data/raw/EpiLC_gene_TPM.txt",
+		"data/raw/SampleInfo_EpiLC.csv"
+	output:
+		"results/figure_pieces/EpiLC_PGCmarkers_XY.pdf"
+	script:
+		"code/EpiLC_PGCgenes.R"
+
+
 
 ###################### Render the manuscript ############################
 rule write_paper:
