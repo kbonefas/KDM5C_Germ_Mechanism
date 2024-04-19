@@ -38,7 +38,7 @@ tissue_palette2 <-  c("Adrenal Gland" = "#f5372bff", "Brain" = "#f75c52ff","Fore
 #all XX and XY EpiLC genos
 EpiLCpalette <- c("XYWT" = EpiLC_XY_WT, "XY5cKO" = EpiLC_XY_KO, "XXWT" = EpiLC_XX_WT, "XX5cHET" = EpiLC_XX_HET, "XX5cKO" = EpiLC_XX_KO, "Both" = "deepskyblue2")
 #male eplic palette
-EpiLC_XY_palette <- c("WT" = EpiLC_XY_WT, "5cKO" = EpiLC_XY_KO)
+EpiLC_XY_palette <- c("WT" = EpiLC_XY_WT, "5cKO" = EpiLC_XY_KO, "5CKO" = EpiLC_XY_KO)
 
 
 #EpiLC with RA
