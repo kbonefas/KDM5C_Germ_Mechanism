@@ -35,7 +35,7 @@ rule amyhipDESeq2:
 
 
 #look at tissue-enriched gene expression
-rule tissue_genes:
+rule brain_tissue_genes:
 	input:
 		"results/DESeq2/DEGs_amy5cKO.csv",
 		"results/DESeq2/DEGs_hip5cKO.csv",
@@ -130,6 +130,21 @@ rule EpiLC_markers:
 		"results/figure_pieces/EpiLC_markers_box.pdf"
 	script:
 		"code/EpiLC_markers.R"
+
+#expression of tissue-specific genes in EpiLCs
+rule EpiLC_tissue_genes:
+	input:
+		"results/DESeq2/DEGs_EpiLC_XY5cKO.csv",
+		"data/processed/restable_EpiLC_XY5cKO.csv"
+
+	output:
+		"results/figure_pieces/TissueSpecific_Volcano_EpiLC_XY5cKO.png",
+		"results/figure_pieces/TissueSpecific_bar_EpiLC_XY5cKO.pdf",
+		"results/figure_pieces/TissueSpecific_MAplot_EpiLC_XY5cKO.pdf",
+		"data/processed/TissueSpecific_EpiLC_XY_numberofgenesDEGs.csv",
+		"data/processed/TissueDEGs_EpiLC5CKO_XY.csv"
+	script:
+		"code/TissueGenes_EpiLC.R"
 
 
 #pull out germline DEGs in Kdm5c-KO EpiLCs and brain
