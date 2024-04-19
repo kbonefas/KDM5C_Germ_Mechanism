@@ -17,6 +17,7 @@ q <- dotplot(ego, showCategory=15)
 
 
 ggsave(snakemake@output[[1]], plot = q, width = 5.5, height = 6)
+write.table(ego, snakemake@output[[2]], row.names = FALSE, sep = ",")
 
 
 #ego <- enrichGO(de, keyType = 'ENSEMBL', OrgDb = "org.Mm.eg.db", ont="BP", readable=TRUE)

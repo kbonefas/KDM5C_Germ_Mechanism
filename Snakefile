@@ -64,7 +64,8 @@ rule testisGO:
 	input:
 		"data/processed/TestisDEGs_amyhip.csv"
 	output:
-		"results/figure_pieces/TestisDEGs_GO.pdf"
+		"results/figure_pieces/TestisDEGs_GO.pdf",
+		"results/GO_Brain_TestisDEGs.csv"
 	script:
 		"code/GO_brain_testisDEGs.R"
 
@@ -101,10 +102,6 @@ rule germgenes:
 		#make graph of egg vs sperm germline genes
 	script:
 		"code/utilities/mouseGermlineGenes.R"
-
-
-
-
 
 
 ###################### Figure 3: EpiLC germline genes ############################
