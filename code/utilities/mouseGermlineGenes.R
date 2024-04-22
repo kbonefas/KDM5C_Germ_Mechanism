@@ -239,9 +239,11 @@ library(dplyr)
 	#wwv - if it's in the mueller ratio20 list, it lost 80% of its expression in wwv
 	#tissue - if it's expressed in the non-ovary and testis tissues, then it's eliminated. 
 
+print(head(germGENES20))
+
 uniqueENSEMBL <- unique(mueller_WT$ENSEMBL) 
 
-sankeydf <- data.frame(ENSEMBL = uniqueENSEMBL, genes = rep("mouse gene", length(uniqueENSEMBL)), wwv = ifelse(uniqueENSEMBL %in% muellerRATIO20$ENSEMBL, "yes", "no"), tissue = ifelse(uniqueENSEMBL %in% liRATIO20$ENSEMBL, "gonadal", "non-gonadal"))
+sankeydf <- data.frame(ENSEMBL = uniqueENSEMBL, Total = rep("mouse genes", length(uniqueENSEMBL)), Wwv = ifelse(uniqueENSEMBL %in% muellerRATIO20$ENSEMBL, "yes", "no"), Tissue = ifelse(uniqueENSEMBL %in% germGENES20$ENSEMBL, "germline-enriched", "somatic"))
 
 row.names(sankeydf) <- sankeydf$ENSEMBL
 sankeydf <- subset(sankeydf, select = -ENSEMBL)
@@ -250,7 +252,7 @@ print(head(sankeydf))
 
 ##2) make the dataframe for plotting, including how many observations there are for each category
 df <- sankeydf %>%
-  make_long(genes, wwv, tissue)
+  make_long(Total, Wwv, Tissue)
 
 # count how many there are in each group and merge back with the long df
 dagg <- df%>%
@@ -260,15 +262,28 @@ dagg <- df%>%
 df2 <- merge(df, dagg, by.x = 'node', by.y = 'node', all.x = TRUE)
 
 # plot the dataframe
-pl <- ggplot(df2, aes(x = x, next_x = next_x, node = node, next_node = next_node, fill = factor(node), label = paste0(node," n=", n)))
 
-pl <- pl +geom_sankey(flow.alpha = 0.5,  color = "gray40", show.legend = TRUE)
-pl <- pl +geom_sankey_label(size = 3, color = "black", fill= "white", hjust = -0.2)
+pl <- ggplot(df2, aes(x = x, next_x = next_x, node = node, next_node = next_node, fill = factor(node), label = paste0(node," n=", n))) +
+  geom_sankey(flow.alpha = .6,
+              node.color = "gray30") +
+  geom_sankey_label(size = 3, color = "black", fill= "white", hjust = -0.2) +
+  scale_fill_viridis_d(drop = FALSE) +
+  theme_sankey(base_size = 18) +
+  labs(x = NULL) +
+  theme(legend.position = "none",
+        plot.title = element_text(hjust = .5)) +
+  ggtitle("Filtering for mouse germline-enriched genes")
 
-pl <- pl + theme_bw() + theme(legend.position = "none") + theme(axis.title = element_blank(), axis.text.y = element_blank(), axis.ticks = element_blank(), panel.grid = element_blank())
-pl <- pl + scale_fill_viridis_d(option = "inferno")
-pl <- pl + labs(title = "Filtering for mouse germline-enriched genes")
-pl <- pl + labs(fill = 'Nodes')
 
-ggsave(snakemake@output[[2]], plot = pl, width = 8, height = 4)
+
+
+# pl <- pl +geom_sankey(flow.alpha = 0.5,  node.color = "gray40", show.legend = TRUE)
+# pl <- pl +geom_sankey_label(size = 3, color = "black", fill= "white", hjust = -0.2)
+
+# pl <- pl + theme_bw() + theme(legend.position = "none") + theme(axis.title = element_blank(), axis.text.y = element_blank(), axis.ticks = element_blank(), panel.grid = element_blank())
+# pl <- pl + scale_fill_viridis_d(drop = FALSE)
+# pl <- pl + labs(title = "Filtering for mouse germline-enriched genes")
+# pl <- pl + labs(fill = 'Nodes')
+
+ggsave(snakemake@output[[2]], plot = pl, width = 12, height = 3)
 
