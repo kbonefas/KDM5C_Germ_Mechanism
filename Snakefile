@@ -97,9 +97,9 @@ rule germgenes:
 		"data/raw/Li_2017_Tissues_FPKMs.xlsx" #WT mouse tissue FPKM  
 			#raw data from https://pubmed.ncbi.nlm.nih.gov/28646208/ 
 	output:
-		"data/processed/germGENES20.csv" #high confidence germline genes that lose 80% of their maximum expression in WT somatic tissues and germline-depleted testis
+		"data/processed/germGENES20.csv", #high confidence germline genes that lose 80% of their maximum expression in WT somatic tissues and germline-depleted testis
 		#make graph of the total number of genes filtered to get the germline genes
-		#make graph of egg vs sperm germline genes
+		"results/figure_pieces/germGENESfilter.pdf"
 	script:
 		"code/utilities/mouseGermlineGenes.R"
 
