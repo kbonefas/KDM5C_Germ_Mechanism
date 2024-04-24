@@ -159,7 +159,30 @@ _Dazl_ is an RNA-binding protein that regulates the translation of germline mRNA
 	F) RNA expression of germline genes with catalytic dead rescue (Ilakkiya)
 	G) DNA methylation in WT and 5CKO EpiLCs (Ilakkiya)
 
-Previous work has suggested KDM5C represses germline genes during early development, as re-expression of KDM5C in neuronal cultures fails to suppress their transcription[@scandagliaLossKdm5cCauses2017]. While KDM5C is generally thought to supress transcription through erasure of histone 3 lysine 4 di- and trimethylation (H3K4me2/3), recent studies in ESCs have suggested KDM5C's repression _Dazl_ is independent of its catalytic activity[@guptaGenomewideScreenReveals2023]. However, it is currently unclear if KDM5C's catalytic activity aids in the long-term repression of germline genes. 
+Previous work suggests KDM5C represses germline genes during early development, since KDM5C binding is gradually lost at hippocampal germline DEG promoters over development[@scandagliaLossKdm5cCauses2017] and re-expression of KDM5C in neuronal cultures fails to suppress their transcription. 
+
+
+* However, we identified many germline genes that were only dysregulated in _Kdm5c_-KO EpiLCs and not in the mature brain, including master regulators of meiosis and germline identity. 
+
+* KDM5C was very recently shown to bind to Dazl in ESCs, unclear if it's bound to other master regulators
+
+* Unclear if KDM5C's binding is maintained throughout development for these master regulators or also lost with differentiation, as KDM5C's binding at germline gene promoters has not been systematically compared. 
+
+**check ESC chipseq, did they describe germline genes?**
+
+
+
+
+
+* Since we found unique genes are dysregulated in EpiLCs 
+
+* However, it is currently unclear if KDM5C 
+
+
+
+
+
+ * previous studies only focused on binding at germline DEGs in the brain or focused on Dazl expression, no systematic characterization of KDM5C binding
 
 
 * To better elucidate the mechanism behind KDM5C-mediated germline gene silencing, we analyzed KDM5C chromatin immunoprecipitation followed by DNA sequencing (ChIP-seq) datasets we previously generated in EpiLCs[@samantaActivationXistEvolutionarily2022] and primary hippocampal and cortical neuron cultures (PNCs)[@iwaseMouseModelXlinked2016]. We identified a higher number of KDM5C peaks in EpiLCs overall (EpiLCs: 2,437, PNCs: 1,610, MACS2 q < 0.1 and fold enrichment > 1) and while KDM5C was primarily localized to gene promoters in both cell types (EpiLCs: , PNCs: , +/- kb TSS), PNCs showed increased localization to distal intergenic regions (EpiLCs: , PNCs: ). 
@@ -170,33 +193,15 @@ Previous work has suggested KDM5C represses germline genes during early developm
 
 * Interestingly, KDM5C is also bound to the germline master regulator _Dazl_ in EpiLCs, but is not bound to other germline regulators like _Stra8_. 
 
-* Note: examples of brain germline DEGs that kdm5c is not bound to? That also shows their dysregualtion can be caused by secondary effects. 
-
-* Altogether, this indicates that while the misexpression of some germline genes is due to loss of KDM5C binding during emryogenesis, germline genes can also be aberrantly expressed by secondary mechanisms downstream of KDM5C.
 
 
+* Altogether, these data indicate that while some germline genes are dysregulated due to direct loss of KDM5C binding during emryogenesis, secondary downstream mechanisms can also promote their aberrant transcription.  
 
-* Altogether, this indicates the misexpression of germline genes in _Kdm5c_-KO cells is partly due to direct loss of KDM5C binding during emryogenesis, but also caused by secondary mechanisms activation by secondary mechanisms.
+* **Note: examples of brain germline DEGs that kdm5c is not bound to? That also shows their dysregualtion can be caused by secondary effects.**
 
+---- 
 
-
-----
-* This indicates long-term misexpression of germline genes is due to developmental loss of KDM5C suppression. 
-
-* In EpiLCs, KDM5C was bound to germline genes transcribed in _Kdm5c_-KO EpiLCs as well as those dysregulated in the brain, such as _D1Pas1_ (Figure 4C).
-
- To further delineate KDM5C's role in suppressing germline identity, we assessed the function of all genes with KDM5C bound to their promoter in EpiLCs and PNCs through gene ontology (GO) analysis (Figure 4D). 
-
-
-
-Peaks were called using MACS2 software (v 2.1.0.20140616) using input BAM files for normalization, with filters for a q-value
-< 0.1 and a fold enrichment >1. Common peak sets were obtained via DiffBind, and count
-tables for the common peaks were generated with the Bedtools multicov command.
-
- our previously generated chromatin immunoprecipitation followed by DNA sequencing (ChIP-seq) data of KDM5C in 
-
-
-* To better elucidate the mechanism behind KDM5C-mediated germline gene silencing, we analyzed our previously generated chromatin immunoprecipitation followed by DNA sequencing (ChIP-seq) data of KDM5C's substrates, H3K4me2/3[@vallianatosMutuallySuppressiveRoles2020;@samantaActivationXistEvolutionarily2022].  
+Although KDM5C is generally thought to supress transcription through erasure of histone 3 lysine 4 di- and trimethylation (H3K4me2/3), recent studies in ESCs have suggested KDM5C's repression _Dazl_ is independent of its catalytic activity[@guptaGenomewideScreenReveals2023]. It is currently unclear if KDM5C's catalytic activity aids in the long-term repression of germline genes, such as promoting the placement of DNA methylation that occurs in EpiLCs. 
 
 * In congruence with previous work in the _Kdm5c_-KO hippocampus[@scandagliaLossKdm5cCauses2017], we observed ectopic H3K4me3 peaks in the _Kdm5c_-KO amygdala at the transcription start site (TSS) of germline genes (Figure 4A).
 * We additionally observed a marked increase in H3K4me2 at germline gene promoters in _Kdm5c_-KO EpiLCs.
