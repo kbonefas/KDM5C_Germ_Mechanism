@@ -151,60 +151,36 @@ _Dazl_ is an RNA-binding protein that regulates the translation of germline mRNA
 
 **Figure 4: Loss of KDM5C's catalytic activity impairs DNAme placement and long-term silencing of germline genes**
 	A) KDM5C binding in EpiLCs vs PNCs - number of peaks and percentage of bound genomic regions
-	B) KDM5C binding in Epilcs vs pncs germline genes - GO left, bigwigs right
-	C) Bigwigs of Increase in H3K4me3 in Kdm5c-KO amygdala at germline genes
-	D) Increase in H3K4me2 in EpiLCs at germline genes (left - bigwigs, right average signal at germline gene TSS? Just KDM5C-bound genes?)
+	B) KDM5C binding in Epilcs vs pncs germline genes - GO 
+	C) Left - bar graph of germline DEGs KDM5C is bound to in EpiLCs Right - Example bigwigs
+		* Brain and EpiLC shared, EpiLC-specific, Brain-specific, 
+	D) Bigwigs of Increase in H3K4me3 in Kdm5c-KO amygdala at germline genes
+	E) Increase in H3K4me2 in EpiLCs at germline genes (left - bigwigs, right average signal at germline gene TSS? Just KDM5C-bound genes?)
 	* Previous studies only looked at ESCs, unknown if catalytic activity is required for long-term repression, especially since DNA methylation is placed later). 
-	E) KDM5C expression ESC --> EpiLC (increasing then decreasing) Left - RNA right - protein 
-	F) RNA expression of germline genes with catalytic dead rescue (Ilakkiya)
-	G) DNA methylation in WT and 5CKO EpiLCs (Ilakkiya)
+	F) KDM5C expression ESC --> EpiLC (increasing then decreasing) Left - RNA right - protein 
+	G) RNA expression of germline genes with catalytic dead rescue (Ilakkiya)
+	H) DNA methylation in WT and 5CKO EpiLCs (Ilakkiya)
 
-Previous work suggests KDM5C represses germline genes during early development, since KDM5C binding is gradually lost at hippocampal germline DEG promoters over development[@scandagliaLossKdm5cCauses2017] and re-expression of KDM5C in neuronal cultures fails to suppress their transcription. 
+Previous work suggests KDM5C represses germline genes during early development, since KDM5C binding is gradually lost at hippocampal germline DEG promoters over development[@scandagliaLossKdm5cCauses2017] and re-expression of KDM5C in neuronal cultures fails to suppress their transcription. However, we identified many germline genes that were only dysregulated in _Kdm5c_-KO EpiLCs and not in the mature brain, including master regulators of meiosis and germline identity. While KDM5C was recently shown to bind to _Dazl_ in ESCs[@guptaGenomewideScreenReveals2023; @aladhamiSystematicIdentificationFactors2023], it's unclear if KDM5C binds to other master regulators that are expressed in _Kdm5c_-KO EpiLCs and if this binding is maintained as cells differentiate.
 
-
-* However, we identified many germline genes that were only dysregulated in _Kdm5c_-KO EpiLCs and not in the mature brain, including master regulators of meiosis and germline identity. 
-
-* KDM5C was very recently shown to bind to Dazl in ESCs, unclear if it's bound to other master regulators
-
-* Unclear if KDM5C's binding is maintained throughout development for these master regulators or also lost with differentiation, as KDM5C's binding at germline gene promoters has not been systematically compared. 
-
-**check ESC chipseq, did they describe germline genes?**
+To better elucidate the mechanism behind KDM5C-mediated germline gene silencing, we analyzed KDM5C chromatin immunoprecipitation followed by DNA sequencing (ChIP-seq) datasets we previously generated in EpiLCs[@samantaActivationXistEvolutionarily2022] and primary hippocampal and cortical neuron cultures (PNCs)[@iwaseMouseModelXlinked2016]. We identified a higher number of KDM5C peaks in EpiLCs overall (EpiLCs: 2,437, PNCs: 1,610, MACS2 q < 0.1 and fold enrichment > 1) and while KDM5C was primarily localized to gene promoters in both cell types (EpiLCs: , PNCs: , +/- kb TSS), PNCs showed increased localization to distal intergenic regions (EpiLCs: , PNCs: ) (Figure 4A). Gene ontology analysis of KDM5C-bound promoters in EpiLCs revealed high enrichment of germline-related ontologies, including meiotic nuclear division (GO:0140013) and synaptonemal complex assembly (GO:0007130) (Figure 4B). Contrastingly, germline ontologies are not enriched in PNCs and KDM5C-bound genes instead perform non-germline-specific functions, such as heterocycle synthesis (GO: 0018130) and pyrimidine metabolism (GO: 0072527).
 
 
+We then assessed KDM5C binding at germline genes expressed _Kdm5c_-KO cells to assess if their dysreuglation is due to direct loss of KDM5C binding during embryogenesis.
 
-
-
-* Since we found unique genes are dysregulated in EpiLCs 
-
-* However, it is currently unclear if KDM5C 
-
-
-
-
-
- * previous studies only focused on binding at germline DEGs in the brain or focused on Dazl expression, no systematic characterization of KDM5C binding
-
-
-* To better elucidate the mechanism behind KDM5C-mediated germline gene silencing, we analyzed KDM5C chromatin immunoprecipitation followed by DNA sequencing (ChIP-seq) datasets we previously generated in EpiLCs[@samantaActivationXistEvolutionarily2022] and primary hippocampal and cortical neuron cultures (PNCs)[@iwaseMouseModelXlinked2016]. We identified a higher number of KDM5C peaks in EpiLCs overall (EpiLCs: 2,437, PNCs: 1,610, MACS2 q < 0.1 and fold enrichment > 1) and while KDM5C was primarily localized to gene promoters in both cell types (EpiLCs: , PNCs: , +/- kb TSS), PNCs showed increased localization to distal intergenic regions (EpiLCs: , PNCs: ). 
-
-* Gene ontology analysis of KDM5C-bound promoters in EpiLCs revealed high enrichment of germline-related ontologies, including meiotic nuclear division (GO:0140013) and synaptonemal complex assembly (GO:0007130). Contrastingly, germline ontologies are not enriched in PNCs and KDM5C-bound genes are enriched for non-germline-specific functions such as heterocycle synthesis (GO: 0018130) and pyrimidine metabolism (GO: 0072527).
-
-* In EpiLCs but not PNCs, KDM5C is bound to the TSS of germline genes that are mixexpressed in both _Kdm5c_-KO EpiLCs and the mature brain, such as _Cyct_ and _D1Pas1_. 
-
-* Interestingly, KDM5C is also bound to the germline master regulator _Dazl_ in EpiLCs, but is not bound to other germline regulators like _Stra8_. 
-
-
-
-* Altogether, these data indicate that while some germline genes are dysregulated due to direct loss of KDM5C binding during emryogenesis, secondary downstream mechanisms can also promote their aberrant transcription.  
-
-* **Note: examples of brain germline DEGs that kdm5c is not bound to? That also shows their dysregualtion can be caused by secondary effects.**
+	* KDM5C was bound to the promoter of many genes dysregulated in both EpiLCs and brain datasets, including _D1Pas1_ and _Cyct_.
+	* KDM5C was not bound to many of the brain-specific germline DEGs, such as XXX.
+	* While KDM5C binds to many germline DEGs in EpiLCs, including _Dazl_, many were also unbound. This included the germline transcription factor _Stra8_.
+	* All genes lacked binding in PNCs.
+	* Altogether, these data indicate that while some germline genes are misexpressed due to direct loss of KDM5C binding during emryogenesis, secondary downstream mechanisms can also promote their aberrant transcription.  
 
 ---- 
 
-Although KDM5C is generally thought to supress transcription through erasure of histone 3 lysine 4 di- and trimethylation (H3K4me2/3), recent studies in ESCs have suggested KDM5C's repression _Dazl_ is independent of its catalytic activity[@guptaGenomewideScreenReveals2023]. It is currently unclear if KDM5C's catalytic activity aids in the long-term repression of germline genes, such as promoting the placement of DNA methylation that occurs in EpiLCs. 
+Although KDM5C is generally thought to supress transcription through erasure of histone 3 lysine 4 di- and trimethylation (H3K4me2/3), recent studies in ESCs have suggested KDM5C's repression _Dazl_ is independent of its catalytic activity[@guptaGenomewideScreenReveals2023]. It is currently unclear if KDM5C's catalytic activity aids in the long-term repression of germline genes, such as enabling the placement of DNA methylation. 
 
-* In congruence with previous work in the _Kdm5c_-KO hippocampus[@scandagliaLossKdm5cCauses2017], we observed ectopic H3K4me3 peaks in the _Kdm5c_-KO amygdala at the transcription start site (TSS) of germline genes (Figure 4A).
+* In congruence with previous work in the _Kdm5c_-KO hippocampus[@scandagliaLossKdm5cCauses2017], we observed ectopic H3K4me3 peaks in the _Kdm5c_-KO amygdala at the transcription start site (TSS) of germline genes (Figure 4).
 * We additionally observed a marked increase in H3K4me2 at germline gene promoters in _Kdm5c_-KO EpiLCs.
+	* This increase was greatest at germline genes directly bound by KDM5C (?)
 
 
 
