@@ -145,7 +145,64 @@ Using our curated list, we found `r nrow(epigerm)` germline-enriched genes were 
 
 We then compared the function of EpiLC and brain germline DEGs through gene ontology and found particularly high enrichment of meiosis-related gene ontologies in EpiLCs (Figure 3F), such as meiotic cell cycle (`r getGO("meiotic cell cycle", GO_EpiBrain, 'ID', "EpiLC")`, p.adjust = `r signif(getGO("meiotic cell cycle", GO_EpiBrain, 'p.adjust', "EpiLC"), 3)`). While a few meiosis-related genes are misexpressed in the _Kdm5c_-KO brain, DEGs unique to _Kdm5c_-KO EpiLCs included master regulators of germline identity, such as _Stimulated by retinoic acid 8 (Stra8)_ and _Deleted in azoospermia like (Dazl)_ (Figure 3G). These genes are typically expressed during embryonic germ cell development to commit PGCs to the germline fate, but are also expressed later in life to trigger meiotic gene expression programs[@koubovaRetinoicAcidRegulates2006; @linGermCellIntrinsicExtrinsic2008; @endoRetinoicAcidGerm2019]. Of note, some germline genes, including _Dazl_, are also expressed in the two-cell embryo. However, we did not see misexpression of two-cell embryo-specific genes, like _Zscan4d_ (q = `r signif(zscan4d, 3)`). 
 
-_Dazl_ is an RNA-binding protein that regulates the translation of germline mRNAs and is essential for germ cell function[@liDAZLMasterTranslational2019]. Interestingly, a significant portion of germline transcripts expressed in _Kdm5c_-KO EpiLCs are known binding targets of DAZL, including _Stra8_[@mikedisDAZLMediatesBroad2020] (p = 1.698e-07, Fisher’s Exact Test). This suggests expression of DAZL protein would enable the translation of other aberrant germline transcripts, influencing their ability to impact on _Kdm5c_ mutant cellular function. We therefore stained _Kdm5c_-KO EpiLCs for DAZL protein expression through immunocytochemistry (Figure 3H). We found about 25% of _Kdm5c_-KO EpiLCs expressed DAZL protein in their cytoplasm (p = 0.0015, Welch's t-test), consistent with the subcellular localization observed when DAZL is stained in spermatogonia[@mikedisDAZLMediatesBroad2020]. Altogether these results suggest _Kdm5c_-KO EpiLCs fail to decommission germline genes during early embryogenesis, including master regulators of germline identity that can be translated into protein.
+_Dazl_ is an RNA-binding protein that regulates the translation of germline mRNAs and is essential for germ cell function[@liDAZLMasterTranslational2019]. Interestingly, a significant portion of germline transcripts expressed in _Kdm5c_-KO EpiLCs are known binding targets of DAZL, including _Stra8_[@mikedisDAZLMediatesBroad2020] (p = 1.698e-07, Fisher’s Exact Test). This suggests expression of DAZL protein would enable the translation of other aberrant germline transcripts, influencing their ability to impact on _Kdm5c_-KO cellular function. We therefore stained _Kdm5c_-KO EpiLCs for DAZL protein expression through immunocytochemistry (Figure 3H). We found about 25% of _Kdm5c_-KO EpiLCs expressed DAZL protein in their cytoplasm (p = 0.0015, Welch's t-test), consistent with the subcellular localization observed when DAZL is stained in spermatogonia[@mikedisDAZLMediatesBroad2020]. Altogether these results suggest _Kdm5c_-KO EpiLCs fail to decommission germline genes during early embryogenesis, including master regulators of germline identity that can be translated into protein.
+
+### KDM5C-mediated removal of H3K4me3 during early embryogenesis promotes long-term repression of germline genes 
+
+**Figure 4: Loss of KDM5C's catalytic activity impairs DNAme placement and long-term silencing of germline genes**
+	A) KDM5C binding in EpiLCs vs PNCs - number of peaks and percentage of bound genomic regions
+	B) KDM5C binding in Epilcs vs pncs germline genes - GO left, bigwigs right
+	C) Bigwigs of Increase in H3K4me3 in Kdm5c-KO amygdala at germline genes
+	D) Increase in H3K4me2 in EpiLCs at germline genes (left - bigwigs, right average signal at germline gene TSS? Just KDM5C-bound genes?)
+	* Previous studies only looked at ESCs, unknown if catalytic activity is required for long-term repression, especially since DNA methylation is placed later). 
+	E) KDM5C expression ESC --> EpiLC (increasing then decreasing) Left - RNA right - protein 
+	F) RNA expression of germline genes with catalytic dead rescue (Ilakkiya)
+	G) DNA methylation in WT and 5CKO EpiLCs (Ilakkiya)
+
+Previous work has suggested KDM5C represses germline genes during early development, as re-expression of KDM5C in neuronal cultures fails to suppress their transcription[@scandagliaLossKdm5cCauses2017]. While KDM5C is generally thought to supress transcription through erasure of histone 3 lysine 4 di- and trimethylation (H3K4me2/3), recent studies in ESCs have suggested KDM5C's repression _Dazl_ is independent of its catalytic activity[@guptaGenomewideScreenReveals2023]. However, it is currently unclear if KDM5C's catalytic activity aids in the long-term repression of germline genes. 
+
+
+* To better elucidate the mechanism behind KDM5C-mediated germline gene silencing, we analyzed KDM5C chromatin immunoprecipitation followed by DNA sequencing (ChIP-seq) datasets we previously generated in EpiLCs[@samantaActivationXistEvolutionarily2022] and primary hippocampal and cortical neuron cultures (PNCs)[@iwaseMouseModelXlinked2016]. We identified a higher number of KDM5C peaks in EpiLCs overall (EpiLCs: 2,437, PNCs: 1,610, MACS2 q < 0.1 and fold enrichment > 1) and while KDM5C was primarily localized to gene promoters in both cell types (EpiLCs: , PNCs: , +/- kb TSS), PNCs showed increased localization to distal intergenic regions (EpiLCs: , PNCs: ). 
+
+* Gene ontology analysis of KDM5C-bound promoters in EpiLCs revealed high enrichment of germline-related ontologies, including meiotic nuclear division (GO:0140013) and synaptonemal complex assembly (GO:0007130). Contrastingly, germline ontologies are not enriched in PNCs and KDM5C-bound genes are enriched for non-germline-specific functions such as heterocycle synthesis (GO: 0018130) and pyrimidine metabolism (GO: 0072527).
+
+* In EpiLCs but not PNCs, KDM5C is bound to the TSS of germline genes that are mixexpressed in both _Kdm5c_-KO EpiLCs and the mature brain, such as _Cyct_ and _D1Pas1_. 
+
+* Interestingly, KDM5C is also bound to the germline master regulator _Dazl_ in EpiLCs, but is not bound to other germline regulators like _Stra8_. 
+
+* Note: examples of brain germline DEGs that kdm5c is not bound to? That also shows their dysregualtion can be caused by secondary effects. 
+
+* Altogether, this indicates that while the misexpression of some germline genes is due to loss of KDM5C binding during emryogenesis, germline genes can also be aberrantly expressed by secondary mechanisms downstream of KDM5C.
+
+
+
+* Altogether, this indicates the misexpression of germline genes in _Kdm5c_-KO cells is partly due to direct loss of KDM5C binding during emryogenesis, but also caused by secondary mechanisms activation by secondary mechanisms.
+
+
+
+----
+* This indicates long-term misexpression of germline genes is due to developmental loss of KDM5C suppression. 
+
+* In EpiLCs, KDM5C was bound to germline genes transcribed in _Kdm5c_-KO EpiLCs as well as those dysregulated in the brain, such as _D1Pas1_ (Figure 4C).
+
+ To further delineate KDM5C's role in suppressing germline identity, we assessed the function of all genes with KDM5C bound to their promoter in EpiLCs and PNCs through gene ontology (GO) analysis (Figure 4D). 
+
+
+
+Peaks were called using MACS2 software (v 2.1.0.20140616) using input BAM files for normalization, with filters for a q-value
+< 0.1 and a fold enrichment >1. Common peak sets were obtained via DiffBind, and count
+tables for the common peaks were generated with the Bedtools multicov command.
+
+ our previously generated chromatin immunoprecipitation followed by DNA sequencing (ChIP-seq) data of KDM5C in 
+
+
+* To better elucidate the mechanism behind KDM5C-mediated germline gene silencing, we analyzed our previously generated chromatin immunoprecipitation followed by DNA sequencing (ChIP-seq) data of KDM5C's substrates, H3K4me2/3[@vallianatosMutuallySuppressiveRoles2020;@samantaActivationXistEvolutionarily2022].  
+
+* In congruence with previous work in the _Kdm5c_-KO hippocampus[@scandagliaLossKdm5cCauses2017], we observed ectopic H3K4me3 peaks in the _Kdm5c_-KO amygdala at the transcription start site (TSS) of germline genes (Figure 4A).
+* We additionally observed a marked increase in H3K4me2 at germline gene promoters in _Kdm5c_-KO EpiLCs.
+
+
+
 
 
 # Discussion
@@ -185,7 +242,7 @@ __
 \begin{figure}
   \centering 
   \includegraphics{../submission/compiled_figs/EpiLCs_too.pdf}
-  \caption[\textit{Kdm5c}-KO epiblast-like cells express master regulators of germline identity ]{\textbf{\textit{Kdm5c}-KO epiblast-like cells express master regulators of germline identity A.} Top - Diagram of \textit{in vivo} differentiation of embryonic stem cells (ESCs) of the inner cell mass into epiblast stem cells. Middle - \textit{in vitro} differentiation of ESCs into epiblast-like cells (EpiLCs). Bottom - representative images of wild-type (WT) and \textit{Kdm5c}-KO ESC to EpiLC differentiation. Brightfield images taken at 20X. \textbf{B.} No significant difference in primed pluripotency maker expression in wild-type versus \textit{Kdm5c}-KO EpiLCs. Welch's t-test, expression in transcripts per million (TPM). \textbf{C.} Number of tissue-enriched differentially expressed genes (DEGs). * p<0.05, ** p<0.01, *** p<0.001, Fisher's exact test. \textbf{D.} Average bigwigs of an example germline gene, \textit{Cyct}, that is dysregulated \textit{Kdm5c}-KO EpiLCs. \textbf{E.} Upset plot displaying the overlap of germline DEGs expressed in \textit{Kdm5c}-KO mutant EpiLC, amygdala (AMY), and hippocampus (HIP) RNA-seq datasets. \textbf{F.} enrichPlot comparing enriched gene ontoogies for \textit{Kdm5c}-KO EpiLCs, amygdala, and hippocampus germline DEGs. \textbf{G.} Top - Example germline identity DEGs unique to EpiLCs, p-values for Welch's t-test. Bottom - Average bigwigs of \textit{Dazl} and \textit{Stra8} expression in wild-type and \textit{Kdm5c}-KO EpiLCs \textbf{H.} Immunocytochemistry of DAZL in male wild-type (WT) and \textit{Kdm5c}-KO (5CKO) EpiLCs. Percentage of DAZL-positive cells normalized to DAPI, p-value for Welch's t-test}
+  \caption[\textit{Kdm5c}-KO epiblast-like cells express master regulators of germline identity ]{\textbf{\textit{Kdm5c}-KO epiblast-like cells express master regulators of germline identity A.} Top - Diagram of \textit{in vivo} differentiation of embryonic stem cells (ESCs) of the inner cell mass into epiblast stem cells. Middle - \textit{in vitro} differentiation of ESCs into epiblast-like cells (EpiLCs). Bottom - representative images of wild-type (WT) and \textit{Kdm5c}-KO ESC to EpiLC differentiation. Brightfield images taken at 20X. \textbf{B.} No significant difference in primed pluripotency maker expression in wild-type versus \textit{Kdm5c}-KO EpiLCs. Welch's t-test, expression in transcripts per million (TPM). \textbf{C.} Number of tissue-enriched differentially expressed genes (DEGs). * p<0.05, ** p<0.01, *** p<0.001, Fisher's exact test. \textbf{D.} Average bigwigs of an example germline gene, \textit{Cyct}, that is dysregulated \textit{Kdm5c}-KO EpiLCs. \textbf{E.} Upset plot displaying the overlap of germline DEGs expressed in \textit{Kdm5c}-KO EpiLCs, amygdala (AMY), and hippocampus (HIP) RNA-seq datasets. \textbf{F.} enrichPlot comparing enriched gene ontologies for \textit{Kdm5c}-KO EpiLC, amygdala, and hippocampus germline DEGs. \textbf{G.} Top - Example germline identity DEGs unique to EpiLCs, p-values for Welch's t-test. Bottom - Average bigwigs of \textit{Dazl} and \textit{Stra8} expression in wild-type and \textit{Kdm5c}-KO EpiLCs \textbf{H.} Immunocytochemistry of DAZL in male wild-type (WT) and \textit{Kdm5c}-KO (5CKO) EpiLCs. Percentage of DAZL-positive cells normalized to DAPI, p-value for Welch's t-test}
   \label{figurelabel}
 \end{figure}
 
