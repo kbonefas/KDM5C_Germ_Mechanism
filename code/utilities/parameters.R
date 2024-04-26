@@ -2,3 +2,6 @@
 
 #log2 fold change cut off value for DESEq2
 l2fcco <- 0.5
+
+#range around tss for promoters
+promorange <- 500

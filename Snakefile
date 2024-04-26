@@ -194,7 +194,13 @@ rule EpiLC_PGC:
 	script:
 		"code/EpiLC_PGCgenes.R"
 
-
+###################### Figure 4: ChIPseq KDM5C EpiLC vs PNC ############################
+rule KDM5C_chip:
+	input:
+		"data/raw/ChIPseq_mm9_EpiLC_KDM5C_WTnoKO.bed",
+		"data/raw/ChIPseq_mm9_PNC_KDM5C_WTnoKO.bed"
+	script:
+		"code/ChIPseq_KDM5C_EpiLC_PNC.R"
 
 ###################### Render the manuscript ############################
 rule write_paper:
