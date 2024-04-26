@@ -198,7 +198,13 @@ rule EpiLC_PGC:
 rule KDM5C_chip:
 	input:
 		"data/raw/ChIPseq_mm9_EpiLC_KDM5C_WTnoKO.bed",
-		"data/raw/ChIPseq_mm9_PNC_KDM5C_WTnoKO.bed"
+		"data/raw/ChIPseq_mm9_PNC_KDM5C_WTnoKO.bed",
+		"results/DESeq2/germDEGs/germDEGs_amy5cKO.csv",
+		"results/DESeq2/germDEGs/germDEGs_hip5cKO.csv",
+		"results/DESeq2/germDEGs/germDEGs_EpiLC_XY5cKO.csv"
+	output:
+		"results/figure_pieces/KDM5C_ChIPseq_peaklocation.pdf",
+		"results/figure_pieces/KDM5C_ChIPseq_boundgermDEGs.pdf"
 	script:
 		"code/ChIPseq_KDM5C_EpiLC_PNC.R"
 
