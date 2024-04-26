@@ -29,9 +29,9 @@ for (i in 1:length(samples)){
 	print(head(peak))
 
 	#annotate where the peaks are located and plot
+	
 	peakAnno <- annotatePeak(peak, tssRegion=c(-promorange, promorange),
                          TxDb=txdb, annoDb="org.Mm.eg.db")
-	annoplot[[i]] <- plotAnnoBar(peakAnno, title = paste(samples[i], "peaks"))
 
 
 	#subset for just the promoter peaks
@@ -42,6 +42,8 @@ for (i in 1:length(samples)){
 
 
 	peakENSEMBL[[i]] <- unique(KDM5C.promo_genes$ENSEMBL)
+
+	annoplot[[i]] <- plotAnnoBar(peakAnno, title = paste(samples[i], "-", format(nrow(annot_KDM5C), big.mark = ","), "peaks"))
 
 
 }
