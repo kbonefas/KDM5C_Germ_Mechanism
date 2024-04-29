@@ -95,59 +95,20 @@ library("gridExtra")
 ggsave(snakemake@output[[1]], plot = grid.arrange(grobs = TPMplot, nrow = length(genetype)), width = 8, height = 10)
 
 
-# ###4) heatmap of the tpm of naive and primed pluripotency genes in WT vs 5CKO
+#plot just 6 of the primed genes for the main figure
+primedgenes_6 <-  c("Otx2", "Cdh2", "Etv5", "Foxd3", "Pou3f1", "Tcf15")
 
-# # #put all the genes together
-# naivegenes$type <- rep("naive", nrow(naivegenes))
-# primedgenes$type <- rep("primed", nrow(primedgenes))
-
-# markergenes <- rbind(naivegenes, primedgenes)
-# print(head(markergenes))
-
-# #get the tpm of marker genes
-# EpiLC_marker_TPM <- subset(EpiLC_TPM, rownames(EpiLC_TPM) %in% markergenes[,2])
-
-# #get the average TPM for each genotype
-# genos <- c("WT", "KO")
-# avgmarker <- list()
-# count = 1
-# for (g in genos){
-# 	#get columns with samples of that genotype
-# 	onegeno <- subset(EpiLC_marker_TPM, select = grep(g, colnames(EpiLC_marker_TPM)))
-# 	#get the average TPM
-# 	avgTPM <- data.frame(row.names = rownames(EpiLC_marker_TPM), TPM = rowMeans(onegeno))
-# 	names(avgTPM)[names(avgTPM) == 'TPM'] <- paste0("avg_", g) 
-# 	avgmarker[[count]] <- avgTPM
-# 	count = count + 1
-# }
-
-# library(dplyr)
-# avgmarker <- bind_cols(avgmarker)
-# print("avg DEG dataframe!")
-# head(avgmarker)
+plotdf_6 <- subset(plotdf, type == "primed" & Symbol %in% primedgenes_6)
+my_comparisons <- list(c("WT", "5CKO"))
+q <- ggboxplot(plotdf_6, x = 'Genotype', y = 'TPM', color = "black", fill="Genotype",
+	title = paste("Markers of primed pluripotency"), add =  "dotplot", add.params = list(size = 2), xlab = " ", palette = EpiLC_XY_palette) +
+    rremove("legend") +
+    stat_compare_means(comparisons = my_comparisons, method="t.test", label = "p.signif") 
+q <- ggpar(q, x.text.angle = 25, ylim = c(0,30), font.main = "bold")
+q <- facet(q, facet.by = "Symbol", nrow = 2)
 
 
-
-# hclust_matrix <- avgmarker %>% 
-#   scale() 
-
-
-# gene_dist <- dist(hclust_matrix)
-
-# rownames(hclust_matrix) <- rownames(EpiLC_marker_TPM)
-# gene_hclust <- hclust(gene_dist, method = "average")
-
-
-# library(ComplexHeatmap)
-# p <- Heatmap(hclust_matrix, show_row_names = TRUE, cluster_columns = FALSE, split = 2)
-
-# #save the heatmap
-# pdf(file = snakemake@output[[1]],   # The directory you want to save the file in
-#     width = 5, # The width of the plot in inches
-#     height = 8) # The height of the plot in inches
-# p
-# dev.off()
-
-
+library("gridExtra")
+ggsave(snakemake@output[[2]], plot = q, width = 4, height = 4)
 
 

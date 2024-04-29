@@ -124,6 +124,7 @@ rule EpiLC_markers:
 		"data/raw/EpiLC_gene_TPM.txt",
 		"data/raw/SampleInfo_EpiLC.csv"
 	output:
+		"results/figure_pieces/EpiLC_markers_box_Supplement.pdf",
 		"results/figure_pieces/EpiLC_markers_box.pdf"
 	script:
 		"code/EpiLC_markers.R"
