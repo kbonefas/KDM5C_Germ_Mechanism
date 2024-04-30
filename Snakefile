@@ -218,7 +218,10 @@ rule KDM5C_chip_GO:
 		"data/processed/KDM5C_ChIPseq_boundpromoters_PNC.csv"
 	output:
 		"results/ChIPseq_KDM5C_GO_EpiLC_vs_PNC.csv",
-		"results/figure_pieces/KDM5C_ChIPseq_GO.pdf"
+		"results/figure_pieces/KDM5C_ChIPseq_GO_all.pdf",
+		"results/ChIPseq_KDM5C_GO_EpiLC_vs_PNC_unique.csv",
+		"results/figure_pieces/KDM5C_ChIPseq_GO_unique.pdf",
+		"results/figure_pieces/KDM5C_ChIPseq_promo_overlap.pdf"
 	script:
 		"code/ChIPseq_KDM5C_GO_Compare_BrainEpiLC.R"
 
