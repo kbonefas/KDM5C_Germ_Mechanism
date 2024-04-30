@@ -124,5 +124,5 @@ for (k in 1:length(samples)){
 
 }
 
-ggsave(snakemake@output[[4]], grid.arrange(grobs = plots, ncol = 2), width = 8, height = 5)
+ggsave(snakemake@output[[4]], grid.arrange(grobs = plots, ncol = 2), width = 7.5, height = 3.5)
 
