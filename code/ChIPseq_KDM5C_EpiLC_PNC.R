@@ -39,6 +39,8 @@ for (i in 1:length(samples)){
 	annot_KDM5C.promo <- subset(annot_KDM5C, annotation == "Promoter")
 	KDM5C.promo_genes <- annot_KDM5C.promo %>% distinct(ENSEMBL, .keep_all = TRUE) #keep only distinct annotations (in case 2 peaks are within 1000bp)
 	#print(head(KDM5C.promo_genes))
+	write.table(KDM5C.promo_genes, snakemake@output[[i]], sep=",", row.names = FALSE)
+
 
 
 	peakENSEMBL[[i]] <- unique(KDM5C.promo_genes$ENSEMBL)
@@ -51,7 +53,7 @@ for (i in 1:length(samples)){
 library("ggplot2")
 library("gridExtra")
 library("ggpubr")
-ggsave(snakemake@output[[1]], grid.arrange(grobs = annoplot, nrow = 2), width = 6, height = 4)
+ggsave(snakemake@output[[3]], grid.arrange(grobs = annoplot, nrow = 2), width = 6, height = 4)
 
 
 
@@ -122,5 +124,5 @@ for (k in 1:length(samples)){
 
 }
 
-ggsave(snakemake@output[[2]], grid.arrange(grobs = plots, ncol = 2), width = 9, height = 3)
+ggsave(snakemake@output[[4]], grid.arrange(grobs = plots, ncol = 2), width = 9, height = 3)
 

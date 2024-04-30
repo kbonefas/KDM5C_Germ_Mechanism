@@ -205,10 +205,23 @@ rule KDM5C_chip:
 		"results/DESeq2/germDEGs/germDEGs_hip5cKO.csv",
 		"results/DESeq2/germDEGs/germDEGs_EpiLC_XY5cKO.csv"
 	output:
+		"data/processed/KDM5C_ChIPseq_boundpromoters_EpiLC.csv",
+		"data/processed/KDM5C_ChIPseq_boundpromoters_PNC.csv",
 		"results/figure_pieces/KDM5C_ChIPseq_peaklocation.pdf",
 		"results/figure_pieces/KDM5C_ChIPseq_boundgermDEGs.pdf"
 	script:
 		"code/ChIPseq_KDM5C_EpiLC_PNC.R"
+
+rule KDM5C_chip_GO:
+	input:
+		"data/processed/KDM5C_ChIPseq_boundpromoters_EpiLC.csv",
+		"data/processed/KDM5C_ChIPseq_boundpromoters_PNC.csv"
+	output:
+		"results/ChIPseq_KDM5C_GO_EpiLC_vs_PNC.csv",
+		"results/figure_pieces/KDM5C_ChIPseq_GO.pdf"
+	script:
+		"code/ChIPseq_KDM5C_GO_Compare_BrainEpiLC.R"
+
 
 ###################### Render the manuscript ############################
 rule write_paper:
