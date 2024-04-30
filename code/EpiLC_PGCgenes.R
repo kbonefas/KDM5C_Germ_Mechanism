@@ -38,97 +38,69 @@ library(ggplot2)
 library("ggpubr")
 source('code/utilities/colorpalettes.R') #load the colorpalette
 
-# tpmboxplot <- function(df, gene){
-# 		my_comparisons <- list(c("XYWT", "XY5cKO"), c("XXWT", "XX5cKO"), c("XXWT", "XX5cHET"))
-
-# 		pl <- ggboxplot(df, x = 'genosex', y = 'TPM', color = "black", fill="genosex", 
-#     	title = gene, 
-#     	add =  "dotplot", add.params = list(size = 0.7), xlab = " ", 
-#     	palette = EpiLCpalette) +
-#     	rremove("legend") + scale_x_discrete(labels = c("XY 5cKO", "XY WT", "XX WT", "XX 5cHET", "XX 5cKO")) +
-#         stat_compare_means(comparisons = my_comparisons, method="t.test", label = "p.format") 
-# 		pl <- ggpar(pl, x.text.angle = 25, font.main = "bold.italic")
-	
-# }
-
-
-
-# ###4) Make dataframe and plot with the gene of interest
-# 	#for every gene, make a df
-
-# #an empty list to store the plots in
-# TPMplot <- list()
-# count <- 1
-
-# for (i in unique(PGCgenes$Symbol)){
-# 	ens <- subset(PGCgenes, Symbol == i)
-# 	#get the genes that match by ensembl ID
-# 	GOI <- subset(EpiLC_TPM, rownames(EpiLC_TPM) == ens[,1])
-# 	print(head(GOI))
-
-# 	#make a new dataframe with  columns being the sample, genotype, and TPM
-# 	tGOI <- t(GOI)
-# 	plotdf <- data.frame(Sample = rownames(tGOI), TPM = tGOI[,1])
-# 	plotdf <- merge(plotdf, EpiLC_SI, by = "Sample")
-# 	#order the factor levels so WT plots first
-# 	plotdf$genosex <- factor(plotdf$genosex, levels = names(EpiLCpalette))
-# 	print(paste0("Dataframe for ", i))
-# 	print(head(plotdf))
-
-
-# 	#generate a plot for the gene
-# 	q <- tpmboxplot(plotdf, i)
-# 	TPMplot[[count]] <- q
-# 	count <- count + 1
-
-# }
-
-# library("gridExtra")
-# ggsave(snakemake@output[[1]], plot = grid.arrange(grobs = TPMplot, nrow = 2), width = 9, height = 9)
-
 #### plot just the male samples, using facet
+#generates a tpm plot based on a gene dataframe that has the ensembl IDs in the first column
+#ymax - maximum y value
+plotEpiLCTPM <- function(genelist, ymax){
+	#get the genes that match by ensembl ID
+	EpiLC_pgc_TPM <- subset(EpiLC_TPM, rownames(EpiLC_TPM) %in% genelist[,1])
+	#make a new dataframe with  columns being the sample, genotype, and TPM
+	t_EpiLC_pgc_TPM <- t(EpiLC_pgc_TPM)
+	print(head(t_EpiLC_pgc_TPM))
 
-#get the genes that match by ensembl ID
-EpiLC_pgc_TPM <- subset(EpiLC_TPM, rownames(EpiLC_TPM) %in% PGCgenes[,1])
-#make a new dataframe with  columns being the sample, genotype, and TPM
-t_EpiLC_pgc_TPM <- t(EpiLC_pgc_TPM)
-print(head(t_EpiLC_pgc_TPM))
+	plotdf <- data.frame()
 
-plotdf <- data.frame()
+	for (i in genelist[,1]){
+		geneID <- subset(genelist, ENSEMBL == i)
+		tempdf <- data.frame(Sample = rownames(t_EpiLC_pgc_TPM), TPM = t_EpiLC_pgc_TPM[,i], ENSEMBL = rep(i, length(rownames(t_EpiLC_pgc_TPM))), Symbol = rep(geneID[,2],  length(rownames(t_EpiLC_pgc_TPM))))
 
-for (i in PGCgenes[,1]){
-	geneID <- subset(PGCgenes, ENSEMBL == i)
-	tempdf <- data.frame(Sample = rownames(t_EpiLC_pgc_TPM), TPM = t_EpiLC_pgc_TPM[,i], ENSEMBL = rep(i, length(rownames(t_EpiLC_pgc_TPM))), Symbol = rep(geneID[,2],  length(rownames(t_EpiLC_pgc_TPM))))
+		plotdf <- rbind(plotdf, tempdf)
+	}
 
-	plotdf <- rbind(plotdf, tempdf)
+
+	plotdf <- merge(plotdf, EpiLC_SI, by = "Sample")
+
+	#subset for just males
+	plotdf <- subset(plotdf, plotdf$Sex == "XY")
+	#order the factor levels so WT plots first and rename 5cKO
+	plotdf$Genotype[plotdf$Genotype == "5cKO"] <- "5CKO"
+	plotdf$Genotype <- factor(plotdf$Genotype, levels = c("WT", "5CKO"))
+
+	#order genes
+	plotdf$Symbol <- factor(plotdf$Symbol, levels = genelist[,2])
+
+	print("All plotting df:")
+	print(head(plotdf))
+
+	my_comparisons <- list(c("WT", "5CKO"))
+	q <- ggboxplot(plotdf, x = 'Genotype', y = 'TPM', color = "black", add.params = list(size = 1.25), fill="Genotype", 
+		add =  "dotplot", xlab = " ", palette = EpiLC_XY_palette) +
+    	rremove("legend") +
+    	stat_compare_means(comparisons = my_comparisons, method="t.test", label = "p.format") 
+	q <- ggpar(q, x.text.angle = 25, ylim = c(0,ymax), font.main = "bold.italic")
+	
+	return(q)
 }
 
 
-plotdf <- merge(plotdf, EpiLC_SI, by = "Sample")
 
-#subset for just males
-plotdf <- subset(plotdf, plotdf$Sex == "XY")
-#order the factor levels so WT plots first and rename 5cKO
-plotdf$Genotype[plotdf$Genotype == "5cKO"] <- "5CKO"
-plotdf$Genotype <- factor(plotdf$Genotype, levels = c("WT", "5CKO"))
+#plot all pgc genes of interest:
+pgcplot <- plotEpiLCTPM(PGCgenes, 25)
 
-#order genes
-plotdf$Symbol <- factor(plotdf$Symbol, levels = PGCgenes[,2])
-
-print("All germ genes df")
-print(head(plotdf))
-
-my_comparisons <- list(c("WT", "5CKO"))
-q <- ggboxplot(plotdf, x = 'Genotype', y = 'TPM', color = "black", fill="Genotype", 
-	add.params = list(size = 1.25), add =  "dotplot", xlab = " ", palette = EpiLC_XY_palette) +
-    rremove("legend") +
-    stat_compare_means(comparisons = my_comparisons, method="t.test", label = "p.format") 
-q <- ggpar(q, x.text.angle = 25, ylim = c(0,25), font.main = "bold.italic")
-	
-
-ggsave(snakemake@output[[1]], plot = facet(q, facet.by = "Symbol", nrow = 1), width = 6, height = 2.5)
+ggsave(snakemake@output[[1]], plot = facet(pgcplot, facet.by = "Symbol", nrow = 1), width = 6, height = 2.5)
 
 
+#plot just a few germline drivers and 2-cell state drivers
+PGCgenes_small <- subset(PGCgenes, Symbol %in% c("Dazl", "Stra8",  "Stella (Dppa3)"))
+twocellgenes <- data.frame(ENSEMBL = c("ENSMUSG00000075046", "ENSMUSG00000054272", "ENSMUSG00000090714"), Symbol = c("Dux (Duxf3)", "Zscan4c", "Zscan4d"))
+
+
+pgc_small <- facet(plotEpiLCTPM(PGCgenes_small, 25), facet.by = "Symbol", nrow = 1)
+twocell <- facet(plotEpiLCTPM(twocellgenes, 10), facet.by = "Symbol", nrow = 1)
+
+
+library("gridExtra")
+ggsave(snakemake@output[[2]], plot = grid.arrange(grobs = list(pgc_small, twocell), nrow = 1), width = 7, height = 2.5)
 
 
 
