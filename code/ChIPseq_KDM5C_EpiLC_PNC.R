@@ -118,11 +118,11 @@ for (k in 1:length(samples)){
 	library("ggpubr")
 	q <- ggbarplot(plotdf, "GeneCategory", "Count",
   		fill = "KDM5C_binding", color = "KDM5C_binding", palette = c("Bound" = "darkorange1", "Unbound" = "lightskyblue4" ),
-  		title = paste(samples[k], "peaks") , label = TRUE, lab.col = "black", lab.hjust = 1, xlab = " ", ylab = "# of germlnie DEGs", orientation = "horiz") 
+  		title = paste(samples[k], "peaks") , label = TRUE, lab.col = "black", lab.vjust = 1, xlab = "RNA-seq germline DEG", ylab = "# of germline DEGs", orientation = "vert") 
 
 	plots[[k]] <- q
 
 }
 
-ggsave(snakemake@output[[4]], grid.arrange(grobs = plots, ncol = 2), width = 9, height = 3)
+ggsave(snakemake@output[[4]], grid.arrange(grobs = plots, ncol = 2), width = 8, height = 5)
 
