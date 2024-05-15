@@ -4,8 +4,8 @@
 
 # Visualize genomic locations using ChIPseeker
 library(ChIPseeker)
-library(TxDb.Mmusculus.UCSC.mm9.knownGene)
-txdb <- TxDb.Mmusculus.UCSC.mm9.knownGene
+library(TxDb.Mmusculus.UCSC.mm10.knownGene)
+txdb <- TxDb.Mmusculus.UCSC.mm10.knownGene
 library(clusterProfiler)
 library(ggplot2)
 library(dplyr)

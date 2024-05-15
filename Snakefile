@@ -199,8 +199,8 @@ rule EpiLC_PGC:
 ###################### Figure 4: ChIPseq KDM5C EpiLC vs PNC ############################
 rule KDM5C_chip:
 	input:
-		"data/raw/ChIPseq_mm9_EpiLC_KDM5C_WTnoKO.bed",
-		"data/raw/ChIPseq_mm9_PNC_KDM5C_WTnoKO.bed",
+		"data/raw/ChIPseq_mm10_EpiLC_WTnoKO_consensus_peaks.bed",
+		"data/raw/ChIPseq_mm10_PNC_WTnoKO_consensus_peaks.bed",
 		"results/DESeq2/germDEGs/germDEGs_amy5cKO.csv",
 		"results/DESeq2/germDEGs/germDEGs_hip5cKO.csv",
 		"results/DESeq2/germDEGs/germDEGs_EpiLC_XY5cKO.csv"
