@@ -22,7 +22,14 @@ indent: true
 editor_options:
   chunk_output_type: console
 ---
+```{r, knitrcommas, results='hide', echo = FALSE, warning=FALSE,message=FALSE,error=FALSE}
+library(huxtable)
 
+knitr::knit_hooks$set(inline = function(x) {
+  prettyNum(x, big.mark=",")
+})
+
+```
 
 
 
@@ -141,7 +148,7 @@ Misexpression of germline genes in the _Kdm5c_-KO brain suggests mutants fail to
 
 We did not observe any apparent morphology changes between wild-type and _Kdm5c_-KO cells during ESC to EpiLC differentiation (Figure 3A, bottom) and found no significant difference in primed pluripotency genes that indicate proper EpiLC differentiation (Figure 3B). We then identified _Kdm5c_-KO EpiLC DEGs through DESeq2[@loveModeratedEstimationFold2014a] (log2 fold change > `r l2fcco`, q < 0.1) and again observed widespread dysregulation of tissue-enriched genes, with the largest number of genes belonging to the brain and testis, although they were not significantly enriched (Figure 3C).
 
-Using our curated list, we found `r nrow(epigerm)` germline-enriched genes were misexpressed in _Kdm5c_-KO EpiLCs, including _Cyct_ (Figure 3D). To evaluate whether germline mRNAs are constitutively dysregulated or change over the course of development, we then compared EpiLC germline DEGs to those expressed in the _Kdm5c_-KO brain. The majority of EpiLC germline DEGs were unique to EpiLCs, with only _Cyct_ shared across sequencing datasets (Figure 3E). 
+Using our curated list, we found `r format(nrow(epigerm))` germline-enriched genes were misexpressed in _Kdm5c_-KO EpiLCs, including _Cyct_ (Figure 3D). To evaluate whether germline mRNAs are constitutively dysregulated or change over the course of development, we then compared EpiLC germline DEGs to those expressed in the _Kdm5c_-KO brain. The majority of EpiLC germline DEGs were unique to EpiLCs, with only _Cyct_ shared across sequencing datasets (Figure 3E). 
 
 We then compared the function of EpiLC and brain germline DEGs through gene ontology and found particularly high enrichment of meiosis-related gene ontologies in EpiLCs (Figure 3F), such as meiotic cell cycle (`r getGO("meiotic cell cycle", GO_EpiBrain, 'ID', "EpiLC")`, p.adjust = `r signif(getGO("meiotic cell cycle", GO_EpiBrain, 'p.adjust', "EpiLC"), 3)`). While a few meiosis-related genes are misexpressed in the _Kdm5c_-KO brain, DEGs unique to _Kdm5c_-KO EpiLCs included master regulators of germline identity, such as _Stimulated by retinoic acid 8 (Stra8)_ and _Deleted in azoospermia like (Dazl)_ (Figure 3G). These genes are typically expressed during embryonic germ cell development to commit PGCs to the germline fate, but are also expressed later in life to trigger meiotic gene expression programs[@koubovaRetinoicAcidRegulates2006; @linGermCellIntrinsicExtrinsic2008; @endoRetinoicAcidGerm2019]. Of note, some germline genes, including _Dazl_, are also expressed in the two-cell embryo. However, we did not see misexpression of two-cell embryo-specific genes, like _Zscan4d_ (q = `r signif(zscan4d, 3)`). 
 
