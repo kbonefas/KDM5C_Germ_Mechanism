@@ -139,7 +139,7 @@ zscan4d <- epi_restab[epi_restab$ENSEMBL == 'ENSMUSG00000090714',]['padj'][,1]
 
 Misexpression of germline genes in the _Kdm5c_-KO brain suggests mutants fail to demarcate germline and somatic cellular identity. Germ cells are typically distinguished from somatic cells soon after the embryo implants into the uterine wall[@magnusdottirHowMakePrimordial2014; @gunesdoganPrimordialGermCell2014] when a subset of epiblast stem cells become the primordial germ cells (PGCs) while the remainder differentiate into the ectoderm, mesoderm, and endoderm to form the body's somatic tissues[@bardotMouseGastrulationCoordination2020]. This developmental time point can be modeled _in vitro_ through differentiation of embryonic stem cells (ESCs) into post-implantation epiblast-like stem cells (EpiLCs) (Figure 3A, top). Previous studies have demonstrated that while some germline-enriched genes are also expressed in embryonic stem cells (ESCs), they are silenced as they differentiate into EpiLCs[@mochizukiRepressionGermlineGenes2021]. Therefore, we assessed if KDM5C was necessary for initial germline gene silencing by assessing their expression in male _Kdm5c_-KO EpiLCs using our previously generated RNA-seq dataset[@samantaActivationXistEvolutionarily2022]. 
 
-We did not observe any apparent morphology changes between wild-type and _Kdm5c_-KO cells during ESC to EpiLC differentiation (Figure 3A, bottom) and found no significant difference in primed pluripotency genes that indicate proper EpiLC differentiation (Figure 3B). We then identified _Kdm5c_-KO EpiLC DEGs through DESeq2[@loveModeratedEstimationFold2014a] (log2 fold change > `r l2fcco`, q < 0.1) and again observed widespread dysregulation of tissue-enriched genes, with the largest number of genes belonging to the brain and testis, although they were not significantly enriched (Figure 3C). 
+We did not observe any apparent morphology changes between wild-type and _Kdm5c_-KO cells during ESC to EpiLC differentiation (Figure 3A, bottom) and found no significant difference in primed pluripotency genes that indicate proper EpiLC differentiation (Figure 3B). We then identified _Kdm5c_-KO EpiLC DEGs through DESeq2[@loveModeratedEstimationFold2014a] (log2 fold change > `r l2fcco`, q < 0.1) and again observed widespread dysregulation of tissue-enriched genes, with the largest number of genes belonging to the brain and testis, although they were not significantly enriched (Figure 3C).
 
 Using our curated list, we found `r nrow(epigerm)` germline-enriched genes were misexpressed in _Kdm5c_-KO EpiLCs, including _Cyct_ (Figure 3D). To evaluate whether germline mRNAs are constitutively dysregulated or change over the course of development, we then compared EpiLC germline DEGs to those expressed in the _Kdm5c_-KO brain. The majority of EpiLC germline DEGs were unique to EpiLCs, with only _Cyct_ shared across sequencing datasets (Figure 3E). 
 
@@ -152,14 +152,21 @@ _Dazl_ is an RNA-binding protein that regulates the translation of germline mRNA
 **Figure 4: Loss of KDM5C's catalytic activity impairs DNAme placement and long-term silencing of germline genes**
 	A) KDM5C binding in EpiLCs vs PNCs - number of peaks and percentage of bound genomic regions
 	B) KDM5C binding in Epilcs vs pncs germline genes - GO 
-	C) Left - bar graph of germline DEGs KDM5C is bound to in EpiLCs Right - Example bigwigs
+	C) Left - bar graph of germline DEGs KDM5C is bound to in EpiLCs Right 
+	D) Example bigwigs
 		* Brain and EpiLC shared, EpiLC-specific, Brain-specific, 
+	E) motif analysis of KDM5C-bound vs unbound genes
+
+
+	--- separate into two figures
 	D) Bigwigs of Increase in H3K4me3 in Kdm5c-KO amygdala at germline genes
 	E) Increase in H3K4me2 in EpiLCs at germline genes (left - bigwigs, right average signal at germline gene TSS? Just KDM5C-bound genes?)
 	* Previous studies only looked at ESCs, unknown if catalytic activity is required for long-term repression, especially since DNA methylation is placed later). 
 	F) KDM5C expression ESC --> EpiLC (increasing then decreasing) Left - RNA right - protein 
 	G) RNA expression of germline genes with catalytic dead rescue (Ilakkiya)
 	H) DNA methylation in WT and 5CKO EpiLCs (Ilakkiya)
+
+	Direct vs indirect binding motif analysis
 
 Previous work suggests KDM5C represses germline genes during early development, since KDM5C binding is gradually lost at hippocampal germline DEG promoters over development[@scandagliaLossKdm5cCauses2017] and re-expression of KDM5C in neuronal cultures fails to suppress their transcription. However, we identified many germline genes that were only dysregulated in _Kdm5c_-KO EpiLCs and not in the mature brain, including master regulators of meiosis and germline identity. While KDM5C was recently shown to bind to _Dazl_ in ESCs[@guptaGenomewideScreenReveals2023; @aladhamiSystematicIdentificationFactors2023], it's unclear if KDM5C binds to other master regulators that are expressed in _Kdm5c_-KO EpiLCs and if this binding is maintained as cells differentiate.
 
@@ -189,6 +196,7 @@ Although KDM5C is generally thought to supress transcription through erasure of 
 # Discussion
 * tissue-biased gene expression:
 	* However unlike the gonadal-biased DEGs, many liver and muscle-biased DEGs have a known involvement in brain function. For example, the liver-biased DEG is _Apolipoprotein C-I (Apoc1)_, is important for lipoprotein metabolism but has also been shown to influence learning and memory (Figure 1E).
+* Otx2 is properly expressed in EpiLCs and prevents pgc identity https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6485399/ 
 
 * Papers to read/reference:
 	* Reconstitution of the Mouse Germ Cell Specification Pathway in Culture by Pluripotent Stem Cells: https://www.cell.com/fulltext/S0092-8674(11)00771-9
