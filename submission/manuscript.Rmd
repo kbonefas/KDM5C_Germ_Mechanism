@@ -23,6 +23,7 @@ editor_options:
   chunk_output_type: console
 ---
 ```{r, knitrcommas, results='hide', echo = FALSE, warning=FALSE,message=FALSE,error=FALSE}
+#adds commas to large numbers
 library(huxtable)
 
 knitr::knit_hooks$set(inline = function(x) {
