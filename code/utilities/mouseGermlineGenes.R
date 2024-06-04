@@ -211,17 +211,6 @@ cat("Number of unbiased germline-enriched genes: ", nrow(subset(germGENES20, sex
 
 write.table(germGENES20, file = snakemake@output[[1]], sep =",", row.names = FALSE)
 
-# XXtime[, "XX_avg"] <- apply(XXtime[, 3:ncol(XXtime)], 1, mean)
-
-# XYtime[, "XY_avg"] <- apply(XYtime[, 3:ncol(XYtime)], 1, mean)
-
-# XXvsXY <- merge(XXtime, XYtime, by = "ENSEMBL")
-# XXvsXY$XXoverXY <- XXvsXY$XX_avg/XXvsXY$XY_avg
-# XXvsXY$sexBias <-ifelse(XXvsXY$XXoverXY > 10,"XX", ifelse(XXvsXY$XXoverXY < 0.1, "XY", "unbiased"))
-# checking <- subset(XXvsXY, select = c(ENSEMBL, SYMBOL.x, XX_avg, XY_avg, XXoverXY, sexBias))
-
-# XXvsXY <- subset(XXvsXY, select = c(ENSEMBL, sexBias))
-
 
 ## make a snakey graph of filtering for germline-enriched genes
 #https://github.com/davidsjoberg/ggsankey
