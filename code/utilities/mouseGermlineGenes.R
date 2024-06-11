@@ -221,8 +221,6 @@ library(ggsankey)
 library(ggplot2)
 library(dplyr)
 
-
-
 #1) for every gene, put which category it falls into for each filtering step
 	#categories: mouse genes (all mouse genes), w/wv, tissue
 	#wwv - if it's in the mueller ratio20 list, it lost 80% of its expression in wwv
@@ -249,12 +247,19 @@ dagg <- df%>%
   tally()
 
 df2 <- merge(df, dagg, by.x = 'node', by.y = 'node', all.x = TRUE)
+#change the plotting order
+print(paste("node:", unique(df2$node)))
+print(paste("next_node:", unique(df2$next_node)))
+
+df2$node <- factor(df2$node, levels = c("mouse genes", "somatic", "germline-enriched", "no", "yes"))
+df2$next_node <- factor(df2$next_node, levels = c("no", "yes", "somatic", "germline-enriched" ))
+
 
 # plot the dataframe
 
 pl <- ggplot(df2, aes(x = x, next_x = next_x, node = node, next_node = next_node, fill = factor(node), label = paste0(node," n=", n))) +
   geom_sankey(flow.alpha = .6,
-              node.color = "gray30") +
+              node.color = "black") +
   geom_sankey_label(size = 3, color = "black", fill= "white", hjust = -0.2) +
   scale_fill_viridis_d(drop = FALSE) +
   theme_sankey(base_size = 18) +
