@@ -257,11 +257,13 @@ df2$next_node <- factor(df2$next_node, levels = c("no", "yes", "somatic", "germl
 
 # plot the dataframe
 
+source("code/utilities/colorpalettes.R")
+
 pl <- ggplot(df2, aes(x = x, next_x = next_x, node = node, next_node = next_node, fill = factor(node), label = paste0(node," n=", n))) +
   geom_sankey(flow.alpha = .6,
               node.color = "black") +
   geom_sankey_label(size = 3, color = "black", fill= "white", hjust = -0.2) +
-  scale_fill_viridis_d(drop = FALSE) +
+  scale_fill_manual(values = c("#084f8c", "#37a0fa", germcolor, "#1875c4", "#24781d"), drop = FALSE) + 
   theme_sankey(base_size = 18) +
   labs(x = NULL) +
   theme(legend.position = "none",

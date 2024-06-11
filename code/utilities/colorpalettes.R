@@ -26,7 +26,7 @@ EpiLC_XX_KO <- "#ffb581ff"
 EpiLC96_XY_WT <- "#134b6e" #(19,75,110)
 EpiLC96_XY_KO <- "#3494cb" #(52,147,203)
 
-germcolor <- "#5fa35f"
+germcolor <- "#4bb34b"
 
 ####### specific palettes #######
 
