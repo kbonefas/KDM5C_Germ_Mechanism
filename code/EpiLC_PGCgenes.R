@@ -104,6 +104,13 @@ ggsave(snakemake@output[[2]], plot = grid.arrange(grobs = list(pgc_small, twocel
 
 
 
+#piRNA genes
+piRNAgenes <- data.frame(ENSEMBL = c("ENSMUSG00000021758", "ENSMUSG00000033644", "ENSMUSG00000009628", "ENSMUSG00000035517"), Symbol = c("Ddx4 (Mvh)", "Piwil2 (Mili)", "Tex15", "Tdrd7"))
+
+piRNA <- facet(plotEpiLCTPM(piRNAgenes, 10), facet.by = "Symbol", nrow = 1)
+ggsave(snakemake@output[[3]], plot = piRNA, width = 5, height = 2.5)
+
+
 
 
 

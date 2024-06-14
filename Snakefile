@@ -192,7 +192,8 @@ rule EpiLC_PGC:
 		"data/raw/SampleInfo_EpiLC.csv"
 	output:
 		"results/figure_pieces/EpiLC_PGCmarkers_XY_supplement.pdf",
-		"results/figure_pieces/EpiLC_PGC_2Cell_markers_XY.pdf"
+		"results/figure_pieces/EpiLC_PGC_2Cell_markers_XY.pdf",
+		"results/figure_pieces/EpiLC_piRNAgenes_TPM_XY.pdf"		
 	script:
 		"code/EpiLC_PGCgenes.R"
 
