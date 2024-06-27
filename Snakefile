@@ -237,9 +237,9 @@ rule H3K4_GermlineTSS:
 		"results/DESeq2/germDEGs/germDEGs_hip5cKO.csv"
 
 	output:
-		"data/processed/all_germ_TSS_window1000bp.bed",
-		"data/processed/testgerm_TSS_window1000bp.bed",
-		"data/processed/germ_DEGs_TSS_window1000bp.bed"
+		"data/processed/TSS_window1000bp_all_germ.bed",
+		"data/processed/TSS_window1000bp_testgerm.bed",
+		"data/processed/TSS_window1000bp_all_germ_DEGs.bed"
 	script:
 		"code/H3K4_GermlineTSS.R"
 
