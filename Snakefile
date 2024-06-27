@@ -231,9 +231,15 @@ rule KDM5C_chip_GO:
 ###################### Figure 5: KDM5C substrate and DNAme ############################
 rule H3K4_GermlineTSS:
 	input:
-		"data/processed/germGENES20.csv"
+		"data/processed/germGENES20.csv",
+		"results/DESeq2/germDEGs/germDEGs_EpiLC_XY5cKO.csv",
+		"results/DESeq2/germDEGs/germDEGs_amy5cKO.csv",
+		"results/DESeq2/germDEGs/germDEGs_hip5cKO.csv"
+
 	output:
-		"data/processed/all_germ_TSS_window500bp.bed"
+		"data/processed/all_germ_TSS_window1000bp.bed",
+		"data/processed/testgerm_TSS_window1000bp.bed",
+		"data/processed/germ_DEGs_TSS_window1000bp.bed"
 	script:
 		"code/H3K4_GermlineTSS.R"
 
