@@ -204,12 +204,14 @@ rule KDM5C_chip:
 		"data/raw/ChIPseq_mm10_PNC_WTnoKO_consensus_peaks.bed",
 		"results/DESeq2/germDEGs/germDEGs_amy5cKO.csv",
 		"results/DESeq2/germDEGs/germDEGs_hip5cKO.csv",
-		"results/DESeq2/germDEGs/germDEGs_EpiLC_XY5cKO.csv"
+		"results/DESeq2/germDEGs/germDEGs_EpiLC_XY5cKO.csv",
+		"data/processed/germGENES20.csv"
 	output:
 		"data/processed/KDM5C_ChIPseq_boundpromoters_EpiLC.csv",
 		"data/processed/KDM5C_ChIPseq_boundpromoters_PNC.csv",
 		"results/figure_pieces/KDM5C_ChIPseq_peaklocation.pdf",
-		"results/figure_pieces/KDM5C_ChIPseq_boundgermDEGs.pdf"
+		"results/figure_pieces/KDM5C_ChIPseq_boundgermDEGs.pdf",
+		"data/processed/KDM5C_ChIPseq_germgenes_TSS.bed"
 	script:
 		"code/ChIPseq_KDM5C_EpiLC_PNC.R"
 
@@ -225,6 +227,15 @@ rule KDM5C_chip_GO:
 		"results/figure_pieces/KDM5C_ChIPseq_promo_overlap.pdf"
 	script:
 		"code/ChIPseq_KDM5C_GO_Compare_BrainEpiLC.R"
+
+###################### Figure 5: KDM5C substrate and DNAme ############################
+rule H3K4_GermlineTSS:
+	input:
+		"data/processed/germGENES20.csv"
+	output:
+		"data/processed/all_germ_TSS_window500bp.bed"
+	script:
+		"code/H3K4_GermlineTSS.R"
 
 
 ###################### Render the manuscript ############################
