@@ -8,7 +8,7 @@
 naivegenes <- data.frame(Symbol = c("Esrrb", "Fgf4", "Klf2", "Klf4", "Klf5", "Nr0b1", "Nr5a2", "Prdm14", "Sox13", "Tbx3", "Tcl1", "Tet2", "Tfcp2l1", "Zfp42"), ENSEMBL = c("ENSMUSG00000021255", "ENSMUSG00000050917", "ENSMUSG00000055148", "ENSMUSG00000003032", "ENSMUSG00000005148", "ENSMUSG00000025056", "ENSMUSG00000026398", "ENSMUSG00000042414", "ENSMUSG00000070643", "ENSMUSG00000018604", "ENSMUSG00000041359", "ENSMUSG00000040943", "ENSMUSG00000026380", "ENSMUSG00000051176"))
 
 #should be high in WT EpiLC
-primedgenes <- data.frame(Symbol = c("Cdh2", "Dnmt3a", "Dnmt3b", "Etv4", "Etv5", "Foxd3", "Lef1", "Otx2", "Pou3f1", "Sox3", "Tcf15"), ENSEMBL = c("ENSMUSG00000024304", "ENSMUSG00000020661", "ENSMUSG00000027478", "ENSMUSG00000017724", "ENSMUSG00000013089", "ENSMUSG00000067261", "ENSMUSG00000027985", "ENSMUSG00000021848", "ENSMUSG00000090125", "ENSMUSG00000045179", "ENSMUSG00000068079"))
+primedgenes <- data.frame(Symbol = c("Cdh2", "Dnmt3a", "Dnmt3b", "Etv4", "Etv5", "Foxd3", "Lef1", "Otx2", "Pou3f1", "Sox3", "Tcf15", "Fgf5"), ENSEMBL = c("ENSMUSG00000024304", "ENSMUSG00000020661", "ENSMUSG00000027478", "ENSMUSG00000017724", "ENSMUSG00000013089", "ENSMUSG00000067261", "ENSMUSG00000027985", "ENSMUSG00000021848", "ENSMUSG00000090125", "ENSMUSG00000045179", "ENSMUSG00000068079", "ENSMUSG00000029337"))
 
 #genes for core pluripotency, not expected to change with ESC to EpiLCs
 coregenes <- data.frame(Symbol = c("Lin28a", "Nanog", "Pou5f1", "Sall4", "Sox2", "Utf1", "Zfp281"), ENSEMBL = c("ENSMUSG00000050966", "ENSMUSG00000012396", "ENSMUSG00000024406", "ENSMUSG00000027547", "ENSMUSG00000074637", "ENSMUSG00000047751", "ENSMUSG00000041483"))
@@ -96,7 +96,7 @@ ggsave(snakemake@output[[1]], plot = grid.arrange(grobs = TPMplot, nrow = length
 
 
 #plot just 6 of the primed genes for the main figure
-primedgenes_6 <-  c("Otx2", "Cdh2", "Etv5", "Foxd3", "Pou3f1", "Tcf15")
+primedgenes_6 <-  c("Otx2", "Etv4", "Etv5", "Pou3f1", "Fgf5", "Dnmt3b")
 
 plotdf_6 <- subset(plotdf, type == "primed" & Symbol %in% primedgenes_6)
 my_comparisons <- list(c("WT", "5CKO"))
@@ -104,11 +104,11 @@ q <- ggboxplot(plotdf_6, x = 'Genotype', y = 'TPM', color = "black", fill="Genot
 	title = paste("Markers of primed pluripotency"), add =  "dotplot", add.params = list(size = 2), xlab = " ", palette = EpiLC_XY_palette) +
     rremove("legend") +
     stat_compare_means(comparisons = my_comparisons, method="t.test", label = "p.signif") 
-q <- ggpar(q, x.text.angle = 25, ylim = c(0,30), font.main = "bold")
-q <- facet(q, facet.by = "Symbol", nrow = 2)
+q <- ggpar(q, font.main = "bold")
+q <- facet(q, facet.by = "Symbol", nrow = 2, scales = "free", panel.labs.font = list(face = 'italic'))
 
 
 library("gridExtra")
-ggsave(snakemake@output[[2]], plot = q, width = 4, height = 4)
+ggsave(snakemake@output[[2]], plot = q, width = 4.5, height = 4.5)
 
 
