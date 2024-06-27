@@ -20,8 +20,11 @@ TSSwindowBED <- function(genelist, window, out){
 
 	#add and subtract bp window and format in bed style
 	bed <- data.frame(chr = paste0("chr", tss$chromosome_name), start = tss$transcription_start_site - window, end =  tss$transcription_start_site + window)
-
 	write.table(bed, snakemake@output[[out]], sep = "\t", row.names = FALSE, col.names=FALSE, quote = FALSE)
+
+	bed2 <- data.frame(chr = paste0("chr", tss$chromosome_name), start = tss$transcription_start_site, end =  tss$transcript_end)
+	write.table(bed2, snakemake@output[[out+1]], sep = "\t", row.names = FALSE, col.names=FALSE, quote = FALSE)
+
 }
 
 	
@@ -29,7 +32,7 @@ WIND <- 1000
 TSSwindowBED(germ$SYMBOL, WIND, 1)
 testgenes <- c("Dazl", "Cyct", "D1Pas1", "Ddx4")
 
-TSSwindowBED(testgenes, WIND, 2)
+TSSwindowBED(testgenes, WIND, 3)
 
 
 #just the brain or EpiLC DEGs
@@ -44,7 +47,7 @@ allDEGs <- unique(allDEGs)
 print(allDEGs[1:10])
 print(length(allDEGs))
 
-TSSwindowBED(allDEGs, WIND, 3)
+TSSwindowBED(allDEGs, WIND, 5)
 
 
 

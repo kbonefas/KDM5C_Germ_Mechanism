@@ -238,8 +238,11 @@ rule H3K4_GermlineTSS:
 
 	output:
 		"data/processed/TSS_window1000bp_all_germ.bed",
+		"data/processed/TSS_to_TES_all_germ.bed",		
 		"data/processed/TSS_window1000bp_testgerm.bed",
-		"data/processed/TSS_window1000bp_all_germ_DEGs.bed"
+		"data/processed/TSS_to_TES_testgerm.bed",
+		"data/processed/TSS_window1000bp_all_germ_DEGs.bed",
+		"data/processed/TSS_to_TES_all_germ_DEGs.bed"
 	script:
 		"code/H3K4_GermlineTSS.R"
 
