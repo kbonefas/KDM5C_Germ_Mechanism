@@ -246,6 +246,18 @@ rule H3K4_GermlineTSS:
 	script:
 		"code/H3K4_GermlineTSS.R"
 
+rule KDM5C_ESCtoEpiLC:
+	input:
+		"data/raw/220303_Kdm5c_ESCEpiLC_western_quant.csv" #quantification spreadsheet
+	output:
+		"results/figure_pieces/KDM5C_ESCtoEpilC_western.pdf"
+	params:
+		expprotein = "KDM5C", #experimental protein
+		housekeep = "DAXX" #housekeeping gene
+	script:
+		"code/KDM5C_ESCtoEpiLC.R"
+
+
 
 ###################### Render the manuscript ############################
 rule write_paper:
