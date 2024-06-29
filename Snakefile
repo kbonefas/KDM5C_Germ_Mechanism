@@ -248,9 +248,11 @@ rule H3K4_GermlineTSS:
 
 rule KDM5C_ESCtoEpiLC:
 	input:
-		"data/raw/220303_Kdm5c_ESCEpiLC_western_quant.csv" #quantification spreadsheet
+		"data/raw/220303_Kdm5c_ESCEpiLC_western_quant.csv", #quantification spreadsheet
+		"data/raw/220406_ESCtoEpiLC_Kdm5c_qPCR.csv"
 	output:
-		"results/figure_pieces/KDM5C_ESCtoEpilC_western.pdf"
+		"results/figure_pieces/KDM5C_ESCtoEpilC_western.pdf",
+		"results/figure_pieces/KDM5C_ESCtoEpilC_qPCR.pdf"
 	params:
 		expprotein = "KDM5C", #experimental protein
 		housekeep = "DAXX" #housekeeping gene
