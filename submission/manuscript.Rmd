@@ -1,5 +1,5 @@
 ---
-title:  Somatic misexpression of germline programs with loss of the X-linked intellectual disability factor KDM5C
+title:  Erosion of somatic tissue identity with loss of the X-linked intellectual disability factor KDM5C
 output: pdf_document
 geometry: margin = 0.5in
 font-size: 11pt
@@ -69,136 +69,23 @@ Introduction:
 
 # Introduction
 
-To form a complete organism, embryonic stem cells must differentiate into a myriad of discrete cellular identities. This is in part accomplished by chromatin regulators that can either promote or impede lineage-specific gene expression through histone and DNA modifications. Although initially identified for their roles in cellular identity [@lewisGeneComplexControlling1978a; @kennisonDosagedependentModifiersPolycomb1988a], recent advancements in next generation sequencing technologies unexpectedly found many neurodevelopmental disorders (NDDs) are caused by or linked to mutations in chromatin regulators. This relationship is partially explained by their regulation of brain-specific genes or chromatin states, such as modulating genes involved in synaptic maturation[@zhouBrainspecificPhosphorylationMeCP22006] or the transition between neuronal and glial developmental programs[@hirabayashiPolycombLimitsNeurogenic2009]. However, loss of some chromatin regulators can also lead to the misexpression of tissue-specific genes outside of their intended environment[@lewisGeneComplexControlling1978a; @kennisonDosagedependentModifiersPolycomb1988a; @kassisPolycombTrithoraxGroup2017]. Currently, very few studies have explored the misexpression of non-neuronal, tissue-specific genes in chromatin-linked neurodevelopmental disorders[@schaeferControlCognitionAdaptive2009; @scandagliaLossKdm5cCauses2017] and it is unclear if this partial loss of brain identity contributes to neurodevelopmental impairments. To elucidate their contribution to neurodevelopmental impairments, it is essential to first characterize the types of genes misexpressed, the developmental time point the dysregulation begins, and the molecular mechanism underlying their de-repression. Characterizing these features will provide the basis for identifying molecular footholds that can then be exploited for future studies and potential therapeutics.
+To form a complete organism, embryonic stem cells must differentiate into a myriad of discrete cellular identities. This is in part accomplished by chromatin regulators that can either promote or impede lineage-specific gene expression through histone and DNA modifications[@strahlLanguageCovalentHistone2000; @jenuweinTranslatingHistoneCode2001]. Although initially identified for their roles in cellular identity [@lewisGeneComplexControlling1978a; @kennisonDosagedependentModifiersPolycomb1988a], recent advancements in next generation sequencing technologies unexpectedly found many neurodevelopmental disorders (NDDs) are caused by or linked to mutations in chromatin regulators. This relationship is partially explained by their regulation of brain-specific genes or chromatin states, such as modulating genes involved in synaptic maturation[@zhouBrainspecificPhosphorylationMeCP22006] or the transition between neuronal and glial developmental programs[@hirabayashiPolycombLimitsNeurogenic2009]. However, loss of some chromatin regulators can also lead to the misexpression of tissue-specific genes outside of their intended environment[@lewisGeneComplexControlling1978a; @kennisonDosagedependentModifiersPolycomb1988a; @kassisPolycombTrithoraxGroup2017]. Currently, very few studies have explored the misexpression of non-neuronal, tissue-specific genes in chromatin-linked neurodevelopmental disorders[@schaeferControlCognitionAdaptive2009; @scandagliaLossKdm5cCauses2017] and it is unclear if this partial loss of brain identity contributes to neurodevelopmental impairments. To elucidate their contribution to neurodevelopmental impairments, it is essential to first characterize the types of genes misexpressed, the developmental time point the dysregulation begins, and the molecular mechanism underlying their de-repression. Characterizing these features will enable us to identify molecular footholds common between NDDs that can then be exploited for potential therapeutics.
 
-In this study, we characterized the misexpression of tissue-specific with loss of the chromatin regulator lysine demethylase 5C (KDM5C, also known as SMCX or JARID1C), a histone 3 lysine 4 demethylase. Pathogenic mutations in _KDM5C_ cause Intellectual Developmental Disorder, X-linked, Syndromic, Claes-Jensen Type (MRXSCJ, OMIM: 300534), whose features include short stature, intellectual disability, seizures, aberrant aggression, and autistic behaviors[@claesNovelSyndromicForm2000; @jensenMutationsJARID1CGene2005; @carmignacFurtherDelineationFemale2020]. Previous work has demonstrated _Kdm5c_ knockout (-KO) mice recapitulate key MRXSCJ patient phenotypes, including hyperaggression and learning impairments[@iwaseMouseModelXlinked2016]. Next generation RNA sequencing (RNA-seq) in the _Kdm5c_-KO hippocampus surprisingly revealed ectopic expression of testis-enriched genes within the brain[@scandagliaLossKdm5cCauses2017]. However, it is currently unclear if misexpression in the _Kdm5c_-KO brain is unique to male germline genes, as other tissue-specific genes have not been systematically evaluated. 
+In this study, we characterized the misexpression of tissue-enriched genes with loss of the chromatin regulator lysine demethylase 5C (KDM5C, also known as SMCX or JARID1C), a histone 3 lysine 4 demethylase. Pathogenic mutations in _KDM5C_ cause Intellectual Developmental Disorder, X-linked, Syndromic, Claes-Jensen Type (MRXSCJ, OMIM: 300534), whose features include short stature, intellectual disability, seizures, aberrant aggression, and autistic behaviors[@claesNovelSyndromicForm2000; @jensenMutationsJARID1CGene2005; @carmignacFurtherDelineationFemale2020]. Previous work has demonstrated constitutive _Kdm5c_ knockout (-KO) mice recapitulate key MRXSCJ patient phenotypes, including hyperaggression and learning impairments[@iwaseMouseModelXlinked2016]. Next generation RNA sequencing (RNA-seq) in the _Kdm5c_-KO hippocampus surprisingly revealed ectopic expression of testis-enriched genes within the brain[@scandagliaLossKdm5cCauses2017]. However, it is currently unclear if misexpression in the _Kdm5c_-KO brain is unique to testis genes, as other tissue-enriched genes have not been systematically evaluated.  
 
-Interestingly, some of the ectopic testis genes identified in the _Kdm5c_-KO brain are typically expressed in germ cells, such as _Cytochrome C, Testis-specific_, a sperm mitochondrial gene[cit]. 
+Interestingly, some of the ectopic testis transcripts identified in the _Kdm5c_-KO brain are typically expressed in germ cells[@scandagliaLossKdm5cCauses2017]. Unlike somatic cells, germ cells (e.g. sperm and eggs) undergo meiosis and pass on their genetic material to the next generation. The germline and the soma are typically distinguished during early embryogenesis, when germline genes are silenced in epiblast stem cells soon after implantation and only reactivated in a subset to form the germline. Chromatin regulators play a key role in decommissioning germline genes as the embryo transitions from naive to primed pluripotency by placing repressive histone H2A lysine 119 monoubiquitination (H2AK119ub1)[@endohPCGF6PRC1SuppressesPremature2017], histone 3 lysine 9 trimethylation (H3K9me3)[@endohPCGF6PRC1SuppressesPremature2017; @mochizukiRepressionGermlineGenes2021], and DNA CpG methylation[@velascoDnmt3bRecruitmentE2F62010; @hackettPromoterDNAMethylation2012; @mochizukiRepressionGermlineGenes2021] at germline gene promoters. KDM5C may also be involved in this early decommissioning of germline genes, as re-expression of KDM5C in neurons fails to surpress their dysregulation[@scandagliaLossKdm5cCauses2017]. In support of this, KDM5C was very recently shown to repress _Deleted in azoospermia like (Dazl)_, a key regulator of germline development, in mouse embryonic stem cells (ESCs)[@guptaGenomewideScreenReveals2023; @aladhamiSystematicIdentificationFactors2023]. In support of this, two independent screens in mouse embryonic stem cells (ESCs) recently identified KDM5C as a repressor of _Deleted in azoospermia like (Dazl)_, a key regulator of germline development. However, KDM5C's role in embryonic germline gene repression is currently unclear, given that Dazl is also expressed in ESCs and in the 2-cell stage and germline gene misexpression has yet to be globally characterized during _Kdm5c_-KO embryogenesis.  
 
-- Germ cells are meiotic cells that pass on their genetic material to the next generation and are typically distinguished from somatic cells very early on in embryogenesis. 
-- The demarcation of the germ vs soma is a key feature of multicellularity
+To elucidate KDM5C's role in tissue identity, here we characterized the aberrant transcription of tissue-enriched genes within the _Kdm5c_-KO brain and epiblast-like cells (EpiLCs), an _in vitro_ model of the post-implantation embryo. We identified widespread dysregulation of tissue-enriched genes in both the adult _Kdm5c_-KO brain and EpiLCs, including misexpression of liver, muscle, and ovary genes. The _Kdm5c_-KO amygdala and hippocampus had significant enrichment of testis-biased genes that are unique to germ cells. To better characterize germline gene misexpression, we then generated a dataset of germline-enriched genes by comparing gene expression in gonads with germ cell depletion. We found _Kdm5c_-KO EpiLCs primarily expressed unique germline genes compared to the mature _Kdm5c_-KO brain, including _Dazl_ and _Stra8_, key drivers of germline identity and meiosis. While KDM5C is directly bound to some germline gene promoters in EpiLCs, it is not directly bound to many germline-enriched mRNAs expressed with _Kdm5c_-KO cells, indicating germline genes can be aberrantly transcribed through indirect mechanisms. Finally, we found KDM5C loss impairs the placement of DNA methylation at germline gene promoters as ESCs differentiate into EpiLCs. Therefore, we propose KDM5C plays a crucial role in the development of tissue identity during early embryogenesis, including establishment of the soma-germline boundary. 
 
-* Germ cells, i.e. cells that undergo meiosis, are typically distinguished from somatic cells very early on in embryogenesis and this distinction is a key feature of multicellularity.
 
-* However, the testis also contains somatic cells that support germline function, and it is currently unclear if  It is currently unclear if all testis- (maybe too specific)
+**note: need a better conclusion sentence - work on when we know what's happening with last figure/functional consequences**
 
-
-
-	* Chromatin regulators are very important for decommissioning germline genes and act successively the embryo implants into the uterine wall
-		* Most studies have focused on ESCs, which have a similar transcriptome to germ cells / 2-cells
-		* recently, KDM5C was shown to repress DAZL in ESCs, independent of its catalytic activity
-		* However, DNA methylation is lost in the mature 5CKO brain, DNA methylation is placed later and it's Unclear if it's required for long-term repression (maybe too specific, just trying to go into the fact that the mechanism is partially understood but unclear)
-
-
-
-
-
-Furthermore, the testis contains both somatic and germline 
-
-It is currently unclear if these germline genes 
-
-	* Systematic characterization of ectopic germline genes hasn't been done
-		* unknown if other germline-enriched genes are dysregulated, including oocyte-specific genes
-		* Crucially, it's unknown if misexpression of the germline program leads to functional consequences in 5CKO cells.
-
-
-
-
-However, it is 
-
-
-Germ cells (meiotic cells) are typically distinguished from somatic cells very early on in embyrogenesis and is a key feature of multicellularity
-
-	* Misexpression of tissue-enriched genes hasn't been systematically characterized - Unclear if these genes are exceptions or if other tissue-specific genes are dysregulated
-
-	* Interestingly, these genes (Cyct, D1pas1) typically function in the germline
-	* Germ cells (meiotic cells) are typically distinguished from somatic cells very early on in embyrogenesis and is a key feature of multicellularity
-	* Chromatin regulators are very important for decommissioning germline genes and act successively the embryo implants into the uterine wall
-		* Most studies have focused on ESCs, which have a similar transcriptome to germ cells / 2-cells
-		* recently, KDM5C was shown to repress DAZL in ESCs, independent of its catalytic activity
-		* However, DNA methylation is lost in the mature 5CKO brain, DNA methylation is placed later and it's Unclear if it's required for long-term repression (maybe too specific, just trying to go into the fact that the mechanism is partially understood but unclear)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Answering these questions will help identify molecular footholds that can be exploited to test their overall contribution to neuronal impairments that will lay the ground work for therapeutic intervention.
-
-
-Loss of KDM5C can result in the misexpression of genes typically only found in the testis
-	* Misexpression of tissue-enriched genes hasn't been systematically characterized - Unclear if these genes are exceptions or if other tissue-specific genes are dysregulated
-	* Interestingly, these genes (Cyct, D1pas1) typically function in the germline
-	* Germ cells (meiotic cells) are typically distinguished from somatic cells very early on in embyrogenesis and is a key feature of multicellularity
-	* Chromatin regulators are very important for decommissioning germline genes and act successively the embryo implants into the uterine wall
-		* Most studies have focused on ESCs, which have a similar transcriptome to germ cells / 2-cells
-		* recently, KDM5C was shown to repress DAZL in ESCs, independent of its catalytic activity
-		* However, DNA methylation is lost in the mature 5CKO brain, DNA methylation is placed later and it's Unclear if it's required for long-term repression (maybe too specific, just trying to go into the fact that the mechanism is partially understood but unclear)
-	* Systematic characterization of ectopic germline genes hasn't been done
-		* unknown if other germline-enriched genes are dysregulated, including oocyte-specific genes
-		* Crucially, it's unknown if misexpression of the germline program leads to functional consequences in 5CKO cells.
-
-
-
-To determine the 
-
-- To ultimately determine their contribution, it is essential to characterize the types of genes expressed and the mechanism behind their de-repression. 
-
-	* Necessary to first characterize the mechanism behind their derepression to identify molecular footholds into testing their contribution to neuronal impairments and potential for therapeutic intervention
-
-	* However, loss of some chromatin regulators can also lead to ectopic expression of tissue-enriched genes
-		* Very few studies have looked at these genes and it's unclear if these genes contribute to NDD impairments. 
-	* Necessary to first characterize the mechanism behind their derepression to identify molecular footholds into testing their contribution to neuronal impairments and potential for therapeutic intervention
-
-
-- For example, histone 3 lysine 4 methylation (H3K4me) 
-
-- [@lugerCrystalStructureNucleosome1997].
-
-
-
-- This relationship is partially 
-It is currently unc 
-
-
-- There is a strong link between H3K4me regulation and NDDs, as mutation of 11 out of 15 genes that read, write, or erase H3K4 mono-, di-, and tri- methylation result in varying neurodevelopmental impairments and syndromic NDDs[@vallianatosDisruptedIntricacyHistone2015]. Yet it is still unclear why regulation of H3K4 methylation is so crucial for neurodevelopment, as most of H3K4 methylation regulators are ubiquitously expressed across tissues, cell types, and lifespan. 
-
-
-
-With the recent advancement of next generation sequencing technologies came the unexpected finding that many neurodevelopmental disorders are caused by or linked to mutations in genes that regulate chromatin[@derubeisSynapticTranscriptionalChromatin2014; @gabrieleChromatinBasisNeurodevelopmental2018; @iwaseEpigeneticEtiologyIntellectual2017a].
-
-
-
-
-Chromatin regulators, including those that  DNA and histone modification, is an integral component of cellular identity
-
-
-Chromatin regulators, including those that  DNA and histone modification, is an integral component of cellular identity
-
-
-Cellular identity 
-Some of the first chromatin regulators , such as 
-
-
-
-With the recent advancement of next generation sequencing technologies came the unexpected finding that many neurodevelopmental disorders are caused by or linked to mutations in genes that regulate chromatin[@derubeisSynapticTranscriptionalChromatin2014; @gabrieleChromatinBasisNeurodevelopmental2018; @iwaseEpigeneticEtiologyIntellectual2017a].
-
-The basic subunit of chromatin is the nucleosome and is comprised of DNA wrapped around octamers of histone proteins[@lugerCrystalStructureNucleosome1997].
-
-
-Histone proteins can undergo covalent chemical modifications on their N-terminal tails that can in turn influence cofactor recruitment, DNA accessibility, and gene expression[@strahlLanguageCovalentHistone2000; @jenuweinTranslatingHistoneCode2001].
 
 # Results
 
 ## Tissue-enriched genes, including testis genes, are aberrantly expressed in the _Kdm5c_-KO brain
+
+- **note: should I compare amygdala and hippocampus? scandaglia only looked at hippocampus**
 
 ```{r, DESeq2_params, results='hide', echo = FALSE, warning=FALSE,message=FALSE,error=FALSE}
 #get the parameters used repeatedly, like the log2fold change cut off
@@ -206,7 +93,7 @@ source("../code/utilities/parameters.R")
 ```
 
 
-RNA sequencing (RNA-seq) studies surprisingly revealed the aberrant expression of testis genes within the adult _Kdm5c_ knockout (-KO) hippocampus[@scandagliaLossKdm5cCauses2017]. Given the high abundance of testis-enriched genes within the mouse transcriptome, it is currently unclear if their misexpression in the _Kdm5c_-KO brain is indicative of random de-repression throughout the genome or instead reflects an impairment in tissue identity. To distinguish these possibilities, we globally assessed the expression of previously characterized tissue-enriched genes[@liComprehensiveMouseTranscriptomic2017] in our previously published mRNA-seq datasets of the _Kdm5c_-KO amygdala and hippocampus[@vallianatosMutuallySuppressiveRoles2020] 
+A previous RNA sequencing (RNA-seq) study surprisingly revealed the aberrant expression of testis genes within the adult _Kdm5c_ knockout (-KO) hippocampus[@scandagliaLossKdm5cCauses2017]. Given the high abundance of testis-enriched genes within the mouse transcriptome, it is currently unclear if their misexpression in the _Kdm5c_-KO brain is indicative of random de-repression throughout the genome or instead reflects an impairment in tissue identity. To distinguish these possibilities, we globally assessed the expression of previously characterized tissue-enriched genes[@liComprehensiveMouseTranscriptomic2017] in our previously published mRNA-seq datasets of the _Kdm5c_-KO amygdala and hippocampus[@vallianatosMutuallySuppressiveRoles2020] 
 
 
 ```{r, tissue_genes, results='hide', echo = FALSE, warning=FALSE,message=FALSE,error=FALSE}
@@ -333,9 +220,11 @@ Although KDM5C is generally thought to supress transcription through erasure of 
 
 
 # Discussion
-* tissue-biased gene expression:
-	* However unlike the gonadal-biased DEGs, many liver and muscle-biased DEGs have a known involvement in brain function. For example, the liver-biased DEG is _Apolipoprotein C-I (Apoc1)_, is important for lipoprotein metabolism but has also been shown to influence learning and memory (Figure 1E).
-* Otx2 is properly expressed in EpiLCs and prevents pgc identity https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6485399/ 
+- The demarcation of the germ vs soma is a key feature of multicellularity
+- Other H3K4me regulators, anything known about tissue-biased gene expression?
+- tissue-biased gene expression:
+	- However unlike the gonadal-biased DEGs, many liver and muscle-biased DEGs have a known involvement in brain function. For example, the liver-biased DEG is _Apolipoprotein C-I (Apoc1)_, is important for lipoprotein metabolism but has also been shown to influence learning and memory (Figure 1E).
+- Otx2 is properly expressed in EpiLCs and prevents pgc identity https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6485399/ 
 
 * Papers to read/reference:
 	* Reconstitution of the Mouse Germ Cell Specification Pathway in Culture by Pluripotent Stem Cells: https://www.cell.com/fulltext/S0092-8674(11)00771-9
