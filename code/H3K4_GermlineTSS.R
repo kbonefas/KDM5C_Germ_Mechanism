@@ -54,6 +54,12 @@ library(dplyr)
 library(tidyr)
 print(head(gtf_df))
 gtf_df <- subset(gtf_df, type == "gene")
+
+#need to switch the start and end if the gene is on the minus strand
+gtf_df$TSS <- ifelse(gtf_df$strand == "+", gtf_df$start, gtf_df$end)
+gtf_df$TES <- ifelse(gtf_df$strand == "+", gtf_df$end, gtf_df$start)
+
+
 gtf_df <- pivot_longer(gtf_df, cols =gene_id) %>%
  	separate(value, into = c('ENSEMBL', 'version'), sep = "\\.") %>%
   	select(-name)
@@ -69,7 +75,7 @@ geneTSSandTES <- function(goi, n){
 
 	#regions of interest
 	#goi <- genedf$ENSEMBL
-	roi <- subset(gtf_df, ENSEMBL %in% goi)[,1:3]
+	roi <- subset(gtf_df, ENSEMBL %in% goi, select = c(seqnames, TSS, TES))
 	print('regions of interest')
 	print(tail(roi))
 
