@@ -199,13 +199,19 @@ _Dazl_ is an RNA-binding protein that regulates the translation of germline mRNA
 Previous work suggests KDM5C represses germline genes during early development, since KDM5C binding is gradually lost at hippocampal germline DEG promoters over development[@scandagliaLossKdm5cCauses2017] and re-expression of KDM5C in neuronal cultures fails to suppress their transcription. However, we identified many germline genes that were only dysregulated in _Kdm5c_-KO EpiLCs and not in the mature brain, including key regulators of meiosis and germline identity. While KDM5C was recently shown to bind to _Dazl_ in ESCs[@guptaGenomewideScreenReveals2023; @aladhamiSystematicIdentificationFactors2023], it's unclear if KDM5C binds to other germline drivers that are expressed in _Kdm5c_-KO EpiLCs and if this binding is maintained as cells differentiate.
 
 ```{r, KDM5C_ChIPseq, results='hide', echo = FALSE, warning=FALSE,message=FALSE,error=FALSE}
-KDM5C_ChIP_EpiLC <- read.csv("../data/processed/KDM5C_ChIPseq_boundpromoters_EpiLC.csv", header = T)
+KDM5C_ChIP_EpiLC_promo <- read.csv("../data/processed/KDM5C_ChIPseq_boundpromoters_EpiLC.csv")
 
-KDM5C_ChIP_PNC <- read.csv("../data/processed/KDM5C_ChIPseq_boundpromoters_PNC.csv", header = T)
+KDM5C_ChIP_PNC_promo <- read.csv("../data/processed/KDM5C_ChIPseq_boundpromoters_PNC.csv")
+
+KDM5C_ChIP_EpiLC <- read.csv("../data/raw/ChIPseq_mm10_EpiLC_WTnoKO_consensus_peaks.bed", sep = "\t")
+
+KDM5C_ChIP_PNC <- read.csv("../data/raw/ChIPseq_mm10_PNC_WTnoKO_consensus_peaks.bed", sep = "\t")
+
+
 
 ```
 
-To better elucidate the mechanism behind KDM5C-mediated germline gene silencing, we analyzed KDM5C chromatin immunoprecipitation followed by DNA sequencing (ChIP-seq) datasets we previously generated in EpiLCs[@samantaActivationXistEvolutionarily2022] and primary hippocampal and cortical neuron cultures (PNCs)[@iwaseMouseModelXlinked2016]. We identified a higher number of KDM5C peaks in EpiLCs overall (EpiLCs: `r nrow(KDM5C_ChIP_EpiLC)`, PNCs: `r nrow(KDM5C_ChIP_PNC)`, MACS2 q < 0.1 and fold enrichment > 1) and while KDM5C was primarily localized to gene promoters in both cell types (EpiLCs: , PNCs: , +/- kb TSS), PNCs showed increased localization to distal intergenic regions (EpiLCs: , PNCs: ) (Figure 4A). Gene ontology analysis of KDM5C-bound promoters in EpiLCs revealed high enrichment of germline-related ontologies, including meiotic nuclear division (GO:0140013) and synaptonemal complex assembly (GO:0007130) (Figure 4B). Contrastingly, germline ontologies are not enriched in PNCs and KDM5C-bound genes instead perform non-germline-specific functions, such as heterocycle synthesis (GO: 0018130) and pyrimidine metabolism (GO: 0072527).
+To better elucidate the mechanism behind KDM5C-mediated germline gene silencing, we analyzed KDM5C chromatin immunoprecipitation followed by DNA sequencing (ChIP-seq) datasets we previously generated in EpiLCs[@samantaActivationXistEvolutionarily2022] and primary hippocampal and cortical neuron cultures (PNCs)[@iwaseMouseModelXlinked2016]. We identified a higher number of KDM5C peaks in EpiLCs overall (EpiLCs: `r nrow(KDM5C_ChIP_EpiLC)`, PNCs: `r nrow(KDM5C_ChIP_PNC)`, MACS2 q < 0.1 and fold enrichment > 1) and while KDM5C was primarily localized to gene promoters in both cell types (EpiLCs: `r nrow(KDM5C_ChIP_EpiLC_promo)`, PNCs: `r nrow(KDM5C_ChIP_PNC_promo)` +/- `r promorange`kb from TSS), PNCs showed increased localization to distal intergenic regions (EpiLCs: , PNCs: ) (Figure 4A). Gene ontology analysis of KDM5C-bound promoters in EpiLCs revealed high enrichment of germline-related ontologies, including meiotic nuclear division (GO:0140013) and synaptonemal complex assembly (GO:0007130) (Figure 4B). Contrastingly, germline ontologies are not enriched in PNCs and KDM5C-bound genes instead perform non-germline-specific functions, such as heterocycle synthesis (GO: 0018130) and pyrimidine metabolism (GO: 0072527).
 
 
 We then assessed KDM5C binding at germline genes expressed _Kdm5c_-KO cells to assess if their dysreuglation is due to direct loss of KDM5C binding during embryogenesis.
