@@ -91,7 +91,8 @@ rule testisEXPR:
 #generate list of germline-enriched genes based on expression cutoff
 rule germgenes:
 	input:
-		"data/raw/Mueller_embryonicmouseWWvsequencing.xlsx", #FPKM of embryonic WWv (germline-depeleted) and WT testis
+		"data/raw/20150917_Soh_embryonicmouseWWvsequencing.xlsx", #FPKM of embryonic WWv (germline-depeleted) and WT germline
+			#data from https://pubmed.ncbi.nlm.nih.gov/26378784/
 		"data/raw/Mueller2013_adultWW_FPKM.txt", #FPKM adult WWv and WT testis
 			#raw data from https://pubmed.ncbi.nlm.nih.gov/23872635/  
 		"data/raw/Li_2017_Tissues_FPKMs.xlsx" #WT mouse tissue FPKM  

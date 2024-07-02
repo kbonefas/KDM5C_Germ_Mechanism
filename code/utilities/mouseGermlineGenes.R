@@ -51,10 +51,10 @@ adultFPKM <- merge(avgFPKM, genedf, by = "ENSEMBL")
 
 # generate a dataframe with WT fpkms across all gonad timepoints (add in adult)
 adultFPKM_WT <- subset(adultFPKM, select = c(-AdultXYWWv))
-mueller_WT <- subset(mueller_genes, select = c(SYMBOL, P6XYWT, E12XXWT ,E12XYWT, E14XXWT , E14XYWT , E16XXWT , E16XYWT))
+mueller_WT <- subset(mueller_genes, select = c(SYMBOL, E12XXWT ,E12XYWT, E14XXWT , E14XYWT , E16XXWT , E16XYWT))
 mueller_WT <- merge(mueller_WT, adultFPKM_WT, by = "SYMBOL")
 #change the column order so the numbers are all together and in chronological order
-mueller_WT <- mueller_WT[,c("SYMBOL", "ENSEMBL", "E12XXWT" ,"E12XYWT", "E14XXWT" , "E14XYWT" , "E16XXWT" , "E16XYWT", "P6XYWT", 'AdultXYWT')]
+mueller_WT <- mueller_WT[,c("SYMBOL", "ENSEMBL", "E12XXWT" ,"E12XYWT", "E14XXWT" , "E14XYWT" , "E16XXWT" , "E16XYWT", 'AdultXYWT')]
 mueller_WT <- unique(mueller_WT)
 
 #print out number of genes with all time points that we can use for analysis 
@@ -63,10 +63,10 @@ cat("Number of genes for analysis: ", nrow(mueller_WT), "\n")
 
 #####1C) Generate dataframe with germ-cell depleted WWv FPKMs for all gonad sequencing
 adultFPKM_WWv <- subset(adultFPKM, select = c(-AdultXYWT))
-mueller_WWv <- subset(mueller_genes, select = c(SYMBOL, P6XYWWv, E12XXWWv ,E12XYWWv, E14XXWWv , E14XYWWv , E16XXWWv , E16XYWWv))
+mueller_WWv <- subset(mueller_genes, select = c(SYMBOL, E12XXWWv ,E12XYWWv, E14XXWWv , E14XYWWv , E16XXWWv , E16XYWWv))
 mueller_WWv <- merge(mueller_WWv, adultFPKM_WWv, by = "SYMBOL")
 #change the column order so the numbers are all together and in chronological order
-mueller_WWv <- mueller_WWv[,c("SYMBOL", "ENSEMBL", "E12XXWWv" ,"E12XYWWv", "E14XXWWv" , "E14XYWWv" , "E16XXWWv" , "E16XYWWv", "P6XYWWv", "AdultXYWWv")]
+mueller_WWv <- mueller_WWv[,c("SYMBOL", "ENSEMBL", "E12XXWWv" ,"E12XYWWv", "E14XXWWv" , "E14XYWWv" , "E16XXWWv" , "E16XYWWv", "AdultXYWWv")]
 mueller_WWv <- unique(mueller_WWv)
 
 
@@ -98,7 +98,7 @@ print(head(WWvmaxNORM))
 
 #####4) Keep genes that a ratio less than 0.2 (20% of the maximum expression) across all timepoints and sexes
 library(dplyr)
-muellerRATIO20 = WWvmaxNORM %>% filter_at(vars(4:11), all_vars(. < 0.2))
+muellerRATIO20 = WWvmaxNORM %>% filter_at(vars(4:10), all_vars(. < 0.2))
 #this leaves 3800 genes
 
 #####5) Account for expression in other non-gonadal tissues using Li et al 2017 sequencing (https://pubmed.ncbi.nlm.nih.gov/28646208/)
