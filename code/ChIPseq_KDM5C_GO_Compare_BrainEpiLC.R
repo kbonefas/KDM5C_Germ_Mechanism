@@ -25,6 +25,7 @@ ck <- compareCluster(geneCluster = promogenes, fun = enrichGO,  OrgDb = "org.Mm.
 #ck <- setReadable(ck, OrgDb = "org.Mm.eg.db", keyType="ENSEMBL")
 head(ck) 
 
+ck <- simplify(ck)
 write.table(ck, snakemake@output[[1]], row.names = FALSE, sep = ",")
 
 ggsave(snakemake@output[[2]], plot = dotplot(ck, size = "Count"), width = 9, height = 5.5)
@@ -48,7 +49,7 @@ ck2 <- compareCluster(geneCluster = promo_compare, fun = enrichGO,  OrgDb = "org
 #ck <- setReadable(ck, OrgDb = "org.Mm.eg.db", keyType="ENSEMBL")
 head(ck2) 
 write.table(ck2, snakemake@output[[3]], row.names = FALSE, sep = ",")
-ggsave(snakemake@output[[4]], plot = dotplot(ck2, size = "Count"), width = 5.5, height = 5.5)
+ggsave(snakemake@output[[4]], plot = dotplot(ck2, size = "Count"), width = 5.5, height = 5)
 
 
 #get the overlap between promoters (euler plot)

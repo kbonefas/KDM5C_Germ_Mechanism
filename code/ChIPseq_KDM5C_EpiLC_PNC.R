@@ -113,7 +113,7 @@ plots <- list()
 for (k in 1:length(samples)){
 	plotdf <- subset(qlotdf, ChIP == samples[k])
 	#set the plotting order
-	plotdf$GeneCategory <- factor(plotdf$GeneCategory, levels = germCategory)
+	plotdf$GeneCategory <- factor(plotdf$GeneCategory, levels = c("EpiLC Only", "Common", "Brain Only"))
 
 	library("ggpubr")
 	q <- ggbarplot(plotdf, "GeneCategory", "Count",

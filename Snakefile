@@ -211,8 +211,8 @@ rule KDM5C_chip:
 		"data/processed/KDM5C_ChIPseq_boundpromoters_EpiLC.csv",
 		"data/processed/KDM5C_ChIPseq_boundpromoters_PNC.csv",
 		"results/figure_pieces/KDM5C_ChIPseq_peaklocation.pdf",
-		"results/figure_pieces/KDM5C_ChIPseq_boundgermDEGs.pdf",
-		"data/processed/KDM5C_ChIPseq_germgenes_TSS.bed"
+		"results/figure_pieces/KDM5C_ChIPseq_boundgermDEGs.pdf"
+		#"data/processed/KDM5C_ChIPseq_germgenes_TSS.bed"
 	script:
 		"code/ChIPseq_KDM5C_EpiLC_PNC.R"
 
