@@ -171,7 +171,7 @@ Interestingly, DEGs unique to _Kdm5c_-KO EpiLCs included key drivers of germline
 
 _Dazl_ is an RNA-binding protein that regulates the translation of germline mRNAs and is essential for germ cell function[@liDAZLMasterTranslational2019]. A significant portion of germline transcripts misexpressed in _Kdm5c_-KO EpiLCs are known binding targets of DAZL, including _Stra8_[@mikedisDAZLMediatesBroad2020] (p = 1.698e-07, Fisher’s Exact Test). This suggests expression of DAZL protein could promote the translation of other aberrant germline transcripts, influencing their ability to impact _Kdm5c_-KO cellular function. We thus tested DAZL protein expression in _Kdm5c_-KO EpiLCs through immunocytochemistry (Figure 3H). We observed about 25% of _Kdm5c_-KO EpiLCs expressed DAZL protein and it was localized to the cytoplasm (p = 0.0015, Welch's t-test), consistent with the pattern of DAZL expression in spermatogonia[@mikedisDAZLMediatesBroad2020]. Altogether these results suggest tissue-specific genes are misexpressed during _Kdm5c_-KO embryogenesis, including key drivers of germline identity that can be translated into protein.
 
-### KDM5C binds to a subset of germline gene promoters during early embryogenesis 
+## KDM5C binds to a subset of germline gene promoters during early embryogenesis 
 
 - **note: do Direct vs indirect DEGs motif analysis**
 - However, it is currently unclear if KDM5C binds to all germline DEGs and if its binding is maintained at any germline genes in neurons. 
@@ -195,37 +195,18 @@ GO_KDM5C_ChIP <- read.csv("../results/ChIPseq_KDM5C_GO_EpiLC_vs_PNC_unique.csv")
 
 To further characterize the mechanism behind _Kdm5c_-KO germline gene misexpression, we analyzed KDM5C chromatin immunoprecipitation followed by DNA sequencing (ChIP-seq) datasets in EpiLCs[@samantaActivationXistEvolutionarily2022] and primary neuron cultures (PNCs) from the cortex and hippocampus[@iwaseMouseModelXlinked2016]. EpiLCs had a higher total number of KDM5C peaks than PNCs (EpiLCs: `r nrow(KDM5C_ChIP_EpiLC)`, PNCs: `r nrow(KDM5C_ChIP_PNC)`, MACS2 q < 0.1 and fold enrichment > 1) and KDM5C was primarily localized to gene promoters in both cell types (EpiLCs: `r nrow(KDM5C_ChIP_EpiLC_promo)`, PNCs: `r nrow(KDM5C_ChIP_PNC_promo)` +/- `r promorange`kb from TSS), although PNCs showed increased localization to non-promoter regions (Figure 4A). 
 
-- PNC EpiLC shared unique be come explicit (Figure 4B)
 
-While the majority of promoters bound by KDM5C in PNCs were also bound in EpiLCs, many genes were not 
+The majority of promoters bound by KDM5C in PNCs were also bound in EpiLCs (513 shared promoters), however a large portion of gene promoters were only bound by KDM5C in EpiLCs (3677 EpiLC only promoters) (Figure 4B). We then performed gene ontology analysis to compare the functions of genes bound by KDM5C at the promoter in different cell types. While there were no significant ontologies for genes with KDM5C only bound in PNCs, gene ontologies for peaks shared between PNCs and EpiLCs were enriched for functions involving nucleic acid turnover, such as deoxyribonucleotide metabolic process (GO:0009262, p.adjust = `r signif(getGO("deoxyribonucleotide metabolic process", GO_KDM5C_ChIP, 'p.adjust', "Shared"), 3)`) (Figure 4C). Germline-specific ontologies were only enriched in peaks unique to EpiLCs, such as meiotic nuclear division (GO: 0007127 p.adjust = `r signif(getGO("meiosis I", GO_KDM5C_ChIP, 'p.adjust', "EpiLC only"), 3)`) and meiotic cell cycle process (GO:1903046, p.adjust = `r signif(getGO("meiotic cell cycle process", GO_KDM5C_ChIP, 'p.adjust', "EpiLC only"), 3)`) (Figure 3C). When comparing KDM5C binding at all germline gene promoters, KDM5C was only bound to a subset of germline gene promoters in EpiLCs and was not bound to any in PNCs (Figure 4D). Together, this suggests KDM5C is recruited to a subset of germline gene promoters in EpiLCs, including meiotic genes, but does not regulate germline genes in neurons.
 
-a subset of promoter-bound genes were shared between EpiLCs and PNCs
-
-- We then compared the known functions of genes with KDM5C bound to their promoter in EpiLCs vs PNCs. 
-
-When we compared the functions of genes with KDM5C bound to their promoters, germline-specific ontologies were only enriched in EpiLCs (Figure 4B).  
-
-Ggermline-specific ontologies were only enriched in EpiLCs (Figure 4B).   
-When we compared the functions of genes with KDM5C bound to their promoters, 
-
-Ontologies enriched EpiLCs included including meiotic nuclear division (GO: 0007127 p.adjust = `r signif(getGO("meiosis I", GO_KDM5C_ChIP, 'p.adjust', "EpiLC only"), 3)` and meiotic cell cycle process (GO:1903046, p.adjust = `r signif(getGO("meiotic cell cycle process", GO_KDM5C_ChIP, 'p.adjust', "EpiLC only"), 3). 
+To determine if the germline mRNAs expressed in the _Kdm5c_-KO brain and EpiLCs are direct targets of KDM5C, we then compared KDM5C binding at RNA-seq DEG promoters (Figure 4E). About one third of EpiLC specific and brain-specific (hippocampus, amygdala, or both) germline DEGs were bound by KDM5C in EpiLCs (EpiLC only: `r 18/50*100`%, Brain only: `r signif(7/21*100,3)`%). Some notable differences in KDM5C binding for EpiLC-specific DEGs included _Dazl_ and _Stra8_, two key drivers of germline identity discussed above. Although both mRNAs are expressed in _Kdm5c_-KO EpiLCs, KDM5C is only bound to _Dazl_'s promoter and not _Stra8_'s in EpiLCs (Figure 4F). In contrast to the unique DEGs, 3 out of the 4 genes dysregulated in both the brain and EpiLCs bound by KDM5C (Figure 4G). Again, we did not observe any KDM5C binding at germline gene promoters in PNCs, even for brain-specific DEGs (Figure 4H). Altogether, this suggests the majority of germline mRNAs expressed in _Kdm5c_-KO cells are dysregulated independent of direct KDM5C recruitment to their promoters during embryogenesis. 
 
 
-Contrastingly, germline-specific ontologies are not enriched in PNCs and KDM5C-bound genes instead perform non-germline-specific functions, such as heterocycle synthesis (GO: 0018130) and pyrimidine metabolism (GO: 0072527).
+## KDM5C erases H3K4me3 to promote long-term repression of germline genes via DNA methylation
+
+Although KDM5C is generally thought to supress transcription through erasure of histone 3 lysine 4 di- and trimethylation (H3K4me2/3)[@iwaseXLinkedMentalRetardation2007], recent studies in ESCs have suggested KDM5C's repression _Dazl_ is independent of its catalytic activity[@guptaGenomewideScreenReveals2023]. Somatic repression of germline genes is typically established during the transition between naive and primed pluripotency, which modeled in vitro as ESCs to EpiLC differentiation. In ESCs, chromatin regulators place repressive histone modifications at germline gene promoters (**note: check**), including H2AK119ub1 and H3K9me3. Germline genes are then silenced long-term by CpG DNA methylation in EpiLCs germline genes. As KDM5C's embryonic role in germline gene repression has only been characterized in ESCs, it is currently unclear if KDM5C is involved in the transition between ESCs and EpiLCs.
 
 
-We then assessed KDM5C binding at germline genes expressed _Kdm5c_-KO cells to assess if their dysreuglation is due to direct loss of KDM5C binding during embryogenesis.
-
-	* KDM5C was bound to the promoter of many genes dysregulated in both EpiLCs and brain datasets, including _D1Pas1_ and _Cyct_.
-	* KDM5C was not bound to many of the brain-specific germline DEGs, such as XXX.
-	* While KDM5C binds to many germline DEGs in EpiLCs, including _Dazl_, many were also unbound. This included the germline transcription factor _Stra8_.
-	* All genes lacked binding in PNCs.
-	* Altogether, these data indicate that while some germline genes are misexpressed due to direct loss of KDM5C binding during emryogenesis, secondary downstream mechanisms can also promote their aberrant transcription.  
-
-### KDM5C erases H3K4me3 to promote long-term repression of germline genes via DNA methylation
-
-
-Although KDM5C is generally thought to supress transcription through erasure of histone 3 lysine 4 di- and trimethylation (H3K4me2/3), recent studies in ESCs have suggested KDM5C's repression _Dazl_ is independent of its catalytic activity[@guptaGenomewideScreenReveals2023]. It is currently unclear if KDM5C's catalytic activity aids in the long-term repression of germline genes, such as enabling the placement of DNA methylation. 
+It is currently unclear if KDM5C's catalytic activity aids in the long-term repression of germline genes, such as enabling the placement of DNA methylation. 
 
 * In congruence with previous work in the _Kdm5c_-KO hippocampus[@scandagliaLossKdm5cCauses2017], we observed ectopic H3K4me3 peaks in the _Kdm5c_-KO amygdala at the transcription start site (TSS) of germline genes (Figure 4).
 * We additionally observed a marked increase in H3K4me2 at germline gene promoters in _Kdm5c_-KO EpiLCs.
@@ -241,7 +222,10 @@ Although KDM5C is generally thought to supress transcription through erasure of 
 - This suggests the germline developmental program is occuring ectopically as _Kdm5c_-KOs progresses through somatic tissue development
 - tissue-biased gene expression:
 	- However unlike the gonadal-biased DEGs, many liver and muscle-biased DEGs have a known involvement in brain function. For example, the liver-biased DEG is _Apolipoprotein C-I (Apoc1)_, is important for lipoprotein metabolism but has also been shown to influence learning and memory (Figure 1E).
-- Otx2 is properly expressed in EpiLCs and prevents pgc identity https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6485399/ 
+- Otx2 is properly expressed in _Kdm5c_-KO EpiLCs and is known to prevent pgc identity https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6485399/ 
+
+- Altogether, these data indicate that while some germline genes are misexpressed due to direct loss of KDM5C binding during emryogenesis, secondary downstream mechanisms can also promote their aberrant transcription.  
+
 
 * Papers to read/reference:
 	* Reconstitution of the Mouse Germ Cell Specification Pathway in Culture by Pluripotent Stem Cells: https://www.cell.com/fulltext/S0092-8674(11)00771-9
