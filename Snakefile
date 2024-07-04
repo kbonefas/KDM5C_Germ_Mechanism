@@ -230,18 +230,23 @@ rule KDM5C_chip_GO:
 		"code/ChIPseq_KDM5C_GO_Compare_BrainEpiLC.R"
 
 ###################### Figure 5: KDM5C substrate and DNAme ############################
-rule H3K4_GermlineTSS:
+rule GeneTSS:
 	input:
 		"data/processed/germGENES20.csv",
-		"results/DESeq2/germDEGs/germDEGs_EpiLC_XY5cKO.csv",
-		"results/DESeq2/germDEGs/germDEGs_amy5cKO.csv",
-		"results/DESeq2/germDEGs/germDEGs_hip5cKO.csv"
+		"results/DESeq2/DEGs_EpiLC_XY5cKO.csv",
+		"results/DESeq2/DEGs_amy5cKO.csv",
+		"results/DESeq2/DEGs_hip5cKO.csv"
 	output:
-		"data/processed/TSS_to_TES_all_germ.bed",		
+		"data/processed/TSS_to_TES_all_germ.bed",
+		"data/processed/TSS_1000bp_all_germ.bed",		
 		"data/processed/TSS_to_TES_testgerm.bed",
-		"data/processed/TSS_to_TES_all_germ_DEGs.bed"
+		"data/processed/TSS_1000bp_testgerm.bed",
+		"data/processed/TSS_to_TES_all_germ_DEGs.bed",
+		"data/processed/TSS_1000bp_all_germ_DEGs.bed",
+		"data/processed/TSS_to_TES_nongerm_upDEGs.bed",
+		"data/processed/TSS_1000bp_nongerm_upDEGs.bed"
 	script:
-		"code/H3K4_GermlineTSS.R"
+		"code/GeneTSS.R"
 
 rule KDM5C_ESCtoEpiLC:
 	input:
