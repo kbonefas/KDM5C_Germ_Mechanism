@@ -36,7 +36,7 @@ knitr::knit_hooks$set(inline = function(x) {
 
 # Introduction
 
-A single genome holds the instructions to generate the myriad of cell types found within the adult organism. This is, in part, accomplished by chromatin regulators that can either promote or impede lineage-specific gene expression through DNA and histone modifications[@strahlLanguageCovalentHistone2000; @jenuweinTranslatingHistoneCode2001]. Although many chromatin regulators were initially identified for their roles in shaping cellular and tissue identity[@lewisGeneComplexControlling1978a; @kennisonDosagedependentModifiersPolycomb1988a], recent advancements in next generation sequencing unexpectedly revealed their dysregulation underlies many neurodevelopmental disorders (NDDs)[@gabrieleChromatinBasisNeurodevelopmental2018]. Many studies have suggested this connection between neurodevelopment and chromatin regulators is due to their regulation of brain-specific genes, such as orchestrating the transcriptional programs for synaptic maturation[@zhouBrainspecificPhosphorylationMeCP22006] and the transition between neuronal and glial differentiation in neural precursor cells[@hirabayashiPolycombLimitsNeurogenic2009]. However, loss of some chromatin regulators can also result in the ectopic transcription of tissue-specific genes outside of their target environment[@lewisGeneComplexControlling1978a; @kennisonDosagedependentModifiersPolycomb1988a; @kassisPolycombTrithoraxGroup2017]. Very few studies have investigated the misexpression of tissue-specific genes in chromatin-linked neurodevelopmental disorders[@schaeferControlCognitionAdaptive2009; @scandagliaLossKdm5cCauses2017] and it is currently unclear if this partial loss of brain identity contributes to neurodevelopmental impairments. 
+A single genome holds the instructions to generate all the myriad of cell types found within the adult organism. This is, in part, accomplished by chromatin regulators that can either promote or impede lineage-specific gene expression through DNA and histone modifications[@strahlLanguageCovalentHistone2000; @jenuweinTranslatingHistoneCode2001]. Although many chromatin regulators were initially identified for their roles in shaping cellular and tissue identity[@lewisGeneComplexControlling1978a; @kennisonDosagedependentModifiersPolycomb1988a], recent advancements in next generation sequencing unexpectedly revealed their dysregulation underlies many neurodevelopmental disorders (NDDs)[@gabrieleChromatinBasisNeurodevelopmental2018]. Many studies have suggested this connection between neurodevelopment and chromatin regulators is due to their regulation of brain-specific genes, such as orchestrating the transcriptional programs for synaptic maturation[@zhouBrainspecificPhosphorylationMeCP22006] and the transition between neuronal and glial differentiation in neural precursor cells[@hirabayashiPolycombLimitsNeurogenic2009]. However, loss of some chromatin regulators can also result in the ectopic transcription of tissue-specific genes outside of their target environment[@lewisGeneComplexControlling1978a; @kennisonDosagedependentModifiersPolycomb1988a; @kassisPolycombTrithoraxGroup2017]. Very few studies have investigated the misexpression of tissue-specific genes in chromatin-linked neurodevelopmental disorders[@schaeferControlCognitionAdaptive2009; @scandagliaLossKdm5cCauses2017] and it is currently unclear if this partial loss of brain identity contributes to neurodevelopmental impairments. 
 
 To elucidate the role of tissue identity in chromatin-linked neurodevelopmental disorders, it is essential to first characterize the types of genes dysregulated and the molecular mechanisms underlying their de-repression. In this study, we characterized the aberrant expression of tissue-enriched genes with loss of lysine demethylase 5C (KDM5C, also known as SMCX or JARID1C). KDM5C is a chromatin regulator that can repress gene expression through erasure of histone 3 lysine 4 di- and trimethylation (H3K4me2/3)[@iwaseXLinkedMentalRetardation2007], marks enriched at active gene promoters. Pathogenic mutations in _KDM5C_ cause Intellectual Developmental Disorder, X-linked, Syndromic, Claes-Jensen Type (MRXSCJ, OMIM: 300534), whose predominant features include intellectual disability, seizures, aberrant aggression, and autistic behaviors[@claesNovelSyndromicForm2000; @jensenMutationsJARID1CGene2005; @carmignacFurtherDelineationFemale2020]. _Kdm5c_ knockout (-KO) mice recapitulate key MRXSCJ patient phenotypes, including hyperaggression, increased seizure propensity, and learning impairments[@iwaseMouseModelXlinked2016; @scandagliaLossKdm5cCauses2017]. RNA sequencing (RNA-seq) of the _Kdm5c_-KO brain unexpectedly revealed ectopic expression of testis genes within the hippocampus[@scandagliaLossKdm5cCauses2017]. It is currently unclear if these testis genes impair _Kdm5c_-KO neurodevelopment and if this dysregulation in _Kdm5c_-KO brain tissue identity is unique to testis genes. 
 
@@ -199,12 +199,14 @@ We then determined the role of KDM5C in the initial placement of DNA methylation
 
 
 # Discussion
+Random thoughts
 - The demarcation of the germ vs soma is a key feature of multicellularity
-- Other H3K4me regulators, anything known about tissue-biased gene expression?
-- This suggests the germline developmental program is occuring ectopically as _Kdm5c_-KOs progresses through somatic tissue development
+- Anything known about tissue-biased gene expression in other H3K4me regulators?
+- Our data suggests the germline developmental program is occuring ectopically as _Kdm5c_-KOs progresses through somatic tissue development
 - tissue-biased gene expression:
-	- However unlike the gonadal-biased DEGs, many liver and muscle-biased DEGs have a known involvement in brain function. For example, the liver-biased DEG is _Apolipoprotein C-I (Apoc1)_, is important for lipoprotein metabolism but has also been shown to influence learning and memory (Figure 1E).
-- Otx2 is properly expressed in _Kdm5c_-KO EpiLCs and is known to prevent pgc identity https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6485399/ 
+	- However unlike the gonadal-biased DEGs, many liver and muscle-biased DEGs have a known involvement in brain function. For example, the liver-biased DEG is _Apolipoprotein C-I (Apoc1)_, is important for lipoprotein metabolism but has also been shown to influence learning and memory.
+- Otx2 is expressed in EpiLCs and is known to repress PGC identity. 
+	- It's properly expressed in _Kdm5c_-KO EpiLCs, further supporting they aren't just becoming PGCs https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6485399/ 
 
 - Altogether, these data indicate that while some germline genes are misexpressed due to direct loss of KDM5C binding during emryogenesis, secondary downstream mechanisms can also promote their aberrant transcription.  
 
@@ -212,9 +214,9 @@ We then determined the role of KDM5C in the initial placement of DNA methylation
 
 
 
-* Papers to read/reference:
-	* Reconstitution of the Mouse Germ Cell Specification Pathway in Culture by Pluripotent Stem Cells: https://www.cell.com/fulltext/S0092-8674(11)00771-9
-	* two cell gene list used by Suzuki et al Max paper is based on 2 cell sequencing: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3395470/
+- Papers to read/reference:
+	- Reconstitution of the Mouse Germ Cell Specification Pathway in Culture by Pluripotent Stem Cells: https://www.cell.com/fulltext/S0092-8674(11)00771-9
+	- two cell gene list used by Suzuki et al Max paper is based on 2 cell sequencing: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3395470/
 
 
 
