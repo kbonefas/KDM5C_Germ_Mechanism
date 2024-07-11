@@ -244,6 +244,7 @@ tissue_fisher <- function(td, n, title){
 	#for every tissue, count how many are DEGs
 	pvalues <- c()
 	DEGnumb <- c()
+	oddsratio <- c()
 	cnt <- 1
 	for (t in unique(Tissues$tissue)){
 		Tissues_genes <- subset(Tissues, tissue == t)
@@ -256,7 +257,7 @@ tissue_fisher <- function(td, n, title){
 
 		tissue_yes_DEG_no <- nrow(subset(Tissues_genes, !(ENSEMBL %in% DEGs$ENSEMBL)))
 
-		fisherdf <- data.frame("tissue_no" = c(tissue_no_DEG_no, tissue_no_DEG_yes), "tissue_yes" = c(tissue_yes_DEG_no, tissue_yes_DEG_yes), row.names = c("DEG_no", "DEG_yes"))
+		fisherdf <- data.frame("tissue_yes" = c(tissue_yes_DEG_yes, tissue_yes_DEG_no), "tissue_no" = c(tissue_no_DEG_yes, tissue_no_DEG_no), row.names = c("DEG_yes", "DEG_no"))
 		
 		fishtest <- fisher.test(fisherdf)
 		# print(paste0(title, " fisher results for ", t))
@@ -265,13 +266,16 @@ tissue_fisher <- function(td, n, title){
 
 		pvalues[cnt] <- fishtest$p.value
 		DEGnumb[cnt] <- tissue_yes_DEG_yes
+		oddsratio[cnt] <- fishtest$estimate[[1]]
+
 		cnt <- cnt + 1
 
 	}
 		print(paste0(title, " fisher results"))
-		fishp <- data.frame(tissue = unique(Tissues$tissue), pvalues = pvalues, DEGnumb = DEGnumb)
+		fishp <- data.frame(tissue = unique(Tissues$tissue), pvalues = pvalues, DEGnumb = DEGnumb, oddsratio = oddsratio)
 		names(fishp)[names(fishp) == 'pvalues'] <- paste0(title, '_pvalues')
 		names(fishp)[names(fishp) == 'DEGnumb'] <- paste0(title, '_DEGnumb')
+		names(fishp)[names(fishp) == 'oddsratio'] <- paste0(title, '_oddsratio')
 		print(fishp)
 		return(fishp)
 

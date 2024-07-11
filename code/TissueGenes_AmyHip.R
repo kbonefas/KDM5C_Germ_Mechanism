@@ -44,7 +44,6 @@ print(head(testisDEGs))
 write.table(testisDEGs, snakemake@output[[8]], sep = ",", row.names = FALSE)
 
 
-
 ### make a histogram of the total number of tissue specific genes
 p <- ggbarplot(countingdf, "tissue", "count", fill = "tissue", color = "tissue", palette = tissue_palette, 
 		label = TRUE, lab.pos = "out", lab.col = "black") + rotate_x_text(45) 
