@@ -240,13 +240,13 @@ rule GeneTSS:
 		"results/DESeq2/DEGs_hip5cKO.csv"
 	output:
 		"data/processed/TSS_to_TES_all_germ.bed",
-		"data/processed/TSS_window_1000bp_all_germ.bed",		
+		"data/processed/TSS_window_3000bp_all_germ.bed",		
 		"data/processed/TSS_to_TES_testgerm.bed",
-		"data/processed/TSS_window_1000bp_testgerm.bed",
+		"data/processed/TSS_window_3000bp_testgerm.bed",
 		"data/processed/TSS_to_TES_all_germ_DEGs.bed",
-		"data/processed/TSS_window_1000bp_all_germ_DEGs.bed",
+		"data/processed/TSS_window_3000bp_all_germ_DEGs.bed",
 		"data/processed/TSS_to_TES_nongerm_upDEGs.bed",
-		"data/processed/TSS_window_1000bp_nongerm_upDEGs.bed"
+		"data/processed/TSS_window_3000bp_nongerm_upDEGs.bed"
 	script:
 		"code/GeneTSS.R"
 

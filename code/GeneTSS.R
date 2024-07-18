@@ -3,7 +3,7 @@
 source("code/utilities/GeneTSSandTES.R")
 
 #tss window
-WIND <- 1000
+WIND <- 3000
 
 #germline genes
 germ <- read.csv(snakemake@input[[1]], sep = ",")
