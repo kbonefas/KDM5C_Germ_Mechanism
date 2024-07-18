@@ -90,22 +90,48 @@ names(germGroups) <- germCategory
 	#dataframe for each peakgroup (EpiLC or PNC)
 	#number kdm5c bound
 	#number kdm5c unbound
-qlotdf <- data.frame()
+qlotdf <- data.frame() #dataframe of counts for plotting
+
+genestatus <- data.frame() #dataframe of which gene is which for motif analysis
 
 #for EpiLc and PNC
 for (k in samples){
 	for (s in germCategory){
 	#read in the dataframe
 	a <- germGroups[[s]]
-	KDM5C_bound <- length(a[a %in% peakENSEMBL[[k]]])
-	KDM5C_unbound <- length(a[!a %in% peakENSEMBL[[k]]])
-	df <- data.frame(ChIP =  rep(k, 2), GeneCategory = rep(s, 2), KDM5C_binding = c("Bound", "Unbound"), Count = c(KDM5C_bound, KDM5C_unbound))
+	KDM5C_bound <- a[a %in% peakENSEMBL[[k]]]
+	KDM5C_unbound <- a[!a %in% peakENSEMBL[[k]]]
+	df <- data.frame(ChIP =  rep(k, 2), GeneCategory = rep(s, 2), KDM5C_binding = c("Bound", "Unbound"), Count = c(length(KDM5C_bound), length(KDM5C_unbound)))
 	qlotdf <- rbind(qlotdf, df)
+
+	if(k == "EpiLC"){
+		genestatus_df <- data.frame(ENSEMBL = c(KDM5C_bound, KDM5C_unbound), DEG_Type = rep(s, length(KDM5C_bound)+length(KDM5C_unbound)) , KDM5C_binding = c(rep("Bound", length(KDM5C_bound)), rep("Unbound", length(KDM5C_unbound))))
+		genestatus <- rbind(genestatus_df, genestatus)
+	} else {
+		next
 	}
+
+
+	}
+
 }
 
+germ <- read.csv(snakemake@input[[6]], sep = ",")
+print("germ genes")
+print(head(germ))
 
+print("genestatus")
+genestatus <- merge(genestatus, germ, by = "ENSEMBL")
+print(head(genestatus))
 
+#save all of the bound and unbound DEGs in EpiLCs
+write.table(genestatus, snakemake@output[[5]], sep = "\t", col.names = FALSE, row.names = FALSE, quote = FALSE)
+
+#save list of genes for HOMER
+write.table(subset(genestatus, KDM5C_binding == "Bound")[,"SYMBOL"], snakemake@output[[6]], sep = "\t", col.names = FALSE, row.names = FALSE, quote = FALSE)
+write.table(subset(genestatus, KDM5C_binding == "Unbound")[,"SYMBOL"], snakemake@output[[7]], sep = "\t", col.names = FALSE, row.names = FALSE, quote = FALSE)
+
+#plotting data frame
 print(qlotdf)
 #save the plots in an empty list
 plots <- list()
