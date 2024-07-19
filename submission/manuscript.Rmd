@@ -40,7 +40,9 @@ A single genome holds the instructions to generate the myriad of cell types foun
 
 To elucidate the role of tissue identity in chromatin-linked neurodevelopmental disorders, it is essential to first characterize the types of genes dysregulated and the molecular mechanisms governing their de-repression. In this study, we characterized the aberrant expression of tissue-enriched genes with loss of lysine demethylase 5C (KDM5C). KDM5C, , also known as SMCX or JARID1C, is a chromatin regulator that can repress gene expression through erasure of histone 3 lysine 4 di- and trimethylation (H3K4me2/3)[@iwaseXLinkedMentalRetardation2007], marks enriched at active gene promoters. Pathogenic mutations in _KDM5C_ cause Intellectual Developmental Disorder, X-linked, Syndromic, Claes-Jensen Type (MRXSCJ, OMIM: 300534), whose predominant features include intellectual disability, seizures, aberrant aggression, and autistic behaviors[@claesNovelSyndromicForm2000; @jensenMutationsJARID1CGene2005; @carmignacFurtherDelineationFemale2020]. _Kdm5c_ knockout (-KO) mice recapitulate key MRXSCJ patient phenotypes, including hyperaggression, increased seizure propensity, and learning impairments[@iwaseMouseModelXlinked2016; @scandagliaLossKdm5cCauses2017]. Unexpectedly, RNA sequencing (RNA-seq) of the _Kdm5c_-KO hippocampus revealed ectopic expression of testis genes within the brain[@scandagliaLossKdm5cCauses2017]. It is currently unknown if this dysregulation of brain tissue identity further impairs _Kdm5c_-KO neurodevelopment and if ectopic gene expression within the _Kdm5c_-KO brain is unique to testis genes. 
 
-Intriguingly, some of the ectopic testis transcripts identified within the _Kdm5c_-KO hippocampus have known functions unique to germ cells[@scandagliaLossKdm5cCauses2017], suggesting KDM5C may play a role in demarcating somatic versus germline identity. Distinguishing between the germline (cells that pass on their genetic material, e.g. sperm and eggs) and the soma (cells that perform all other bodily functions) is a key feature of multicellularity and occurs during early embryogenesis. In mammals, chromatin regulators play a key role in decommissioning germline genes in somatic cells as the embryo implants into the uterine wall and transitions from naive to primed pluripotency by placing repressive histone H2A lysine 119 monoubiquitination (H2AK119ub1)[@endohPCGF6PRC1SuppressesPremature2017], histone 3 lysine 9 trimethylation (H3K9me3)[@endohPCGF6PRC1SuppressesPremature2017; @mochizukiRepressionGermlineGenes2021], and DNA CpG methylation[@velascoDnmt3bRecruitmentE2F62010; @hackettPromoterDNAMethylation2012; @mochizukiRepressionGermlineGenes2021] at germline gene promoters. KDM5C may also be involved in this early decommissioning of germline genes, as re-expression of KDM5C in knockout neurons fails to suppress their dysregulation[@scandagliaLossKdm5cCauses2017]. In support of this, KDM5C was very recently shown to repress _Deleted in azoospermia like (Dazl)_, a key regulator of germline development, in mouse embryonic stem cells (ESCs)[@guptaGenomewideScreenReveals2023; @aladhamiSystematicIdentificationFactors2023]. However, KDM5C binding and _Kdm5c_-KO germline gene misexpression has yet to be globally characterized during early embryogenesis. Given that _Dazl_ and other germline-enriched genes can also be expressed in ESCs and at the 2-cell stage, it is unclear if KDM5C has a direct role in the long-term germline gene silencing that occurs in the post-implantation epiblast. Systematically characterizing KDM5C's role in germline gene repression during early embryogenesis will unveil key mechanisms underlying the demarcation between soma and germline identity and while also providing molecular footholds to test the impact of ectopic germline genes on neurodevelopment. 
+- one key process chrom reg are involved in are is distinguishing bw germ + soma cell identity
+
+Distinguishing between the germline (cells that pass on their genetic material, e.g. sperm and eggs) and the soma (cells that perform all other bodily functions) is a key feature of multicellularity and occurs during early embryogenesis. In mammals, chromatin regulators play a key role in decommissioning germline genes in somatic cells during the transition from naive to primed pluripotency by placing repressive histone H2A lysine 119 monoubiquitination (H2AK119ub1)[@endohPCGF6PRC1SuppressesPremature2017], histone 3 lysine 9 trimethylation (H3K9me3)[@endohPCGF6PRC1SuppressesPremature2017; @mochizukiRepressionGermlineGenes2021], and DNA CpG methylation[@velascoDnmt3bRecruitmentE2F62010; @hackettPromoterDNAMethylation2012; @mochizukiRepressionGermlineGenes2021] at germline gene promoters. Systematically characterizing KDM5C's role in germline gene repression during early embryogenesis will unveil key mechanisms underlying the demarcation between soma and germline identity and while also providing molecular footholds to test the impact of ectopic germline genes on neurodevelopment. 
 
 To illuminate KDM5C's role in tissue identity, here we characterized the aberrant transcription of tissue-enriched genes within the _Kdm5c_-KO brain and epiblast-like stem cells (EpiLCs), an _in vitro_ model of the post-implantation embryo. We observed general dysregulation of tissue-enriched genes in both the _Kdm5c_-KO brain and EpiLCs, including misexpression of genes typically highly enriched within the testis, liver, muscle, and ovary. Both the _Kdm5c_-KO amygdala and hippocampus had significant enrichment of testis genes that are typically uniquely expressed in germ cells. While the _Kdm5c_-KO brain primarily expressed germline genes important for late spermatogenesis, _Kdm5c_-KO EpiLCs aberrantly expressed key drivers of germline identity and meiosis, including _Dazl_ and _Stra8_. KDM5C was highly enriched at germline gene promoters in EpiLCs but only bound to a subset of germline genes expressed in _Kdm5c_-KO cells, indicating germline-enriched mRNAs can be aberrantly transcribed through indirect mechanisms. Finally, we found KDM5C promotes the long-term silencing of germline genes in somatic cells by aiding the placement of DNA methylation in EpiLCs through H3K4me2/3 removal. Thus, we propose KDM5C plays a fundamental role in the development of tissue identity during early embryogenesis, including the establishment of the soma-germline boundary. 
 
@@ -99,8 +101,9 @@ getGO <- function(x, df, column, cluster){
 
 ```
 ### Germline genes are misexpressed in the _Kdm5c_-KO brain
+- Intriguingly, some of the ectopic testis transcripts identified within the _Kdm5c_-KO hippocampus have known functions unique to germ cells[@scandagliaLossKdm5cCauses2017], suggesting KDM5C may play a role in demarcating somatic versus germline identity.
 
-The testis contains both germ cells (meiotic cells, e.g. spermatogonia) and somatic cells (non-meiotic, e.g. Leydig cells) that support hormone production and germline functions. Intriugingly, many _Kdm5c_-KO testis and ovary enriched-DEGs have germline-specific functions, suggesting _Kdm5c_-KO cells fail to distinguish between the soma and germline. To test if this holds true for all _Kdm5c_-KO testis-biased DEGs, we first assed their known functions through gene onotology analysis. We found _Kdm5c_-KO testis-enriched DEGs high enrichment of germline-relevant ontologies, including spermatid development (GO: 0007286, p.adjust = `r signif(getGO("spermatid development", testisGO, 'p.adjust', "no"), 3)`) and sperm axoneme assembly (GO: 0007288, p.adjust = `r signif(getGO("sperm axoneme assembly", testisGO, 'p.adjust', "no"), 3)`) (Figure 2A). 
+The testis contains both germ cells (meiotic cells, e.g. spermatogonia) and somatic cells (non-meiotic, e.g. Leydig cells) that support hormone production and germline functions. Intriugingly, many _Kdm5c_-KO testis and ovary enriched-DEGs have germline-specific functions, suggesting _Kdm5c_-KO cells fail to distinguish between the soma and germline. To test if this holds true for all _Kdm5c_-KO testis-biased DEGs, we first assessed their known functions through gene onotology analysis. We found _Kdm5c_-KO testis-enriched DEGs high enrichment of germline-relevant ontologies, including spermatid development (GO: 0007286, p.adjust = `r signif(getGO("spermatid development", testisGO, 'p.adjust', "no"), 3)`) and sperm axoneme assembly (GO: 0007288, p.adjust = `r signif(getGO("sperm axoneme assembly", testisGO, 'p.adjust', "no"), 3)`) (Figure 2A). 
 
 To further validate if these testis DEGs are truly germline genes, we then evaluated their expression in somatic versus germ cells within the testis. We first compared their expression in the testis with germ cell depletion[@muellerIndependentSpecializationHuman2013], which was accomplished by heterozygous _W_ and _Wv_ mutations in the enzymatic domain of _c-Kit_ (Kit^W/Wv^) that prevent the maturation of germ cells[@handelSertoliCellDifferentiation1979]. Almost all _Kdm5c_-KO testis-enriched DEGs lost expression with germ cell depletion (Figure 2B). The only testis-enriched DEG that did not show considerable downregulation with germline depletion was _FK506 binding protein 6 (Fkbp6)_, the aforementioned testis gene that regulates piRNA expression and meiosis in germ cells[@crackowerEssentialRoleFkbp62003; @xiolRoleFkbp6Chaperone2012]. We then assessed testis-enriched DEG expression in a published single cell RNA-seq dataset that identified cell type-specific markers within the testis[@greenComprehensiveRoadmapMurine2018]. We found that while some testis-enriched DEGs were classified as specific markers for different germ cell types (e.g. spermatogonia, spermatocytes, round spermatids, and elongating spermatids) none marked somatic cells (Figure 2C). Together, these data suggest the somatic _Kdm5c_-KO brain aberrantly expresses germline genes.
 
@@ -134,6 +137,8 @@ Interestingly, DEGs unique to _Kdm5c_-KO EpiLCs included key drivers of germline
 We were particularly interested in the aberrant transcription of _Dazl_, since it is essential for germ cell development and promotes the translation of germline mRNAs[@liDAZLMasterTranslational2019]. A significant portion of germline transcripts misexpressed in _Kdm5c_-KO EpiLCs are known binding targets of DAZL, including _Stra8_[@mikedisDAZLMediatesBroad2020] (p = 1.698e-07, Fisher’s Exact Test). This suggests expression of DAZL protein could promote the translation of other aberrant germline transcripts, influencing their ability to impact _Kdm5c_-KO cellular function. We thus tested DAZL protein expression in _Kdm5c_-KO EpiLCs through immunocytochemistry (Figure 3I). We observed about 25% of _Kdm5c_-KO EpiLCs expressed DAZL protein and it was localized to the cytoplasm (p = 0.0015, Welch's t-test), consistent with the pattern of DAZL expression in spermatogonia[@mikedisDAZLMediatesBroad2020]. Altogether these results suggest tissue-specific genes are misexpressed during _Kdm5c_-KO embryogenesis, including key drivers of germline identity that can be translated into protein.
 
 ## KDM5C binds to a subset of germline gene promoters during early embryogenesis 
+
+- KDM5C may also be involved in this early decommissioning of germline genes, as re-expression of KDM5C in knockout neurons fails to suppress their dysregulation[@scandagliaLossKdm5cCauses2017].
 
 Previous work suggests KDM5C represses germline genes during early development, as re-expression of KDM5C in knockout neuronal cultures fails to suppress hippocampal germline DEGs and KDM5C is not bound to their promoters in neurons[@scandagliaLossKdm5cCauses2017]. There is some evidence KDM5C binds to select germline gene promoters in ESCs[@scandagliaLossKdm5cCauses2017], including _Dazl_[@guptaGenomewideScreenReveals2023; @aladhamiSystematicIdentificationFactors2023]. As KDM5C's binding at germline gene promoters has not been systematically characterized, it is currently unclear if KDM5C is enriched at germline gene promoters, what types of germline genes KDM5C regulates, and if its binding is maintained at any germline genes in neurons. 
 
@@ -177,16 +182,111 @@ We then evaluated KDM5C's embryonic role in germline gene silencing during ESC t
 
 
 
-
 # Discussion
 
-- The demarcation of the germ vs soma is a key feature of multicellularity
+** overall outline **
+- Tissue identity
+	- We identified multiple tissue-specific genes in the brain
+	- some non-brain, tissue-enriched genes are lowly expressed do have brain-specific functions.
+	- KDM5C might be important for fine-tuning their expression to match the level important in the tissue. 
+	- this could be an avenue to impact _Kdm5c_-KO brain function. 
+
+- testis genes are germline genes, germline gene list
+	- While a select few tissue-enriched DEGs had known roles in the brain, the majority were testis genes with no known function outside the germline. 
+	- Studies on chromatin regulators in germline gene repression has focused on specific genes 
+	- Curated a list of germline-enriched genes to robustly assess the types of genes dysregulated and KDM5C's role
+
+- KDM5C represses germline genes during early embryogenesis
+	- Found this dysregulation in cellular identity begins during _Kdm5c_-KO embryogenesis
+	- EpiLC express early regualtors, Brain late sperm - program seems to be continuing across development
+	- Importantly, even though germline genes are misexpressed, markers of EpiLC differentiation and EpiLC morphology is unimpaired. 
+		- Epiblast can become primoridal germ cells
+		- Otx2 is expressed in EpiLCs and is known to repress PGC identity. It's properly expressed in _Kdm5c_-KO EpiLCs, further supporting they aren't just becoming PGCs https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6485399/ 
+		- Germline Program happening in the background of typical development. 
+
+- One of the genes misexpressed in _Kdm5c_-KO EpiLCs is Dazl, _Deleted in azoospermia like (Dazl)_, a key regulator of germline development that promotes the translation of germline-specific transcripts[XXX].
+	- 2 other studies of dazl regulators in ESCs also found KDM5C represses dazl. 
+	- While crucial for germ cell development, Dazl is also expressed in ESCs and at the 2-cell stage. 
+	- Some genes important for germ cell, ESC, and 2-cell development given they are important for self-renewal.  
+	- We did not observe dysregulation of 2-cell-specific regulators like Dux. 
+	- We found Dazl was expressed in _Kdm5c_-KO EpiLCs, when _Dazl_ it typically decommissioned. This indicates KDM5C loss results in long-term ectopic expression.
+	- We additionally found DAZL protein is ectopically expressed and localized to the cytoplasm. Given that a significant number of KDM5C-KO gemrline DEGs are DAZL targets, it may promote the ectopic germline program.
+
+
+	- Very recently two other studies identified KDM5C represses Dazl in ESCs. 
+	- - KDM5C was very recently shown to repress _Deleted in azoospermia like (Dazl)_, a key regulator of germline development, in mouse embryonic stem cells (ESCs)[@guptaGenomewideScreenReveals2023; @aladhamiSystematicIdentificationFactors2023]. However, KDM5C binding and _Kdm5c_-KO germline gene misexpression has yet to be globally characterized during early embryogenesis. Given that _Dazl_ and other germline-enriched genes can also be expressed in ESCs and at the 2-cell stage, it is unclear if KDM5C has a direct role in the long-term germline gene silencing that occurs in the post-implantation epiblast.
+
+
+- We globally characterized KDM5C's repression of germline genes during early embryogenesis and in mature neurons. 
+	- In line with previous work, we found KDM5C did not regulate germline genes in neurons. 
+	- KDM5C-bound genes in EpiLCs were enriched for germline ontologies, suggesting a major role of KDM5c during embryogenesis
+	- While KDM5C directly binds some germline genes, including _Dazl_, many of the genes dysregulated in _Kdm5c_-KO were not direct targets. 
+		- Stra8 notable exception
+		- Brain genes, including late-stage spermatogenesis genes
+		- Suggests germline genes can be dysregulated direct and indirect of KDM5C resgulation
+		- Further supports germline programs can be ectopically activated
+
+
+- Germline genes typcially decomissioned during ESCs and EpiLC differentiation. 
+	- Initially repressive histone marks are placed in ESCs, then DNA methylation is placed in EpiLCs.
+	- Dysregulation of germline genes later in life and in EpiLCs indicates KDM5C is involved in this processes, but unclear when. 
+	- Recently in ESCs KDM5C's catalytic acivity was found to be unnecessary for dazl suppression.  
+	- Some evidence that KDM5C is important for DNAme, as DNAme is reduced at two germ gene promoters in the adult 5CKO hippocampus.
+	- We found KDM5C is important for the transition between histone-mediated to DNAme-mediated silencing. 
+	
+
+
+- Altogether, this suggests KDM5C plays a pivotal role in the development of tissue identity, including the soma-germline distinction. 
+
+
+
+- In this study we demonstrated KDM5C play a pivotal role in the development of tissue identity, resulting in substantial misexpression of tissue-enriched genes within the _Kdm5c_-KO hippocampus and amygdala. 
+	- In addition to testis genes identified previously[XXX], we also observed significant enrichment of muscle, liver, and even ovary-biased genes aberrantly transcribed within the male brain. 
+
+	- Many liver and muscle-biased DEGs are weakly expressed in the brain and have known roles in brain function, such as _Apolipoprotein C-I (Apoc1)_, a liver-biased DEG that important for lipoprotein metabolism but has also been shown to influence learning and memory[XXX].
+
+	- This suggests tissue-enriched genes that are lowly expressed in the brain might be more sensitive to dysregulation with KDM5C loss.
+	- increased propensity for dysregulation 
+	- However, the majority of tissue-enriched DEGs are testis and ovary genes that have known functions in the germline and no known function in the brain. 
+
+
+- Our results indicate KDM5C is a pivotal repressor of germline programs in somatic cells. 
+- Studies on other chromatin regulators have focused on key marker genes to identify germline gene misexpression, such as _Dazl_. 
+- Using a germline-depleted mouse model, we curated a list of mouse germline-enriched genes to globally assess germline gene dysregulation. 
+- Many of the genes dysregulated in the mature _Kdm5c_-KO brain were important for late stages of spermatogenesis, such as those important for sperm flagellar structure. Contrastingly, _Kdm5c_-KO EpiLCs aberrantly expressed key drivers of germ cell identity, including _Dazl_ and _Stra8_.
+
+
+- While a significant portion of KDM5C-bound promoters are germline genes, many germline genes expressed during _Kdm5c_-KO embryogenesis are not directly bound by kdm5c. 
+- One notable example is Stra8, a transcription factor important for germ cell specific transcription and meiotic initiation
+- 
+
+
+While Directly binds to a subset of germline genes during early embryogenesis 
+- KDM5C binds to a subset of germline genes during early embryogenesis 
+
+
+
+
+
+- The including the demarcation between soma and germline fates. 
+
+
+	the _Kdm5c_-KO brain also 
+	Previous work identified testis-enriched genes in _Kdm5c_ genes
+	- 
+	- However unlike the gonadal-biased DEGs, 
+
+
+
+- The demarcation of the germline versus soma is a key feature of multicellularity and sexually dimorphic reproduction
+
+
+
 - Anything known about tissue-biased gene expression in other H3K4me regulators?
 - Our data suggests the germline developmental program is occuring ectopically as _Kdm5c_-KOs progresses through somatic tissue development
 - tissue-biased gene expression:
-	- However unlike the gonadal-biased DEGs, many liver and muscle-biased DEGs have a known involvement in brain function. For example, the liver-biased DEG is _Apolipoprotein C-I (Apoc1)_, is important for lipoprotein metabolism but has also been shown to influence learning and memory.
-- Otx2 is expressed in EpiLCs and is known to repress PGC identity. 
-	- It's properly expressed in _Kdm5c_-KO EpiLCs, further supporting they aren't just becoming PGCs https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6485399/ 
+
+
 
 - Altogether, these data indicate that while some germline genes are misexpressed due to direct loss of KDM5C binding during emryogenesis, secondary downstream mechanisms can also promote their aberrant transcription.  
 	- This shift from meiotic genes to later spermatogenesis genes in the hippocampus suggests the germline developmental program could occur ectopically as _Kdm5c_-KO cells progresses through somatic tissue development. **note: this is strengthened by the ChIP-seq data since KDM5C is not directly bound to many brain/flagellar DEGs.This point might be stronger in the ChIPseq figure** 
