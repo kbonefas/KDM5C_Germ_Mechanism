@@ -307,6 +307,12 @@ While Directly binds to a subset of germline genes during early embryogenesis
 
 \newpage
 # Figures and Tables
+- Supplementary table 1:
+	- list of all germline genes. 
+	- Columns to include: 
+		- KDM5C bound vs not
+		- DEG in EpiLC, brain, both, neither (separate columns?)
+		
 
 \begin{figure}
   \centering 
