@@ -212,9 +212,12 @@ rule KDM5C_chip:
 		"data/processed/KDM5C_ChIPseq_boundpromoters_PNC.csv",
 		"results/figure_pieces/KDM5C_ChIPseq_peaklocation.pdf",
 		"results/figure_pieces/KDM5C_ChIPseq_boundgermDEGs.pdf",
-		"results/KDM5C_bound_DEGs_EpiLC.csv",
-		"data/processed/KDM5C_bound_germ_HOMER.R",
-		"data/processed/KDM5C_unbound_germ_HOMER.R"
+		"results/KDM5C_binding_germDEGs_EpiLC.csv",
+		"data/processed/KDM5C_bound_germDEGS_HOMER.txt",
+		"data/processed/KDM5C_unbound_germDEGs_HOMER.txt",
+		"results/KDM5C_binding_allgerm_EpiLC.csv",
+		"data/processed/KDM5C_bound_allgerm_HOMER.txt",
+		"data/processed/KDM5C_unbound_allgerm_HOMER.txt"
 	script:
 		"code/ChIPseq_KDM5C_EpiLC_PNC.R"
 

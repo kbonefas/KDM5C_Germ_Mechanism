@@ -116,20 +116,6 @@ for (k in samples){
 
 }
 
-germ <- read.csv(snakemake@input[[6]], sep = ",")
-print("germ genes")
-print(head(germ))
-
-print("genestatus")
-genestatus <- merge(genestatus, germ, by = "ENSEMBL")
-print(head(genestatus))
-
-#save all of the bound and unbound DEGs in EpiLCs
-write.table(genestatus, snakemake@output[[5]], sep = "\t", col.names = FALSE, row.names = FALSE, quote = FALSE)
-
-#save list of genes for HOMER
-write.table(subset(genestatus, KDM5C_binding == "Bound")[,"SYMBOL"], snakemake@output[[6]], sep = "\t", col.names = FALSE, row.names = FALSE, quote = FALSE)
-write.table(subset(genestatus, KDM5C_binding == "Unbound")[,"SYMBOL"], snakemake@output[[7]], sep = "\t", col.names = FALSE, row.names = FALSE, quote = FALSE)
 
 #plotting data frame
 print(qlotdf)
@@ -152,3 +138,33 @@ for (k in 1:length(samples)){
 
 ggsave(snakemake@output[[4]], grid.arrange(grobs = plots, ncol = 2), width = 7.5, height = 3.5)
 
+
+### Which germline genes are bound by KDM5C
+germ <- read.csv(snakemake@input[[6]], sep = ",")
+# print("germ genes")
+# # print(head(germ))
+
+# print("genestatus")
+genestatus <- merge(genestatus, germ, by = "ENSEMBL")
+# print(head(genestatus))
+
+#save all of the bound and unbound DEGs in EpiLCs
+write.table(genestatus, snakemake@output[[5]], sep = "\t", col.names = FALSE, row.names = FALSE, quote = FALSE)
+#save list of genes for HOMER
+write.table(subset(genestatus, KDM5C_binding == "Bound")[,"SYMBOL"], snakemake@output[[6]], sep = "\t", col.names = FALSE, row.names = FALSE, quote = FALSE)
+write.table(subset(genestatus, KDM5C_binding == "Unbound")[,"SYMBOL"], snakemake@output[[7]], sep = "\t", col.names = FALSE, row.names = FALSE, quote = FALSE)
+
+
+#all germline genes, which ones are kdm5c bound to in EpiLCs
+germ$KDM5C_binding <- ifelse(germ$ENSEMBL %in% peakENSEMBL[["EpiLC"]], "Bound", "Unbound")
+print("all germ status")
+print(head(germ))
+
+#save table
+write.table(germ, snakemake@output[[8]], sep = "\t", col.names = FALSE, row.names = FALSE, quote = FALSE)
+#save list of genes for HOMER
+write.table(subset(germ, KDM5C_binding == "Bound")[,"SYMBOL"], snakemake@output[[9]], sep = "\t", col.names = FALSE, row.names = FALSE, quote = FALSE)
+write.table(subset(germ, KDM5C_binding == "Unbound")[,"SYMBOL"], snakemake@output[[10]], sep = "\t", col.names = FALSE, row.names = FALSE, quote = FALSE)
+
+
+#make eulerr of kdm5c binding at all germline genes
