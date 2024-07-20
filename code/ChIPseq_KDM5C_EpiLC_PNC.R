@@ -168,3 +168,17 @@ write.table(subset(germ, KDM5C_binding == "Unbound")[,"SYMBOL"], snakemake@outpu
 
 
 #make eulerr of kdm5c binding at all germline genes
+library("eulerr")
+source("code/utilities/colorpalettes.R")
+
+#genes bound in epilc that are not germline genes
+allepi <- peakENSEMBL[["EpiLC"]]
+epilc_nogerm <- allepi[!allepi %in% germ$ENSEMBL]
+
+
+together <- euler(c("Bound_EpiLCs" = length(epilc_nogerm), "Germline" = nrow(subset(germ, KDM5C_binding == "Unbound")), "Bound_EpiLCs&Germline" = nrow(subset(germ, KDM5C_binding == "Bound"))))
+
+p <- plot(together, quantities = TRUE, labels = list(font = 4), fills = c(EpiLC_XY_KO, germcolor))
+
+library("ggplot2")
+ggsave(snakemake@output[[11]], plot = p, width = 4, height = 3)

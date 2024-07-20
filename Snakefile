@@ -217,7 +217,8 @@ rule KDM5C_chip:
 		"data/processed/KDM5C_unbound_germDEGs_HOMER.txt",
 		"results/KDM5C_binding_allgerm_EpiLC.csv",
 		"data/processed/KDM5C_bound_allgerm_HOMER.txt",
-		"data/processed/KDM5C_unbound_allgerm_HOMER.txt"
+		"data/processed/KDM5C_unbound_allgerm_HOMER.txt",
+		"results/figure_pieces/KDM5C_ChIPseq_germ_euler.pdf"
 	script:
 		"code/ChIPseq_KDM5C_EpiLC_PNC.R"
 
