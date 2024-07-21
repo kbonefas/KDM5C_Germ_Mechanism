@@ -235,6 +235,24 @@ rule KDM5C_chip_GO:
 	script:
 		"code/ChIPseq_KDM5C_GO_Compare_BrainEpiLC.R"
 
+rule KDM5C_chip_HOMER:
+	input:
+		"data/raw/HOMER/e2f_hist_KDM5C_bound_allgerm.txt",
+		"data/raw/HOMER/e2f_hist_KDM5C_bound_germDEGS.txt",
+		"data/raw/HOMER/e2f_hist_KDM5C_unbound_allgerm.txt",
+		"data/raw/HOMER/e2f_hist_KDM5C_unbound_germDEGs.txt",
+		"data/raw/HOMER/ebox_hist_KDM5C_bound_allgerm.txt",
+		"data/raw/HOMER/ebox_hist_KDM5C_bound_germDEGS.txt",
+		"data/raw/HOMER/ebox_hist_KDM5C_unbound_allgerm.txt",
+		"data/raw/HOMER/ebox_hist_KDM5C_unbound_germDEGs.txt"
+	output:
+		"results/figure_pieces/KDM5C_ChIPseq_HOMER_allgerm_E2F.pdf",
+		"results/figure_pieces/KDM5C_ChIPseq_HOMER_germDEGs_E2F.pdf",
+		"results/figure_pieces/KDM5C_ChIPseq_HOMER_allgerm_Ebox.pdf",
+		"results/figure_pieces/KDM5C_ChIPseq_HOMER_germDEGs_Ebox.pdf"
+	script:
+		"code/KDM5C_chip_HOMER.R"
+
 ###################### Figure 5: KDM5C substrate and DNAme ############################
 rule GeneTSS:
 	input:
