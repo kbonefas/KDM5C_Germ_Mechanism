@@ -179,17 +179,15 @@ We then evaluated KDM5C's embryonic role in germline gene silencing during ESC t
 - **note:** should I test if incerase in H3K4me2 and H3K4me3 was highest in _Kdm5c_-KO cells at genes bound by KDM5C at their promoter in EpiLCs? Don't think it's that impactful
 
 
-
+# Experimental Procedures
 
 
 # Discussion
 
-** overall outline **
-- Tissue identity
-	- We identified multiple tissue-specific genes in the brain
-	- some non-brain, tissue-enriched genes are lowly expressed do have brain-specific functions.
-	- KDM5C might be important for fine-tuning their expression to match the level important in the tissue. 
-	- this could be an avenue to impact _Kdm5c_-KO brain function. 
+
+In the above study, we demonstrate KDM5C's pivotal role in the development of tissue identity, resulting in substantial misexpression of tissue-enriched genes within the adult _Kdm5c_-KO hippocampus and amygdala. We defined tissue-enriched genes based on the criteria used in a previously published dataset of 17 C57/Bl6J mouse tissues[@liComprehensiveMouseTranscriptomic2017], which defined genes as tissue-enriched if they had more than 4-fold higher expression when compared to any other tissue. In addition to testis genes identified previously[@scandagliaLossKdm5cCauses2017], we found significant enrichment of muscle, liver, and even ovary-biased genes aberrantly expressed within the male _Kdm5c_-KO brain. It is currently unclear what the impact of these tissue-enriched genes are upon _Kdm5c_-KO brain function and if they ultimately contribute to MRXSCJ-related phenotypes. While the majority of tissue-enriched DEGs were testis and ovary genes with no known brain functions, select liver and muscle-biased DEGs do have known roles in the wild-type brain. For example, _Apolipoprotein C-I (Apoc1)_ is a lipid transport gene highly enriched within the liver[XXX], but is lowly expressed in the wild-type brain. Intriguingly, _Apoc1_ overexpression in the mouse brain can impair learning and memory[@abildayevaHumanApolipoproteinCI2008] and is implicated in Alzheimer's disease in humans[@leducAPOECholesterolHomeostasis2010]. Our results suggest KDM5C fine-tunes the expression of tissue-enriched genes like _Apoc1_ to match the level requried for proper brain function. However, futher studies are required to detrmine if these genes contribute to _Kdm5c_-KO neuronal impairments and MRXSCJ pathology.
+
+
 
 - testis genes are germline genes, germline gene list
 	- While a select few tissue-enriched DEGs had known roles in the brain, the majority were testis genes with no known function outside the germline. 
@@ -247,18 +245,6 @@ We then evaluated KDM5C's embryonic role in germline gene silencing during ESC t
 	
 
 ## Discussion notes
-- Altogether, this suggests KDM5C plays a pivotal role in the development of tissue identity, including the soma-germline distinction. 
-
-
-
-- In this study we demonstrated KDM5C play a pivotal role in the development of tissue identity, resulting in substantial misexpression of tissue-enriched genes within the _Kdm5c_-KO hippocampus and amygdala. 
-	- In addition to testis genes identified previously[XXX], we also observed significant enrichment of muscle, liver, and even ovary-biased genes aberrantly transcribed within the male brain. 
-
-	- Many liver and muscle-biased DEGs are weakly expressed in the brain and have known roles in brain function, such as _Apolipoprotein C-I (Apoc1)_, a liver-biased DEG that important for lipoprotein metabolism but has also been shown to influence learning and memory[XXX].
-
-	- This suggests tissue-enriched genes that are lowly expressed in the brain might be more sensitive to dysregulation with KDM5C loss.
-	- increased propensity for dysregulation 
-	- However, the majority of tissue-enriched DEGs are testis and ovary genes that have known functions in the germline and no known function in the brain. 
 
 
 - Our results indicate KDM5C is a pivotal repressor of germline programs in somatic cells. 
