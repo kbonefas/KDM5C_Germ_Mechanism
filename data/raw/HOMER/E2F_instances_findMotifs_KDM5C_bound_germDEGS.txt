@@ -1,0 +1,17 @@
+GeneID	PromoterID	Offset	Sequence	Motif Name	Strand	MotifScore	Unigene	Refseq	Ensembl	Name	Alias	Orf	Chr	Description	Type
+74377	NM_028902	-49	TCCCGC	E2F	+	8.299739		NM_028902	ENSMUSG00000002076	Hsf2bp	4932437G14Rik|Meilb2	-	17 B1|17 17.25 cM	heat shock transcription factor 2 binding protein	protein-coding
+13404	NM_010059	-240	TCCCGC	E2F	+	8.299739		NM_010059	ENSMUSG00000022429	Dmc1	Dmc1h|Lim15|Mei11|sgdp	-	15 E1|15 37.79 cM	DNA meiotic recombinase 1	protein-coding
+13404	NM_010059	-13	TCCCGC	E2F	+	8.299739		NM_010059	ENSMUSG00000022429	Dmc1	Dmc1h|Lim15|Mei11|sgdp	-	15 E1|15 37.79 cM	DNA meiotic recombinase 1	protein-coding
+239083	NM_001111119	-21	TCCCGC	E2F	+	8.299739		NM_001111119	ENSMUSG00000071470	Ccnb1ip1	Gm288|Hei10|mei4	-	14 C1|14 26.25 cM	cyclin B1 interacting protein 1	protein-coding
+237928	NM_153104	-143	TCCCGC	E2F	+	8.299739		NM_153104	ENSMUSG00000050860	Phospho1	D11Moh36|Phospo1	-	11 D|11 59.01 cM	phosphatase, orphan 1	protein-coding
+67592	NM_026262	-4	TCCCGC	E2F	+	8.299739		NM_026262	ENSMUSG00000020299	4930524B15Rik	-	-	11 A4|11 18.71 cM	RIKEN cDNA 4930524B15 gene	protein-coding
+74052	NM_028735	-78	TCCCGC	E2F	+	8.299739		NM_028735	ENSMUSG00000032514	Ttc21a	4921538N17Rik|Thm2	-	9 F4|9 71.33 cM	tetratricopeptide repeat domain 21A	protein-coding
+76572	NM_029660	-61	TCCCGC	E2F	+	8.299739		NM_029660	ENSMUSG00000073894	Rbmxl2	1700012H05Rik|Hnrnpg-t	-	7 E3|7 56.1 cM	RNA binding motif protein, X-linked-like 2	protein-coding
+12578	NM_009877	-236	TCCCGC	E2F	+	8.299739		NM_009877	ENSMUSG00000044303	Cdkn2a	ARF-INK4a|Arf|INK4a-ARF|Ink4a/Arf|MTS1|Pctr1|p16|p16(INK4a)|p16INK4a|p19<ARF>|p19ARF	-	4 C4|4 42.15 cM	cyclin dependent kinase inhibitor 2A	protein-coding
+12578	NM_009877	-97	TCCCGC	E2F	+	8.299739		NM_009877	ENSMUSG00000044303	Cdkn2a	ARF-INK4a|Arf|INK4a-ARF|Ink4a/Arf|MTS1|Pctr1|p16|p16(INK4a)|p16INK4a|p19<ARF>|p19ARF	-	4 C4|4 42.15 cM	cyclin dependent kinase inhibitor 2A	protein-coding
+12578	NM_009877	-153	GCGGGA	E2F	-	8.299739		NM_009877	ENSMUSG00000044303	Cdkn2a	ARF-INK4a|Arf|INK4a-ARF|Ink4a/Arf|MTS1|Pctr1|p16|p16(INK4a)|p16INK4a|p19<ARF>|p19ARF	-	4 C4|4 42.15 cM	cyclin dependent kinase inhibitor 2A	protein-coding
+12578	NM_009877	-163	GCGGGA	E2F	-	8.299739		NM_009877	ENSMUSG00000044303	Cdkn2a	ARF-INK4a|Arf|INK4a-ARF|Ink4a/Arf|MTS1|Pctr1|p16|p16(INK4a)|p16INK4a|p19<ARF>|p19ARF	-	4 C4|4 42.15 cM	cyclin dependent kinase inhibitor 2A	protein-coding
+12578	NM_009877	-186	GCGGGA	E2F	-	8.299739		NM_009877	ENSMUSG00000044303	Cdkn2a	ARF-INK4a|Arf|INK4a-ARF|Ink4a/Arf|MTS1|Pctr1|p16|p16(INK4a)|p16INK4a|p19<ARF>|p19ARF	-	4 C4|4 42.15 cM	cyclin dependent kinase inhibitor 2A	protein-coding
+67981	NM_026489	-90	GCGGGA	E2F	-	8.299739		NM_026489	ENSMUSG00000028109	Hormad1	4921522K05Rik|Nohma	-	3 F2.1|3 40.74 cM	HORMA domain containing 1	protein-coding
+13067	NM_009989	-18	GCGGGA	E2F	-	8.299739		NM_009989	ENSMUSG00000056436	Cyct	T-Cc	-	2 C3|2 44.94 cM	cytochrome c, testis	protein-coding
+110957	NM_033077	-142	GCGGGA	E2F	-	8.299739		NM_033077	ENSMUSG00000039224	D1Pas1	DDX3XL|Pl10	-	1 H5|1 90.09 cM	DNA segment, Chr 1, Pasteur Institute 1	protein-coding

@@ -1,0 +1,17 @@
+GeneID	PromoterID	Offset	Sequence	Motif Name	Strand	MotifScore	Unigene	Refseq	Ensembl	Name	Alias	Orf	Chr	Description	Type
+30054	NM_001033043	-30	CACGTG	Ebox	+	8.299739		NM_001033043	ENSMUSG00000000365	Rnf17	MMIP-2|Mmip2|TDRD4	-	14 C3|14 28.21 cM	ring finger protein 17	protein-coding
+30054	NM_001033043	-25	CACGTG	Ebox	-	8.299739		NM_001033043	ENSMUSG00000000365	Rnf17	MMIP-2|Mmip2|TDRD4	-	14 C3|14 28.21 cM	ring finger protein 17	protein-coding
+237928	NM_153104	-215	CACGTG	Ebox	+	8.299739		NM_153104	ENSMUSG00000050860	Phospho1	D11Moh36|Phospo1	-	11 D|11 59.01 cM	phosphatase, orphan 1	protein-coding
+237928	NM_153104	-210	CACGTG	Ebox	-	8.299739		NM_153104	ENSMUSG00000050860	Phospho1	D11Moh36|Phospo1	-	11 D|11 59.01 cM	phosphatase, orphan 1	protein-coding
+74052	NM_028735	-56	CACGTG	Ebox	+	8.299739		NM_028735	ENSMUSG00000032514	Ttc21a	4921538N17Rik|Thm2	-	9 F4|9 71.33 cM	tetratricopeptide repeat domain 21A	protein-coding
+74052	NM_028735	-51	CACGTG	Ebox	-	8.299739		NM_028735	ENSMUSG00000032514	Ttc21a	4921538N17Rik|Thm2	-	9 F4|9 71.33 cM	tetratricopeptide repeat domain 21A	protein-coding
+76572	NM_029660	-221	CACGTG	Ebox	+	8.299739		NM_029660	ENSMUSG00000073894	Rbmxl2	1700012H05Rik|Hnrnpg-t	-	7 E3|7 56.1 cM	RNA binding motif protein, X-linked-like 2	protein-coding
+76572	NM_029660	-216	CACGTG	Ebox	-	8.299739		NM_029660	ENSMUSG00000073894	Rbmxl2	1700012H05Rik|Hnrnpg-t	-	7 E3|7 56.1 cM	RNA binding motif protein, X-linked-like 2	protein-coding
+77485	NM_029916	-120	CACGTG	Ebox	+	8.299739		NM_029916	ENSMUSG00000023403	Stk31	C330007K24Rik	-	6 B2.3|6 23.87 cM	serine threonine kinase 31	protein-coding
+77485	NM_029916	-115	CACGTG	Ebox	-	8.299739		NM_029916	ENSMUSG00000023403	Stk31	C330007K24Rik	-	6 B2.3|6 23.87 cM	serine threonine kinase 31	protein-coding
+67981	NM_026489	-57	CACGTG	Ebox	+	8.299739		NM_026489	ENSMUSG00000028109	Hormad1	4921522K05Rik|Nohma	-	3 F2.1|3 40.74 cM	HORMA domain containing 1	protein-coding
+67981	NM_026489	-20	CACGTG	Ebox	+	8.299739		NM_026489	ENSMUSG00000028109	Hormad1	4921522K05Rik|Nohma	-	3 F2.1|3 40.74 cM	HORMA domain containing 1	protein-coding
+67981	NM_026489	-15	CACGTG	Ebox	-	8.299739		NM_026489	ENSMUSG00000028109	Hormad1	4921522K05Rik|Nohma	-	3 F2.1|3 40.74 cM	HORMA domain containing 1	protein-coding
+67981	NM_026489	-52	CACGTG	Ebox	-	8.299739		NM_026489	ENSMUSG00000028109	Hormad1	4921522K05Rik|Nohma	-	3 F2.1|3 40.74 cM	HORMA domain containing 1	protein-coding
+110957	NM_033077	-284	CACGTG	Ebox	+	8.299739		NM_033077	ENSMUSG00000039224	D1Pas1	DDX3XL|Pl10	-	1 H5|1 90.09 cM	DNA segment, Chr 1, Pasteur Institute 1	protein-coding
+110957	NM_033077	-279	CACGTG	Ebox	-	8.299739		NM_033077	ENSMUSG00000039224	D1Pas1	DDX3XL|Pl10	-	1 H5|1 90.09 cM	DNA segment, Chr 1, Pasteur Institute 1	protein-coding

@@ -237,14 +237,14 @@ rule KDM5C_chip_GO:
 
 rule KDM5C_chip_HOMER:
 	input:
-		"data/raw/HOMER/e2f_hist_KDM5C_bound_allgerm.txt",
-		"data/raw/HOMER/e2f_hist_KDM5C_bound_germDEGS.txt",
-		"data/raw/HOMER/e2f_hist_KDM5C_unbound_allgerm.txt",
-		"data/raw/HOMER/e2f_hist_KDM5C_unbound_germDEGs.txt",
-		"data/raw/HOMER/ebox_hist_KDM5C_bound_allgerm.txt",
-		"data/raw/HOMER/ebox_hist_KDM5C_bound_germDEGS.txt",
-		"data/raw/HOMER/ebox_hist_KDM5C_unbound_allgerm.txt",
-		"data/raw/HOMER/ebox_hist_KDM5C_unbound_germDEGs.txt"
+		"data/raw/HOMER/E2F_hist_KDM5C_bound_allgerm.txt",
+		"data/raw/HOMER/E2F_hist_KDM5C_bound_germDEGS.txt",
+		"data/raw/HOMER/E2F_hist_KDM5C_unbound_allgerm.txt",
+		"data/raw/HOMER/E2F_hist_KDM5C_unbound_germDEGs.txt",
+		"data/raw/HOMER/Ebox_hist_KDM5C_bound_allgerm.txt",
+		"data/raw/HOMER/Ebox_hist_KDM5C_bound_germDEGS.txt",
+		"data/raw/HOMER/Ebox_hist_KDM5C_unbound_allgerm.txt",
+		"data/raw/HOMER/Ebox_hist_KDM5C_unbound_germDEGs.txt"
 	output:
 		"results/figure_pieces/KDM5C_ChIPseq_HOMER_allgerm_E2F.pdf",
 		"results/figure_pieces/KDM5C_ChIPseq_HOMER_germDEGs_E2F.pdf",

@@ -54,3 +54,8 @@ makemotifs <- function(motif){
 for(m in motifs){
 	makemotifs(m)
 }
+
+
+### 240723 read in the instances file from homer
+# e2finst <- read.csv(snakemake@input[[9]], sep = "\t")
+# print(head(e2finst))

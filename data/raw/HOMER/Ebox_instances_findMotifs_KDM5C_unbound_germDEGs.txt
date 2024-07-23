@@ -1,0 +1,13 @@
+GeneID	PromoterID	Offset	Sequence	Motif Name	Strand	MotifScore	Unigene	Refseq	Ensembl	Name	Alias	Orf	Chr	Description	Type
+13984	NM_007957	-75	CACGTG	Ebox	+	8.299739		NM_007957	ENSMUSG00000023443	Esx1	Spx1	-	X F1|X 59.1 cM	extraembryonic, spermatogenesis, homeobox 1	protein-coding
+13984	NM_007957	-70	CACGTG	Ebox	-	8.299739		NM_007957	ENSMUSG00000023443	Esx1	Spx1	-	X F1|X 59.1 cM	extraembryonic, spermatogenesis, homeobox 1	protein-coding
+85029	NR_002142	29	CACGTG	Ebox	+	8.299739		NR_002142	ENSMUSG00000092837	Rpph1	Gm24821|H1RNA|Rmrp5|Rpr	-	14 C1|14 26.25 cM	ribonuclease P RNA component H1	ncRNA
+85029	NR_002142	34	CACGTG	Ebox	-	8.299739		NR_002142	ENSMUSG00000092837	Rpph1	Gm24821|H1RNA|Rmrp5|Rpr	-	14 C1|14 26.25 cM	ribonuclease P RNA component H1	ncRNA
+52670	NM_026682	-143	CACGTG	Ebox	+	8.299739		NM_026682	ENSMUSG00000018727	Cpsf4l	0610010C04Rik|1500000C01Rik|D11Ertd636e	-	11 E2|11 79.17 cM	cleavage and polyadenylation specific factor 4-like	protein-coding
+52670	NM_026682	-138	CACGTG	Ebox	-	8.299739		NM_026682	ENSMUSG00000018727	Cpsf4l	0610010C04Rik|1500000C01Rik|D11Ertd636e	-	11 E2|11 79.17 cM	cleavage and polyadenylation specific factor 4-like	protein-coding
+21689	NM_011569	-292	CACGTG	Ebox	+	8.299739		NM_011569	ENSMUSG00000020799	Tekt1	MT14	-	11 B4|11 44.03 cM	tektin 1	protein-coding
+21689	NM_011569	-287	CACGTG	Ebox	-	8.299739		NM_011569	ENSMUSG00000020799	Tekt1	MT14	-	11 B4|11 44.03 cM	tektin 1	protein-coding
+22788	NM_011776	-181	CACGTG	Ebox	+	8.299739		NM_011776	ENSMUSG00000004948	Zp3	Zp-3	-	5 G2|5 75.62 cM	zona pellucida glycoprotein 3	protein-coding
+22788	NM_011776	-176	CACGTG	Ebox	-	8.299739		NM_011776	ENSMUSG00000004948	Zp3	Zp-3	-	5 G2|5 75.62 cM	zona pellucida glycoprotein 3	protein-coding
+14536	NM_010264	-285	CACGTG	Ebox	+	8.299739		NM_010264	ENSMUSG00000063972	Nr6a1	1700113M01Rik|Gcnf|NCNF|RTR	-	2 B|2 24.42 cM	nuclear receptor subfamily 6, group A, member 1	protein-coding
+14536	NM_010264	-280	CACGTG	Ebox	-	8.299739		NM_010264	ENSMUSG00000063972	Nr6a1	1700113M01Rik|Gcnf|NCNF|RTR	-	2 B|2 24.42 cM	nuclear receptor subfamily 6, group A, member 1	protein-coding
