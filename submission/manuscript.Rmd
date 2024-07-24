@@ -1,7 +1,7 @@
 ---
 title:  Erosion of somatic tissue identity with loss of the X-linked intellectual disability factor KDM5C
 output: pdf_document
-geometry: margin = 0.5in
+geometry: margin = 1in
 font-size: 11pt
 header-includes:
    - \usepackage{caption}
