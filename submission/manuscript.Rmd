@@ -209,58 +209,6 @@ In summary, we demonstrate loss of the X-linked intellectual disability gene KDM
 - include cancer in there somewhere (Somatic misexpression of germline genes has been implicated in many cancers.)
 	
 
-## Discussion notes
-
-- We additionally found _Kdm5c_-KO EpiLCs ectopically express DAZL protein that is localized to the cytoplasm, similar to its morphology in spermatogonia[@mikedisDAZLMediatesBroad2020]. **note: maybe just put in results**. Could move around depending upon if I get pheno working.
-
-- end with something like: this indicates kdm5c not only modulates pluripotency and self-renewal in ESCs, but also has a role in long-term silencing of germline genes 
-	- then transition into the long term silencing mechanism paragraph
-
-- KDM5C is dynamically regulated during the window of embryonic germline gene silencing, our EpiLC ChIP-seq is likely catching the tail end of KDM5C's main involvement. 
-
-
-
-
-- Our results indicate KDM5C is a pivotal repressor of germline programs in somatic cells. 
-- Studies on other chromatin regulators have focused on key marker genes to identify germline gene misexpression, such as _Dazl_. 
-- Using a germline-depleted mouse model, we curated a list of mouse germline-enriched genes to globally assess germline gene dysregulation. 
-- Many of the genes dysregulated in the mature _Kdm5c_-KO brain were important for late stages of spermatogenesis, such as those important for sperm flagellar structure. Contrastingly, _Kdm5c_-KO EpiLCs aberrantly expressed key drivers of germ cell identity, including _Dazl_ and _Stra8_.
-
-
-- While a significant portion of KDM5C-bound promoters are germline genes, many germline genes expressed during _Kdm5c_-KO embryogenesis are not directly bound by kdm5c. 
-- One notable example is Stra8, a transcription factor important for germ cell specific transcription and meiotic initiation
-
-
-- The including the demarcation between soma and germline fates. 
-
-
-	the _Kdm5c_-KO brain also 
-	Previous work identified testis-enriched genes in _Kdm5c_ genes
-	- 
-	- However unlike the gonadal-biased DEGs, 
-
-
-
-- The demarcation of the germline versus soma is a key feature of multicellularity and sexually dimorphic reproduction
-
-
-
-- Anything known about tissue-biased gene expression in other H3K4me regulators?
-- Our data suggests the germline developmental program is occuring ectopically as _Kdm5c_-KOs progresses through somatic tissue development
-- tissue-biased gene expression:
-
-
-
-- Altogether, these data indicate that while some germline genes are misexpressed due to direct loss of KDM5C binding during emryogenesis, secondary downstream mechanisms can also promote their aberrant transcription.  
-
-
-
-
-- Papers to read/reference:
-	- Reconstitution of the Mouse Germ Cell Specification Pathway in Culture by Pluripotent Stem Cells: https://www.cell.com/fulltext/S0092-8674(11)00771-9
-	- two cell gene list used by Suzuki et al Max paper is based on 2 cell sequencing: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3395470/
-
-
 # Materials and Methods
 
 ## Classifying tissue-enriched and germline-enriched genes
@@ -354,6 +302,57 @@ ChIP-seq reads were aligned to mm10 using Bowtie1 (v1.1.2) allowing up to two mi
 
 \clearpage
 # Notes
+## Discussion notes
+
+- We additionally found _Kdm5c_-KO EpiLCs ectopically express DAZL protein that is localized to the cytoplasm, similar to its morphology in spermatogonia[@mikedisDAZLMediatesBroad2020]. **note: maybe just put in results**. Could move around depending upon if I get pheno working.
+
+- end with something like: this indicates kdm5c not only modulates pluripotency and self-renewal in ESCs, but also has a role in long-term silencing of germline genes 
+	- then transition into the long term silencing mechanism paragraph
+
+- KDM5C is dynamically regulated during the window of embryonic germline gene silencing, our EpiLC ChIP-seq is likely catching the tail end of KDM5C's main involvement. 
+
+
+
+
+- Our results indicate KDM5C is a pivotal repressor of germline programs in somatic cells. 
+- Studies on other chromatin regulators have focused on key marker genes to identify germline gene misexpression, such as _Dazl_. 
+- Using a germline-depleted mouse model, we curated a list of mouse germline-enriched genes to globally assess germline gene dysregulation. 
+- Many of the genes dysregulated in the mature _Kdm5c_-KO brain were important for late stages of spermatogenesis, such as those important for sperm flagellar structure. Contrastingly, _Kdm5c_-KO EpiLCs aberrantly expressed key drivers of germ cell identity, including _Dazl_ and _Stra8_.
+
+
+- While a significant portion of KDM5C-bound promoters are germline genes, many germline genes expressed during _Kdm5c_-KO embryogenesis are not directly bound by kdm5c. 
+- One notable example is Stra8, a transcription factor important for germ cell specific transcription and meiotic initiation
+
+
+- The including the demarcation between soma and germline fates. 
+
+
+	the _Kdm5c_-KO brain also 
+	Previous work identified testis-enriched genes in _Kdm5c_ genes
+	- 
+	- However unlike the gonadal-biased DEGs, 
+
+
+
+- The demarcation of the germline versus soma is a key feature of multicellularity and sexually dimorphic reproduction
+
+
+
+- Anything known about tissue-biased gene expression in other H3K4me regulators?
+- Our data suggests the germline developmental program is occuring ectopically as _Kdm5c_-KOs progresses through somatic tissue development
+- tissue-biased gene expression:
+
+
+
+- Altogether, these data indicate that while some germline genes are misexpressed due to direct loss of KDM5C binding during emryogenesis, secondary downstream mechanisms can also promote their aberrant transcription.  
+
+
+
+
+- Papers to read/reference:
+	- Reconstitution of the Mouse Germ Cell Specification Pathway in Culture by Pluripotent Stem Cells: https://www.cell.com/fulltext/S0092-8674(11)00771-9
+	- two cell gene list used by Suzuki et al Max paper is based on 2 cell sequencing: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3395470/
+
 
 ## Figure outline:
 
