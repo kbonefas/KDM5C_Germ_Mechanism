@@ -237,31 +237,24 @@ rule KDM5C_chip_GO:
 
 rule KDM5C_chip_HOMER:
 	input:
-		"data/raw/HOMER/E2F_hist_KDM5C_bound_allgerm.txt",
-		"data/raw/HOMER/E2F_hist_KDM5C_bound_germDEGS.txt",
-		"data/raw/HOMER/E2F_hist_KDM5C_unbound_allgerm.txt",
-		"data/raw/HOMER/E2F_hist_KDM5C_unbound_germDEGs.txt",
-		"data/raw/HOMER/Ebox_hist_KDM5C_bound_allgerm.txt",
-		"data/raw/HOMER/Ebox_hist_KDM5C_bound_germDEGS.txt",
-		"data/raw/HOMER/Ebox_hist_KDM5C_unbound_allgerm.txt",
-		"data/raw/HOMER/Ebox_hist_KDM5C_unbound_germDEGs.txt",
+		#all of the kdm5c bound and unbound germ degs
+		"results/KDM5C_binding_allgerm_EpiLC.csv",
 
 		#DEGs with Ebox and E2f motifs near TSS
-		"data/raw/HOMER/Ebox_instances_findMotifs_KDM5C_bound_allgerm.txt",
-		"data/raw/HOMER/Ebox_instances_findMotifs_KDM5C_bound_germDEGS.txt",
-		"data/raw/HOMER/Ebox_instances_findMotifs_KDM5C_unbound_allgerm.txt",
-		"data/raw/HOMER/Ebox_instances_findMotifs_KDM5C_unbound_germDEGS.txt",
 		"data/raw/HOMER/E2F_instances_findMotifs_KDM5C_bound_allgerm.txt",
-		"data/raw/HOMER/E2F_instances_findMotifs_KDM5C_bound_germDEGS.txt",
+		"data/raw/HOMER/Ebox_instances_findMotifs_KDM5C_bound_allgerm.txt",
 		"data/raw/HOMER/E2F_instances_findMotifs_KDM5C_unbound_allgerm.txt",
-		"data/raw/HOMER/E2F_instances_findMotifs_KDM5C_unbound_germDEGS.txt"
+		"data/raw/HOMER/Ebox_instances_findMotifs_KDM5C_unbound_allgerm.txt"
+
+		#"data/raw/HOMER/E2F_instances_findMotifs_KDM5C_bound_germDEGS.txt",
+		#"data/raw/HOMER/E2F_instances_findMotifs_KDM5C_unbound_germDEGS.txt",
+		#"data/raw/HOMER/Ebox_instances_findMotifs_KDM5C_bound_germDEGS.txt",
+		#"data/raw/HOMER/Ebox_instances_findMotifs_KDM5C_unbound_germDEGS.txt"
+
 	output:
-		"results/figure_pieces/KDM5C_ChIPseq_HOMER_hist_allgerm_E2F.pdf",
-		"results/figure_pieces/KDM5C_ChIPseq_HOMER_hist_germDEGs_E2F.pdf",
-		"results/figure_pieces/KDM5C_ChIPseq_HOMER_hist_allgerm_Ebox.pdf",
-		"results/figure_pieces/KDM5C_ChIPseq_HOMER_hist_germDEGs_Ebox.pdf"
+		"results/figure_pieces/KDM5C_ChIPseq_HOMER_e2febox_perc_bar.pdf"
 	script:
-		"code/KDM5C_chip_HOMER.R"
+		"code/ChIPseq_KDM5C_HOMER.R"
 
 ###################### Figure 5: KDM5C substrate and DNAme ############################
 rule GeneTSS:
