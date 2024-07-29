@@ -115,8 +115,11 @@ Neither_unbound <- germ_KDM5C_unbound[!germ_KDM5C_unbound %in% E2F_unbound & !ge
 motifdf$Count <- c(length(E2F_only_bound), length(Ebox_only_bound), length(Both_bound), length(Neither_bound), length(E2F_only_unbound), length(Ebox_only_unbound), length(Both_unbound), length(Neither_unbound))
 
 
-motifdf$Percent <- ifelse(motifdf$Kdm5c_binding == "Bound", (motifdf$Count/(length(E2F_only_bound) + length(Ebox_only_bound) + length(Both_bound) + length(Neither_bound))) * 100, ifelse(motifdf$Kdm5c_binding == "Unbound", (motifdf$Count/(length(E2F_only_unbound) + length(Ebox_only_unbound) + length(Both_unbound) + length(Neither_unbound))) * 100, "oops"))
+motifdf$Percent_plot <- ifelse(motifdf$Kdm5c_binding == "Bound", (motifdf$Count/(length(E2F_only_bound) + length(Ebox_only_bound) + length(Both_bound) + length(Neither_bound))) * 100, ifelse(motifdf$Kdm5c_binding == "Unbound", (motifdf$Count/(length(E2F_only_unbound) + length(Ebox_only_unbound) + length(Both_unbound) + length(Neither_unbound))) * 100, 0))
 
+motifdf
+
+motifdf$Percent <-as.integer(round(motifdf$Percent_plot))
 
 motifdf
 #save the plots in an empty list
@@ -127,7 +130,7 @@ motifbar <- function(df, colum, TITLE){
 	df$Motifs <- factor(df$Motifs, levels = c("E2F", "Ebox", "Both", "Neither"))
 	library("ggpubr")
 	q <- ggbarplot(df, "Kdm5c_binding", colum,
-	fill = "Motifs", color = "Motifs", palette = c("E2F" = "forestgreen", "Ebox" = "blue3", "Both" = "goldenrod2", "Neither" = "slategray4"),
+	fill = "Motifs", color = "Motifs", palette = c("E2F" = "forestgreen", "Ebox" = "blue3", "Both" = "goldenrod2", "Neither" = "gray17"),
 	title = TITLE, label = TRUE, lab.col = "black", lab.vjust = 1, xlab = "RNA-seq germline DEG", ylab = "# of germline DEGs", orientation = "vert") 
 
 	return(q)
@@ -138,7 +141,7 @@ plots[[2]] <- motifbar(motifdf, "Percent", "All germline genes")
 
 
 library("gridExtra")
-ggsave(snakemake@output[[1]], grid.arrange(grobs = plots, ncol = 2), width = 6.5, height = 3.5)
+ggsave(snakemake@output[[1]], grid.arrange(grobs = plots, ncol = 2), width = 8, height = 3.5)
 
 
 
