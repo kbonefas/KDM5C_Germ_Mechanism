@@ -117,11 +117,10 @@ motifdf$Count <- c(length(E2F_only_bound), length(Ebox_only_bound), length(Both_
 
 motifdf$Percent_plot <- ifelse(motifdf$Kdm5c_binding == "Bound", (motifdf$Count/(length(E2F_only_bound) + length(Ebox_only_bound) + length(Both_bound) + length(Neither_bound))) * 100, ifelse(motifdf$Kdm5c_binding == "Unbound", (motifdf$Count/(length(E2F_only_unbound) + length(Ebox_only_unbound) + length(Both_unbound) + length(Neither_unbound))) * 100, 0))
 
-motifdf
 
 motifdf$Percent <-as.integer(round(motifdf$Percent_plot))
 
-motifdf
+
 #save the plots in an empty list
 plots <- list()
 
@@ -131,17 +130,37 @@ motifbar <- function(df, colum, TITLE){
 	library("ggpubr")
 	q <- ggbarplot(df, "Kdm5c_binding", colum,
 	fill = "Motifs", color = "Motifs", palette = c("E2F" = "forestgreen", "Ebox" = "blue3", "Both" = "goldenrod2", "Neither" = "gray17"),
-	title = TITLE, label = TRUE, lab.col = "black", lab.vjust = 1, xlab = "RNA-seq germline DEG", ylab = "# of germline DEGs", orientation = "vert") 
+	title = TITLE, label = TRUE, lab.col = "black", lab.vjust = 1, xlab = "KDM5C Binding at Promoter", ylab = "% of genes with motif", orientation = "vert") 
 
 	return(q)
 }
 
-plots[[1]] <- motifbar(motifdf, "Count", "All germline genes")
-plots[[2]] <- motifbar(motifdf, "Percent", "All germline genes")
+plots[[1]] <- motifbar(motifdf, "Percent", "All germline genes")
 
+###plot the DEGs
+#get the DEG list
+amyDEGs <- read.csv(snakemake@input[[6]], sep = ",")$ENSEMBL
+hipDEGs <- read.csv(snakemake@input[[7]], sep = ",")$ENSEMBL
+EpiLCDEGs <- read.csv(snakemake@input[[8]], sep = ",")$ENSEMBL
+
+allDEGs <- unique(c(amyDEGs, hipDEGs, EpiLCDEGs))
+degcount <- function(degs, compare){
+	length(allDEGs[allDEGs %in% compare])
+}
+
+motifdf$Count_DEG <- c(degcount(allDEGs, E2F_only_bound), degcount(allDEGs, Ebox_only_bound), degcount(allDEGs, Both_bound), degcount(allDEGs, Neither_bound), degcount(allDEGs, E2F_only_unbound), degcount(allDEGs, Ebox_only_unbound), degcount(allDEGs, Both_unbound), degcount(allDEGs, Neither_unbound))
+
+
+motifdf$Percent_plot_DEG <- ifelse(motifdf$Kdm5c_binding == "Bound", motifdf$Count_DEG/sum(subset(motifdf, motifdf$Kdm5c_binding == "Bound")$Count_DEG) * 100, ifelse(motifdf$Kdm5c_binding == "Unbound", motifdf$Count_DEG/sum(subset(motifdf, motifdf$Kdm5c_binding == "Unbound")$Count_DEG) * 100, 0))
+
+motifdf$Percent_DEG <- as.integer(round(motifdf$Percent_plot_DEG))
+
+plots[[2]] <- motifbar(motifdf, "Percent_DEG", "Germline DEGs")
+
+motifdf
 
 library("gridExtra")
-ggsave(snakemake@output[[1]], grid.arrange(grobs = plots, ncol = 2), width = 8, height = 3.5)
+ggsave(snakemake@output[[1]], grid.arrange(grobs = plots, ncol = 2), width = 8, height = 4)
 
 
 
