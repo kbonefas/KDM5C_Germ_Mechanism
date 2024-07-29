@@ -161,7 +161,7 @@ print("all germ status")
 print(head(germ))
 
 #save table
-write.table(germ, snakemake@output[[8]], sep = "\t", row.names = FALSE, quote = FALSE)
+write.table(germ, snakemake@output[[8]], sep = ",", row.names = FALSE, quote = FALSE)
 #save list of genes for HOMER
 write.table(subset(germ, KDM5C_binding == "Bound")[,"SYMBOL"], snakemake@output[[9]], sep = "\t", col.names = FALSE, row.names = FALSE, quote = FALSE)
 write.table(subset(germ, KDM5C_binding == "Unbound")[,"SYMBOL"], snakemake@output[[10]], sep = "\t", col.names = FALSE, row.names = FALSE, quote = FALSE)
