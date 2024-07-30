@@ -251,15 +251,24 @@ rule KDM5C_chip_HOMER:
 		"results/DESeq2/germDEGs/germDEGs_hip5cKO.csv",
 		"results/DESeq2/germDEGs/germDEGs_EpiLC_XY5cKO.csv"
 
-		#"data/raw/HOMER/E2F_instances_findMotifs_KDM5C_bound_germDEGS.txt",
-		#"data/raw/HOMER/E2F_instances_findMotifs_KDM5C_unbound_germDEGS.txt",
-		#"data/raw/HOMER/Ebox_instances_findMotifs_KDM5C_bound_germDEGS.txt",
-		#"data/raw/HOMER/Ebox_instances_findMotifs_KDM5C_unbound_germDEGS.txt"
-
 	output:
 		"results/figure_pieces/KDM5C_ChIPseq_HOMER_e2febox_perc_bar.pdf"
 	script:
 		"code/ChIPseq_KDM5C_HOMER.R"
+
+rule KDM5C_chip_Stra8:
+	input:
+		"results/KDM5C_binding_allgerm_EpiLC.csv",
+		"data/raw/Kojima_eLife_Stra8_bound_genes.csv", #from https://elifesciences.org/articles/43738 
+		"results/DESeq2/germDEGs/germDEGs_amy5cKO.csv",
+		"results/DESeq2/germDEGs/germDEGs_hip5cKO.csv",
+		"results/DESeq2/germDEGs/germDEGs_EpiLC_XY5cKO.csv"
+
+	output:
+		"results/figure_pieces/KDM5C_ChIPseq_Stra8_targets.pdf",
+		"results/figure_pieces/KDM5C_ChIPseq_Stra8_CpG_island.pdf"
+	script:
+		"code/ChIPseq_KDM5C_Stra8.R"
 
 ###################### Figure 5: KDM5C substrate and DNAme ############################
 rule GeneTSS:
