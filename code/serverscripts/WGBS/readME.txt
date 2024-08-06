@@ -11,3 +11,7 @@
 5) Run bismark to generate the bam alignment (bismark_align.py)
 
 6) Deduplicate and merge the bam files (bismark_deduplicate.py)
+
+7) Sort and index the bamfiles (sort_bams.py)
+
+8) Read bam files into R and get differentially methylated CpGs (methylKit_diff.R)
