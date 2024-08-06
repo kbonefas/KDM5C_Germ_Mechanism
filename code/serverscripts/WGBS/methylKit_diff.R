@@ -38,10 +38,16 @@ for (i in cells){
     # print("IDs as list")
     # print(ID_list)
     
-    #get the sample treatment (first two characters) - vector format
-    treat <- substr(ID, start = 1, stop = 2)
+    #get the sample genotype (first two characters) - vector format
+    geno <- substr(ID, start = 1, stop = 2)
     # print("treatments")
     # print(treat)
+    # treatment is 1 or 0, 1 for KO, 0 for WT
+    treat <- c()
+    for (g in 1:length(geno)) {
+        treat[g] <- ifelse(geno[g] == "KO", 1, ifelse(geno[g] == "WT", 0, NA))
+    }
+    print(treat)
 
     #samples in list format
     samp_list <- list()
