@@ -105,7 +105,7 @@ xbox_df
 
 xbox_df$Xbox_status <- factor(xbox_df$Xbox_status, level = c("X-box", "No"))
 
-q <- ggbarplot(xbox_df, "Kdm5c_binding", "Percent", fill = "Xbox_status", color = "Xbox_status", palette = c("royalblue1", "royalblue4"),
+q <- ggbarplot(xbox_df, "Kdm5c_binding", "Percent", fill = "Xbox_status", color = "Xbox_status", palette = c("steelblue1", "steelblue4"),
 title = "All germline genes", label = TRUE, lab.col = "black", lab.vjust = 1, xlab = "KDM5C Binding at Promoter", ylab = "% of genes", orientation = "vert") 
 
 ggsave(snakemake@output[[2]], q, width = 4, height = 4)
