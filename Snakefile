@@ -245,11 +245,8 @@ rule KDM5C_chip_HOMER:
 		"data/raw/HOMER/Ebox_instances_findMotifs_KDM5C_bound_allgerm.txt",
 		"data/raw/HOMER/E2F_instances_findMotifs_KDM5C_unbound_allgerm.txt",
 		"data/raw/HOMER/Ebox_instances_findMotifs_KDM5C_unbound_allgerm.txt",
-
-		#subset for DEGs
-		"results/DESeq2/germDEGs/germDEGs_amy5cKO.csv",
-		"results/DESeq2/germDEGs/germDEGs_hip5cKO.csv",
-		"results/DESeq2/germDEGs/germDEGs_EpiLC_XY5cKO.csv"
+		"data/raw/HOMER/xbox_instances_findMotifs_KDM5C_bound_allgerm.txt",
+		"data/raw/HOMER/xbox_instances_findMotifs_KDM5C_unbound_allgerm.txt"
 
 	output:
 		"results/figure_pieces/KDM5C_ChIPseq_HOMER_e2febox_perc_bar.pdf"

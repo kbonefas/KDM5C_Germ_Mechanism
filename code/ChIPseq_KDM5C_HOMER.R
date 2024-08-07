@@ -1,61 +1,4 @@
-# 24.07.20 - plot the e2f and ebox motifs for kdm5c-bound and unbound germline genes
-
-#read in everything
-#make a dataframe that is bound and unbound together
-#plot the data
-
-
-# #read in the HOMER output files for the histogram
-
-# motifs <- c("E2F", "E-box")
-# genes <- c("all germline genes", "germline DEGs")
-
-
-# #function to format the HOMER output
-# formatdf <- function(df){
-# 	colnames(df) <- c("Distance_Center", "Total_Sites", "Pos_Sites", "Neg_Sites", "A_Freq", "C_Freq","G_Freq", "T_Freq")
-# 	phist <- data.frame("TSS_Distance" = rep(df$Distance_Center, 2), "Sites_per_bp" = c(df$Pos_Sites, df$Neg_Sites), "Type" = c(rep("+ Sites", length(df$Pos_Sites)), rep("- Sites", length(df$Neg_Sites))))
-# 	return(phist)
-# }
-
-
-# library('ggpubr')
-# histplot <- function(df, motif, n){
-# 	p <- ggline(phist, "TSS_Distance", "Sites_per_bp", color = "Type", shape = 46, title = paste(motif, "binding sites")) + geom_vline(xintercept = 0, linetype = "dashed", color = "gray")
-# 	ggsave(snakemake@output[[n]], ggpar(p, legend = "bottom"), width = 6, height = 3.5)
-# }
-
-# #graphing bound and unbound on same graph
-# histplot_tog <- function(df, title, n){
-# 	p <- ggline(df, "TSS_Distance", "Sites_per_bp", color = "Bound_Type", shape = 46, title =  title) + geom_vline(xintercept = 0, linetype = "dashed", color = "gray")
-# 	ggsave(snakemake@output[[n]], ggpar(p, legend = "right"), width = 9, height = 3.5)
-# }
-
-
-# makemotifs <- function(motif){
-# 	offset <- ifelse(motif == "E2F", 0, ifelse(motif == "E-box", 4, "whoop"))
-
-# 	for(i in 1:length(genes)){
-# 		bound <- formatdf(read.csv(snakemake@input[[i+offset]], sep = "\t"))
-# 		bound$binding <- "KDM5C bound"
-# 		unbound <- formatdf(read.csv(snakemake@input[[i+length(genes)+offset]], sep = "\t"))
-# 		unbound$binding <- "KDM5C unbound"
-
-# 		tog <- rbind(bound,unbound)
-# 		tog$Bound_Type <- paste(tog$binding, motif, tog$Type)
-# 		print(head(tog))
-
-# 		TITLE <- paste(motif, "binding sites at", genes[i])
-# 		histplot_tog(tog, TITLE, i+(offset/length(genes)))
-# 	}
-
-# }
-
-# for(m in motifs){
-# 	makemotifs(m)
-# }
-
-# 24.07.28 - percentage of promoters with e2f and ebox  motifs
+# 24.07.28 - percentage of KDM5C-bound and unbound promoters with e2f and ebox motifs
 
 #read in the KDM5C bound genes
 germ_KDM5C <- read.csv(snakemake@input[[1]], sep = ",")
@@ -124,46 +67,45 @@ motifdf$Percent <-as.integer(round(motifdf$Percent_plot))
 #save the plots in an empty list
 plots <- list()
 
+library(wesanderson)
+
 #set the plotting order
+
 motifbar <- function(df, colum, TITLE){
 	df$Motifs <- factor(df$Motifs, levels = c("E2F", "Ebox", "Both", "Neither"))
 	library("ggpubr")
 	q <- ggbarplot(df, "Kdm5c_binding", colum,
-	fill = "Motifs", color = "Motifs", palette = c("E2F" = "forestgreen", "Ebox" = "blue3", "Both" = "goldenrod2", "Neither" = "gray17"),
+	fill = "Motifs", color = "Motifs", palette = wes_palette("GrandBudapest1", 4),
 	title = TITLE, label = TRUE, lab.col = "black", lab.vjust = 1, xlab = "KDM5C Binding at Promoter", ylab = "% of genes with motif", orientation = "vert") 
 
 	return(q)
 }
 
-plots[[1]] <- motifbar(motifdf, "Percent", "All germline genes")
 
-###plot the DEGs
-#get the DEG list
-amyDEGs <- read.csv(snakemake@input[[6]], sep = ",")$ENSEMBL
-hipDEGs <- read.csv(snakemake@input[[7]], sep = ",")$ENSEMBL
-EpiLCDEGs <- read.csv(snakemake@input[[8]], sep = ",")$ENSEMBL
-
-allDEGs <- unique(c(amyDEGs, hipDEGs, EpiLCDEGs))
-degcount <- function(degs, compare){
-	length(allDEGs[allDEGs %in% compare])
-}
-
-motifdf$Count_DEG <- c(degcount(allDEGs, E2F_only_bound), degcount(allDEGs, Ebox_only_bound), degcount(allDEGs, Both_bound), degcount(allDEGs, Neither_bound), degcount(allDEGs, E2F_only_unbound), degcount(allDEGs, Ebox_only_unbound), degcount(allDEGs, Both_unbound), degcount(allDEGs, Neither_unbound))
+ggsave(snakemake@output[[1]], motifbar(motifdf, "Percent", "E2F and Ebox motifs - All germline genes"), width = 4, height = 4)
 
 
-motifdf$Percent_plot_DEG <- ifelse(motifdf$Kdm5c_binding == "Bound", motifdf$Count_DEG/sum(subset(motifdf, motifdf$Kdm5c_binding == "Bound")$Count_DEG) * 100, ifelse(motifdf$Kdm5c_binding == "Unbound", motifdf$Count_DEG/sum(subset(motifdf, motifdf$Kdm5c_binding == "Unbound")$Count_DEG) * 100, 0))
+#X-box motifs
+xbox_df <- data.frame(Kdm5c_binding = rep(c("Bound", "Unbound"), 2), Xbox_status = c(rep("Xbox",2), rep("No", 2)))
 
-motifdf$Percent_DEG <- as.integer(round(motifdf$Percent_plot_DEG))
+#####
+xbox_df
+xbox_KDM5C_bound <- unique(read.csv(snakemake@input[[6]], sep = "\t")$Ensembl)
+xbox_KDM5C_unbound <- unique(read.csv(snakemake@input[[7]], sep = "\t")$Ensembl)
 
-plots[[2]] <- motifbar(motifdf, "Percent_DEG", "Germline DEGs")
+No_KDM5C_bound <- germ_KDM5C_bound[!germ_KDM5C_bound %in% xbox_bound]
+No_KDM5C_unbound <- germ_KDM5C_unbound[!germ_KDM5C_unbound %in% xbox_unbound]
 
-motifdf
+xbox_df$Count <- c(length(xbox_bound), length(xbox_unbound), length(No_KDM5C_bound), length(No_KDM5C_unbound))
 
-library("gridExtra")
-ggsave(snakemake@output[[1]], grid.arrange(grobs = plots, ncol = 2), width = 8, height = 4)
+xbox_df$Percent_plot <- ifelse(xbox_df$Kdm5c_binding == "Bound", xbox_df$Count/sum(subset(xbox_df, xbox_df$Kdm5c_binding == "Bound")$Count) * 100, ifelse(xbox_df$Kdm5c_binding == "Unbound", xbox_df$Count/sum(subset(xbox_df, xbox_df$Kdm5c_binding == "Unbound")$Count) * 100, 0))
+
+xbox_df$Percent <- as.integer(round(xbox_df$Percent_plot))
+
+q <- ggbarplot(xbox_df, "Kdm5c_binding", "Percent", fill = "Xbox_status", color = "Xbox_status", palette = c("royalblue1", "royalblue4"),
+title = "X-box motifs - All germline genes", label = TRUE, lab.col = "black", lab.vjust = 1, xlab = "KDM5C Binding at Promoter", ylab = "% of genes", orientation = "vert") 
+
+ggsave(snakemake@output[[1]], q, width = 4, height = 4)
 
 
-
-# e2finst <- read.csv(snakemake@input[[9]], sep = "\t")
-# print(head(e2finst))
 
