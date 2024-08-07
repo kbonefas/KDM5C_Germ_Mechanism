@@ -249,7 +249,8 @@ rule KDM5C_chip_HOMER:
 		"data/raw/HOMER/xbox_instances_findMotifs_KDM5C_unbound_allgerm.txt"
 
 	output:
-		"results/figure_pieces/KDM5C_ChIPseq_HOMER_e2febox_perc_bar.pdf"
+		"results/figure_pieces/KDM5C_ChIPseq_HOMER_e2febox_perc_bar.pdf",
+		"results/figure_pieces/KDM5C_ChIPseq_HOMER_xbox_perc_bar.pdf"
 	script:
 		"code/ChIPseq_KDM5C_HOMER.R"
 

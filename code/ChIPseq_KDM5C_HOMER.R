@@ -1,4 +1,5 @@
 # 24.07.28 - percentage of KDM5C-bound and unbound promoters with e2f and ebox motifs
+library("ggpubr")
 
 #read in the KDM5C bound genes
 germ_KDM5C <- read.csv(snakemake@input[[1]], sep = ",")
@@ -20,7 +21,7 @@ print(head(germ_KDM5C))
 	#Motifs
 	#Percentage
 
-motifdf <- data.frame(Kdm5c_binding = c(rep("Bound", 4), rep("Unbound", 4)), Motifs = c("E2F", "Ebox", "Both", "Neither"))
+motifdf <- data.frame(Kdm5c_binding = c(rep("Bound", 4), rep("Unbound", 4)), Motifs = c("E2F", "E-box", "Both", "Neither"))
 print(motifdf)
 
 
@@ -72,40 +73,42 @@ library(wesanderson)
 #set the plotting order
 
 motifbar <- function(df, colum, TITLE){
-	df$Motifs <- factor(df$Motifs, levels = c("E2F", "Ebox", "Both", "Neither"))
-	library("ggpubr")
+	df$Motifs <- factor(df$Motifs, levels = c("E2F", "E-box", "Both", "Neither"))
 	q <- ggbarplot(df, "Kdm5c_binding", colum,
-	fill = "Motifs", color = "Motifs", palette = wes_palette("GrandBudapest1", 4),
+	fill = "Motifs", color = "Motifs", palette = wes_palette("GrandBudapest2", 4),
 	title = TITLE, label = TRUE, lab.col = "black", lab.vjust = 1, xlab = "KDM5C Binding at Promoter", ylab = "% of genes with motif", orientation = "vert") 
 
 	return(q)
 }
 
 
-ggsave(snakemake@output[[1]], motifbar(motifdf, "Percent", "E2F and Ebox motifs - All germline genes"), width = 4, height = 4)
+ggsave(snakemake@output[[1]], motifbar(motifdf, "Percent", "All germline genes"), width = 4, height = 4)
 
 
 #X-box motifs
-xbox_df <- data.frame(Kdm5c_binding = rep(c("Bound", "Unbound"), 2), Xbox_status = c(rep("Xbox",2), rep("No", 2)))
+xbox_df <- data.frame(Kdm5c_binding = rep(c("Bound", "Unbound"), 2), Xbox_status = c(rep("X-box",2), rep("No", 2)))
 
 #####
-xbox_df
 xbox_KDM5C_bound <- unique(read.csv(snakemake@input[[6]], sep = "\t")$Ensembl)
 xbox_KDM5C_unbound <- unique(read.csv(snakemake@input[[7]], sep = "\t")$Ensembl)
 
-No_KDM5C_bound <- germ_KDM5C_bound[!germ_KDM5C_bound %in% xbox_bound]
-No_KDM5C_unbound <- germ_KDM5C_unbound[!germ_KDM5C_unbound %in% xbox_unbound]
+No_KDM5C_bound <- germ_KDM5C_bound[!germ_KDM5C_bound %in% xbox_KDM5C_bound]
+No_KDM5C_unbound <- germ_KDM5C_unbound[!germ_KDM5C_unbound %in% xbox_KDM5C_unbound]
 
-xbox_df$Count <- c(length(xbox_bound), length(xbox_unbound), length(No_KDM5C_bound), length(No_KDM5C_unbound))
+xbox_df$Count <- c(length(xbox_KDM5C_bound), length(xbox_KDM5C_unbound), length(No_KDM5C_bound), length(No_KDM5C_unbound))
 
 xbox_df$Percent_plot <- ifelse(xbox_df$Kdm5c_binding == "Bound", xbox_df$Count/sum(subset(xbox_df, xbox_df$Kdm5c_binding == "Bound")$Count) * 100, ifelse(xbox_df$Kdm5c_binding == "Unbound", xbox_df$Count/sum(subset(xbox_df, xbox_df$Kdm5c_binding == "Unbound")$Count) * 100, 0))
 
 xbox_df$Percent <- as.integer(round(xbox_df$Percent_plot))
 
-q <- ggbarplot(xbox_df, "Kdm5c_binding", "Percent", fill = "Xbox_status", color = "Xbox_status", palette = c("royalblue1", "royalblue4"),
-title = "X-box motifs - All germline genes", label = TRUE, lab.col = "black", lab.vjust = 1, xlab = "KDM5C Binding at Promoter", ylab = "% of genes", orientation = "vert") 
+xbox_df
 
-ggsave(snakemake@output[[1]], q, width = 4, height = 4)
+xbox_df$Xbox_status <- factor(xbox_df$Xbox_status, level = c("X-box", "No"))
+
+q <- ggbarplot(xbox_df, "Kdm5c_binding", "Percent", fill = "Xbox_status", color = "Xbox_status", palette = c("royalblue1", "royalblue4"),
+title = "All germline genes", label = TRUE, lab.col = "black", lab.vjust = 1, xlab = "KDM5C Binding at Promoter", ylab = "% of genes", orientation = "vert") 
+
+ggsave(snakemake@output[[2]], q, width = 4, height = 4)
 
 
 
