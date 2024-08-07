@@ -1,0 +1,1 @@
+cmd = ../data/raw/KDM5C_unbound_germDEGs_HOMER.txt mouse ../results/MotifsCount/ -find ../../HOMER/motifs/xbox.motif
