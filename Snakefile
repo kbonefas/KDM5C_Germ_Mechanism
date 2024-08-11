@@ -300,7 +300,16 @@ rule KDM5C_ESCtoEpiLC:
 	script:
 		"code/KDM5C_ESCtoEpiLC.R"
 
+############## KDM5C WGBS ######################
 
+#make the bed file for calculating methylation changes
+rule WGBS_germ_regions:
+	input:
+		"data/processed/germGENES20.csv"
+	output:
+		"data/processed/TSS_window_500bp_all_germ.bed"
+	script:
+		"code/WGBS_germ_regions.R"
 
 ###################### Render the manuscript ############################
 rule write_paper:
