@@ -254,6 +254,15 @@ rule KDM5C_chip_HOMER:
 	script:
 		"code/ChIPseq_KDM5C_HOMER.R"
 
+rule KDM5C_ChIP_Rfx2:
+	input:
+		"data/raw/EpiLC_gene_TPM.txt",
+		"data/raw/SampleInfo_EpiLC.csv"
+	output:
+		"results/figure_pieces/EpiLC_Rfx2_mRNA.pdf"
+	script:
+		"code/EpiLC_Rfx2.R"
+
 rule KDM5C_chip_Stra8:
 	input:
 		"results/KDM5C_binding_allgerm_EpiLC.csv",
