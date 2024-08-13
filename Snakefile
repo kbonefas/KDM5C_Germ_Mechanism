@@ -245,16 +245,23 @@ rule KDM5C_chip_HOMER:
 		"data/raw/HOMER/Ebox_instances_findMotifs_KDM5C_bound_allgerm.txt",
 		"data/raw/HOMER/E2F_instances_findMotifs_KDM5C_unbound_allgerm.txt",
 		"data/raw/HOMER/Ebox_instances_findMotifs_KDM5C_unbound_allgerm.txt",
-
-		#subset for DEGs
-		"results/DESeq2/germDEGs/germDEGs_amy5cKO.csv",
-		"results/DESeq2/germDEGs/germDEGs_hip5cKO.csv",
-		"results/DESeq2/germDEGs/germDEGs_EpiLC_XY5cKO.csv"
+		"data/raw/HOMER/xbox_instances_findMotifs_KDM5C_bound_allgerm.txt",
+		"data/raw/HOMER/xbox_instances_findMotifs_KDM5C_unbound_allgerm.txt"
 
 	output:
-		"results/figure_pieces/KDM5C_ChIPseq_HOMER_e2febox_perc_bar.pdf"
+		"results/figure_pieces/KDM5C_ChIPseq_HOMER_e2febox_perc_bar.pdf",
+		"results/figure_pieces/KDM5C_ChIPseq_HOMER_xbox_perc_bar.pdf"
 	script:
 		"code/ChIPseq_KDM5C_HOMER.R"
+
+rule KDM5C_ChIP_Rfx2:
+	input:
+		"data/raw/EpiLC_gene_TPM.txt",
+		"data/raw/SampleInfo_EpiLC.csv"
+	output:
+		"results/figure_pieces/EpiLC_Rfx2_mRNA.pdf"
+	script:
+		"code/EpiLC_Rfx2.R"
 
 rule KDM5C_chip_Stra8:
 	input:
@@ -302,7 +309,16 @@ rule KDM5C_ESCtoEpiLC:
 	script:
 		"code/KDM5C_ESCtoEpiLC.R"
 
+############## KDM5C WGBS ######################
 
+#make the bed file for calculating methylation changes
+rule WGBS_germ_regions:
+	input:
+		"data/processed/germGENES20.csv"
+	output:
+		"data/processed/TSS_window_500bp_all_germ.bed"
+	script:
+		"code/WGBS_germ_regions.R"
 
 ###################### Render the manuscript ############################
 rule write_paper:
