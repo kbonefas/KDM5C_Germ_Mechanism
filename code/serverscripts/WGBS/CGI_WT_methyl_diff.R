@@ -12,16 +12,12 @@ library(genomation)
 
 #regional summary analysis
 library(ChIPseeker)
-library(TxDb.Mmusculus.UCSC.mm10.knownGene)
-txdb <- TxDb.Mmusculus.UCSC.mm10.knownGene
-library(ggplot2)
 library(dplyr)
 
 #need granges as input for the bedfile
 #read in the bed file of CGIs
 bed <- readPeakFile("../data/raw/CGI_UCSC.bed")
 print(head(bed))
-
 
 
 #we want to compare WT and 5CKO for ESCs and EpiLCs
@@ -100,7 +96,7 @@ for (i in cells){
   plotTargetAnnotation(diffCpGann, main = "Differential Methylation Annotation")
   q <- plotTargetAnnotation(diffCpGann, main = "Differential Methylation Annotation")
   
-  pdf(paste0("../results/methylKit/WGBS_", i, "CGI_hypo_summary.pdf"), p, width = 4, height = 4)
+  pdf(paste0("../results/methylKit/WGBS_", i, "CGI_hypo_summary.pdf"), q, width = 4, height = 4)
   dev.off()
   
 
