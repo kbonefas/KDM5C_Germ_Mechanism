@@ -320,6 +320,18 @@ rule WGBS_germ_regions:
 	script:
 		"code/WGBS_germ_regions.R"
 
+#Find how many germline genes have CGIs at promoter
+rule Germ_CGI:
+	input:
+		"data/raw/CGI_UCSC.bed",
+		"results/KDM5C_binding_allgerm_EpiLC.csv"
+	output:
+		"data/processed/CGI_UCSC_all_germ.bed",
+		"results/KDM5C_binding_allgerm_CGI.csv",
+		"results/figure_pieces/WGBS_CGI_bar.pdf"
+	script:
+		"code/WGBS_germ_CGI.R"
+
 ###################### Render the manuscript ############################
 rule write_paper:
 	script:
