@@ -1,6 +1,7 @@
 # 24.08.08 DNA methylation analysis of bismark bam files at CGI using methylKit
 #https://www.bioconductor.org/packages/release/bioc/vignettes/methylKit/inst/doc/methylKit.html
 #https://nbis-workshop-epigenomics.readthedocs.io/en/latest/content/tutorials/methylationSeq/Seq_Tutorial.html
+#https://compgenomr.github.io/book/extracting-interesting-regions-differential-methylation-and-segmentation.html
 #run from command line by 'Rscript [nameofscript].R'
 
 library(methylKit)
@@ -8,17 +9,23 @@ library(ggplot2)
 library(genomation)
 
 
+
+#regional summary analysis
+library(ChIPseeker)
+library(TxDb.Mmusculus.UCSC.mm10.knownGene)
+txdb <- TxDb.Mmusculus.UCSC.mm10.knownGene
+library(ggplot2)
+library(dplyr)
+
+#need granges as input for the bedfile
+#read in the bed file of CGIs
+bed <- readPeakFile("../data/raw/CGI_UCSC.bed")
+print(head(bed))
+
+
+
 #we want to compare WT and 5CKO for ESCs and EpiLCs
 cells <- c("esc", "EpiLC")
-
-
-#read in the methylation differences results from the bam files using methRead
-#   #samples in list format
-#   samp_list <- list()
-#   for (s in 1:length(sampCell)){
-#     samp_list[[s]] <- sampCell[s]
-#   }
-
 
 
 for (i in cells){
@@ -40,6 +47,9 @@ for (i in cells){
     ID_list[[d]] <- ID[d]
   }
 
+  print("sample ID_list")
+  print(ID_list)
+
 
   #get the sample genotype (first two characters) - vector format
   geno <- substr(ID, start = 1, stop = 2)
@@ -52,31 +62,35 @@ for (i in cells){
   
   #read in the files
   myobj <- methRead(location = samp_list, sample.id = ID_list, assembly="mm10", treatment = treat,
-                   context="CpG", mincov = 10)
+                   context="CpG", mincov = 5)
   #filter based on read coverage
-  myobj <- filterByCoverage(myobj,lo.count=10,lo.perc=NULL,
+  myobj <- filterByCoverage(myobj,lo.count=5,lo.perc=NULL,
                                   hi.count=NULL,hi.perc=99.9)
   
-  #combine together, detrand because its cpg
-  meth <- unite(myobj, destrand = TRUE)
-  print(head(meth))
-  
-  PCASamples(meth)
-  p <- PCASamples(meth)
-  
-  pdf(paste0("../results/methylKit/PCA_WGBS_", i, ".pdf"), p, width = 4, height = 4)
-  dev.off()
-  
-  #calculate methylation differences
-  myDiff <- calculateDiffMeth(meth, mc.cores = 8)
-  
+
+  #get the methylation for cgis
+  regions <- regionCounts(myobj,bed)
+  print(head(regions))
+
+  print(head(regions[[1]]))
+
+  write.table(regions[[1]], paste0("../results/methylKit/regionCounts_CGI_", i, ".csv"), sep = ',', row.names = FALSE, quote = FALSE)
+
+
+  #pool the samples for calculating the methylation differences
+    #unite the samples
+  meth <- methylKit::unite(myobj, destrand=FALSE)
+  pooled.meth <- pool(meth, sample.ids=c("KO","WT"))
+  dm.pooledf <- calculateDiffMeth(pooled.meth, mc.cores = 8)
+
+
   #all of the bases
-  myDiff10p <- getMethylDiff(myDiff,difference=10,qvalue=0.1)
+  myDiff10p <- getMethylDiff(dm.pooledf, difference=10, qvalue=0.01)
     #make a bedgraph file of the differences
-  bedgraph(myDiff10p, col.name = "meth.diff", file.name = paste0("../results/methylKit/diff_cpg_10p_", i,".bed"))
+  bedgraph(myDiff10p, col.name = "meth.diff", file.name = paste0("../results/methylKit/diff_cpg_10p_pooled_", i,".bed"))
   
   #just hypo methylated
-  myDiff10p.hypo <- getMethylDiff(myDiff,difference=10,qvalue=0.1,type="hypo")
+  myDiff10p.hypo <- getMethylDiff(myDiff,difference=10,qvalue=0.01,type="hypo")
   
   
   #get the singificantly different cpgs that fall within CGIs
@@ -98,7 +112,7 @@ for (i in cells){
   #get the list of differentially methylated CGIs
   myobj_islands <- regionCounts(myobj, cpg_anot$CpGi)
   # Filter the summarized counts by coverage
-  myobj_islands_filt <- filterByCoverage(myobj_islands, lo.count=10, lo.perc=NULL, hi.count=NULL, hi.perc=99.9)
+  myobj_islands_filt <- filterByCoverage(myobj_islands, lo.count=5, lo.perc=NULL, hi.count=NULL, hi.perc=99.9)
   # Perform simple normalization 
   myobj_islands_filt_norm <- normalizeCoverage(myobj_islands_filt, method = "median")
   # Merge the samples again
@@ -109,7 +123,7 @@ for (i in cells){
   # Rank by significance
   myDiff_islands <- myDiff_islands[order(myDiff_islands$qvalue),]
   # get all differentially methylated CpG Islands
-  myDiff_islands_10p <- getMethylDiff(myDiff_islands,difference=10,qvalue=0.1)
+  myDiff_islands_10p <- getMethylDiff(myDiff_islands, difference=10, qvalue=0.01)
   
   write.table(myDiff_islands_10p, paste0("../results/methylKit/WGBS_CGI_10_", i, ".csv"), sep = ',', row.names = FALSE, quote = FALSE)
   
