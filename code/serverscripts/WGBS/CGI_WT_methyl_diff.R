@@ -89,17 +89,13 @@ for (i in cells){
     #make a bedgraph file of the differences
   bedgraph(myDiff10p, col.name = "meth.diff", file.name = paste0("../results/methylKit/diff_cpg_10p_pooled_", i,".bed"))
   
-  #just hypo methylated
-  myDiff10p.hypo <- getMethylDiff(myDiff,difference=10,qvalue=0.01,type="hypo")
-  
   
   #get the singificantly different cpgs that fall within CGIs
   cpg_anot <- readFeatureFlank("../data/raw/CGI_UCSC.bed", feature.flank.name = c("CpGi", "shores"), flank=2000)
   print(head(cpg_anot))  
+    
   
-  
-  
-  diffCpGann <- annotateWithFeatureFlank(as(myDiff10p.hypo,"GRanges"), feature = cpg_anot$CpGi, flank = cpg_anot$shores, feature.name = "CpGi", flank.name = "shores")
+  diffCpGann <- annotateWithFeatureFlank(as(myDiff10p,"GRanges"), feature = cpg_anot$CpGi, flank = cpg_anot$shores, feature.name = "CpGi", flank.name = "shores")
 
   plotTargetAnnotation(diffCpGann, main = "Differential Methylation Annotation")
   q <- plotTargetAnnotation(diffCpGann, main = "Differential Methylation Annotation")
