@@ -177,27 +177,35 @@ Many germline-specific genes are suppressed by the transcription factor heterodi
 
 Finally, we compared KDM5C binding at the promoters of RNA-seq DEGs to determine if the germline genes transcribed in _Kdm5c_-KO cells are direct targets of KDM5C (Figure 5J-L). In EpiLCs, KDM5C was bound to about one third of EpiLC-specific and brain-specific germline DEG promoters (EpiLC only: `r 18/50*100`%, Brain only: `r signif(7/21*100,3)`%). Again, we did not observe any KDM5C binding at germline gene promoters in PNCs, even for brain-specific DEGs. Some notable differences in KDM5C binding for EpiLC-specific DEGs included _Dazl_ and _Stra8_, two key drivers of germline identity discussed above. Although both mRNAs are expressed in _Kdm5c_-KO EpiLCs, KDM5C is only bound to _Dazl_'s promoter and not _Stra8_'s in EpiLCs (Figure 5K). In contrast to the unique DEGs, 3 out of the 4 genes dysregulated in both the brain and EpiLCs are bound by KDM5C around the TSS. Altogether, this suggests KDM5C decommssions a subset of germline genes in EpiLCs but is no longer recruited to germline gene promoters in neurons. Furthermore, the majority of germline mRNAs expressed in _Kdm5c_-KO cells are dysregulated independent of direct KDM5C recruitment to their promoters. 
 
-## KDM5C promotes _de novo_ DNA methylation at germline genes
-- if there are differences, say at germline gene CpG islands
+## KDM5C promotes _de novo_ DNA methylation at germline genes (if there are differences, say at germline gene CpG islands)
 
-In the early embryo, germline gene promoters are initially silenced by repressive histone modifications, including histone 2A lysine 119 monoubiquitination (H2AK119ub1) and histone 3 lysine 9 trimethylation (H3K9me3), and are then silenced long-term via DNA CpG methylation (CpGme)[@borgelTargetsDynamicsPromoter2010; @endohPCGF6PRC1SuppressesPremature2017; @liuPolycombGroupProtein2020; @mochizukiRepressionGermlineGenes2021]. Our results above suggest KDM5C also acts during this time period, however how KDM5C interacts with other germline gene silencing mechanism is currently unclear. KDM5C is generally thought to supress transcription through erasure of histone 3 lysine 4 di- and trimethylation (H3K4me2/3)[@iwaseXLinkedMentalRetardation2007]. However, KDM5C's catalytic activity was recently shown to not be required for suppressing _Dazl_ in undifferentiated ESCs[@guptaGenomewideScreenReveals2023]. Since H3K4me3 impedes _de novo_ CpGme placement[@otaniStructuralBasisRecognition2009; @guoStructuralInsightAutoinhibition2015], KDM5C's catalytic activity may instead be required for CpGme-mediated, long-term silencing of germline genes. In support of this, CpGme is markedly reduced at two germline gene promoters in the _Kdm5c_-KO adult hippocampus[@scandagliaLossKdm5cCauses2017]. Based on these observations, we hypothesized KDM5C erases H3K4me3 to promote the initial placement of CpGme at germline gene promoters in EpiLCs. 
+In the early embryo, germline gene promoters are initially decorated with repressive histone modifications and are then silenced long-term via DNA CpG methylation (CpGme)[@borgelTargetsDynamicsPromoter2010; @endohPCGF6PRC1SuppressesPremature2017; @liuPolycombGroupProtein2020; @mochizukiRepressionGermlineGenes2021]. Our results above indicate KDM5C also acts at germline gene promoters during this time period. However, how KDM5C interacts with other germline gene silencing mechanisms is currently unclear. KDM5C is generally thought to supress transcription through erasure of histone 3 lysine 4 di- and trimethylation (H3K4me2/3)[@iwaseXLinkedMentalRetardation2007], yet KDM5C's catalytic activity was recently shown to be dispensible for suppressing _Dazl_ in undifferentiated ESCs[@guptaGenomewideScreenReveals2023]. Since H3K4me3 impedes _de novo_ CpGme placement[@otaniStructuralBasisRecognition2009; @guoStructuralInsightAutoinhibition2015], KDM5C's catalytic activity may instead be required later in development for long-term silencing of germline genes. In support of this, CpGme is markedly reduced at two germline gene promoters in the _Kdm5c_-KO adult hippocampus[@scandagliaLossKdm5cCauses2017]. 
 
-To test this hypothesis, we first characterized KDM5C's substrates, histone 3 lysine 4 di- and trimethylation (H3K4me2/3) in our previously published ChIP-seq datasets of the wild type and _Kdm5c_-KO amygdala[@vallianatosMutuallySuppressiveRoles2020] and EpiLCs[@samantaActivationXistEvolutionarily2022]. In congruence with previous work in the _Kdm5c_-KO hippocampus[@scandagliaLossKdm5cCauses2017], we observed aberrant accumulation of H3K4me3 around the transcription start site (TSS) of germline genes in the _Kdm5c_-KO amygdala (Figure 5A). We additionally found a marked increase in H3K4me2 around the TSS of germline genes in _Kdm5c_-KO EpiLCs (Figure 5B). 
+Based on the above observations, we hypothesized KDM5C erases H3K4me3 to promote the initial placement of CpGme at germline gene promoters in EpiLCs. To test this hypothesis, we first characterized KDM5C's substrates, histone 3 lysine 4 di- and trimethylation (H3K4me2/3) in our previously published ChIP-seq datasets of the wild type and _Kdm5c_-KO amygdala[@vallianatosMutuallySuppressiveRoles2020] and EpiLCs[@samantaActivationXistEvolutionarily2022]. In congruence with previous work in the _Kdm5c_-KO hippocampus[@scandagliaLossKdm5cCauses2017], we observed aberrant accumulation of H3K4me3 around the transcription start site (TSS) of germline genes in the _Kdm5c_-KO amygdala (Figure 6A). We additionally found a marked increase in H3K4me2 around the TSS of germline genes in _Kdm5c_-KO EpiLCs (Figure 6B). 
 
-We then evaluated KDM5C's role in germline gene silencing during ESC to EpiLC differentiation. We first characterized KDM5C's mRNA and protein expression at 0, 24, and 48 hours of differentiation (Figure 5C). While _Kdm5c_ mRNA steadily decreased from 0 to 48 hours of diferentiation (Figure 5D), KDM5C protein initially increased from 0 to 24 hours but then decreased to near knockout levels by 48 hours (Figure 5E). 
+We then evaluated KDM5C's role in germline gene silencing during ESC to EpiLC differentiation. We first characterized KDM5C's mRNA and protein expression at 0, 24, and 48 hours of differentiation into EpiLCs (Figure 6C). While _Kdm5c_ mRNA steadily decreased from 0 to 48 hours of diferentiation (Figure 6D), KDM5C protein initially increased from 0 to 24 hours but then decreased to near knockout levels by 48 hours (Figure 6E). 
 
-- Germline genes are known to accumulate CpGme at (CGIs).
-	- What percentage of germline genes have CGIs
-- Do differential methylation analysis for WT ESCs to WT EpiLCs
-	- What percentage of germline genes significanty gain methylation (at CGI or at promoter)
-	- Out of the ones that gain methylation, which are significantly reduced
-	
-To determine KDM5C's role in the initial placement of DNA methylation at germline gene promoters, we perfomed whole genome bislufite sequencing (WGBS) in wild-type and _Kdm5c_-KO ESCs and 96 hour extended EpiLCs (exEpiLCs). Although wild-type cells accumulated high levels of DNA methylation at germline gene promoters over the course of ESCs to exEpiLC differentiation, DNA methylation was markedly reduced in _Kdm5c_-KO exEpiLCs (Figure 5F). 
+To determine KDM5C's role in the initial placement of DNA methylation at germline gene promoters, we perfomed whole genome bislufite sequencing (WGBS) in wild-type and _Kdm5c_-KO ESCs and 96 hour extended EpiLCs (exEpiLCs). 
 
-- discussion 
- - 	- However, CPG islands greatly detrmine KDM5C recruitment - KDM5C is known to be enriched at CGIs.)
+- Germline genes are known to accumulate CpGme at (CGIs) during the transition from naive to primed pluripotency.
+- We first identified the number of germline genes with CGIs neighboring their promoter.
+	- Found XXX% of germline genes had CGIs, XXX% of which were direct KDM5C targets in EpiLCs (Eulerr).
 
-- Altogether, this suggests KDM5C is dynamically regulated during ESC to EpiLC differentiation and promotes germline gene silencing via removal of H3K4me2/3 during early embryogenesis.
+- We then curated a list of germline genes that significantly gained CpGme in wild-type exEpiLCs compared to ESCs.
+	- Example gene bedgraph
+	- Majority of CGI germline genes?
+
+- Out of the CGI genes, which had significantly reduced CpGme in 5CKO (heatmap of % methylation)
+	- Highlight interesting genes affected vs unaffected by KDM5C (especially if same/different from E2F6, PRC1.6, Setdb1 targets)
+	- CGIs that never gain DNAme in WT
+	- Although wild-type cells accumulated high levels of DNA methylation at germline gene promoters over the course of ESCs to exEpiLC differentiation, DNA methylation was markedly reduced in _Kdm5c_-KO exEpiLCs (Figure 6F). 
+
+- Non-CGI germline genes, any significant changes at their promoter? (Heatmap again?)
+
+
+
+- Altogether, this suggests KDM5C is dynamically regulated during ESC to EpiLC differentiation and promotes germline gene silencing via DNA methylation during early embryogenesis.
+
 
 
 # Discussion
@@ -220,6 +228,9 @@ RNA-seq of epiblast-like cells (EpiLCs) revealed dysregulation of _Kdm5c_-KO tis
 	 - https://www.nature.com/articles/srep20435
 	 - https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4498915/
 	 - https://pubmed.ncbi.nlm.nih.gov/32725242/
+
+- However, CPG islands greatly detrmine KDM5C recruitment - KDM5C is previously known to be enriched at CGIs. CGIs not typcially methylated, germline genes exception
+
 
 We then globally characterized KDM5C binding at germline-enriched gene promoters through KDM5C ChIP-seq in EpiLCs and primary hippocampus and cortex neuron cultures (PNCs). 
 
