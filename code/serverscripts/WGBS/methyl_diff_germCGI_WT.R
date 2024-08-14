@@ -21,7 +21,7 @@ print(head(bed))
 
 
 #get list of WT files
-difffiles <- list.files(path = "../results/methylKit", pattern = "WT*_CpG.txt", full.names = TRUE)
+difffiles <- Sys.glob("../results/methylKit/WT*_CpG.txt")
 difffiles
 #make as a list
 samp_list <- list()
