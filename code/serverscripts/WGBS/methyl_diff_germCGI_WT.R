@@ -101,25 +101,23 @@ dev.off()
   
 
   
-  #get the list of differentially methylated CGIs
-  myobj_islands <- regionCounts(myobj, cpg_anot$CpGi)
-  # Filter the summarized counts by coverage
-  myobj_islands_filt <- filterByCoverage(myobj_islands, lo.count=5, lo.perc=NULL, hi.count=NULL, hi.perc=99.9)
-  # Perform simple normalization 
-  myobj_islands_filt_norm <- normalizeCoverage(myobj_islands_filt, method = "median")
-  # Merge the samples again
-  meth_islands <- unite(myobj_islands_filt_norm, destrand=TRUE)
+#get the list of differentially methylated CGIs
+myobj_islands <- regionCounts(myobj, cpg_anot$CpGi)
+# Filter the summarized counts by coverage
+myobj_islands_filt <- filterByCoverage(myobj_islands, lo.count=5, lo.perc=NULL, hi.count=NULL, hi.perc=99.9)
+# Perform simple normalization 
+myobj_islands_filt_norm <- normalizeCoverage(myobj_islands_filt, method = "median")
+# Merge the samples again
+meth_islands <- unite(myobj_islands_filt_norm, destrand=TRUE)
   
-  #differentially methylation for islands
-  myDiff_islands <- calculateDiffMeth(meth_islands)
+#differentially methylation for islands
+myDiff_islands <- calculateDiffMeth(meth_islands)
   # Rank by significance
-  myDiff_islands <- myDiff_islands[order(myDiff_islands$qvalue),]
+myDiff_islands <- myDiff_islands[order(myDiff_islands$qvalue),]
   # get all differentially methylated CpG Islands
-  myDiff_islands_10p <- getMethylDiff(myDiff_islands, difference=10, qvalue=0.01)
+myDiff_islands_10p <- getMethylDiff(myDiff_islands, difference=10, qvalue=0.01)
   
-  write.table(myDiff_islands_10p, paste0("../results/methylKit/WGBS_CGI_10_", i, ".csv"), sep = ',', row.names = FALSE, quote = FALSE)
+write.table(myDiff_islands_10p, paste0("../results/methylKit/WGBS_getmethyldiff_germCGI_10_WT_ESCvsEpiLC.csv"), sep = ',', row.names = FALSE, quote = FALSE)
   
 
-  
-}
 
