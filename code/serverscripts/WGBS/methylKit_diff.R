@@ -5,6 +5,14 @@
 library(methylKit)
 library(ggplot2)
 # library(stringr)
+library(ChIPseeker)
+library(dplyr)
+
+#need granges as input for the bedfile
+#read in the bed file of CGIs
+bed <- readPeakFile("../data/raw/CGI_UCSC.bed")
+print(head(bed))
+
 
 #read in the bam files
 bamfiles <- list.files(path = "../data/processed/BAM_dedup", pattern = "*.sorted.dedup.bam",
@@ -58,7 +66,7 @@ for (i in cells){
 
     #save the alignment into the correct list
     #When it's run and if you save the results you can then read the results in directly using methRead
-    mylists[[i]] <- processBismarkAln(location = samp_list, nolap = TRUE,
+    mylists[[i]] <- processBismarkAln(location = samp_list, nolap = TRUE, mincov = 5,
 		                    sample.id = ID_list, assembly="mm10", treatment = treat, 
                           read.context="CpG", save.folder="../results/methylKit")
     
@@ -68,20 +76,31 @@ for (i in cells){
 
 
 for (n in cells){
+	#get the methylation for cgis
+	regions <- regionCounts(mylists[[n]],bed)
+
+	united_regions <- unite(regions, destrand=FALSE)
+	print("united regions")
+	print(head(united_regions))
+
+	write.table(united_regions, paste0("../results/methylKit/regionCounts_CGI_5min_", n, ".csv"), sep = ',', row.names = FALSE, quote = FALSE)
+
+
     #combine methylation calls into one
     meth <- unite(mylists[[n]], destrand = TRUE)
     print(head(meth))
 
     #get the PCA plot
-    ggsave(paste0("../results/methylKit/PCA_WGBS_", n, ".pdf"), PCASamples(meth), width = 4, height = 4)
+    PCASamples(meth)
+	 
+	pooled.meth <- pool(meth, sample.ids=c("KO","WT"))
+	dm.pooledf <- calculateDiffMeth(pooled.meth, mc.cores = 8)
 
-    #calculate methylation differences
-    myDiff <- calculateDiffMeth(meth, mc.cores = 8)
-    #write.table(myDiff, paste0("../data/processed/WGBS_methylDiff_", n, ".csv"), sep = ',', row.names = FALSE, quote = FALSE)
-
-    # get all differentially methylated bases with greater than 10% difference in methylation
-    myDiff25p <- getMethylDiff(myDiff, difference=10, qvalue=0.01)
-    write.table(myDiff, paste0("../results/methylKit/WGBS_DMRs_10_", n, ".csv"), sep = ',', row.names = FALSE, quote = FALSE)
+	myDiff10p <- getMethylDiff(dm.pooledf, difference=10, qvalue=0.01)
+    #make a bedgraph file of the differences
+	bedgraph(myDiff10p, col.name = "meth.diff", file.name = paste0("../results/methylKit/bedgraph_diff_cpg_10p_5min_pooled_", n,".bed"))
+  
+    write.table(myDiff10p, paste0("../results/methylKit/WGBS_CpG_10p_5min_", n, ".csv"), sep = ',', row.names = FALSE, quote = FALSE)
 
 }
 
