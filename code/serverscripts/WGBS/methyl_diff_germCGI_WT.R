@@ -43,7 +43,7 @@ print(ID_list)
 
 
 #get the sample cell type (first two characters) - vector format
-cell <- rep(c("ESC", "EpiLC"), 2)
+cell <- rep(c("EpiLC", "ESC"), 2)
 
 # treatment is 1 or 0, 1 for KO, 0 for WT
 treat <- c()
@@ -69,7 +69,7 @@ print("united regions")
 print(head(united_regions))
 
 #just saving the one methylation results. Want the average methylation
-write.table(united_regions, paste0("../results/methylKit/regionCounts_germCGI_", i, ".csv"), sep = ',', row.names = FALSE, quote = FALSE)
+write.table(united_regions, paste0("../results/methylKit/regionCounts_germCGI_WT.csv"), sep = ',', row.names = FALSE, quote = FALSE)
 
 
 #pool the samples for calculating the methylation differences
