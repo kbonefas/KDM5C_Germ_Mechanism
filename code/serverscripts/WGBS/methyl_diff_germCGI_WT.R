@@ -15,89 +15,88 @@ library(ChIPseeker)
 library(dplyr)
 
 #need granges as input for the bedfile
-#read in the bed file of CGIs
-bed <- readPeakFile("../data/raw/CGI_UCSC.bed")
+#read in the bed file of CGIs for germline gene promoters
+bed <- readPeakFile("../data/raw/CGI_UCSC_all_germ.bed")
 print(head(bed))
 
 
-#we want to compare WT and 5CKO for ESCs and EpiLCs
-cells <- c("esc", "EpiLC")
-
-
-for (i in cells){
-  #get list of files
-  difffiles <- list.files(path = "../results/methylKit", pattern = paste0("*",i,"_CpG.txt"),
-                         full.names = TRUE)
-  #make as a list
-  samp_list <- list()
-  for (s in 1:length(difffiles)){
+#get list of WT files
+difffiles <- list.files(path = "../results/methylKit", pattern = paste0("WT*_CpG.txt"), full.names = TRUE)
+#make as a list
+samp_list <- list()
+for (s in 1:length(difffiles)){
     samp_list[[s]] <- difffiles[s]
-  }
+}
   
-  #get the sample names (IDs)   
-  ID <- gsub("../results/methylKit/", "", difffiles)
-  ID <- gsub("_CpG.txt", "", ID)
-  #format as a list
-  ID_list <- list()
-  for (d in 1:length(ID)){
-    ID_list[[d]] <- ID[d]
-  }
+#get the sample names (IDs)   
+ID <- gsub("../results/methylKit/", "", difffiles)
+ID <- gsub("_CpG.txt", "", ID)
+#format as a list
+ID_list <- list()
+for (d in 1:length(ID)){
+	ID_list[[d]] <- ID[d]
+}
 
-  print("sample ID_list")
-  print(ID_list)
+print("sample ID_list")
+print(ID_list)
 
 
-  #get the sample genotype (first two characters) - vector format
-  geno <- substr(ID, start = 1, stop = 2)
+#get the sample cell type (first two characters) - vector format
+cell <- rep(c("ESC", "EpiLC"), 2)
 
-  # treatment is 1 or 0, 1 for KO, 0 for WT
-  treat <- c()
-  for (g in 1:length(geno)) {
-    treat[g] <- ifelse(geno[g] == "KO", 1, ifelse(geno[g] == "WT", 0, NA))
-  }
+# treatment is 1 or 0, 1 for KO, 0 for WT
+treat <- c()
+for (g in 1:length(cell)) {
+treat[g] <- ifelse(cell[g] == "EpiLC", 1, ifelse(cell[g] == "ESC", 0, NA))
+}
   
   #read in the files
-  myobj <- methRead(location = samp_list, sample.id = ID_list, assembly="mm10", treatment = treat,
+myobj <- methRead(location = samp_list, sample.id = ID_list, assembly="mm10", treatment = treat,
                    context="CpG", mincov = 5)
-  #filter based on read coverage
-  myobj <- filterByCoverage(myobj,lo.count=5,lo.perc=NULL,
-                                  hi.count=NULL,hi.perc=99.9)
+#filter based on read coverage
+myobj <- filterByCoverage(myobj,lo.count=5,lo.perc=NULL,
+                    hi.count=NULL,hi.perc=99.9)
   
 
-  #get the methylation for cgis
-  regions <- regionCounts(myobj,bed)
-  print(head(regions))
+#get the methylation for cgis
+regions <- regionCounts(myobj,bed)
+print("all regions")
+print(head(regions))
 
-  print(head(regions[[1]]))
+united_regions <- unite(regions, destrand=FALSE)
+print("united regions")
+print(head(united_regions))
 
-  write.table(regions[[1]], paste0("../results/methylKit/regionCounts_CGI_", i, ".csv"), sep = ',', row.names = FALSE, quote = FALSE)
-
-
-  #pool the samples for calculating the methylation differences
-    #unite the samples
-  meth <- methylKit::unite(myobj, destrand=FALSE)
-  pooled.meth <- pool(meth, sample.ids=c("KO","WT"))
-  dm.pooledf <- calculateDiffMeth(pooled.meth, mc.cores = 8)
+#just saving the one methylation results. Want the average methylation
+write.table(united_regions, paste0("../results/methylKit/regionCounts_germCGI_", i, ".csv"), sep = ',', row.names = FALSE, quote = FALSE)
 
 
-  #all of the bases
-  myDiff10p <- getMethylDiff(dm.pooledf, difference=10, qvalue=0.01)
-    #make a bedgraph file of the differences
-  bedgraph(myDiff10p, col.name = "meth.diff", file.name = paste0("../results/methylKit/diff_cpg_10p_pooled_", i,".bed"))
+#pool the samples for calculating the methylation differences
+#unite the samples
+meth <- methylKit::unite(myobj, destrand=FALSE)
+pooled.meth <- pool(meth, sample.ids=c("EpiLC","ESC"))
+dm.pooledf <- calculateDiffMeth(pooled.meth, mc.cores = 8)
+
+
+#all of the bases
+myDiff10p <- getMethylDiff(dm.pooledf, difference=10, qvalue=0.01)
+#make a bedgraph file of the differences
+bedgraph(myDiff10p, col.name = "meth.diff", file.name = paste0("../results/methylKit/bedgraph_diff_WT_ESC_EpiLC_pooled.bed"))
   
   
-  #get the singificantly different cpgs that fall within CGIs
-  cpg_anot <- readFeatureFlank("../data/raw/CGI_UCSC.bed", feature.flank.name = c("CpGi", "shores"), flank=2000)
-  print(head(cpg_anot))  
-    
-  
-  diffCpGann <- annotateWithFeatureFlank(as(myDiff10p,"GRanges"), feature = cpg_anot$CpGi, flank = cpg_anot$shores, feature.name = "CpGi", flank.name = "shores")
+#get the singificantly different cpgs that fall within CGIs
+cpg_anot <- readFeatureFlank("../data/raw/CGI_UCSC.bed", feature.flank.name = c("CpGi", "shores"), flank=2000)
+print(head(cpg_anot))  
 
-  plotTargetAnnotation(diffCpGann, main = "Differential Methylation Annotation")
-  q <- plotTargetAnnotation(diffCpGann, main = "Differential Methylation Annotation")
-  
-  pdf(paste0("../results/methylKit/WGBS_", i, "CGI_hypo_summary.pdf"), q, width = 4, height = 4)
-  dev.off()
+myDiff10p_hyper <- getMethylDiff(dm.pooledf, difference=10, qvalue=0.01, type = "hyper")
+
+diffCpGann <- annotateWithFeatureFlank(as(myDiff10p_hyper,"GRanges"), feature = cpg_anot$CpGi, flank = cpg_anot$shores, feature.name = "CpGi", flank.name = "shores")
+
+plotTargetAnnotation(diffCpGann, main = "Differential Methylation Annotation")
+q <- plotTargetAnnotation(diffCpGann, main = "Differential Methylation Annotation")
+
+pdf(paste0("../results/methylKit/WGBS_summary_CGI_hyper_ESCvsEpiLC.pdf"), q, width = 4, height = 4)
+dev.off()
   
 
   
