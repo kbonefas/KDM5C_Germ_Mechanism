@@ -4,6 +4,10 @@
 #https://compgenomr.github.io/book/extracting-interesting-regions-differential-methylation-and-segmentation.html
 #run from command line by 'Rscript [nameofscript].R'
 
+#qvalue cut off
+qval <- 0.1
+
+
 library(methylKit)
 library(ggplot2)
 library(genomation)
@@ -80,7 +84,7 @@ dm.pooledf <- calculateDiffMeth(pooled.meth, mc.cores = 8)
 
 
 #all of the bases
-myDiff10p <- getMethylDiff(dm.pooledf, difference=10, qvalue=0.01)
+myDiff10p <- getMethylDiff(dm.pooledf, difference=10, qvalue=qval)
 #make a bedgraph file of the differences
 bedgraph(myDiff10p, col.name = "meth.diff", file.name = paste0("../results/methylKit/bedgraph_diff_WT_ESC_EpiLC_pooled.bed"))
   
@@ -89,7 +93,7 @@ bedgraph(myDiff10p, col.name = "meth.diff", file.name = paste0("../results/methy
 cpg_anot <- readFeatureFlank("../data/raw/CGI_UCSC.bed", feature.flank.name = c("CpGi", "shores"), flank=2000)
 print(head(cpg_anot))  
 
-myDiff10p_hyper <- getMethylDiff(dm.pooledf, difference=10, qvalue=0.01, type = "hyper")
+myDiff10p_hyper <- getMethylDiff(dm.pooledf, difference=10, qvalue=qval, type = "hyper")
 
 diffCpGann <- annotateWithFeatureFlank(as(myDiff10p_hyper,"GRanges"), feature = cpg_anot$CpGi, flank = cpg_anot$shores, feature.name = "CpGi", flank.name = "shores")
 
@@ -115,7 +119,7 @@ myDiff_islands <- calculateDiffMeth(meth_islands)
   # Rank by significance
 myDiff_islands <- myDiff_islands[order(myDiff_islands$qvalue),]
   # get all differentially methylated CpG Islands
-myDiff_islands_10p <- getMethylDiff(myDiff_islands, difference=10, qvalue=0.01)
+myDiff_islands_10p <- getMethylDiff(myDiff_islands, difference=10, qvalue=qval)
   
 write.table(myDiff_islands_10p, paste0("../results/methylKit/WGBS_getmethyldiff_germCGI_10_WT_ESCvsEpiLC.csv"), sep = ',', row.names = FALSE, quote = FALSE)
   
