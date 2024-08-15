@@ -68,7 +68,7 @@ for (i in cells){
     #When it's run and if you save the results you can then read the results in directly using methRead
     mylists[[i]] <- processBismarkAln(location = samp_list, nolap = TRUE, mincov = 5,
 		                    sample.id = ID_list, assembly="mm10", treatment = treat, 
-                          read.context="CpG", save.folder="../results/methylKit")
+                          read.context="CpG", save.folder="../results/methylKit_5min")
     
 
 }
@@ -79,11 +79,11 @@ for (n in cells){
 	#get the methylation for cgis
 	regions <- regionCounts(mylists[[n]],bed)
 
-	united_regions <- unite(regions, destrand=FALSE)
+	united_regions <- unite(regions, destrand=TRUE)
 	print("united regions")
 	print(head(united_regions))
 
-	write.table(united_regions, paste0("../results/methylKit/regionCounts_CGI_5min_", n, ".csv"), sep = ',', row.names = FALSE, quote = FALSE)
+	write.table(united_regions, paste0("../results/methylKit_5min/regionCounts_CGI_5min_", n, "_WTvsKO.csv"), sep = ',', row.names = FALSE, quote = FALSE)
 
 
     #combine methylation calls into one
@@ -96,11 +96,11 @@ for (n in cells){
 	pooled.meth <- pool(meth, sample.ids=c("KO","WT"))
 	dm.pooledf <- calculateDiffMeth(pooled.meth, mc.cores = 8)
 
-	myDiff10p <- getMethylDiff(dm.pooledf, difference=10, qvalue=0.01)
+	myDiff10p <- getMethylDiff(dm.pooledf, difference=10, qvalue=0.1)
     #make a bedgraph file of the differences
-	bedgraph(myDiff10p, col.name = "meth.diff", file.name = paste0("../results/methylKit/bedgraph_diff_cpg_10p_5min_pooled_", n,".bed"))
+	bedgraph(myDiff10p, col.name = "meth.diff", file.name = paste0("../results/methylKit_5min/bedgraph_diff_cpg_10p_q1_5min_pooled_", n,"_WTvsKO.bed"))
   
-    write.table(myDiff10p, paste0("../results/methylKit/WGBS_CpG_10p_5min_", n, ".csv"), sep = ',', row.names = FALSE, quote = FALSE)
+    write.table(myDiff10p, paste0("../results/methylKit_5min/WGBS_CpG_10p_q1_5min_", n, "_WTvsKO.csv"), sep = ',', row.names = FALSE, quote = FALSE)
 
 }
 
