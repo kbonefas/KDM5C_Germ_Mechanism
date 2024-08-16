@@ -65,15 +65,16 @@ myobj <- filterByCoverage(myobj,lo.count=3,lo.perc=NULL,
 
 #get the methylation for cgis
 regions <- regionCounts(myobj, bed)
-print("all regions")
-print(head(regions))
+# print("all regions")
+# print(head(regions))
 
-# united_regions <- unite(regions, destrand=TRUE)
-# print("united regions")
-# print(head(united_regions))
+united_regions <- unite(regions, destrand=FALSE)
+  #can try setting min per group to 1 so bases only have to be covered in one sample/group to be counted
+print("united regions")
+print(head(united_regions))
 
 #then do differential methylation for the regions
-dm.regions <- calculateDiffMeth(regions, mc.cores = 8)
+dm.regions <- calculateDiffMeth(united_regions, mc.cores = 8)
 #this should be like a DESEQ2 results table
 head(dm.regions)
 
