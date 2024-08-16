@@ -93,12 +93,13 @@ write.table(myDiff_regions, "../results/methylKit/WGBS_getmethyldiff_germCGI_p10
 # pooled.meth <- pool(meth, sample.ids=c("EpiLC","ESC"))
 # dm.pooledf <- calculateDiffMeth(pooled.meth, mc.cores = 8)
 
-#methylation differences unpooled
-dmC <- calculateDiffMeth(myobj, mc.cores = 8)
-united_dmC <- unite(dmC, destrand=FALSE)
+#methylation differences pooled
+united_dmC <- unite(myobj, destrand=FALSE)
+
+dm.C <- calculateDiffMeth(united_dmC, mc.cores = 8)
 
 #all of the bases
-myDiff10p <- getMethylDiff(united_dmC, difference=10, qvalue=qval)
+myDiff10p <- getMethylDiff(dm.C, difference=10, qvalue=qval)
 #make a bedgraph file of the differences
 bedgraph(myDiff10p, col.name = "WT ESC vs EpiLC min3 q01 unpooled", file.name = "../results/methylKit/bedgraph_diff_WT_ESCvsEpiLC_p10_min3_q01_notpooled.bed")  
   
