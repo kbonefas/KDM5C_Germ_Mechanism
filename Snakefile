@@ -198,6 +198,78 @@ rule EpiLC_PGC:
 	script:
 		"code/EpiLC_PGCgenes.R"
 
+
+################ male vs female EpiLCs ################
+
+#DESeq2 on Kdm5c-KO EpiLCs
+rule EpiDESeq2_XXvsXY:
+	input:
+		cts = "data/raw/EpiLC_gene_expected_count.txt"
+	output:
+		"data/raw/SampleInfo_EpiLC.csv",
+		"results/figure_pieces/PCA_EpiLC.pdf",
+		"data/processed/restable_EpiLC_XXvsXY_XY5cKO.csv",
+		"data/processed/restable_EpiLC_XXvsXY_XX5cHET.csv",
+		"data/processed/restable_EpiLC_XXvsXY_XX5cKO.csv",
+		"results/DESeq2/DEGs_EpiLC_XXvsXY_XY5cKO.csv",
+		"results/DESeq2/DEGs_EpiLC_XXvsXY_XX5cHET.csv",
+		"results/DESeq2/DEGs_EpiLC_XXvsXY_XX5cKO.csv"
+	params:
+		alpha = PADJ
+	script:
+		"code/DESeq2_EpiLC_XXvsXY.R"
+
+
+#plot the overlap between XX and XY EpiLC 5cKO/HET DEGs and which chromosome
+rule EpiLC_XXvsXY:
+	input:
+		"data/processed/germGENES20.csv",
+		"results/DESeq2/DEGs_EpiLC_XXvsXY_XY5cKO.csv",
+		"results/DESeq2/DEGs_EpiLC_XXvsXY_XX5cHET.csv",
+		"results/DESeq2/DEGs_EpiLC_XXvsXY_XX5cKO.csv"
+	output:
+		"data/processed/EpiLC_XXvsXY_germDEGs.csv",
+		"results/figure_pieces/EpiLC_XXvsXY_germlineDEGs_euler.pdf",
+		"results/figure_pieces/EpiLC_XXvsXY_germlineDEGs_shared_chromo.pdf", 
+		"results/figure_pieces/EpiLC_XXvsXY_germlineDEGs_XXonly_chromo.pdf", 
+		"data/processed/EpiLC_XXvsXY_XXDEGs_chromosome.csv", #How many XX-specific DEGs are on each chromosome 
+		"results/figure_pieces/EpiLC_XXvsXY_germlineDEGs_histogram.pdf",
+		"results/EpiLC_XXvsXY_germlineDEGs_GO.csv",
+		"results/figure_pieces/EpiLC_XXvsXY_germlineDEGs_GO.pdf"
+	script:
+		"code/EpiLC_XXvsXY.R"
+
+rule EpiLC_XXvsXY_heat:
+	input:
+		"data/processed/EpiLC_XXvsXY_germDEGs.csv",
+		"data/processed/restable_EpiLC_XXvsXY_XY5cKO.csv",
+		"data/processed/restable_EpiLC_XXvsXY_XX5cHET.csv",
+		"data/processed/restable_EpiLC_XXvsXY_XX5cKO.csv"
+	output:
+		"results/figure_pieces/EpiLC_XXvsXY_l2fc_heat.pdf",
+		"results/EpiLC_XXvsXY_heat_l2fc_clusters.csv",
+		"results/figure_pieces/EpiLC_XXvsXY_l2fc_heat_clustnumb.pdf"
+	script:
+		"code/EpiLC_XXvsXY_heat.R"
+
+################ Egg vs sperm genes in EpiLCs ################
+
+#get which germline genes are egg/sperm-biased and plot in EpiLCs
+rule eggvssperm:
+	input:
+		"data/processed/germGENES20.csv",
+		"results/DESeq2/DEGs_EpiLC_XXvsXY_XY5cKO.csv",
+		"results/DESeq2/DEGs_EpiLC_XXvsXY_XX5cHET.csv",
+		"results/DESeq2/DEGs_EpiLC_XXvsXY_XX5cKO.csv"
+	output:
+		"results/figure_pieces/GermGenes_eggvssperm_sankey.pdf",
+		"results/figure_pieces/GermGenes_eggvssperm_XXvsXYEpiLC.pdf"
+	script:
+		"code/GermGenes_eggvssperm.R"
+
+
+
+
 ###################### Figure 4: ChIPseq KDM5C EpiLC vs PNC ############################
 rule KDM5C_chip:
 	input:
