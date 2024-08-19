@@ -102,7 +102,7 @@ for (r in 1:length(bedregions)){
 
 #looking at all the CpG bases to make a bedrgaph file of differentially methylated Cs
 #methylation differences
-united_dmC <- unite(myobj, destrand=TRUE)
+united_dmC <- unite(myobj, destrand=FALSE)
 dm.C <- calculateDiffMeth(united_dmC, mc.cores = 8)
 myDiff10p <- getMethylDiff(dm.C, difference=10, qvalue=qval)
 #make a bedgraph file of the differences
