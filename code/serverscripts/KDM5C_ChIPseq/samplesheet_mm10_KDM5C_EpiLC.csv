@@ -1,0 +1,5 @@
+SampleID,Cell,Factor,Condition,Replicate,bamReads,bamControl,Peaks,PeakCaller
+ip1_WT,EpiLC,KDM5C,WT,1,../../EpiLC_KDM5C_ChIPSeq/data/processed/BAM/Sorted_IP1_wtSMCX_SMCX.mm10.bam,../../EpiLC_KDM5C_ChIPSeq/data/processed/BAM/Sorted_EpiLC_Input_merged.bam,../../EpiLC_KDM5C_ChIPSeq/data/processed/MACS2/ip1_wtsmcx_smcx.mm10.mm10_peaks.narrowPeak,macs
+ip2_WT,EpiLC,KDM5C,WT,2,../../EpiLC_KDM5C_ChIPSeq/data/processed/BAM/Sorted_IP2_wtSMCX_SMCX.mm10.bam,../../EpiLC_KDM5C_ChIPSeq/data/processed/BAM/Sorted_EpiLC_Input_merged.bam,../../EpiLC_KDM5C_ChIPSeq/data/processed/MACS2/ip2_wtsmcx_smcx.mm10.mm10_peaks.narrowPeak,macs
+ip1_5CKO,EpiLC,KDM5C,Kdm5c_KO,1,../../EpiLC_KDM5C_ChIPSeq/data/processed/BAM/Sorted_IP1_koSMCX_SMCX.mm10.bam,../../EpiLC_KDM5C_ChIPSeq/data/processed/BAM/Sorted_EpiLC_Input_merged.bam,../../EpiLC_KDM5C_ChIPSeq/data/processed/MACS2/ip1_kosmcx_smcx.mm10.mm10_summits.bed,macs
+ip2_5CKO,EpiLC,KDM5C,Kdm5c_KO,2,../../EpiLC_KDM5C_ChIPSeq/data/processed/BAM/Sorted_IP2_koSMCX_SMCX.mm10.bam,../../EpiLC_KDM5C_ChIPSeq/data/processed/BAM/Sorted_EpiLC_Input_merged.bam,../../EpiLC_KDM5C_ChIPSeq/data/processed/MACS2/ip2_kosmcx_smcx.mm10.mm10_summits.bed,macs
