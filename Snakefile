@@ -236,8 +236,8 @@ rule EpiLC_XXvsXY:
 		"results/figure_pieces/EpiLC_XXvsXY_germlineDEGs_histogram.pdf",
 		"results/EpiLC_XXvsXY_germlineDEGs_GO.csv",
 		"results/figure_pieces/EpiLC_XXvsXY_germlineDEGs_GO.pdf",
-		"results/figure_pieces/EpiLC_XXvsXY_germlineDEGs_allXXDEGs_chromo.pdf"
-		#"results/figure_pieces/EpiLC_XXvsXY_germlineDEGs_chromo_proportion.pdf"
+		"results/figure_pieces/EpiLC_XXvsXY_germlineDEGs_allXXDEGs_chromo.pdf",
+		"results/figure_pieces/EpiLC_XXvsXY_germlineDEGs_chromo_proportion.pdf"
 	script:
 		"code/EpiLC_XXvsXY.R"
 
