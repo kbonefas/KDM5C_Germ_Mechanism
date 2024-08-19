@@ -34,7 +34,7 @@ for (s in 1:length(difffiles)){
 }
   
 #get the sample names (IDs)   
-ID <- gsub("../results/methylKit/", "", difffiles)
+ID <- gsub("../results/methylKit_5min/", "", difffiles)
 ID <- gsub("_CpG.txt", "", ID)
 #format as a list
 ID_list <- list()
