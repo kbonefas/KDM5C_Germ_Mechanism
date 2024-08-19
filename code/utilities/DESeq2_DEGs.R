@@ -68,3 +68,28 @@ DEGtable2 <- function(res, n, alph){
     write.table(resDEG_ids_sort, snakemake@output[[n]], sep=",", row.names = FALSE)
 	return(resDEG_ids_sort)
 }
+
+
+DEGtable3 <- function(res, n, alph, l2fcco){
+        #make a new column for ensembl names
+    resdf <- data.frame(res, ENSEMBL = row.names(res))
+        #sort out the DEGs
+    resDEG <- subset(resdf, padj < alph & abs(log2FoldChange) > abs(l2fcco))
+        #add a column for the direction of the DEG (Downregulated or Upregulated)4
+    resDEG$Direction <- ifelse(resDEG$log2FoldChange > l2fcco, "Up", "Down")
+
+        #use clusterProfiler to covert ensembl IDs to gene symbols 
+    library("clusterProfiler")
+    library(org.Mm.eg.db)
+    genedf <- bitr(row.names(resDEG), fromType = "ENSEMBL", toType = "SYMBOL", 
+                        OrgDb = org.Mm.eg.db, drop = FALSE)#if the ids do not have a gene symbol, do not drop them from the table
+
+        #merge gene name conversion with DEG dataframe
+    resDEG_ids <- merge(resDEG, genedf, by = "ENSEMBL")
+	#order by log2fc and padj
+	resDEG_ids_sort <- resDEG_ids[order(-resDEG_ids$log2FoldChange, resDEG_ids$padj),]
+    #print(head(resDEG_ids_sort))
+        #write the table
+    write.table(resDEG_ids_sort, snakemake@output[[n]], sep=",", row.names = FALSE)
+	invisible(return(resDEG_ids_sort))
+}

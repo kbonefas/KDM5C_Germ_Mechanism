@@ -141,6 +141,6 @@ XX_KOWT <- DESeq2_restab("group_XX5cKO_vs_XXWT", 5)
 
 source("code/utilities/parameters.R") #get cut off of log2fc
 source("code/utilities/DESeq2_DEGs.R")
-invisible(DEGtable2(XY_KOWT, 6, snakemake@params[["alpha"]], l2fcco_ESCEpiLC))
-invisible(DEGtable2(XX_HETWT, 7, snakemake@params[["alpha"]], l2fcco_ESCEpiLC))
-invisible(DEGtable2(XX_KOWT, 8, snakemake@params[["alpha"]], l2fcco_ESCEpiLC))
+invisible(DEGtable3(XY_KOWT, 6, snakemake@params[["alpha"]], l2fcco_ESCEpiLC))
+invisible(DEGtable3(XX_HETWT, 7, snakemake@params[["alpha"]], l2fcco_ESCEpiLC))
+invisible(DEGtable3(XX_KOWT, 8, snakemake@params[["alpha"]], l2fcco_ESCEpiLC))
