@@ -126,6 +126,45 @@ chromo_hist(XX_all_chr, "DEG_ratio", "all XX germline DEGs", 9)
 #save the chromosome results
 write.table(XX_all_chr, snakemake@output[[5]], sep = ",", row.names = F)
 
+
+
+
+#percentage of germline DEGs on each chromsome for each sample
+
+# number of DEGs on that chromsome/total number of germline DEGs for that sample * 100
+#need a dataframe with
+# sample chromosome percentage
+
+deg_perc <- data.frame()
+for (s in samples){
+	countdf <- chromo_DEG_count_list(DEGs[[s]])
+
+	countdf$DEG_percent <- round((countdf$DEGs/length(DEGs[[s]]) * 100), 2)
+	percdf <- data.frame(chr = countdf$chr, percent = countdf$DEG_percent, sample = rep(s, nrow(countdf)))
+	deg_perc <- rbind(deg_perc, percdf)
+}
+
+print(deg_perc)
+
+
+
+#plot the results
+
+
+library("ggpubr")
+#replace zeros with NA for plotting
+deg_perc[deg_perc == 0] <- NA
+q <- ggbarplot(deg_perc, "sample", "percent", fill = "chr", color = "chr", label = FALSE, xlab = " ", ylab = "chr germline DEGs/total germline DEGs", orientation = "vert") 
+ql <- ggpar(q, legend = "right", title = "% of germline DEGs per chromosome" )
+
+ggsave(snakemake@output[[10]], plot = ql, width = 5, height = 4)
+
+
+
+
+
+
+
 ### histogram of total number of germline genes
 source('code/utilities/colorpalettes.R')
 print("checking samples:")
