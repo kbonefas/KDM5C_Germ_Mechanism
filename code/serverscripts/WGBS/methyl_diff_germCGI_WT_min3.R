@@ -101,7 +101,7 @@ dm.C <- calculateDiffMeth(united_dmC, mc.cores = 8)
 #all of the bases
 myDiff10p <- getMethylDiff(dm.C, difference=10, qvalue=qval)
 #make a bedgraph file of the differences
-bedgraph(myDiff10p, col.name = "WT ESC vs EpiLC min3 q01 unpooled", file.name = "../results/methylKit/bedgraph_diff_WT_ESCvsEpiLC_p10_min3_q01_notpooled.bed")  
+bedgraph(myDiff10p, col.name = "meth.diff", file.name = "../results/methylKit/bedgraph_diff_WT_ESCvsEpiLC_p10_min3_q01_notpooled.bed")  
   
 # #get the singificantly different cpgs that fall within CGIs
 # cpg_anot <- readFeatureFlank("../data/raw/CGI_UCSC.bed", feature.flank.name = c("CpGi", "shores"), flank=2000)
