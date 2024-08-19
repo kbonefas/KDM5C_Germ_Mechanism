@@ -96,7 +96,7 @@ METHoverBED <- function(bedfile, outname){
 bedregions <- c("../data/raw/CGI_UCSC_all_germ.bed", "../data/raw/TSS_window_500bp_all_germ.bed")
 names(bedregions) <- c("allgermCGI", "allgermTSS500")
 
-for (r in 1:legnth(bedregions)){
+for (r in 1:length(bedregions)){
 	METHoverBED(bedregions[[r]], names(bedregions)[[r]])
 }
 
