@@ -97,13 +97,14 @@ ggsave(snakemake@output[[2]], plot = p, width = 4, height = 4)
 source("code/utilities/germ_chromo.R")
 
 #2) get which germline genes are unique between males and females
-XXallDEGs <- c(DEGs[["XX5cHET"]], DEGs[["XX5cKO"]])
+XXallDEGs <- unique(c(DEGs[["XX5cHET"]], DEGs[["XX5cKO"]]))
 XX_UNIQUE <- setdiff(XXallDEGs, DEGs[["XY5cKO"]])
 XY_UNIQUE <- setdiff(DEGs[["XY5cKO"]], XXallDEGs)
 
 #they are in list format
 xxonly_chr <- chromo_DEG_count_list(XX_UNIQUE)
 shared_chr <- chromo_DEG_count_list(all)
+XX_all_chr <- chromo_DEG_count_list(XXallDEGs)
 
 print("xx only:")
 print(xxonly_chr)
@@ -118,8 +119,12 @@ print(shared_chr)
 chromo_hist(shared_chr, "DEG_ratio", "shared germline DEGs", 3)
 chromo_hist(xxonly_chr, "DEG_ratio", "XX only germline DEGs", 4)
 
+#get histogram of all XX DEGs
+chromo_hist(XX_all_chr, "DEG_ratio", "all XX germline DEGs", 9)
+
+
 #save the chromosome results
-write.table(xxonly_chr, snakemake@output[[5]], sep = ",", row.names = F)
+write.table(XX_all_chr, snakemake@output[[5]], sep = ",", row.names = F)
 
 ### histogram of total number of germline genes
 source('code/utilities/colorpalettes.R')
@@ -140,7 +145,8 @@ q <- ggbarplot(germhist, x = "samples", y = "count", color = "samples", fill = "
 ggsave(snakemake@output[[6]], plot = q, width = 3, height = 3)
 
 
-### Gene ontology of clusters
+########## Gene ontology of clusters ##########
+
 library(enrichplot)
 library(org.Mm.eg.db)
 library(clusterProfiler)
