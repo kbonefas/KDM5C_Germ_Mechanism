@@ -57,7 +57,7 @@ treat[g] <- ifelse(cell[g] == "EpiLC", 1, ifelse(cell[g] == "ESC", 0, NA))
   
   #read in the files
 myobj <- methRead(location = samp_list, sample.id = ID_list, assembly="mm10", treatment = treat,
-                   context="CpG", mincov = 5)
+                   context="CpG", mincov = 3)
 #filter based on read coverage
 myobj <- filterByCoverage(myobj,lo.count=3,lo.perc=NULL,
                     hi.count=NULL,hi.perc=99.9)
