@@ -206,7 +206,7 @@ rule EpiDESeq2_XXvsXY:
 	input:
 		cts = "data/raw/EpiLC_gene_expected_count.txt"
 	output:
-		"data/raw/SampleInfo_EpiLC.csv",
+		"data/raw/SampleInfo_EpiLC_XXvsXY.csv",
 		"results/figure_pieces/PCA_EpiLC.pdf",
 		"data/processed/restable_EpiLC_XXvsXY_XY5cKO.csv",
 		"data/processed/restable_EpiLC_XXvsXY_XX5cHET.csv",
@@ -268,8 +268,6 @@ rule eggvssperm:
 		"results/figure_pieces/GermGenes_eggvssperm_XXvsXYEpiLC.pdf"
 	script:
 		"code/GermGenes_eggvssperm.R"
-
-
 
 
 ###################### Figure 4: ChIPseq KDM5C EpiLC vs PNC ############################
@@ -405,6 +403,19 @@ rule Germ_CGI:
 		"results/figure_pieces/WGBS_CGI_bar.pdf"
 	script:
 		"code/WGBS_germ_CGI.R"
+
+#Get the genes for each location and make volcano plots?
+rule WGBS_ESCvsEpiLC:
+	input:
+		"results/KDM5C_binding_allgerm_EpiLC.csv",
+		"data/processed/WGBS_restab_regionCounts_allgermTSS500_WT_min3_ESCvsEpiLC.csv",
+		"data/processed/WGBS_restab_regionCounts_allgermCGI_WT_min3_ESCvsEpiLC.csv"
+	#output:
+	#	"results/figure_pieces/WGBS_volcano_allgermTSS500.pdf",
+	#	"results/figure_pieces/WGBS_volcano_allgermCGI.pdf"
+	script:
+		"code/WGBS_ESCvsEpiLC.R"
+
 
 ###################### Render the manuscript ############################
 rule write_paper:
