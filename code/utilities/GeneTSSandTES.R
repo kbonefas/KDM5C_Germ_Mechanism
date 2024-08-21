@@ -53,16 +53,19 @@ geneTSSwindow <- function(goi, n, window){
 
 }
 
-geneTSSdown <- function(goi, n, window){
+
+
+#return results for ROI as dataframe
+geneTSS_df <- function(goi, window){
 	#regions of interest
-	roi <- subset(gtf_df, ENSEMBL %in% goi, select = c(seqnames, TSS, TES))
+	roi <- subset(gtf_df, ENSEMBL %in% goi, select = c(gene_name, ENSEMBL, seqnames, TSS))
 	
 	#Add and subtract the window from the TSS
-	roi$TSS_down <- ifelse(roi$TSS > roi$TES, roi$TSS - window, ifelse(roi$TSS < roi$TES, roi$TSS + window, "oops"))
+	roi$start <- roi$TSS - window + 1
+	roi$end <- roi$TSS + window
 
-	roi$start <- ifelse(roi$TSS < roi$TSS_down, roi$TSS, ifelse(roi$TSS > roi$TSS_down, roi$TSS_down, "oops"))
-	roi$end <- ifelse(roi$TSS < roi$TSS_down, roi$TSS_down, ifelse(roi$TSS > roi$TSS_down, roi$TSS, "oops"))
-
-	write.table(roi[,c("seqnames","start", "end")], snakemake@output[[n]], sep = "\t", row.names = FALSE, col.names=FALSE, quote = FALSE)
+	return(roi)
 
 }
+
+

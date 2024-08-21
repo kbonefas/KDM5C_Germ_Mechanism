@@ -410,7 +410,10 @@ rule WGBS_ESCvsEpiLC:
 		"results/KDM5C_binding_allgerm_EpiLC.csv",
 		"data/processed/WGBS_restab_regionCounts_allgermTSS500_WT_min3_ESCvsEpiLC.csv",
 		"data/processed/WGBS_restab_regionCounts_allgermCGI_WT_min3_ESCvsEpiLC.csv"
-	#output:
+	output:
+		"results/WGBS/WGBS_restab_annotated_allgermTSS_500_WT_ESCvsEpiLC.csv",
+		"results/WGBS/WGBS_restab_annotated_allgermCGI_500_WT_ESCvsEpiLC.csv.csv"
+
 	#	"results/figure_pieces/WGBS_volcano_allgermTSS500.pdf",
 	#	"results/figure_pieces/WGBS_volcano_allgermCGI.pdf"
 	script:

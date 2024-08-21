@@ -5,6 +5,11 @@ KDM5C_binding <- read.csv(snakemake@input[[1]], sep = ",")
 
 print(head(KDM5C_binding))
 
+#get the gene coordinate information
+source("code/utilities/GeneTSSandTES.R")
+germTSS <- geneTSS_df(KDM5C_binding$ENSEMBL, 500)
+print(head(germTSS))
+
 
 samples <- c("all germ promoters", "germ CGI promoters")
 
@@ -14,43 +19,65 @@ txdb <- TxDb.Mmusculus.UCSC.mm10.knownGene
 library(ggplot2)
 library(dplyr)
 
-volcano_WGBS <- function(n){
-	df <- read.csv(snakemake@input[[n+1]], sep = ",")
+##### #make the dataframes for the volcano plot
+## TSS
+TSSdf <- read.csv(snakemake@input[[2]], sep = ",")
 
-	#rename chr to seqnames to match granges for merging later
-	names(df)[names(df) == "chr"]<- "seqnames"
-	print(paste("rows in", samples[n], "-", nrow(df)))
-	print(head(df))
+#rename chr to seqnames to match granges for merging later
+names(TSSdf)[names(TSSdf) == "chr"]<- "seqnames"
+print(paste("rows in all germ -", nrow(TSSdf)))
+print(head(TSSdf))
 	
+#get the germline genes for each coordinate
+plotTSS <- merge(germTSS, TSSdf)
+plotTSS <- merge(KDM5C_binding, plotTSS, by = "ENSEMBL")
+#remove any duplicated loci
+plotTSS <- plotTSS[!duplicated(plotTSS[6:7]),]
+print(paste("rows in merged all germ -", nrow(plotTSS)))
+print(head(plotTSS))
 
-	#get the germline genes for each coordinate
-		#make granges object with bed coordinates
-	peak <- makeGRangesFromDataFrame(df)
-	print(head(peak))
+names(plotTSS)[names(plotTSS) == "gene_name"] <- "SYMBOL"
 
-		#annotate locations
-	peakAnno <- annotatePeak(peak, tssRegion=c(-500, 500),
-                         TxDb=txdb, annoDb="org.Mm.eg.db")
+
+
+write.table(plotTSS, snakemake@output[[1]], sep = ",", row.names = FALSE)
+
+
+
+
+
+
+#####
+## CGIs
+CGIdf <- read.csv(snakemake@input[[3]], sep = ",")
+
+#rename chr to seqnames to match granges for merging later
+names(CGIdf)[names(CGIdf) == "chr"]<- "seqnames"
+print(paste("rows in CGI -", nrow(CGIdf)))
+print(head(CGIdf))
 	
-	annot <- as.data.frame(peakAnno@anno)
-	annot_promo <- subset(annot, annotation == "Promoter")
-	#annot_promo_genes <- annot_promo %>% distinct(ENSEMBL, .keep_all = TRUE)
+#get the germline genes for each coordinate
+	#make granges object with bed coordinates
+peak <- makeGRangesFromDataFrame(CGIdf)
+print(head(peak))
 
-	print(paste("rows in annotated", samples[n], "-", nrow(annot_promo)))
-	print(head(annot_promo))
+#annotate locations
+peakAnno <- annotatePeak(peak, tssRegion=c(-500, 500),
+                    TxDb=txdb, annoDb="org.Mm.eg.db")
+	
+annot <- as.data.frame(peakAnno@anno)
+annot_promo <- subset(annot, annotation == "Promoter")
+#annot_promo_genes <- annot_promo %>% distinct(ENSEMBL, .keep_all = TRUE)
 
-	merge <- merge(annot_promo, df)
-	print(paste("rows in merged", samples[n], "-", nrow(merge)))
-	print(head(merge))
+print(paste("rows in annotated CGIs -", nrow(annot_promo)))
+print(head(annot_promo))
 
-	#its working for the CGIs but all of the promoters there are extras. maybe its because multiple genes have TSSs in that location
-		#Do I necessarily need the gene location for the volcano plot? no. Just need a unique name for each region
+plotCGI <- merge(annot_promo, CGIdf)
+plotCGI <- subset(plotCGI, select = c(seqnames, start, end, ENSEMBL, SYMBOL))
+plotCGI <- merge(KDM5C_binding, plotCGI)
+print(paste("rows in CGI merged -", nrow(plotCGI)))
+print(head(plotCGI))
 
-}
-
-
-for (i in 1:length(samples)){
-	volcano_WGBS(i)
-}
+write.table(plotCGI, snakemake@output[[2]], sep = ",",  row.names = FALSE)
 
 
