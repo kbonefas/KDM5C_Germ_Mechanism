@@ -265,7 +265,9 @@ After ensuring read quality via FastQC (v0.11.8), reads were then mapped to the 
 ChIP-seq reads were aligned to mm10 using Bowtie1 (v1.1.2) allowing up to two mismatches. Only uniquely mapped reads were used for analysis. Peaks were called using MACS2 software (v2.2.9.1) using input BAM files for normalization, with filters for a q-value < 0.1 and a fold enrichment > 1. We removed “black-listed” genomic regions that often give aberrant signals. Common peak sets were obtained in R via DiffBind (v3.6.5). In the case of KDM5C ChIP-seq, _Kdm5c_-KO peaks were then subtracted from wild-type samples using bedtools (v2.25.0). Peak proximity to genome annotations was determined by ChIPSeeker (v1.32.1). Gene ontology (GO) analyses were performed by the R package enrichPlot (v1.16.2) using the biological processes setting and compareCluster. Enriched motifs were identified using HOMER[@heinzSimpleCombinationsLineageDetermining2010]. Average binding across the genome was visualized using deeptools (v3.1.3). Bigwigs were visualized using the UCSC genome browser.
 
 ## Whole genome bisulfite sequencing (WGBS)
-Genomic DNA (gDNA) from na&#239;ve ESCs and extended EpiLCs was extracted using the Wizard Genomic DNA Purification Kit (Promega A1120), following the instructions for Tissue Culture Cells. gDNA was sent to Novogene for WGBS using the Illumina NovaSeq X Plus platform and sequenced for 150bp paired-end reads (PE150). 
+Genomic DNA (gDNA) from na&#239;ve ESCs and extended EpiLCs was extracted using the Wizard Genomic DNA Purification Kit (Promega A1120), following the instructions for Tissue Culture Cells. gDNA from two wild-types and two _Kdm5c_-KOs of each cell type was sent to Novogene for WGBS using the Illumina NovaSeq X Plus platform and sequenced for 150bp paired-end reads (PE150). 
+- bismark
+- Methylkit
 
 ## Data availability
 ### Published datasets
