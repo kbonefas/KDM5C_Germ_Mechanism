@@ -1,5 +1,5 @@
 #2024.08.19 Plotting average WGBS methylation at germline loci using bedgraph, divided by KDM5C bound and unbound genes
-#activate the bedtools environment in conda
+#activate the deeptools environment in conda
 
 #convert bedgraph to bigwig - https://anaconda.org/bioconda/ucsc-bedgraphtobigwig
 
