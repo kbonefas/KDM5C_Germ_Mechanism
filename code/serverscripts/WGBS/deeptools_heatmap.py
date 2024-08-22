@@ -7,9 +7,13 @@ import os
 import sys
 import glob
 
-#bigwigs
-EpiLC = ['/scratch/webserver/siwase/Testis_genes/KDM5C_H3K4me2_EpiLCs_mm10/SMCX_WT_Merged_IP_mm10.bw','/scratch/webserver/siwase/Testis_genes/KDM5C_H3K4me2_EpiLCs_mm10/SMCX_KO_Merged_IP_mm10.bw']
-PNC = ['/scratch/webserver/siwase/Testis_genes/Iwase_et_al_2016_Cell_Reports_mm10/KDM5C_ChIP_WT_CN_rep1_mm10.bw','/scratch/webserver/siwase/Testis_genes/Iwase_et_al_2016_Cell_Reports_mm10/KDM5C_ChIP_KO_CN_rep1_mm10.bw']
+#bigwigs of EpiLCs
+bigwigs = glob.glob("../results/bedgraph/*EpiLC*.bw")
+
+#one graph
+	#WT and 5CKO bigwigs
+	#regions - CGI that are KDM5C bound and unbound?
+
 
 
 
