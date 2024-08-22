@@ -8,17 +8,27 @@ import sys
 import glob
 
 #bigwigs of EpiLCs
+#combine the bigwigs together to make an average
 bigwigs = glob.glob("../results/bedgraph/*EpiLC*.bw")
+
+genotypes = ['WT', 'KO']
+
+for g in genotypes:
+	bw = [k for k in bigwigs if g in k]
+
+	#make an average bigwig
+	os.system("bigwigAverage -b bw[0] bw[1] -o ../results/bedgraph/avg_exEpiLC_{genotype}.bw".format(genotype = g))
 
 #one graph
 	#WT and 5CKO bigwigs
 	#regions - CGI that are KDM5C bound and unbound?
 
 
-
-
 #bedfile of the region that you want to plot
-germregions = glob.glob("../data/processed/GermTSSandTES/TSS_window_3000*.bed")
+avgbigwigs = glob.glob("../results/bedgraph/avg_exEpiLC*.bw")
+
+#bed file coordinates
+regions = ["TSS", "CGI"]
 
 #wrap all the deeptools fucntions together
 #regions - gene coordinates
@@ -26,6 +36,9 @@ germregions = glob.glob("../data/processed/GermTSSandTES/TSS_window_3000*.bed")
 #colors - color for heatmap
 def deeptoolswrap(regions, bigwigs, name):
 	for i in regions:
+
+		#get the bedfiles of that region
+		beds = glob.glob("../data/processed/{}")
 
 		#name of the output - ID is the bigwig id, coord is the bed cooridnates
 		coord = i.replace("../data/processed/GermTSSandTES/TSS_window_", "")
