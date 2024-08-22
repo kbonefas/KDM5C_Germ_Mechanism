@@ -231,5 +231,15 @@ CGI_volcano <- function(n, title, restab){
 }
 CGI_volcano(4, "germline CGI", plotCGI)
 
+#write bedfile with the coordinates
+getbed <- function(df, kdm5c, n){
+	bed <- subset(df, KDM5C_binding == kdm5c, select = c("seqnames", "start", "end"))	
+	write.table(bed, snakemake@output[[n]], sep = "\t", row.names = FALSE, col.names=FALSE, quote = FALSE)
+}
+
+getbed(plotTSS, "Bound", 5)
+getbed(plotTSS, "Unbound", 6)
+getbed(plotCGI, "Bound", 7)
+getbed(plotCGI, "Unbound", 8)
 
 
