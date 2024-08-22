@@ -414,7 +414,11 @@ rule WGBS_ESCvsEpiLC:
 		"results/WGBS/WGBS_restab_annotated_allgermTSS_500bp_WT_ESCvsEpiLC.csv",
 		"results/WGBS/WGBS_restab_annotated_allgermCGI_WT_ESCvsEpiLC.csv.csv",
 		"results/figure_pieces/WGBS_volcano_allgermTSS500.pdf",
-		"results/figure_pieces/WGBS_volcano_allgermCGI.pdf"
+		"results/figure_pieces/WGBS_volcano_allgermCGI.pdf",
+		"data/processed/KDM5C_bound_TSS_500bp.bed",
+		"data/processed/KDM5C_unbound_TSS_500bp.bed",
+		"data/processed/KDM5C_bound_CGI.bed",
+		"data/processed/KDM5C_unbound_CGI.bed"
 	script:
 		"code/WGBS_ESCvsEpiLC.R"
 
