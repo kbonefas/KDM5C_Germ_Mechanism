@@ -39,7 +39,7 @@ def deeptoolswrap(regions, bigwigs):
 
 		#get the bedfiles of that region
 		beds = glob.glob("../data/processed/*{reg}*.bed".format(reg = i))
-		beds = beds.join(" ")
+		beds = " ".join(beds)
 
 		#name of the output 
 		out = "../results/deeptools/plotProfile_WGBS_EpiLC_WTvsKO_{reg}".format(reg = i)
