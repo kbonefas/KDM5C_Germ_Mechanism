@@ -407,7 +407,7 @@ rule Germ_CGI:
 #Get the genes for each location and make volcano plots?
 rule WGBS_ESCvsEpiLC:
 	input:
-		"results/KDM5C_binding_allgerm_EpiLC.csv",
+		"results/KDM5C_binding_allgerm_CGI.csv",
 		"data/processed/WGBS_restab_regionCounts_allgermTSS500_WT_min3_ESCvsEpiLC.csv",
 		"data/processed/WGBS_restab_regionCounts_allgermCGI_WT_min3_ESCvsEpiLC.csv"
 	output:
