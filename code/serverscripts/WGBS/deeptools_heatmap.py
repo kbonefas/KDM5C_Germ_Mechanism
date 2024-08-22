@@ -11,13 +11,16 @@ import glob
 #combine the bigwigs together to make an average
 bigwigs = glob.glob("../results/bedgraph/*EpiLC*.bw")
 
-genotypes = ['WT', 'KO']
+# genotypes = ['WT', 'KO']
 
-for g in genotypes:
-	bw = [k for k in bigwigs if g in k]
+# for g in genotypes:
+# 	bw = [k for k in bigwigs if g in k]
+# 	print(bw)
+# 	print(bw[0])
+# 	print(bw[1])
 
-	#make an average bigwig
-	os.system("bigwigAverage -b bw[0] bw[1] -o ../results/bedgraph/avg_exEpiLC_{genotype}.bw".format(genotype = g))
+# 	#make an average bigwig
+# 	#os.system("bigwigAverage -b bw[0] bw[1] -o ../results/bedgraph/avg_exEpiLC_{genotype}.bw".format(genotype = g))
 
 #one graph
 	#WT and 5CKO bigwigs
