@@ -96,3 +96,32 @@ q <- ggbarplot(plotdf, "Kdm5c_binding", "Percent", fill = "CpG_island", color = 
 		title = "CpG islands at germline gene promoters", label = TRUE, lab.col = "black", lab.vjust = 1, xlab = " ", ylab = "% of genes", orientation = "vert") 
 
 ggsave(snakemake@output[[3]], q, width = 6, height = 4)
+
+
+#gene ontology of CGI germline genes vs non
+library(enrichplot)
+library(org.Mm.eg.db)
+library(clusterProfiler)
+library(ggplot2)
+
+# make a list with all the germline genes
+#sample names, make sure order matches snakefile input
+samples <- c("CGI", "no")
+germDEGs <- list()
+
+for(i in 1:length(samples)){
+	#get the ENSEMBL names of CGI vs non CGI promoters
+	germDEGs[[i]] <- germ[germ$Promo_CGI == samples[i], ][,1]
+}
+
+names(germDEGs) <- samples
+
+
+#now run the gene ontology comparison
+ck <- compareCluster(geneCluster = germDEGs, fun = enrichGO,  OrgDb = "org.Mm.eg.db", keyType="ENSEMBL", ont="BP")
+#ck <- setReadable(ck, OrgDb = "org.Mm.eg.db", keyType="ENSEMBL")
+head(ck) 
+
+write.table(ck, snakemake@output[[4]], row.names = FALSE, sep = ",")
+
+ggsave(snakemake@output[[5]], plot = dotplot(ck, showCategory = 10), width = 8, height = 8)
