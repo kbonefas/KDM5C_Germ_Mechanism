@@ -400,7 +400,9 @@ rule Germ_CGI:
 	output:
 		"data/processed/CGI_UCSC_all_germ.bed",
 		"results/KDM5C_binding_allgerm_CGI.csv",
-		"results/figure_pieces/WGBS_CGI_bar.pdf"
+		"results/figure_pieces/WGBS_CGI_bar.pdf",
+		"results/germline_CGI_GO.csv",
+		"results/figure_pieces/WGBS_CGI_GO.pdf"
 	script:
 		"code/WGBS_germ_CGI.R"
 
