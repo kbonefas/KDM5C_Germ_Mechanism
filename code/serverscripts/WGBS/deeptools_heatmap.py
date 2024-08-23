@@ -52,11 +52,11 @@ def deeptoolswrap(regions, bigwigs):
 		title = "Germline_{reg}".format(reg = i)
 		
 		#make the average plot --perGroup splits by bedfile so all bigwigs are plotted on same graph
-		os.system('plotProfile -m {OUT}_matrix.mat.gz -out {OUT}_profile.pdf --perGroup --startLabel start --endLabel end --samplesLabel Kdm5c_KO Kdm5c_WT --plotTitle {TITLE} --plotWidth 10 --plotHeight 10 --plotFileFormat pdf'.format(OUT = out, TITLE = title))
+		os.system('plotProfile -m {OUT}_matrix.mat.gz -out {OUT}_profile.pdf --perGroup --startLabel start --endLabel end --samplesLabel --plotTitle {TITLE} --plotWidth 10 --plotHeight 10 --plotFileFormat pdf'.format(OUT = out, TITLE = title))
 		
 		#make heatmap plot
 		#--yMax 40 --zMax 60
-		os.system('plotHeatmap -m {OUT}_matrix.mat.gz -out {OUT}_heatmap.pdf --perGroup --colorMap RdPu --startLabel start --endLabel end --missingDataColor white --samplesLabel Kdm5c_KO Kdm5c_WT --plotTitle {TITLE} --heatmapHeight 14 --heatmapWidth 5 --plotFileFormat pdf'.format(OUT = out, TITLE = title))
+		os.system('plotHeatmap -m {OUT}_matrix.mat.gz -out {OUT}_heatmap.pdf --perGroup --colorMap RdPu --startLabel start --endLabel end --beforeRegionStartLength 1000 --afterRegionStartLength 1000 --missingDataColor white --samplesLabel Kdm5c_KO Kdm5c_WT --plotTitle {TITLE} --heatmapHeight 14 --heatmapWidth 5 --plotFileFormat pdf'.format(OUT = out, TITLE = title))
 		
 		#os.system("plotHeatmap -m {OUT}_matrix.mat.gz --colorList 'white, #63344c' 'white, #63344c' 'white, #275c62' 'white, #275c62' --missingDataColor white --heatmapHeight 14 --heatmapWidth 5 -out {OUT}_heatmap.pdf".format(MATRIX = MATRIX, NAME = NAME))
 
