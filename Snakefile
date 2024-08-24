@@ -418,11 +418,9 @@ rule WGBS_volcano:
 		"results/WGBS/WGBS_restab_annotated_allgermTSS_500bp_WT_ESCvsEpiLC.csv",
 		"results/WGBS/WGBS_restab_annotated_allgermCGI_WT_ESCvsEpiLC.csv",
 		"results/figure_pieces/WGBS_volcano_ESCvsEpiLC_allgermTSS500.pdf",
-		"results/figure_pieces/WGBS_volcano_ESCvsEpiL_allgermCGI.pdf",
-		"data/processed/KDM5C_bound_TSS_500bp.bed",
-		"data/processed/KDM5C_unbound_TSS_500bp.bed",
-		"data/processed/KDM5C_bound_CGI.bed",
-		"data/processed/KDM5C_unbound_CGI.bed",
+		"results/figure_pieces/WGBS_volcano_ESCvsEpiLC_allgermCGI.pdf",
+		"results/WGBS/WGBS_restab_annotated_allgermTSS_500bp_WTvsKO.csv",
+		"results/WGBS/WGBS_restab_annotated_allgermCGI_WTvsKO.csv",
 		"results/figure_pieces/WGBS_volcano_EpiLC_WTvsKO_allgermTSS500.pdf",
 		"results/figure_pieces/WGBS_volcano_EpiLC_WTvsKO_allgermCGI.pdf"
 	script:
