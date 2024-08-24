@@ -407,22 +407,39 @@ rule Germ_CGI:
 		"code/WGBS_germ_CGI.R"
 
 #Get the genes for each location and make volcano plots?
-rule WGBS_ESCvsEpiLC:
+rule WGBS_volcano:
 	input:
 		"results/KDM5C_binding_allgerm_CGI.csv",
 		"data/processed/WGBS_restab_regionCounts_allgermTSS500_WT_min3_ESCvsEpiLC.csv",
-		"data/processed/WGBS_restab_regionCounts_allgermCGI_WT_min3_ESCvsEpiLC.csv"
+		"data/processed/WGBS_restab_regionCounts_allgermCGI_WT_min3_ESCvsEpiLC.csv",
+		"data/processed/WGBS_restab_regionCounts_allgermTSS500_min3_WTvsKO_EpiLC.csv",
+		"data/processed/WGBS_restab_regionCounts_allgermCGI_min3_WTvsKO_EpiLC.csv"
 	output:
 		"results/WGBS/WGBS_restab_annotated_allgermTSS_500bp_WT_ESCvsEpiLC.csv",
-		"results/WGBS/WGBS_restab_annotated_allgermCGI_WT_ESCvsEpiLC.csv.csv",
-		"results/figure_pieces/WGBS_volcano_allgermTSS500.pdf",
-		"results/figure_pieces/WGBS_volcano_allgermCGI.pdf",
+		"results/WGBS/WGBS_restab_annotated_allgermCGI_WT_ESCvsEpiLC.csv",
+		"results/figure_pieces/WGBS_volcano_ESCvsEpiLC_allgermTSS500.pdf",
+		"results/figure_pieces/WGBS_volcano_ESCvsEpiL_allgermCGI.pdf",
 		"data/processed/KDM5C_bound_TSS_500bp.bed",
 		"data/processed/KDM5C_unbound_TSS_500bp.bed",
 		"data/processed/KDM5C_bound_CGI.bed",
-		"data/processed/KDM5C_unbound_CGI.bed"
+		"data/processed/KDM5C_unbound_CGI.bed",
+		"results/figure_pieces/WGBS_volcano_EpiLC_WTvsKO_allgermTSS500.pdf",
+		"results/figure_pieces/WGBS_volcano_EpiLC_WTvsKO_allgermCGI.pdf"
 	script:
-		"code/WGBS_ESCvsEpiLC.R"
+		"code/WGBS_volcano.R"
+
+rule WGBS_heat:
+	input:
+		"results/KDM5C_binding_allgerm_CGI.csv",
+		"data/processed/WGBS_percmeth_allgermTSS500_min3.csv",
+		"results/WGBS/WGBS_restab_annotated_allgermTSS_500bp_WT_ESCvsEpiLC.csv"
+	output:
+		"results/WGBS/WGBS_percmeth_annotated_allgermTSS_500bp.csv",
+		"results/figure_pieces/WGBS_percmeth_heat_allgermTSS_noCGI.pdf",
+		"results/figure_pieces/WGBS_percmeth_heat_allgermTSS_CGI.pdf",
+		"results/figure_pieces/WGBS_percmeth_heat_allgermTSS_KDM5Cbound.pdf"
+	script:
+		"code/WGBS_germ_heatmap.R"
 
 
 ###################### Render the manuscript ############################
