@@ -46,7 +46,7 @@ write.table(ESCvsEpiLC_TSS, snakemake@output[[1]], sep = ",", row.names = FALSE)
 
 ## TSS WT vs KO
 WTvsKO_TSS <- anno_TSS(read.csv(snakemake@input[[4]], sep = ","))
-write.table(ESCvsEpiLC_TSS, snakemake@output[[5]], sep = ",", row.names = FALSE)
+write.table(WTvsKO_TSS, snakemake@output[[5]], sep = ",", row.names = FALSE)
 
 
 ### TSS volcano plot
@@ -171,7 +171,7 @@ write.table(ESCvsEpiLC_CGI, snakemake@output[[2]], sep = ",",  row.names = FALSE
 
 
 WTvsKO_CGI <- anno_CGI(read.csv(snakemake@input[[5]], sep = ","))
-write.table(ESCvsEpiLC_CGI, snakemake@output[[6]], sep = ",",  row.names = FALSE)
+write.table(WTvsKO_CGI, snakemake@output[[6]], sep = ",",  row.names = FALSE)
 
 
 
