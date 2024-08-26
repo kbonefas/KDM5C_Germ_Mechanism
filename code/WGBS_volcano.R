@@ -126,8 +126,81 @@ TSS_volcano <- function(n, TITLE, restab, maxy){
 
 }
 
+###for kdm5c binding
+TSS_volcano_5C <- function(n, TITLE, restab, maxy){
+
+	#restab <- methyl
+	#if the gene is tissue specific, the color key is the color for the tissue. Otherwise the gene will be gray
+	restab$keyvals <- ifelse(restab$qvalue > 0.01 & restab$KDM5C_binding == "Bound", 'black',
+						ifelse(restab$KDM5C_binding == "Bound" & restab$meth.diff < l2fcco & restab$meth.diff > -l2fcco, 'black',
+							ifelse(restab$qvalue <= 0.01 & restab$KDM5C_binding == "Bound", 'blue',
+								ifelse(restab$meth.diff >= l2fcco & restab$qvalue <= 0.01 & restab$KDM5C_binding == "Unbound", 'palevioletred1',
+                        			ifelse(restab$meth.diff <= -l2fcco & restab$qvalue <= 0.01 & restab$KDM5C_binding == "Unbound", 'lightseagreen',
+										"gray38")))))
+
+	#print(head(restab))
+
+	restab$names <- ifelse(restab$keyvals == 'blue', 'KDM5C-bound', 
+                         ifelse(restab$keyvals == 'gray38', 'n.s. KDM5C-unbound',
+						 	ifelse(restab$keyvals == 'black', 'n.s. KDM5C-bound',
+								ifelse(restab$keyvals == 'lightseagreen', 'KDM5C-unbound',
+									ifelse(restab$keyvals == 'palevioletred1', 'KDM5C-unbound',
+                            			"uh oh")))))
+
+
+
+	#for the figure legend
+	keyvals <- restab$keyvals
+	names(keyvals) <- restab$names 
+
+	#Make the axis range narrower so that there is space to see the data
+	neglog10 <- function(x){
+	  a = log10(x)
+	  return(-a)
+	}
+
+
+	
+	keyvals.shape <- ifelse(neglog10(restab$qvalue) > maxy, 9, 16)
+	#if the log2fc or the padj is greater than the maximum axis cut off, set it to the cut off and make the point an outlier shape
+	restab$qvalue[restab$qvalue< 10^(-maxy)] <- 10^(-maxy)
+
+	keyvals.shape[is.na(keyvals.shape)] <- 16
+	names(keyvals.shape)[keyvals.shape == 9] <- 'Outlier'
+	names(keyvals.shape)[keyvals.shape == 16] <- 'Regular'
+
+	
+	#labdesc <- ifelse(labels == "yes", restab$SYMBOL, ifelse(labels == "no", NA, "oop"))
+
+	library(EnhancedVolcano)
+	p <- EnhancedVolcano(restab, lab = restab$SYMBOL,
+    	                 x = 'meth.diff', y = 'qvalue',
+            	         #selectLab = labels,
+                	     xlim=c(-100,100),
+    	                 xlab ="% methylation difference",
+        	             ylab = bquote(~-Log[10]~qvalue),
+            	         pCutoff = 0.01, FCcutoff = l2fcco,
+    	                 title = TITLE,
+        	             subtitle = " ",
+            	         labSize = 4.0,
+                	     colAlpha = .6,
+						 pointSize = 3,
+                    	 colCustom = keyvals,
+						 shapeCustom = keyvals.shape,
+            	         legendPosition = 'right',
+                	     gridlines.major = FALSE,
+                    	 gridlines.minor = FALSE,
+						 drawConnectors = TRUE, widthConnectors = 1.0, colConnectors = 'black',
+                	     legendLabSize = 10, legendIconSize = 3.0)
+
+	ggsave(snakemake@output[[n]], plot = p, width = 9, height = 7)
+
+
+}
+
 TSS_volcano(3, "ESC vs exEpiLC - germline TSS", ESCvsEpiLC_TSS, 200)
 TSS_volcano(7, "WT vs KO exEpiLC - germline TSS", WTvsKO_TSS, 50)
+TSS_volcano_5C(9, "WT vs KO exEpiLC - germline TSS", WTvsKO_TSS, 50)
 
 
 

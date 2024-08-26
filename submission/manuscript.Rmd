@@ -216,6 +216,10 @@ In wild-type cells, germline genes are known to accumulate CpG methylation (CpGm
 To determine KDM5C's role in the initial placement of DNA methylation at germline gene promoters, we perfomed whole genome bislufite sequencing (WGBS) in wild-type and _Kdm5c_-KO ESCs and 96 hour extended EpiLCs (exEpiLCs). We first identified which germline gene promoters siginificantly gained CpGme in wild-type cells during ESC to exEpiLCs differentiation (methylKit[@akalinMethylKitComprehensivePackage2012], q < 0.01, |methylation difference| >= 25%, TSS &#177; 500 bp). The majority of germline genes gained substantial CpGme at their promoter, regardless if their promoter contained a CGI (`r signif(nrow(ESCvsEpiLC_25)/nrow(ESCvsEpiLC)*100, 4)`%) (Figure 6H).
 
 We then assessed differentially methylated promoters in wild-type versus _Kdm5c_-KO exEpiLCs and found `r nrow(WTvsKO_hypo)` germline gene promtoers were significantly hypomethylated with _Kdm5c_ loss (Figure 6I). Hypomethylated promoters included genes consistently dysregulated in _Kdm5c_-KO cells, such as _D1Pas1_ (methlyation difference = `r signif(getWGBSinfo(WTvsKO_hypo, "D1Pas1", "meth.diff"),4)`%, q-value = `r signif(getWGBSinfo(WTvsKO_hypo, "D1Pas1", "qvalue"),3)`) (Figure 6J).
+ 
+ ** notes **
+- Something with if they're kdm5c targets
+- Average % methylation in WT and 5CKO for EpiLC germline DEGs
   
 
 

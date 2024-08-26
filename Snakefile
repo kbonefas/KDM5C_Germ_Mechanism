@@ -422,7 +422,8 @@ rule WGBS_volcano:
 		"results/WGBS/WGBS_restab_annotated_allgermTSS_500bp_WTvsKO.csv",
 		"results/WGBS/WGBS_restab_annotated_allgermCGI_WTvsKO.csv",
 		"results/figure_pieces/WGBS_volcano_EpiLC_WTvsKO_allgermTSS500.pdf",
-		"results/figure_pieces/WGBS_volcano_EpiLC_WTvsKO_allgermCGI.pdf"
+		"results/figure_pieces/WGBS_volcano_EpiLC_WTvsKO_allgermCGI.pdf",
+		"results/figure_pieces/WGBS_volcano_EpiLC_WTvsKO_allgermTSS500_5Cbinding.pdf"
 	script:
 		"code/WGBS_volcano.R"
 
