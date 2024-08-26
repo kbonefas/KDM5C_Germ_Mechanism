@@ -181,7 +181,7 @@ The majority of promoters bound by KDM5C in PNCs were also bound in EpiLCs (513 
 Many germline-specific genes are suppressed by the transcription factor heterodimers E2F6/DP1 and MGA/MAX, which respectively bind E2F and E-box motifs[@hurlinMgaDualspecificityTranscription1999; @pohlersRoleE2F6Restriction2005; @velascoDnmt3bRecruitmentE2F62010; @stielowMGAL3MBTL2E2F62018; @dahletE2F6InitiatesStable2021]. To elucidate if KDM5C is recruited to germline gene promoters by a similar mechanism, we used HOMER to identify transcription factor motifs enriched at KDM5C-bound or unbound germline gene promoters[@heinzSimpleCombinationsLineageDetermining2010] (TSS &#177; 500 bp, q-value < 0.1). MAX and E2F6 binding sites were significantly enriched at germline genes bound by KDM5C in EpiLCs, but not at germline genes unbound by KDM5C (MAX q-value: 0.0068, E2F6 q-value: 0.0673, E2F q-value: 0.0917) (Figure 5G). One third of KDM5C-bound promoters contained the consensus sequence for either E2F6 (E2F, 5'-TCCCGC-3'), MGA (E-box, 5'-CACGTG-3'), or both, but only 17% of KDM5C-unbound genes contained these motifs (Figure 5H). KDM5C-unbound germline genes were intstead enriched for multiple RFX transcription factor binding sites (RFX q-value < 0.0001, RFX2 q-value < 0.0001, RFX5 q-value < 0.0001) (Figure 5I). RFX transcription factors bind X-box motifs[@gajiwalaStructureWingedhelixProtein2000] to promote ciliogenesis[@swobodaRFXTypeTranscriptionFactor2000; @ashiqueRfx4TranscriptionFactor2009] and among them is RFX2, a central regulator of post-meiotic spermatogeneis[@kistlerRFX2MajorTranscriptional2015; @wuTranscriptionFactorRFX22016]. Interestingly, RFX2 mRNA is derepressed in _Kdm5c_-KO EpiLCs (Figure 5J), however it is also not a direct target of KDM5C (Supplementary figure XXX). Thus, RFX2 is a candidate transcription factor for driving the ectopic expression of KDM5C-unbound germline genes in _Kdm5c_-KO cells.
 
 
-## KDM5C promotes _de novo_ DNA methylation at germline genes harboring CpG islands
+## KDM5C is recruited to CpG islands and facilitates _de novo_ DNA methylation at germline gene promoters
 
 In the early embryo, germline gene promoters are initially decorated with repressive histone modifications and are then silenced long-term via DNA CpG methylation (CpGme)[@borgelTargetsDynamicsPromoter2010; @endohPCGF6PRC1SuppressesPremature2017; @liuPolycombGroupProtein2020; @mochizukiRepressionGermlineGenes2021]. Our results above indicate KDM5C also acts at germline gene promoters during this time period. However, how KDM5C interacts with other germline gene silencing mechanisms is currently unclear. KDM5C is generally thought to supress transcription through erasure of histone 3 lysine 4 di- and trimethylation (H3K4me2/3)[@iwaseXLinkedMentalRetardation2007], yet KDM5C's catalytic activity was recently shown to be dispensible for suppressing _Dazl_ in undifferentiated ESCs[@guptaGenomewideScreenReveals2023]. Since H3K4me3 impedes _de novo_ CpGme placement[@otaniStructuralBasisRecognition2009; @guoStructuralInsightAutoinhibition2015], KDM5C's catalytic activity may instead be required in the post-implantation embryo for long-term silencing of germline genes. In support of this, CpGme is markedly reduced at two germline gene promoters in the _Kdm5c_-KO adult hippocampus[@scandagliaLossKdm5cCauses2017]. 
 
@@ -200,6 +200,8 @@ ESCvsEpiLC_25 <- ESCvsEpiLC[ESCvsEpiLC$meth.diff >= 25, ]
 WTvsKO <- read.csv("../results/WGBS/WGBS_restab_annotated_allgermTSS_500bp_WTvsKO.csv")
 
 WTvsKO_hypo <- WTvsKO[WTvsKO$meth.diff <= -25, ]
+WTvsKO_hypo_5C <- WTvsKO_hypo[WTvsKO_hypo$KDM5C_binding == "Bound", ]
+
 
 #get the infomration for wgbs
 getWGBSinfo <- function(df, gene, column){
@@ -215,12 +217,8 @@ In wild-type cells, germline genes are known to accumulate CpG methylation (CpGm
 
 To determine KDM5C's role in the initial placement of DNA methylation at germline gene promoters, we perfomed whole genome bislufite sequencing (WGBS) in wild-type and _Kdm5c_-KO ESCs and 96 hour extended EpiLCs (exEpiLCs). We first identified which germline gene promoters siginificantly gained CpGme in wild-type cells during ESC to exEpiLCs differentiation (methylKit[@akalinMethylKitComprehensivePackage2012], q < 0.01, |methylation difference| >= 25%, TSS &#177; 500 bp). The majority of germline genes gained substantial CpGme at their promoter, regardless if their promoter contained a CGI (`r signif(nrow(ESCvsEpiLC_25)/nrow(ESCvsEpiLC)*100, 4)`%) (Figure 6H).
 
-We then assessed differentially methylated promoters in wild-type versus _Kdm5c_-KO exEpiLCs and found `r nrow(WTvsKO_hypo)` germline gene promtoers were significantly hypomethylated with _Kdm5c_ loss (Figure 6I). Hypomethylated promoters included genes consistently dysregulated in _Kdm5c_-KO cells, such as _D1Pas1_ (methlyation difference = `r signif(getWGBSinfo(WTvsKO_hypo, "D1Pas1", "meth.diff"),4)`%, q-value = `r signif(getWGBSinfo(WTvsKO_hypo, "D1Pas1", "qvalue"),3)`) (Figure 6J).
- 
- ** notes **
-- Something with if they're kdm5c targets
-- Average % methylation in WT and 5CKO for EpiLC germline DEGs
-  
+We then assessed differentially methylated regions (DMRs) at germline gene promoters in wild-type versus _Kdm5c_-KO exEpiLCs. We found `r nrow(WTvsKO_hypo)` germline promoters were significantly hypomethylated with _Kdm5c_ loss (Figure 6I). About half of promoter DMRs hypomethylated in _Kdm5c_-KO exEpiLCs are direct targets of KDM5C in EpiLCs (`r nrow(WTvsKO_hypo_5C)` out of `r nrow(WTvsKO_hypo)` hypomethylated DMRs). Hypomethylated promoters included genes consistently dysregulated in _Kdm5c_-KO cells, such as _D1Pas1_ (methlyation difference = `r signif(getWGBSinfo(WTvsKO_hypo, "D1Pas1", "meth.diff"),4)`%, q-value = `r signif(getWGBSinfo(WTvsKO_hypo, "D1Pas1", "qvalue"),3)`) (Figure 6J). 
+
 
 
 

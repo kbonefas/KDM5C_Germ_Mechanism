@@ -128,3 +128,36 @@ p <- Heatmap(plotmatrix, column_title = "KDM5C-bound germline genes",show_row_na
 draw(p)
 	
 dev.off()
+
+
+#all germline DEGs
+EpiLC_DEGs <- read.csv(snakemake@input[[4]], sep = ",")[,"SYMBOL"]
+amy_DEGs <- read.csv(snakemake@input[[5]], sep = ",")[,"SYMBOL"]
+hip_DEGs <- read.csv(snakemake@input[[6]], sep = ",")[,"SYMBOL"]
+
+DEGs <- unique(c(hip_DEGs, EpiLC_DEGs, amy_DEGs))
+
+pdf(file = snakemake@output[[5]],   # The directory you want to save the file in
+    width = 5, # The width of the plot in inches
+    height = 10) # The height of the plot in inches
+
+plotmatrix <- avg_hclust_matrix[row.names(avg_hclust_matrix) %in% DEGs,]
+col_fun = colorRamp2(range(plotmatrix), hcl_palette = "Reds", reverse = TRUE)
+p <- Heatmap(plotmatrix, column_title = "EpiLC germline DEGs",show_row_names = TRUE, split = 2, column_order = c("avg_WT_esc","avg_KO_esc","avg_WT_96EpiLC", "avg_KO_96EpiLC"), heatmap_legend_param = list(title = "% CpGme"), col = col_fun)
+draw(p)
+	
+dev.off()
+
+
+
+pdf(file = snakemake@output[[6]],   # The directory you want to save the file in
+    width = 5, # The width of the plot in inches
+    height = 10) # The height of the plot in inches
+
+plotmatrix <- avg_hclust_matrix[row.names(avg_hclust_matrix) %in% DEGs,]
+plotmatrix <- plotmatrix[,c("avg_WT_96EpiLC", "avg_KO_96EpiLC")]
+col_fun = colorRamp2(range(plotmatrix), hcl_palette = "Reds", reverse = TRUE)
+p <- Heatmap(plotmatrix, column_title = "EpiLC germline DEGs",show_row_names = TRUE, split = 2, column_order = c("avg_WT_96EpiLC", "avg_KO_96EpiLC"), heatmap_legend_param = list(title = "% CpGme"), col = col_fun)
+draw(p)
+	
+dev.off()
