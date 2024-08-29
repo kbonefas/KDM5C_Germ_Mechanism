@@ -227,6 +227,8 @@ Although eggs and sperm employ the same transcriptional programs for shared func
 
 Emerging work indicates many histone-modifying enzymes have non-cataltyic functions that influnce gene expression, sometimes even more potently than their catalytic roles[@aubertUnexpectedNoncatalyticRoles2019; @morganReevaluatingRolesHistonemodifying2020]. KDM5C's catalytic activity may not be required for germline gene silencing, as it was recently found to be dispensible for repressing _Dazl_ in ESCs [@guptaGenomewideScreenReveals2023]. 
 
+- Our results indicate KDM5C's removal of H3K4me2/3 may be necessary at a subset of CGI-containing germline genes, given they fail to accumulate CpGme during EpiLC differentiation. These CpGme-sensitive germline genes, such as _D1Pas1_ and _Naa11_, are also de-repressed in the mature _Kdm5c_-KO brain and consistently dysregulated in multiple _Kdm5c_-KO datasets[@scandagliaLossKdm5cCauses2017].
+
 - H3K4me3 and CpGme typically do not colocalize
 	- https://pubmed.ncbi.nlm.nih.gov/17334365/
 	- https://www.nature.com/articles/s41594-017-0013-5
@@ -234,22 +236,31 @@ Emerging work indicates many histone-modifying enzymes have non-cataltyic functi
 	- https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2718496/
 	- https://pubmed.ncbi.nlm.nih.gov/19581485/
 
-- CpGme was imparied at some germline genes, including ones expressed throughout life
--  Some regions, such as Dazl, were able to compensate for KDM5C loss, even though it gained H3K4me2 in EpiLCs. 
-	- Multiple repressive mechanisms
-We found _Kdm5c_-KO EpiLCs and the amygdala accumulate H3K4me2/3 around the TSS of germline genes, potential indicating KDM5C's cataltyic activity is necessary at later points in development. 
+- Contrastingly, many germline genes had only a modest reduction in CpGme, including _Dazl_ even though its TSS accumulated substantial H3K4me2. 
+- Multiple regulators repress dazl, dazl is not expressed in the mature _Kdm5c_-KO brain
+	E2F6/MGA/MAX
+		- Loss of many chromatin regulators affects CpGme (Multiple, non-redundant silencing mechansisms) - seems to be the crux point of germline gene silencing
+		-  Because CGIs are typically resistant to CpGme (accurate?), germline CGIs may require a highly repressive histone landscape to recruit sufficient DNMTs to these loci
 
-KDM5C's catalytic activity could be necessary to silence germline genes in EpiLCs, as 
+- Altogether, our results indicates a given chromatin modifier's catalytic and non-catlytic regulation of gene expression can change depending upon the locus and developmental stage. 
 
 
 
-as H3K4me3 impedes _de novo_ CpGme placement[@otaniStructuralBasisRecognition2009; @guoStructuralInsightAutoinhibition2015]. We found _Kdm5c_-KO cells accumulate H3K4me2/3 around the TSS of germline genes and have impaired CpGme placement at CGIs for select germline gene promoters. Our study therefore indicates the requirement of catalytic and non-catlytic gene regulatory mechanisms can change depending upon the locus and developmental stage. 
+
+
+Although the classic model for germline gene silencing is accumulation of CpGme at CGIs within their promoter. We found less than 30% of germline-enriched genes have CGIs, yet the majority of CGI-free germline genes still gained significant CpGme around their TSS. 
+
+- CGIs highly determined KDM5C recruitment to germline gene promoters.
+
+- KDM5C loss also impacted CpGme at some KDM5C-unbound, CGI-free germline genes. Unclear what the repressive mechanism is for these genes.
+
+In somatic cells, germline genes are highly methylated at promoter CGIs, which are typically unmethylated for other classes of genes.
+
+
+- Germline gene suppression has focused on the accumulation of CpGme at CGIs
+
 
 - DNAme and CpG islands
-	- Loss of many chromatin regulators affects CpGme (Multiple, non-redundant silencing mechansisms) - seems to be the crux point of germline gene silencing
-	- Germline genes are methylated at promoter CGIs, which are typically not methylated for other types of genes
-	- Because CGIs are typically resistant to CpGme (accurate?), germline CGIs may require a highly repressive histone landscape to recruit sufficient DNMTs to these loci
-	- We found only 30% of germline-enriched genes have CGIs, but the majority of CGI-free germline genes still gain CpGme around the TSS. Unclear what the repressive mechanism is for these genes.
 
 
 
@@ -260,7 +271,6 @@ as H3K4me3 impedes _de novo_ CpGme placement[@otaniStructuralBasisRecognition200
 
 - CGIs highly determine KDM5C recruitment to germline gene promoters.
 			- KDM5C is known to be enriched at CGIs (in neurons? are these methylated? or is its germline CGI function different from its somatic CGI function?). 
-	- KDM5C loss impacts germline gene CGI methylation, but not really the non-CGI TSS methylation
 		- Other studies on germline gene repressors have shown they are important for CGIme, unclear if they participate in non-CGI TSS CpGme
 	- Altogether demonstrates different classes of germline genes use distinct silencing mechanisms 
 
