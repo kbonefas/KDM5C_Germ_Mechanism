@@ -69,13 +69,19 @@ for(s in 1:length(CGI_status)){
 
 	plot_df <- data.frame(ENSEMBL = rep(avg_percmeth_p$ENSEMBL, 2), genotype = c(rep("WT", nrow(avg_percmeth_p)), rep("KO", nrow(avg_percmeth_p))), AVGpercentMeth = c(avg_percmeth_p$avg_WT_96EpiLC, avg_percmeth_p$avg_KO_96EpiLC))
 
-	plotlist[[s]] <- gghistogram(plot_df, x = "AVGpercentMeth", add = "mean", rug = TRUE, color = "genotype", fill = "genotype", add_density = TRUE, title = paste("TSS -", CGI_status[s]), palette = c(EpiLC96_XY_KO, EpiLC96_XY_WT))
+		#do wt vs KO statistics
+	# stats[[s]] <- ks.test(plot_df[plot_df$genotype == "WT",][['AVGpercentMeth']], plot_df[plot_df$genotype == "KO",][['AVGpercentMeth']])
+
+	#compare means
+	sig <- wilcox.test(plot_df[plot_df$genotype == "WT",][['AVGpercentMeth']], plot_df[plot_df$genotype == "KO",][['AVGpercentMeth']])
+	stats[[s]] <- sig
+
+	p <- gghistogram(plot_df, x = "AVGpercentMeth", add = "mean", rug = TRUE, color = "genotype", fill = "genotype", add_density = TRUE, xlab = "average % CpGme",title = paste("exEpiLC % CpGme TSS", CGI_status[s]), palette = c(EpiLC96_XY_KO, EpiLC96_XY_WT))
 
 
-	#do wt vs KO statistics - Kolmogorov-Smirnov test
-	stats[[s]] <- ks.test(plot_df[plot_df$genotype == "WT",][['AVGpercentMeth']], plot_df[plot_df$genotype == "KO",][['AVGpercentMeth']])
 
-
+	plotlist[[s]] <- ggpar(p, subtitle = paste("Mann-Whitney p =", signif(sig$p.value, 3)), xlim = c(0, 100), font.subtitle = 10)
+	
 
 
 }
@@ -83,7 +89,7 @@ for(s in 1:length(CGI_status)){
 
 library("gridExtra")
 
-ggsave(snakemake@output[[2]], grid.arrange(grobs = plotlist, nrow = 1), width = 7, height = 3)
+ggsave(snakemake@output[[2]], grid.arrange(grobs = plotlist, nrow = 1), width = 8, height = 3.5)
 
 print("no CGI")
 print(stats[[1]])
