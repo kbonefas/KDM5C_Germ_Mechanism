@@ -3,4 +3,5 @@
 library('tinytex')
 library('rmarkdown')
 render('submission/manuscript.Rmd')
+render('submission/supplement.Rmd')
 

@@ -1,0 +1,37 @@
+
+---
+title: Supplement - Erosion of somatic tissue identity with loss of the X-linked intellectual disability factor KDM5C
+output: pdf_document
+geometry: margin = 1in
+font-size: 11pt
+header-includes:
+   - \renewcommand{\figurename}{Supplementary Figure}
+   - \usepackage{caption}
+   - \captionsetup[figure]{font=footnotesize, labelfont=bf}
+   - \usepackage{sectsty} 
+   - \usepackage{helvet}
+   - \renewcommand{\familydefault}{\sfdefault}
+   - \usepackage{lineno}
+   - \linenumbers
+   - \renewcommand\linenumberfont{\normalfont\small}
+   - \usepackage{setspace}
+   - \usepackage{siunitx}
+   - \spacing{1.5}
+   - \pagenumbering{arabic}
+   - \usepackage{indentfirst}
+
+bibliography: references.bib
+csl: cell-reports.csl
+indent: true
+editor_options:
+  chunk_output_type: console
+---
+
+
+\newpage
+\begin{figure}
+  \centering
+  \includegraphics{../submission/compiled_figs/Supplement_KDM5C_ChIPseq.pdf}
+  \caption[KDM5C’s catalytic activity promotes long-term silencing of germline genes via DNA methylation]{\textbf{KDM5C’s catalytic activity promotes long-term silencing of germline genes via DNA methylation.} \textbf{A.} Left - Bigwigs of representative histone 3 lysine 4 trimethylation (H3K4me3) ChIP-seq peaks at two germline genes in the wild-type (WT) and \textit{Kdm5c}-KO (5CKO) adult amygdala. Right - Average H3K4me3 at the transcripiton start site (TSS) of all germline-enriched genes in wild-type (dark red) and \textit{Kdm5c}-KO (light red) amygdala. \textbf{B.} Left - Bigwigs of representative histone 3 lysine 4 dimethylation (H3K4me2) ChIP-seq peaks at representative germline genes in wild-type and \textit{Kdm5c}-KO EpiLCs. Right - Average H3K4me2 at the TSS of all germline-enriched genes in wild-type (dark purple) and \textit{Kdm5c}-KO (light purple) EpiLCs. \textbf{C.} Diagram of embryonic stem cell (ESC) to epiblast-like cell (EpiLC) differentiation protocol and collection time points for RNA and protein. \textbf{D.} Real time quantitative PCR (RT-qPCR) of \textit{Kdm5c} RNA expression, calculated in comparision to TBP expression (2\textsuperscript{-deltaCT}). * p < 0.05, ** p < 0.01, *** p < 0.001, Welch's t-test. \textbf{E.} KDM5C protein expression normalized to DAXX. Quantified intensity using ImageJ (artificial units - au). Right - representative lanes of Western blot for KDM5C and DAXX. * p < 0.05, ** p < 0.01, *** p < 0.001, Welch's t-test \textbf{F.} XXX {G.} XXX.}
+  \label{figurelabel}
+\end{figure}
