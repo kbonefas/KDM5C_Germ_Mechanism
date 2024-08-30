@@ -427,23 +427,35 @@ rule WGBS_volcano:
 	script:
 		"code/WGBS_volcano.R"
 
-rule WGBS_heat:
+#histogram of percent methylation at germline promoters
+rule WGBS_hist:
 	input:
 		"results/KDM5C_binding_allgerm_CGI.csv",
 		"data/processed/WGBS_percmeth_allgermTSS500_min3.csv",
-		"results/WGBS/WGBS_restab_annotated_allgermTSS_500bp_WT_ESCvsEpiLC.csv",
-		"results/DESeq2/germDEGs/germDEGs_EpiLC_XY5cKO.csv",
-		"results/DESeq2/germDEGs/germDEGs_amy5cKO.csv",
-		"results/DESeq2/germDEGs/germDEGs_hip5cKO.csv"
+		"results/WGBS/WGBS_restab_annotated_allgermTSS_500bp_WT_ESCvsEpiLC.csv"
 	output:
 		"results/WGBS/WGBS_percmeth_annotated_allgermTSS_500bp.csv",
-		"results/figure_pieces/WGBS_percmeth_heat_allgermTSS_noCGI.pdf",
-		"results/figure_pieces/WGBS_percmeth_heat_allgermTSS_CGI.pdf",
-		"results/figure_pieces/WGBS_percmeth_heat_allgermTSS_KDM5Cbound.pdf",
-		"results/figure_pieces/WGBS_percmeth_heat_allgermTSS_allgermDEGs.pdf",
-		"results/figure_pieces/WGBS_percmeth_heat_allgermTSS_allgermDEGs_EpiLCs.pdf"
+		"results/figure_pieces/WGBS_hist_percMeth_5CKO.pdf"
 	script:
-		"code/WGBS_germ_heatmap.R"
+		"code/WGBS_germ_hist.R"
+
+#rule WGBS_heat:
+#	input:
+#		"results/KDM5C_binding_allgerm_CGI.csv",
+#		"data/processed/WGBS_percmeth_allgermTSS500_min3.csv",
+#		"results/WGBS/WGBS_restab_annotated_allgermTSS_500bp_WT_ESCvsEpiLC.csv",
+#		"results/DESeq2/germDEGs/germDEGs_EpiLC_XY5cKO.csv",
+#		"results/DESeq2/germDEGs/germDEGs_amy5cKO.csv",
+#		"results/DESeq2/germDEGs/germDEGs_hip5cKO.csv"
+#	output:
+#		#"results/WGBS/WGBS_percmeth_annotated_allgermTSS_500bp.csv",
+#		"results/figure_pieces/WGBS_percmeth_heat_allgermTSS_noCGI.pdf",
+#		"results/figure_pieces/WGBS_percmeth_heat_allgermTSS_CGI.pdf",
+#		"results/figure_pieces/WGBS_percmeth_heat_allgermTSS_KDM5Cbound.pdf",
+#		"results/figure_pieces/WGBS_percmeth_heat_allgermTSS_allgermDEGs.pdf",
+#		"results/figure_pieces/WGBS_percmeth_heat_allgermTSS_allgermDEGs_EpiLCs.pdf"
+#	script:
+#		"code/WGBS_germ_heatmap.R"
 
 
 ###################### Render the manuscript ############################
