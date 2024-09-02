@@ -99,7 +99,7 @@ TSS_volcano <- function(n, TITLE, restab, maxy){
 
 	
 	#labdesc <- ifelse(labels == "yes", restab$SYMBOL, ifelse(labels == "no", NA, "oop"))
-	labels <- c("D1Pas1", "Cyct", "Stra8", "Zar1", "Dazl", "Naa11", "Tex15", "Tex14", "Tex11", "Rpl10l")
+	labels <- c("D1Pas1", "Cyct", "Ddx4", "Stra8", "Zar1", "Dazl", "Naa11", "Tex15", "Tex14", "Tex11", "Rpl10l")
 
 	library(EnhancedVolcano)
 	p <- EnhancedVolcano(restab, lab = restab$SYMBOL,
