@@ -99,18 +99,19 @@ TSS_volcano <- function(n, TITLE, restab, maxy){
 
 	
 	#labdesc <- ifelse(labels == "yes", restab$SYMBOL, ifelse(labels == "no", NA, "oop"))
+	labels <- c("D1Pas1", "Cyct", "Stra8", "Zar1", "Dazl", "Naa11", "Tex15", "Tex14", "Tex11", "Rpl10l")
 
 	library(EnhancedVolcano)
 	p <- EnhancedVolcano(restab, lab = restab$SYMBOL,
     	                 x = 'meth.diff', y = 'qvalue',
-            	         #selectLab = labels,
+            	         selectLab = labels,
                 	     xlim=c(-100,100),
     	                 xlab ="% methylation difference",
         	             ylab = bquote(~-Log[10]~qvalue),
             	         pCutoff = 0.01, FCcutoff = l2fcco,
     	                 title = TITLE,
         	             subtitle = " ",
-            	         labSize = 4.0,
+            	         labSize = 5.5,
                 	     colAlpha = .6,
 						 pointSize = 3,
                     	 colCustom = keyvals,
@@ -118,8 +119,8 @@ TSS_volcano <- function(n, TITLE, restab, maxy){
             	         legendPosition = 'right',
                 	     gridlines.major = FALSE,
                     	 gridlines.minor = FALSE,
-						 drawConnectors = TRUE, widthConnectors = 1.0, colConnectors = 'black',
-                	     legendLabSize = 10, legendIconSize = 3.0)
+						 drawConnectors = TRUE, widthConnectors = .5, colConnectors = 'black',
+                	     legendLabSize = 12, legendIconSize = 3.0)
 
 	ggsave(snakemake@output[[n]], plot = p, width = 9, height = 7)
 
@@ -294,12 +295,12 @@ CGI_volcano <- function(n, TITLE, restab){
 	# names(keyvals.shape)[keyvals.shape == 16] <- 'Regular'
 
 	#select label
-	labels <- c("D1Pas1", "Stra8", "Zar1", "Dazl")
+	#labels <- c("D1Pas1", "Cyct", "Stra8", "Zar1", "Dazl", "Naa11", "Tex15", "Tex14", "Tex11", "Rpl10l")
 
 	library(EnhancedVolcano)
 	p <- EnhancedVolcano(restab, lab = restab$SYMBOL,
     	                 x = 'meth.diff', y = 'qvalue',
-            	         selectLab = labels,
+            	         #selectLab = labels,
                 	     xlim=c(-100,100),
     	                 xlab ="% methylation difference",
         	             ylab = bquote(~-Log[10]~adjusted~italic(P)),
@@ -314,7 +315,7 @@ CGI_volcano <- function(n, TITLE, restab){
             	         legendPosition = 'right',
                 	     gridlines.major = FALSE,
                     	 gridlines.minor = FALSE,
-						 drawConnectors = TRUE, widthConnectors = 1.0, colConnectors = 'black',
+						 drawConnectors = FALSE, widthConnectors = 1.0, colConnectors = 'black',
                 	     legendLabSize = 10, legendIconSize = 3.0)
 
 	ggsave(snakemake@output[[n]], plot = p, width = 7, height = 5)
