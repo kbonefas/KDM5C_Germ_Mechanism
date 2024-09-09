@@ -265,10 +265,12 @@ After ensuring read quality via FastQC (v0.11.8), reads were then mapped to the 
 ## Chromatin immunoprecipitation followed by DNA sequecing (ChIP-seq)
 ChIP-seq reads were aligned to mm10 using Bowtie1 (v1.1.2) allowing up to two mismatches. Only uniquely mapped reads were used for analysis. Peaks were called using MACS2 software (v2.2.9.1) using input BAM files for normalization, with filters for a q-value < 0.1 and a fold enrichment > 1. We removed “black-listed” genomic regions that often give aberrant signals. Common peak sets were obtained in R via DiffBind (v3.6.5). In the case of KDM5C ChIP-seq, _Kdm5c_-KO peaks were then subtracted from wild-type samples using bedtools (v2.25.0). Peak proximity to genome annotations was determined by ChIPSeeker (v1.32.1). Gene ontology (GO) analyses were performed by the R package enrichPlot (v1.16.2) using the biological processes setting and compareCluster. Enriched motifs were identified using HOMER[@heinzSimpleCombinationsLineageDetermining2010]. Average binding across the genome was visualized using deeptools (v3.1.3). Bigwigs were visualized using the UCSC genome browser.
 
+## CpG island (CGI) analysis
+Locations of CpG islands were determined through the mm10 UCSC genome browser CpG island track. CGI coordinates were then annotated using ChIPseeker (v1.32.1) and filtered for promoters of germline genes (TSS &#177; 500).
+
 ## Whole genome bisulfite sequencing (WGBS)
-Genomic DNA (gDNA) from na&#239;ve ESCs and extended EpiLCs was extracted using the Wizard Genomic DNA Purification Kit (Promega A1120), following the instructions for Tissue Culture Cells. gDNA from two wild-types and two _Kdm5c_-KOs of each cell type was sent to Novogene for WGBS using the Illumina NovaSeq X Plus platform and sequenced for 150bp paired-end reads (PE150). 
-- bismark
-- Methylkit
+Genomic DNA (gDNA) from na&#239;ve ESCs and extended EpiLCs was extracted using the Wizard Genomic DNA Purification Kit (Promega A1120), following the instructions for Tissue Culture Cells. gDNA from two wild-types and two _Kdm5c_-KOs of each cell type was sent to Novogene for WGBS using the Illumina NovaSeq X Plus platform and sequenced for 150bp paired-end reads (PE150). Reads were adapter and quality trimmed with Trim Galore (v0.6.10) and aligned to the mm10 genome using Bismark (v0.22.1). Analysis of differential methylation at germline gene promoters was perfomed using methylKit (v1.28.0) with a minimum coverage of 3 paired reads, a percentage cut-off of 25%, and q-value of 0.01. Average percentage methylation at germline gene promoters was determined via methylKit (v1.28.0). Methylation bedgraph tracks were generated via Bismark and visualized using the UCSC genome browser. 
+
 
 ## Data availability
 ### Published datasets
@@ -281,10 +283,11 @@ Scripts used to generate the results, tables, and figures of this study are avai
 
 
 # Acknowledgements
-- Jacob Mueller for providing insight in germline gene regulation. 
-- Sundeep Kalantry for providing reagents and expertise in culturing mouse emrbyonic stem cells and epiblast-like cells
-- Ilakkiya
-- Funding sources
+We thank Drs. Sundeep Kalantry, Milan Samanta, and Rebecca Malcore for providing protocols and expertise in culturing mouse ESCs and EpiLCs, as well as providing wild-type and _Kdm5c_-KO ESCs used in this study. We thank Dr. Jacob Mueller for his insight in germline gene regulation and directing us to the germline-depleted mouse models. We also thank Drs. Stephanie Bielas, Michael Sutton, Donna Martin, and the members of the Iwase, Sutton, Bielas, and Martin labs for helpful discussions and critiques of the data. We thank members of the University of Michigan Reproductive Sciences Program for providing feedback throughout the development of this work. This work was supported by grants from the National Institutes of Health (NIH) (National Institute of Neurological Disorders and Stroke: NS089896, 5R21NS104774, and NS116008 to S.I.), Farrehi Family Foundation Grant (to S.I.), the University of Michigan Career Training in Reproductive Biology (NIH T32HD079342, to K.M.B), and the NIH Early Stage Training in the Neurosciences Training Grant (T32-NS076401 to K.M.B).
+
+# Author contributions
+K.M.B. and S.I. conceived the study and designed the experiments. I.V. generated the ESC and exEpiLC WGBS data. K.M.B performed the data analysis and all other experiments. K.M.B and S.I. wrote and edited the manuscript. 
+
 
 # References
 <div id="refs"></div>
