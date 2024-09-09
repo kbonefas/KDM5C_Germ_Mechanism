@@ -105,19 +105,25 @@ rule germgenes:
 		"code/utilities/mouseGermlineGenes.R"
 
 
-###################### Figure 3: EpiLC germline genes ############################
-#DESeq2 on Kdm5c-KO EpiLCs
-rule EpiDESeq2:
+###################### Figure 3: EpiLC vs Brain germline genes ############################
+
+#DESeq2 on male and female Kdm5c mutant EpiLCs
+rule EpiDESeq2_XXvsXY:
 	input:
 		cts = "data/raw/EpiLC_gene_expected_count.txt"
 	output:
-		"data/raw/SampleInfo_EpiLC.csv",
-		"data/processed/restable_EpiLC_XY5cKO.csv",
-		"results/DESeq2/DEGs_EpiLC_XY5cKO.csv"
+		"data/raw/SampleInfo_EpiLC_XXvsXY.csv",
+		"results/figure_pieces/PCA_EpiLC.pdf",
+		"data/processed/restable_EpiLC_XXvsXY_XY5cKO.csv",
+		"data/processed/restable_EpiLC_XXvsXY_XX5cHET.csv",
+		"data/processed/restable_EpiLC_XXvsXY_XX5cKO.csv",
+		"results/DESeq2/DEGs_EpiLC_XXvsXY_XY5cKO.csv",
+		"results/DESeq2/DEGs_EpiLC_XXvsXY_XX5cHET.csv",
+		"results/DESeq2/DEGs_EpiLC_XXvsXY_XX5cKO.csv"
 	params:
 		alpha = PADJ
 	script:
-		"code/DESeq2_EpiLC.R"
+		"code/DESeq2_EpiLC_XXvsXY.R"
 
 #plot the expression of ESC and EpiLC pluripotency markers in EpiLCs
 rule EpiLC_markers:
@@ -133,8 +139,8 @@ rule EpiLC_markers:
 #expression of tissue-specific genes in EpiLCs
 rule EpiLC_tissue_genes:
 	input:
-		"results/DESeq2/DEGs_EpiLC_XY5cKO.csv",
-		"data/processed/restable_EpiLC_XY5cKO.csv"
+		"results/DESeq2/DEGs_EpiLC_XXvsXY_XY5cKO.csv",
+		"data/processed/restable_EpiLC_XXvsXY_XY5cKO.csv"
 
 	output:
 		"results/figure_pieces/TissueSpecific_Volcano_EpiLC_XY5cKO.png",
@@ -150,7 +156,7 @@ rule EpiLC_tissue_genes:
 rule BrainEpi_germDEGs:
 	input:
 		"data/processed/germGENES20.csv",
-		"results/DESeq2/DEGs_EpiLC_XY5cKO.csv",
+		"results/DESeq2/DEGs_EpiLC_XXvsXY_XY5cKO.csv",
 		"results/DESeq2/DEGs_amy5cKO.csv",
 		"results/DESeq2/DEGs_hip5cKO.csv"
 	output: #make sure match the order of input files
@@ -166,7 +172,7 @@ rule BrainEpi_germDEGs:
 rule Brain_EpiLC_Upset:
 	input:
 		"data/processed/germGENES20.csv",
-		"results/DESeq2/DEGs_EpiLC_XY5cKO.csv",
+		"results/DESeq2/DEGs_EpiLC_XXvsXY_XY5cKO.csv",
 		"results/DESeq2/DEGs_amy5cKO.csv",
 		"results/DESeq2/DEGs_hip5cKO.csv"
 	output:
@@ -199,26 +205,7 @@ rule EpiLC_PGC:
 		"code/EpiLC_PGCgenes.R"
 
 
-################ male vs female EpiLCs ################
-
-#DESeq2 on Kdm5c-KO EpiLCs
-rule EpiDESeq2_XXvsXY:
-	input:
-		cts = "data/raw/EpiLC_gene_expected_count.txt"
-	output:
-		"data/raw/SampleInfo_EpiLC_XXvsXY.csv",
-		"results/figure_pieces/PCA_EpiLC.pdf",
-		"data/processed/restable_EpiLC_XXvsXY_XY5cKO.csv",
-		"data/processed/restable_EpiLC_XXvsXY_XX5cHET.csv",
-		"data/processed/restable_EpiLC_XXvsXY_XX5cKO.csv",
-		"results/DESeq2/DEGs_EpiLC_XXvsXY_XY5cKO.csv",
-		"results/DESeq2/DEGs_EpiLC_XXvsXY_XX5cHET.csv",
-		"results/DESeq2/DEGs_EpiLC_XXvsXY_XX5cKO.csv"
-	params:
-		alpha = PADJ
-	script:
-		"code/DESeq2_EpiLC_XXvsXY.R"
-
+################ Figure 4: male vs female EpiLCs ################
 
 #plot the overlap between XX and XY EpiLC 5cKO/HET DEGs and which chromosome
 rule EpiLC_XXvsXY:
@@ -353,7 +340,7 @@ rule KDM5C_chip_Stra8:
 rule GeneTSS:
 	input:
 		"data/processed/germGENES20.csv",
-		"results/DESeq2/DEGs_EpiLC_XY5cKO.csv",
+		"results/DESeq2/DEGs_EpiLC_XXvsXY_XY5cKO.csv",
 		"results/DESeq2/DEGs_amy5cKO.csv",
 		"results/DESeq2/DEGs_hip5cKO.csv"
 	output:

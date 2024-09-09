@@ -3,7 +3,7 @@
 ##1) Read in the germline genes list
 germ <- read.csv(snakemake@input[[1]], sep = ",")
 
-##2) Read in the EpiLC and brain XX and XY germline DEGs, make sure files are in same order
+##2) Read in the EpiLC and brain XY germline DEGs, make sure files are in same order
 source("code/utilities/parameters.R") #for the log2fc cut off (l2fcco)
 samples <- c("EpiLC XY 5CKO", "AMY 5CKO", "HIP 5CKO")
 DEGs <- list()
