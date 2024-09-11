@@ -391,7 +391,9 @@ rule Germ_CGI:
 		"results/KDM5C_binding_allgerm_CGI.csv",
 		"results/figure_pieces/WGBS_CGI_bar.pdf",
 		"results/germline_CGI_GO.csv",
-		"results/figure_pieces/WGBS_CGI_GO.pdf"
+		"results/figure_pieces/WGBS_CGI_GO.pdf",
+		"data/processed/germ_CGI_HOMER.txt",
+		"data/processed/germ_noCGI_HOMER.txt",
 	script:
 		"code/WGBS_germ_CGI.R"
 

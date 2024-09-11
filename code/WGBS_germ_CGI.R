@@ -1,5 +1,5 @@
 
-### 24.04.26 compare binding locations of KDM5C ChIp-seq peaks and number of germline genes bound for CGI and CGI-free germline genes
+### 24.07.26 compare binding locations of KDM5C ChIp-seq peaks and number of germline genes bound for CGI and CGI-free germline genes
 
 
 # Visualize genomic locations using ChIPseeker
@@ -124,4 +124,10 @@ head(ck)
 
 write.table(ck, snakemake@output[[4]], row.names = FALSE, sep = ",")
 
-ggsave(snakemake@output[[5]], plot = dotplot(ck, showCategory = 10), width = 8, height = 8)
+ggsave(snakemake@output[[5]], plot = dotplot(ck, showCategory = 10), width = 4, height = 8)
+
+
+
+### Save the gene names for HOMER motif analysis
+write.table(subset(germ, Promo_CGI == "CGI")[,"SYMBOL"], snakemake@output[[6]], sep = "\t", col.names = FALSE, row.names = FALSE, quote = FALSE)
+write.table(subset(germ, Promo_CGI == "no")[,"SYMBOL"], snakemake@output[[7]], sep = "\t", col.names = FALSE, row.names = FALSE, quote = FALSE)
