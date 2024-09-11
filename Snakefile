@@ -373,9 +373,11 @@ rule KDM5C_ESCtoEpiLC:
 #make the bed file for calculating methylation changes
 rule WGBS_germ_regions:
 	input:
-		"data/processed/germGENES20.csv"
+		"data/processed/germGENES20.csv",
+		"data/raw/EpiLC_gene_expected_count.txt"
 	output:
-		"data/processed/TSS_window_500bp_all_germ.bed"
+		"data/processed/TSS_window_500bp_all_germ.bed",
+		"data/processed/TSS_window_500bp_all_genes.bed"
 	script:
 		"code/WGBS_germ_regions.R"
 
