@@ -76,14 +76,14 @@ for (i in cells){
 
 
 for (n in cells){
-	#get the methylation for cgis
-	regions <- regionCounts(mylists[[n]],bed)
+	# #get the methylation for cgis
+	# regions <- regionCounts(mylists[[n]],bed)
 
-	united_regions <- unite(regions, destrand=FALSE)
-	print("united regions")
-	print(head(united_regions))
+	# united_regions <- unite(regions, destrand=FALSE)
+	# print("united regions")
+	# print(head(united_regions))
 
-	write.table(united_regions, paste0("../results/methylKit/regionCounts_CGI_3min_", n, ".csv"), sep = ',', row.names = FALSE, quote = FALSE)
+	# write.table(united_regions, paste0("../results/methylKit/regionCounts_CGI_3min_", n, ".csv"), sep = ',', row.names = FALSE, quote = FALSE)
 
 
     #combine methylation calls into one

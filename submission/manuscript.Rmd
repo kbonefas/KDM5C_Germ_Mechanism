@@ -299,7 +299,8 @@ K.M.B. and S.I. conceived the study and designed the experiments. I.V. generated
 - Supplementary table 1: list of all germline genes. 
 	- Columns to include: 
 		- KDM5C bound vs not
-		- DEG in EpiLC, brain, both, neither (separate columns?)
+		- Log2fc in EpiLC, brain (separate columns?)
+    - CGI vs non
 
 
 \begin{figure}

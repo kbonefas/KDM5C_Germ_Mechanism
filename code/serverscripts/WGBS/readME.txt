@@ -14,4 +14,6 @@
 
 7) Sort and index the bamfiles (sort_bams.py)
 
-8) Read bam files into R and get differentially methylated CpGs (methylKit_diff.R)
+8) Read bam files into R and get differentially methylated CpGs (methylkit_mincov3.R)
+
+9) Identify differentially methylated regions over a given input of regions using regionCounts (germline gene promoters or CGIs) (methyl_diff_germCGIpromo_exEpiLC_WTvsKO_min3.R)
