@@ -1,5 +1,5 @@
 
-### 24.04.26 compare binding locations of KDM5C ChIp-seq peaks and number of germline genes bound
+### 24.04.26 compare binding locations of KDM5C ChIp-seq peaks and number of germline genes bound for CGI and CGI-free germline genes
 
 
 # Visualize genomic locations using ChIPseeker
