@@ -15,7 +15,7 @@ WINDOW = "500"
 
 #input files of gene list
 #input file needs to be a .txt file with the gene IDs in the first column, and no quotes around them.
-GENES = glob.glob("../data/raw/*.txt")
+GENES = glob.glob("../data/raw/KDM5C_*.txt")
 
 for i in GENES:
 	#clean the file name 
