@@ -404,7 +404,10 @@ rule WGBS_volcano:
 		"data/processed/WGBS_restab_regionCounts_allgermTSS500_WT_min3_ESCvsEpiLC.csv",
 		"data/processed/WGBS_restab_regionCounts_allgermCGI_WT_min3_ESCvsEpiLC.csv",
 		"data/processed/WGBS_restab_regionCounts_allgermTSS500_min3_WTvsKO_EpiLC.csv",
-		"data/processed/WGBS_restab_regionCounts_allgermCGI_min3_WTvsKO_EpiLC.csv"
+		"data/processed/WGBS_restab_regionCounts_allgermCGI_min3_WTvsKO_EpiLC.csv",
+		"data/processed/WGBS_restab_regionCounts_allgenesTSS500_min3_WTvsKO_EpiLC.csv",
+		"data/raw/EpiLC_gene_expected_count.txt"
+
 	output:
 		"results/WGBS/WGBS_restab_annotated_allgermTSS_500bp_WT_ESCvsEpiLC.csv",
 		"results/WGBS/WGBS_restab_annotated_allgermCGI_WT_ESCvsEpiLC.csv",
@@ -413,8 +416,10 @@ rule WGBS_volcano:
 		"results/WGBS/WGBS_restab_annotated_allgermTSS_500bp_WTvsKO.csv",
 		"results/WGBS/WGBS_restab_annotated_allgermCGI_WTvsKO.csv",
 		"results/figure_pieces/WGBS_volcano_EpiLC_WTvsKO_allgermTSS500.pdf",
-		"results/figure_pieces/WGBS_volcano_EpiLC_WTvsKO_allgermCGI.pdf",
-		"results/figure_pieces/WGBS_volcano_EpiLC_WTvsKO_allgermTSS500_5Cbinding.pdf"
+		"results/figure_pieces/WGBS_volcano_EpiLC_WTvsKO_allgermCGI.pdf",		
+		"results/WGBS/WGBS_restab_annotated_allgenes_WTvsKO.csv",
+		#"results/figure_pieces/WGBS_volcano_EpiLC_WTvsKO_allgenesTSS500_CGI.pdf",
+		"results/figure_pieces/WGBS_volcano_EpiLC_WTvsKO_allgenesTSS500_germ.pdf"
 	script:
 		"code/WGBS_volcano.R"
 
