@@ -189,11 +189,37 @@ The majority of promoters bound by KDM5C in PNCs were also bound in EpiLCs (513 
 Many germline-specific genes are suppressed by the polycomb repressive complex 1.6 (PRC1.6), which contains transcription factor heterodimers E2F6/DP1 and MGA/MAX that respectively bind E2F and E-box motifs[@hurlinMgaDualspecificityTranscription1999; @pohlersRoleE2F6Restriction2005; @velascoDnmt3bRecruitmentE2F62010; @suzukiLossMAXResults2016; @endohPCGF6PRC1SuppressesPremature2017 @stielowMGAL3MBTL2E2F62018; @tatsumiDNMTsSETDB1Function2018; @dahletE2F6InitiatesStable2021; @mochizukiRepressionGermlineGenes2021]. PRC1.6 members may recruit KDM5C to germline gene promoters, given their association with KDM5C in HeLa cells and ESCs[@tahilianiHistoneH3K4Demethylase2007; @guptaGenomewideScreenReveals2023]. We thus used HOMER[@heinzSimpleCombinationsLineageDetermining2010] to identify transcription factor motifs enriched at KDM5C-bound or unbound germline gene promoters (TSS &#177; 500 bp, q-value < 0.1). MAX and E2F6 binding sites were significantly enriched at germline genes bound by KDM5C in EpiLCs (MAX q-value: 0.0068, E2F6 q-value: 0.0673, E2F q-value: 0.0917), but not at germline genes unbound by KDM5C (Figure 5G). One third of KDM5C-bound promoters contained the consensus sequence for either E2F6 (E2F, 5'-TCCCGC-3'), MGA (E-box, 5'-CACGTG-3'), or both, but only 17% of KDM5C-unbound genes contained these motifs (Figure 5H). KDM5C-unbound germline genes were intstead enriched for multiple RFX transcription factor binding sites (RFX q-value < 0.0001, RFX2 q-value < 0.0001, RFX5 q-value < 0.0001) (Figure 5I, Supplementary figure 1D). RFX transcription factors bind X-box motifs[@gajiwalaStructureWingedhelixProtein2000] to promote ciliogenesis[@swobodaRFXTypeTranscriptionFactor2000; @ashiqueRfx4TranscriptionFactor2009] and among them is RFX2, a central regulator of post-meiotic spermatogeneis[@kistlerRFX2MajorTranscriptional2015; @wuTranscriptionFactorRFX22016]. Interestingly, RFX2 mRNA is derepressed in _Kdm5c_-KO EpiLCs (Figure 5J), however it is also not a direct target of KDM5C (Supplementary figure 1E). Thus, RFX2 is a candidate transcription factor for driving the ectopic expression of KDM5C-unbound germline genes in _Kdm5c_-KO cells.
 
 
-## KDM5C is recruited to CpG islands within germline gene promoters to facilitate _de novo_ DNA methylation
+## KDM5C is recruited to CpG islands at germline promoters to facilitate _de novo_ DNA methylation
 
-In the early embryo, germline gene promoters are initially decorated with repressive histone modifications and are then silenced long-term via DNA CpG methylation (CpGme)[@borgelTargetsDynamicsPromoter2010; @endohPCGF6PRC1SuppressesPremature2017; @liuPolycombGroupProtein2020; @mochizukiRepressionGermlineGenes2021]. Our results above indicate KDM5C also acts at germline gene promoters during this time period. However, how KDM5C interacts with other germline gene silencing mechanisms is currently unclear. KDM5C is generally thought to supress transcription through erasure of histone 3 lysine 4 di- and trimethylation (H3K4me2/3)[@iwaseXLinkedMentalRetardation2007], yet KDM5C's catalytic activity was recently shown to be dispensible for suppressing _Dazl_ in undifferentiated ESCs[@guptaGenomewideScreenReveals2023]. Since H3K4me3 impedes _de novo_ CpGme placement[@otaniStructuralBasisRecognition2009; @guoStructuralInsightAutoinhibition2015], KDM5C's catalytic activity may instead be required in the post-implantation embryo for long-term silencing of germline genes. In support of this, CpGme is markedly reduced at two germline gene promoters in the _Kdm5c_-KO adult hippocampus[@scandagliaLossKdm5cCauses2017]. 
+Previous work found two germline gene promoters have a marked reduction in DNA CpG methylation (CpGme) in the _Kdm5c_-KO adult hippocampus[@scandagliaLossKdm5cCauses2017]. Since histone 3 lysine 4 di- and trimethylation (H3K4me2/3) impede _de novo_ CpGme[@otaniStructuralBasisRecognition2009; @guoStructuralInsightAutoinhibition2015], KDM5C's removal of H3K4me2/3 may be required to suppress germline genes. However, KDM5C's catalytic activity was recently shown to be dispensible for suppressing _Dazl_ in ESCs[@guptaGenomewideScreenReveals2023]. To reconcile these observations, we hypothesized KDM5C erases H3K4me3 to promote the initial placement of CpGme at germline gene promoters in EpiLCs. 
 
-Based on the above observations, we hypothesized KDM5C erases H3K4me3 to promote the initial placement of CpGme at germline gene promoters in EpiLCs. To test this hypothesis, we first characterized KDM5C's substrates (H3K4me2/3) at germline gene promoters in our published ChIP-seq datasets of male wild-type and _Kdm5c_-KO amygdala[@vallianatosMutuallySuppressiveRoles2020] and EpiLCs[@samantaActivationXistEvolutionarily2022]. In congruence with the _Kdm5c_-KO hippocampus[@scandagliaLossKdm5cCauses2017], we observed aberrant accumulation of H3K4me3 around the TSS of germline genes in the _Kdm5c_-KO amygdala (Figure 6A). There was also a marked increase in H3K4me2 around the TSS of germline genes in _Kdm5c_-KO EpiLCs (Figure 6B). To elucidate KDM5C's embyonic role, we then characterized KDM5C's mRNA and protein expression during male ESC to EpiLC differentiation (Figure 6C). While _Kdm5c_ mRNA steadily decreased from 0 to 48 hours of diferentiation (Figure 6D), KDM5C protein initially increased from 0 to 24 hours but then decreased to near knockout levels by 48 hours (Figure 6E). Together, these data suggest KDM5C acts during the transition between ESCs and EpiLCs to remove H3K4me at germline gene promoters.
+To test this hypothesis, we first characterized KDM5C's expression as na&#239;ve ESCs differentiate into EpiLCs (Figure 6A). While _Kdm5c_ mRNA steadily decreased from 0 to 48 hours of diferentiation (Figure 6B), KDM5C protein initially increased from 0 to 24 hours but then decreased to near knockout levels by 48 hours (Figure 6C). 
+
+We then characterized KDM5C's substrates at germline gene promoters with loss of _Kdm5c_ using ChIP-seq datasets of H3K4me2/3 in EpiLCs[@samantaActivationXistEvolutionarily2022] and the amygdal[@vallianatosMutuallySuppressiveRoles2020]. Germline genes had a marked increase in H3K4me2 in EpiLCs (Figure 6D) and H3K4me3 in the _Kdm5c_-KO amygdala (Figure 6E) around the TSS in _Kdm5c_-KO samples.
+
+
+
+
+
+
+
+in our published ChIP-seq datasets of male wild-type and _Kdm5c_-KO amygdala and EpiLCs.
+
+_Kdm5c_-KO
+
+
+KDM5C's substrates (H3K4me2/3) at germline gene promoters in our published ChIP-seq datasets of male wild-type and _Kdm5c_-KO amygdala[@vallianatosMutuallySuppressiveRoles2020] and EpiLCs[@samantaActivationXistEvolutionarily2022].
+
+
+Together, these data suggest KDM5C acts during the transition between ESCs and EpiLCs to remove H3K4me at germline gene promoters.
+
+
+
+
+  In congruence with the _Kdm5c_-KO hippocampus[@scandagliaLossKdm5cCauses2017], we observed aberrant accumulation of H3K4me3 around the TSS of germline genes in the _Kdm5c_-KO amygdala (Figure 6A). 
+  
+  
+   To elucidate KDM5C's embyonic role, we then characterized KDM5C's mRNA and protein expression during male ESC to EpiLC differentiation 
 
 
 ```{r, CGIs, results='hide', echo = FALSE, warning=FALSE,message=FALSE,error=FALSE}
