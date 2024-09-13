@@ -63,16 +63,17 @@ TSS_volcano <- function(n, TITLE, restab, maxy){
 
 	#restab <- methyl
 	#if the gene is tissue specific, the color key is the color for the tissue. Otherwise the gene will be gray
-	restab$keyvals <- ifelse(restab$qvalue <= 0.01 & restab$Promo_CGI == "CGI", 'red',
-							ifelse(restab$meth.diff >= l2fcco & restab$qvalue <= 0.01 & restab$Promo_CGI == "no", 'lightseagreen',
-                        		ifelse(restab$meth.diff <= -l2fcco & restab$qvalue <= 0.01 & restab$Promo_CGI == "no", 'lightseagreen',
-									"gray38")))
+	restab$keyvals <- ifelse(restab$qvalue <= 0.01 & restab$Promo_CGI == "CGI" & restab$meth.diff >= l2fcco, 'red',
+						ifelse(restab$qvalue <= 0.01 & restab$Promo_CGI == "CGI" & restab$meth.diff <= -l2fcco, 'red',
+							ifelse(restab$meth.diff >= l2fcco & restab$qvalue <= 0.01 & restab$Promo_CGI == "no", '#86dbd7',
+                        		ifelse(restab$meth.diff <= -l2fcco & restab$qvalue <= 0.01 & restab$Promo_CGI == "no", '#86dbd7',
+									"gray38"))))
 
 	#print(head(restab))
 
 	restab$names <- ifelse(restab$keyvals == 'red', 'CGI promoter', 
                          ifelse(restab$keyvals == 'gray38', 'n.s.',
-								ifelse(restab$keyvals == 'lightseagreen', 'non-CGI promoter', "uh oh")))
+								ifelse(restab$keyvals == '#86dbd7', 'non-CGI promoter', "uh oh")))
 
 
 
