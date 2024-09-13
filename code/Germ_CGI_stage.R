@@ -45,3 +45,39 @@ p <- ggboxplot(green_plot, "Stage", "GermExpr", fill = "CGI_status",  palette = 
 p <- ggpar(p, legend = "top", legend.title = "CGI at promoter")
 
 ggsave(snakemake@output[[1]], p, width = 15, height = 10)
+
+
+## heatmap of expression across stages
+	#multiple heatmaps of each developmental stage stacked on top 
+#make a hclust matrix for each stage, have the genes expression in CGI vs no. 
+
+#for every germ cell stage, get the germ cell expression and for CGI and CGI no genes
+
+#make 2 heatmaps (CGI vs no), split by germ cell stage. Use the same scale for both so they can be compared to each other
+
+#each column is a germ cell stage, each row is a gene, values are the expression
+library(ComplexHeatmap)
+library(circlize)
+
+expression <- c("CGI", "no")
+#setting the range of colors
+heat_color = colorRamp2(range(subset(greengerm, select = c(-SYMBOL))), hcl_palette = "Reds", reverse = TRUE)
+
+
+for(i in 1:length(expression)){
+	symbols <- subset(germ, Promo_CGI == expression[i])[,"SYMBOL"]
+
+	df <- subset(greengerm, greengerm$SYMBOL %in% symbols)
+	row.names(df) <- df$SYMBOL
+	plotmatrix <- subset(df, select = c(-SYMBOL))
+	p <- Heatmap(plotmatrix, show_row_names = FALSE, column_title = paste("Germline genes with", expression[i]), cluster_columns = FALSE, heatmap_legend_param = list(title = "log(Avg of Normalized Expression + 1)"), col = heat_color)
+	
+
+	pdf(file = snakemake@output[[i+1]],   # The directory you want to save the file in
+    	width = 10, # The width of the plot in inches
+    	height = 10) # The height of the plot in inches
+		draw(p)
+	dev.off()
+		
+}
+

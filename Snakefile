@@ -405,7 +405,9 @@ rule Germ_CGI_stage:
 			#from green 2018 (https://pubmed.ncbi.nlm.nih.gov/30146481/)
 				# GSE112393_MergedAdultMouseST25_12GermCellClusters_AllGeneExp
 	output:
-		"results/figure_pieces/CGIvsNON_germcellstages.pdf"
+		"results/figure_pieces/CGIvsNON_germcellstages.pdf",
+		"results/figure_pieces/CGIvsNON_germcellstages_heat_CGI.pdf",
+		"results/figure_pieces/CGIvsNON_germcellstages_heat_noCGI.pdf"
 	script:
 		"code/Germ_CGI_stage.R"
 
