@@ -397,7 +397,20 @@ rule Germ_CGI:
 	script:
 		"code/WGBS_germ_CGI.R"
 
-#Get the genes for each location and make volcano plots?
+#stage of germ cell development CGI vs non-CGI genes are expressed 
+rule Germ_CGI_stage:
+	input:
+		"results/KDM5C_binding_allgerm_CGI.csv",
+		"data/raw/Green_2018_logAvgNormalizedExpression_GermCell.csv"
+			#from green 2018 (https://pubmed.ncbi.nlm.nih.gov/30146481/)
+				# GSE112393_MergedAdultMouseST25_12GermCellClusters_AllGeneExp
+	output:
+		"results/figure_pieces/CGIvsNON_germcellstages.pdf"
+	script:
+		"code/Germ_CGI_stage.R"
+
+
+#Get the genes for each location and make volcano plots
 rule WGBS_volcano:
 	input:
 		"results/KDM5C_binding_allgerm_CGI.csv",
