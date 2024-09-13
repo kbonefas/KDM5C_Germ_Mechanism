@@ -1,0 +1,8 @@
+"ID","Description","GeneRatio","BgRatio","pvalue","p.adjust","qvalue","geneID","Count"
+"GO:0007059","chromosome segregation","11/133","339/22893",4.82803722382712e-06,0.00874357541235091,0.00854308481395093,"D1Pas1/Rad51c/Tex14/Ankrd31/Ube2i/Chmp4b/Hormad1/Mos/Tex15/Tex11/2610002M06Rik",11
+"GO:0007140","male meiotic nuclear division","5/133","56/22893",1.84816496811954e-05,0.0126528448789728,0.0123627145465159,"Rad51c/Tex14/Tdrd12/Tex15/Tex11",5
+"GO:0140013","meiotic nuclear division","8/133","201/22893",2.35700430774853e-05,0.0126528448789728,0.0123627145465159,"Rad51c/Tex14/Ankrd31/Hormad1/Mos/Tdrd12/Tex15/Tex11",8
+"GO:0045132","meiotic chromosome segregation","6/133","103/22893",3.09440922691506e-05,0.0126528448789728,0.0123627145465159,"Rad51c/Ankrd31/Hormad1/Mos/Tex15/Tex11",6
+"GO:0098813","nuclear chromosome segregation","9/133","276/22893",3.49333099916423e-05,0.0126528448789728,0.0123627145465159,"Rad51c/Tex14/Ankrd31/Chmp4b/Hormad1/Mos/Tex15/Tex11/2610002M06Rik",9
+"GO:1903046","meiotic cell cycle process","8/133","220/22893",4.48324112492971e-05,0.0135319161287462,0.0132216286508892,"Rad51c/Tex14/Ankrd31/Hormad1/Mos/Tdrd12/Tex15/Tex11",8
+"GO:0070192","chromosome organization involved in meiotic cell cycle","5/133","79/22893",9.80024782910705e-05,0.0253546411693041,0.0247732580462089,"Rad51c/Ankrd31/Hormad1/Tex15/Tex11",5

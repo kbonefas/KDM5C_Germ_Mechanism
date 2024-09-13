@@ -42,10 +42,14 @@ anno_TSS <- function(TSSdf){
 
 ## TSS WT ESC vs EpiLCs
 ESCvsEpiLC_TSS <- anno_TSS(read.csv(snakemake@input[[2]], sep = ","))
+ESCvsEpiLC_TSS <- subset(ESCvsEpiLC_TSS, select = -c(strand))
+
 write.table(ESCvsEpiLC_TSS, snakemake@output[[1]], sep = ",", row.names = FALSE)
 
 ## TSS WT vs KO
 WTvsKO_TSS <- anno_TSS(read.csv(snakemake@input[[4]], sep = ","))
+WTvsKO_TSS <- subset(WTvsKO_TSS, select = -c(strand))
+
 write.table(WTvsKO_TSS, snakemake@output[[5]], sep = ",", row.names = FALSE)
 
 
@@ -342,6 +346,8 @@ print(head(WTvsKO_all_plot))
 
 names(WTvsKO_all_plot)[names(WTvsKO_all_plot) == "gene_name"] <- "SYMBOL"
 
+
+WTvsKO_all_plot <- subset(WTvsKO_all_plot, select = -c(strand))
 write.table(WTvsKO_all_plot, snakemake@output[[9]], sep = ",", row.names = FALSE)
 
 #TSS_volcano(10, "WT vs KO exEpiLC - all promoters", WTvsKO_all_plot, 200)
@@ -353,17 +359,17 @@ TSS_germ <- function(n, TITLE, restab, maxy){
 
 	#restab <- methyl
 	#if the gene is tissue specific, the color key is the color for the tissue. Otherwise the gene will be gray
-	restab$keyvals <- ifelse(restab$qvalue <= 0.01 & restab$ENSEMBL %in% KDM5C_binding$ENSEMBL & restab$meth.diff >= l2fcco, '#2fa10d',
-						ifelse(restab$qvalue <= 0.01 & restab$ENSEMBL %in% KDM5C_binding$ENSEMBL & restab$meth.diff <= l2fcco, '#2fa10d',
-							ifelse(restab$meth.diff >= l2fcco & restab$qvalue <= 0.01 & !(restab$ENSEMBL %in% KDM5C_binding$ENSEMBL), 'lightseagreen',
-                        		ifelse(restab$meth.diff <= -l2fcco & restab$qvalue <= 0.01 & !(restab$ENSEMBL %in% KDM5C_binding$ENSEMBL), 'lightseagreen',
+	restab$keyvals <- ifelse(restab$qvalue <= 0.01 & restab$ENSEMBL %in% KDM5C_binding$ENSEMBL & restab$meth.diff >= l2fcco, '#157037',
+						ifelse(restab$qvalue <= 0.01 & restab$ENSEMBL %in% KDM5C_binding$ENSEMBL & restab$meth.diff <= -l2fcco, '#157037',
+							ifelse(restab$meth.diff >= l2fcco & restab$qvalue <= 0.01 & !(restab$ENSEMBL %in% KDM5C_binding$ENSEMBL), '#86dbd7',
+                        		ifelse(restab$meth.diff <= -l2fcco & restab$qvalue <= 0.01 & !(restab$ENSEMBL %in% KDM5C_binding$ENSEMBL), '#86dbd7',
 									"gray38"))))
 
 	#print(head(restab))
 
-	restab$names <- ifelse(restab$keyvals == '#2fa10d', 'germline', 
+	restab$names <- ifelse(restab$keyvals == '#157037', 'germline', 
                          ifelse(restab$keyvals == 'gray38', 'n.s.',
-								ifelse(restab$keyvals == 'lightseagreen', 'non-germline', "uh oh")))
+								ifelse(restab$keyvals == '#86dbd7', 'non-germline', "uh oh")))
 
 
 
@@ -417,5 +423,40 @@ TSS_germ <- function(n, TITLE, restab, maxy){
 
 }
 
-TSS_germ(10, "WT vs KO exEpiLC - all promoters", WTvsKO_all_plot, 200)
+TSS_germ(10, "WT vs KO exEpiLC - all promoters", WTvsKO_all_plot, 75)
 
+
+
+#gene ontology of hypo and hypermethylated regions
+
+library(enrichplot)
+library(org.Mm.eg.db)
+library(clusterProfiler)
+library(ggplot2)
+
+WTvsKO_all_plot_hypo <- WTvsKO_all_plot[WTvsKO_all_plot$meth.diff <= -l2fcco & WTvsKO_all_plot$qvalue <= 0.01,]
+
+
+#choose what organism and what type of ontology (biological process)
+ego <- enrichGO(WTvsKO_all_plot_hypo$ENSEMBL, keyType = 'ENSEMBL', OrgDb = "org.Mm.eg.db", ont="BP", readable=TRUE)
+print(ego[, c("ID", "Description", "p.adjust")])
+
+q <- dotplot(ego, showCategory=10)
+
+ggsave(snakemake@output[[11]], plot = q, width = 5.5, height = 6)
+write.table(ego, snakemake@output[[12]], row.names = FALSE, sep = ",")
+
+
+
+
+WTvsKO_all_plot_hyper <- WTvsKO_all_plot[WTvsKO_all_plot$meth.diff >= l2fcco & WTvsKO_all_plot$qvalue <= 0.01,]
+print("WTvsKO_all_plot_hyper")
+print(head(WTvsKO_all_plot_hyper))
+#choose what organism and what type of ontology (biological process)
+ego <- enrichGO(WTvsKO_all_plot_hyper$ENSEMBL, keyType = 'ENSEMBL', OrgDb = "org.Mm.eg.db", ont="BP", readable=TRUE)
+print(ego[, c("ID", "Description", "p.adjust")])
+
+q <- dotplot(ego, showCategory=10)
+
+# ggsave(snakemake@output[[13]], plot = q, width = 5.5, height = 6)
+# write.table(ego, snakemake@output[[14]], row.names = FALSE, sep = ",")

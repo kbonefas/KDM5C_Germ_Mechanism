@@ -418,8 +418,9 @@ rule WGBS_volcano:
 		"results/figure_pieces/WGBS_volcano_EpiLC_WTvsKO_allgermTSS500.pdf",
 		"results/figure_pieces/WGBS_volcano_EpiLC_WTvsKO_allgermCGI.pdf",		
 		"results/WGBS/WGBS_restab_annotated_allgenes_WTvsKO.csv",
-		#"results/figure_pieces/WGBS_volcano_EpiLC_WTvsKO_allgenesTSS500_CGI.pdf",
-		"results/figure_pieces/WGBS_volcano_EpiLC_WTvsKO_allgenesTSS500_germ.pdf"
+		"results/figure_pieces/WGBS_volcano_EpiLC_WTvsKO_allgenesTSS500_germ.pdf",
+		"results/figure_pieces/WGBS_GO_EpiLC_WTvsKO_allgenesTSS500_hypo.pdf",
+		"results/GO_WGBS_exEpiLC_WTvsKO_allgenes_hypo.csv"
 	script:
 		"code/WGBS_volcano.R"
 
