@@ -95,7 +95,7 @@ library("ggpubr")
 q <- ggbarplot(plotdf, "Kdm5c_binding", "Percent", fill = "CpG_island", color = "CpG_island", palette = c("no" = "aquamarine4", "CGI" = "aquamarine3"),
 		title = "CpG islands at germline gene promoters", label = TRUE, lab.col = "black", lab.vjust = 1, xlab = " ", ylab = "% of genes", orientation = "vert") 
 
-ggsave(snakemake@output[[3]], q, width = 6, height = 4)
+ggsave(snakemake@output[[3]], q, width = 5, height = 4)
 
 
 #gene ontology of CGI germline genes vs non
@@ -124,7 +124,7 @@ head(ck)
 
 write.table(ck, snakemake@output[[4]], row.names = FALSE, sep = ",")
 
-ggsave(snakemake@output[[5]], plot = dotplot(ck, showCategory = 10), width = 4, height = 8)
+ggsave(snakemake@output[[5]], plot = dotplot(ck, showCategory = 10), width = 5, height = 9)
 
 
 
