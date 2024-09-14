@@ -38,13 +38,13 @@ print(head(green_plot))
 library('ggpubr')
 
 my_comparisons <- expression
-p <- ggboxplot(green_plot, "Stage", "GermExpr", fill = "CGI_status",  palette = c("#f93a0b", "#ff8a7a"), title = "Average expression in germ cell stages", ylab = "log(Avg of Normalized Expression + 1)", xlab = "Stage of Sperm Development") +
+p <- ggboxplot(green_plot, "Stage", "GermExpr", fill = "CGI_status",  palette = c("#f93a0b", "#ff8a7a"), title = "Average expression in germ cell stages", ylab = "log(Avg of Normalized Expression + 1)", xlab = "Stage of Spermatogenesis") +
 	stat_compare_means(aes(label=..p.signif.., group=CGI_status), method="wilcox.test", label.y = 6.5, size = 8) +
 	font("xy.text", size = 24) + font("title", size = 35, face = "bold") + font("xlab", size = 24) + font("ylab", size = 24)
 
 p <- ggpar(p, legend = "top", legend.title = "CGI at promoter")
 
-ggsave(snakemake@output[[1]], p, width = 15, height = 10)
+ggsave(snakemake@output[[1]], p, width = 15, height = 8)
 
 
 ## heatmap of expression across stages
