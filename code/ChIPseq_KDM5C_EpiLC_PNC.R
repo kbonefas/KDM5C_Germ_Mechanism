@@ -100,6 +100,7 @@ for (k in samples){
 	#read in the dataframe
 	a <- germGroups[[s]]
 	KDM5C_bound <- a[a %in% peakENSEMBL[[k]]]
+	print(KDM5C_bound)
 	KDM5C_unbound <- a[!a %in% peakENSEMBL[[k]]]
 	df <- data.frame(ChIP =  rep(k, 2), GeneCategory = rep(s, 2), KDM5C_binding = c("Bound", "Unbound"), Count = c(length(KDM5C_bound), length(KDM5C_unbound)))
 	qlotdf <- rbind(qlotdf, df)
