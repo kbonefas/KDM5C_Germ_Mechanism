@@ -349,6 +349,7 @@ names(WTvsKO_all_plot)[names(WTvsKO_all_plot) == "gene_name"] <- "SYMBOL"
 
 
 WTvsKO_all_plot <- subset(WTvsKO_all_plot, select = -c(strand))
+WTvsKO_all_plot <- WTvsKO_all_plot[order(WTvsKO_all_plot$meth.diff), ]
 write.table(WTvsKO_all_plot, snakemake@output[[9]], sep = ",", row.names = FALSE)
 
 #TSS_volcano(10, "WT vs KO exEpiLC - all promoters", WTvsKO_all_plot, 200)
