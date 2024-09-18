@@ -33,12 +33,19 @@ knitr::knit_hooks$set(inline = function(x) {
 })
 
 ```
-Katherine M. Bonefas, Ilakkiya Venkatachalam, and Shigeki Iwase.
+Katherine M. Bonefas^1,2^, Ilakkiya Venkatachalam^2,3^, and Shigeki Iwase^2^.
+
+1. Neuroscience Graduate Program, University of Michigan Medical School, Ann Arbor, MI, 48109, USA.
+2. Department of Human Genetics, Michigan Medicine, University of Michigan Medical School, Ann Arbor, MI, 48109, USA.
+3. Genetics and Genomics Graduate Program, University of Michigan, Ann Arbor, MI, 48109, USA.
+
+\newpage
 
 # Abstract 
 
 Mutations in numerous chromatin-modifying enzymes cause neurodevelopmental disorders (NDDs) with unknown mechanisms. Loss of repressive chromatin regulators can lead to the aberrant transcription of tissue-specific genes outside of their intended context, however the mechanisms and consequences of their dysregulation are largely unknown. Here, we examine how lysine demethylase 5c (KDM5C), an eraser of histone 3 lysine 4 di and tri-methylation (H3K4me2/3) mutated in Claes-Jensen X-linked intellectual disability, contributes to tissue identity. We found male _Kdm5c_ knockout (-KO) mice, which recapitulate key human neurological phenotypes, aberrantly expresses many liver, muscle, ovary, and testis genes within the amygdala and hippocampus. Gonad-enriched genes misexpressed in the _Kdm5c_-KO brain are unique to germ cells, indicating an erosion of the soma-germline boundary. Germline genes are typically decommissioned in somatic lineages in the post-implantation epiblast, yet _Kdm5c_-KO epiblast-like cells (EpiLCs) aberrantly expressed key regulators of germline identity and meiosis, including _Dazl_ and _Stra8_. Germline gene suppression is sexually dimorphic, as female EpiLCs required a higher dose of KDM5C to maintain germline gene suppression. Using a comprehensive list of mouse germline-enriched genes, we found KDM5C is selectively recruited to a subset of germline gene promoters that contain CpG islands (CGIs) to facilitate DNA CpG methylation (CpGme) during ESC to EpiLC differentiation. However, late stage spermatogenesis genes devoid of promoter CGIs can also become activated in _Kdm5c_-KO cells via ectopic activation by RFX transcription factors. Thus, distinct mechanisms govern the misexpression of germline gene classes, including activation by ectopic germline programs that mirror germ cell development within somatic tissues.
 
+\newpage
 
 # Introduction
 
