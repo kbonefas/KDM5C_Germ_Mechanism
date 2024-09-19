@@ -236,7 +236,7 @@ rule EpiLC_XXvsXY_heat:
 		"data/processed/restable_EpiLC_XXvsXY_XX5cKO.csv"
 	output:
 		"results/figure_pieces/EpiLC_XXvsXY_l2fc_heat.pdf",
-		"results/EpiLC_XXvsXY_heat_l2fc_clusters.csv",
+		"data/processed/EpiLC_XXvsXY_heat_l2fc_clusters.csv",
 		"results/figure_pieces/EpiLC_XXvsXY_l2fc_heat_clustnumb.pdf"
 	script:
 		"code/EpiLC_XXvsXY_heat.R"
