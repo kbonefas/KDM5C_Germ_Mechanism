@@ -179,7 +179,7 @@ XYtime[, "XY_max"] <- apply(XYtime[, 3:ncol(XYtime)], 1, max)
 XXvsXY <- merge(XXtime, XYtime, by = "ENSEMBL")
 XXvsXY$XXoverXY <- XXvsXY$XX_max/XXvsXY$XY_max
 #using 20% max expression cutoff again
-XXvsXY$sexBias <-ifelse(XXvsXY$XXoverXY >= 5,"XX", ifelse(XXvsXY$XXoverXY <= 0.2, "XY", "unbiased"))
+XXvsXY$sexBias <-ifelse(XXvsXY$XXoverXY >= 5,"Egg-biased", ifelse(XXvsXY$XXoverXY <= 0.2, "Sperm-biased", "unbiased"))
 XXvsXY_test <- XXvsXY
 XXvsXY <- subset(XXvsXY, select = c(ENSEMBL, sexBias))
 print(paste0("XXvsXY rows: ", nrow(XXvsXY)))
@@ -203,8 +203,8 @@ germGENES20 <- germGENES20[complete.cases(germGENES20), ]
 print(paste0("number of germline genes: ", nrow(germGENES20)))
 
 
-cat("Number of XX germline-enriched genes: ", nrow(subset(germGENES20, sexBias == "XX")), "\n")
-cat("Number of XY germline-enriched genes: ", nrow(subset(germGENES20, sexBias == "XY")), "\n")
+cat("Number of XX germline-enriched genes: ", nrow(subset(germGENES20, sexBias == "Egg-biased")), "\n")
+cat("Number of XY germline-enriched genes: ", nrow(subset(germGENES20, sexBias == "Sperm-biased")), "\n")
 cat("Number of unbiased germline-enriched genes: ", nrow(subset(germGENES20, sexBias == "unbiased")), "\n")
 #XX: 164
 #XY: 1195

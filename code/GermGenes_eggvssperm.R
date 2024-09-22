@@ -10,7 +10,7 @@ library(ggplot2)
 library(dplyr)
 
 
-sankeydf <- data.frame(ENSEMBL = germ$ENSEMBL, Total = rep("germline genes", nrow(germ)), XX = ifelse(germ$sexBias == "XX", "egg-biased", "no"), XY = ifelse(germ$sexBias == "XX", NA, ifelse(germ$sexBias == "XY", "sperm-biased", "unbiased")))
+sankeydf <- data.frame(ENSEMBL = germ$ENSEMBL, Total = rep("germline genes", nrow(germ)), XX = ifelse(germ$sexBias == "Egg-biased", "egg-biased", "no"), XY = ifelse(germ$sexBias == "Egg-biased", NA, ifelse(germ$sexBias == "Sperm-biased", "sperm-biased", "unbiased")))
 
 
 # sankey_long <- data.frame(row.names = germ$ENSEMBL, )
@@ -81,8 +81,8 @@ names(DEGs) <- samples
 
 ##1) Separate out number of genes in each bias
 #DEGs is list of germline
-egg_germ <- subset(germ, sexBias == "XX")
-sperm_germ <- subset(germ, sexBias == "XY")
+egg_germ <- subset(germ, sexBias == "Egg-biased")
+sperm_germ <- subset(germ, sexBias == "Sperm-biased")
 unbiased_germ <- subset(germ, sexBias == "unbiased")
 
 #create dataframe for plotting
