@@ -150,7 +150,7 @@ genestatus <- merge(genestatus, germ, by = "ENSEMBL")
 # print(head(genestatus))
 
 #save all of the bound and unbound DEGs in EpiLCs
-write.table(genestatus, snakemake@output[[5]], sep = "\t", col.names = FALSE, row.names = FALSE, quote = FALSE)
+write.table(genestatus, snakemake@output[[5]], sep = ",", col.names = FALSE, row.names = FALSE, quote = FALSE)
 #save list of genes for HOMER
 write.table(subset(genestatus, KDM5C_binding == "Bound")[,"SYMBOL"], snakemake@output[[6]], sep = "\t", col.names = FALSE, row.names = FALSE, quote = FALSE)
 write.table(subset(genestatus, KDM5C_binding == "Unbound")[,"SYMBOL"], snakemake@output[[7]], sep = "\t", col.names = FALSE, row.names = FALSE, quote = FALSE)

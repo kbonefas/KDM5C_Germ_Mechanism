@@ -1,88 +1,88 @@
-ENSMUSG00000000365	Brain Only	Bound	Rnf17	unbiased
-ENSMUSG00000002076	Common	Bound	Hsf2bp	unbiased
-ENSMUSG00000002768	EpiLC Only	Bound	Mea1	unbiased
-ENSMUSG00000004948	EpiLC Only	Unbound	Zp3	Egg-biased
-ENSMUSG00000005493	EpiLC Only	Bound	Msh4	unbiased
-ENSMUSG00000006056	EpiLC Only	Unbound	Calcoco2	Egg-biased
-ENSMUSG00000006200	EpiLC Only	Unbound	Rhox6	Egg-biased
-ENSMUSG00000006310	EpiLC Only	Bound	Zbtb32	Sperm-biased
-ENSMUSG00000009628	EpiLC Only	Bound	Tex15	unbiased
-ENSMUSG00000010342	Common	Unbound	Tex14	unbiased
-ENSMUSG00000010592	EpiLC Only	Bound	Dazl	unbiased
-ENSMUSG00000018727	EpiLC Only	Unbound	Cpsf4l	unbiased
-ENSMUSG00000020299	Brain Only	Bound	4930524B15Rik	unbiased
-ENSMUSG00000020799	Brain Only	Unbound	Tekt1	Sperm-biased
-ENSMUSG00000021838	EpiLC Only	Bound	Samd4	Sperm-biased
-ENSMUSG00000021953	EpiLC Only	Bound	Tdh	unbiased
-ENSMUSG00000022429	EpiLC Only	Bound	Dmc1	unbiased
-ENSMUSG00000023403	Common	Bound	Stk31	unbiased
-ENSMUSG00000023443	EpiLC Only	Unbound	Esx1	unbiased
-ENSMUSG00000024206	EpiLC Only	Unbound	Rfx2	Sperm-biased
-ENSMUSG00000025219	EpiLC Only	Unbound	Fgf8	Sperm-biased
-ENSMUSG00000026650	Brain Only	Unbound	Meig1	Sperm-biased
-ENSMUSG00000027702	EpiLC Only	Unbound	Lrrc34	Sperm-biased
-ENSMUSG00000027794	EpiLC Only	Bound	Sohlh2	unbiased
-ENSMUSG00000028109	EpiLC Only	Bound	Hormad1	unbiased
-ENSMUSG00000028277	EpiLC Only	Bound	Ube2j1	Sperm-biased
-ENSMUSG00000029155	Brain Only	Unbound	Spata18	Sperm-biased
-ENSMUSG00000029848	EpiLC Only	Unbound	Stra8	Egg-biased
-ENSMUSG00000030491	EpiLC Only	Bound	Tdrd12	Sperm-biased
-ENSMUSG00000030792	EpiLC Only	Unbound	Dkkl1	Sperm-biased
-ENSMUSG00000031027	Brain Only	Bound	Stk33	Sperm-biased
-ENSMUSG00000031325	EpiLC Only	Unbound	4930519F16Rik	Sperm-biased
-ENSMUSG00000032285	EpiLC Only	Bound	Dnaja4	unbiased
-ENSMUSG00000032514	Brain Only	Bound	Ttc21a	Sperm-biased
-ENSMUSG00000032567	EpiLC Only	Unbound	Aste1	Sperm-biased
-ENSMUSG00000032595	Brain Only	Unbound	Cdhr4	unbiased
-ENSMUSG00000034391	EpiLC Only	Unbound	Fbxo15	unbiased
-ENSMUSG00000036432	EpiLC Only	Unbound	Siah2	Sperm-biased
-ENSMUSG00000037012	EpiLC Only	Unbound	Hk1	Sperm-biased
-ENSMUSG00000037062	EpiLC Only	Unbound	Sh3glb1	unbiased
-ENSMUSG00000037752	EpiLC Only	Unbound	Xkr8	Sperm-biased
-ENSMUSG00000038932	Brain Only	Unbound	Tcfl5	Sperm-biased
-ENSMUSG00000038936	EpiLC Only	Unbound	Sccpdh	Sperm-biased
-ENSMUSG00000039021	Brain Only	Unbound	Ttc16	Sperm-biased
-ENSMUSG00000039224	Common	Bound	D1Pas1	Sperm-biased
-ENSMUSG00000039329	EpiLC Only	Bound	Tex19.1	unbiased
-ENSMUSG00000040231	EpiLC Only	Unbound	Syngr4	Sperm-biased
-ENSMUSG00000040364	EpiLC Only	Bound	Sec1	unbiased
-ENSMUSG00000040726	EpiLC Only	Unbound	Hesx1	Sperm-biased
-ENSMUSG00000041359	EpiLC Only	Bound	Tcl1	unbiased
-ENSMUSG00000041805	EpiLC Only	Bound	Pramel1	unbiased
-ENSMUSG00000042707	Brain Only	Unbound	Dnali1	Sperm-biased
-ENSMUSG00000044303	EpiLC Only	Bound	Cdkn2a	unbiased
-ENSMUSG00000046000	Brain Only	Unbound	Naa11	Sperm-biased
-ENSMUSG00000046323	EpiLC Only	Unbound	Dppa3	unbiased
-ENSMUSG00000046337	EpiLC Only	Bound	Fam178b	Sperm-biased
-ENSMUSG00000049123	Brain Only	Unbound	Catsperg2	Sperm-biased
-ENSMUSG00000049353	Brain Only	Unbound	Rd3	Sperm-biased
-ENSMUSG00000049792	EpiLC Only	Unbound	Bag5	Sperm-biased
-ENSMUSG00000050860	EpiLC Only	Bound	Phospho1	Sperm-biased
-ENSMUSG00000051176	EpiLC Only	Unbound	Zfp42	unbiased
-ENSMUSG00000051257	EpiLC Only	Unbound	Trap1a	unbiased
-ENSMUSG00000051435	Brain Only	Unbound	Fhad1	Sperm-biased
-ENSMUSG00000053153	Brain Only	Bound	Spag16	Sperm-biased
-ENSMUSG00000053211	EpiLC Only	Unbound	Zfy1	Sperm-biased
-ENSMUSG00000053654	EpiLC Only	Unbound	Krt42	Sperm-biased
-ENSMUSG00000053909	EpiLC Only	Unbound	Rhox10	Sperm-biased
-ENSMUSG00000054753	EpiLC Only	Unbound	AU018091	unbiased
-ENSMUSG00000056436	Common	Bound	Cyct	unbiased
-ENSMUSG00000057719	EpiLC Only	Unbound	Sh3rf2	Sperm-biased
-ENSMUSG00000059854	Brain Only	Unbound	Hydin	Sperm-biased
-ENSMUSG00000062859	EpiLC Only	Unbound	Tcp11	Sperm-biased
-ENSMUSG00000062939	EpiLC Only	Unbound	Stat4	Sperm-biased
-ENSMUSG00000063409	Brain Only	Unbound	Lrrc43	Sperm-biased
-ENSMUSG00000063972	EpiLC Only	Unbound	Nr6a1	unbiased
-ENSMUSG00000064158	EpiLC Only	Unbound	Izumo1	Sperm-biased
-ENSMUSG00000068048	EpiLC Only	Unbound	Rhox9	unbiased
-ENSMUSG00000071470	Brain Only	Bound	Ccnb1ip1	unbiased
-ENSMUSG00000071773	EpiLC Only	Unbound	Rhox1	unbiased
-ENSMUSG00000072419	EpiLC Only	Unbound	Dppa2	unbiased
-ENSMUSG00000072770	EpiLC Only	Unbound	Acrbp	Sperm-biased
-ENSMUSG00000073894	EpiLC Only	Bound	Rbmxl2	unbiased
-ENSMUSG00000074212	EpiLC Only	Unbound	Dnajb14	unbiased
-ENSMUSG00000074817	EpiLC Only	Bound	Papolb	Sperm-biased
-ENSMUSG00000079022	Brain Only	Unbound	Col22a1	Sperm-biased
-ENSMUSG00000079330	EpiLC Only	Unbound	Lemd1	Sperm-biased
-ENSMUSG00000091614	EpiLC Only	Unbound	Tmem217	Sperm-biased
-ENSMUSG00000092837	EpiLC Only	Unbound	Rpph1	Sperm-biased
+ENSMUSG00000000365,Brain Only,Bound,Rnf17,unbiased
+ENSMUSG00000002076,Common,Bound,Hsf2bp,unbiased
+ENSMUSG00000002768,EpiLC Only,Bound,Mea1,unbiased
+ENSMUSG00000004948,EpiLC Only,Unbound,Zp3,Egg-biased
+ENSMUSG00000005493,EpiLC Only,Bound,Msh4,unbiased
+ENSMUSG00000006056,EpiLC Only,Unbound,Calcoco2,Egg-biased
+ENSMUSG00000006200,EpiLC Only,Unbound,Rhox6,Egg-biased
+ENSMUSG00000006310,EpiLC Only,Bound,Zbtb32,Sperm-biased
+ENSMUSG00000009628,EpiLC Only,Bound,Tex15,unbiased
+ENSMUSG00000010342,Common,Unbound,Tex14,unbiased
+ENSMUSG00000010592,EpiLC Only,Bound,Dazl,unbiased
+ENSMUSG00000018727,EpiLC Only,Unbound,Cpsf4l,unbiased
+ENSMUSG00000020299,Brain Only,Bound,4930524B15Rik,unbiased
+ENSMUSG00000020799,Brain Only,Unbound,Tekt1,Sperm-biased
+ENSMUSG00000021838,EpiLC Only,Bound,Samd4,Sperm-biased
+ENSMUSG00000021953,EpiLC Only,Bound,Tdh,unbiased
+ENSMUSG00000022429,EpiLC Only,Bound,Dmc1,unbiased
+ENSMUSG00000023403,Common,Bound,Stk31,unbiased
+ENSMUSG00000023443,EpiLC Only,Unbound,Esx1,unbiased
+ENSMUSG00000024206,EpiLC Only,Unbound,Rfx2,Sperm-biased
+ENSMUSG00000025219,EpiLC Only,Unbound,Fgf8,Sperm-biased
+ENSMUSG00000026650,Brain Only,Unbound,Meig1,Sperm-biased
+ENSMUSG00000027702,EpiLC Only,Unbound,Lrrc34,Sperm-biased
+ENSMUSG00000027794,EpiLC Only,Bound,Sohlh2,unbiased
+ENSMUSG00000028109,EpiLC Only,Bound,Hormad1,unbiased
+ENSMUSG00000028277,EpiLC Only,Bound,Ube2j1,Sperm-biased
+ENSMUSG00000029155,Brain Only,Unbound,Spata18,Sperm-biased
+ENSMUSG00000029848,EpiLC Only,Unbound,Stra8,Egg-biased
+ENSMUSG00000030491,EpiLC Only,Bound,Tdrd12,Sperm-biased
+ENSMUSG00000030792,EpiLC Only,Unbound,Dkkl1,Sperm-biased
+ENSMUSG00000031027,Brain Only,Bound,Stk33,Sperm-biased
+ENSMUSG00000031325,EpiLC Only,Unbound,4930519F16Rik,Sperm-biased
+ENSMUSG00000032285,EpiLC Only,Bound,Dnaja4,unbiased
+ENSMUSG00000032514,Brain Only,Bound,Ttc21a,Sperm-biased
+ENSMUSG00000032567,EpiLC Only,Unbound,Aste1,Sperm-biased
+ENSMUSG00000032595,Brain Only,Unbound,Cdhr4,unbiased
+ENSMUSG00000034391,EpiLC Only,Unbound,Fbxo15,unbiased
+ENSMUSG00000036432,EpiLC Only,Unbound,Siah2,Sperm-biased
+ENSMUSG00000037012,EpiLC Only,Unbound,Hk1,Sperm-biased
+ENSMUSG00000037062,EpiLC Only,Unbound,Sh3glb1,unbiased
+ENSMUSG00000037752,EpiLC Only,Unbound,Xkr8,Sperm-biased
+ENSMUSG00000038932,Brain Only,Unbound,Tcfl5,Sperm-biased
+ENSMUSG00000038936,EpiLC Only,Unbound,Sccpdh,Sperm-biased
+ENSMUSG00000039021,Brain Only,Unbound,Ttc16,Sperm-biased
+ENSMUSG00000039224,Common,Bound,D1Pas1,Sperm-biased
+ENSMUSG00000039329,EpiLC Only,Bound,Tex19.1,unbiased
+ENSMUSG00000040231,EpiLC Only,Unbound,Syngr4,Sperm-biased
+ENSMUSG00000040364,EpiLC Only,Bound,Sec1,unbiased
+ENSMUSG00000040726,EpiLC Only,Unbound,Hesx1,Sperm-biased
+ENSMUSG00000041359,EpiLC Only,Bound,Tcl1,unbiased
+ENSMUSG00000041805,EpiLC Only,Bound,Pramel1,unbiased
+ENSMUSG00000042707,Brain Only,Unbound,Dnali1,Sperm-biased
+ENSMUSG00000044303,EpiLC Only,Bound,Cdkn2a,unbiased
+ENSMUSG00000046000,Brain Only,Unbound,Naa11,Sperm-biased
+ENSMUSG00000046323,EpiLC Only,Unbound,Dppa3,unbiased
+ENSMUSG00000046337,EpiLC Only,Bound,Fam178b,Sperm-biased
+ENSMUSG00000049123,Brain Only,Unbound,Catsperg2,Sperm-biased
+ENSMUSG00000049353,Brain Only,Unbound,Rd3,Sperm-biased
+ENSMUSG00000049792,EpiLC Only,Unbound,Bag5,Sperm-biased
+ENSMUSG00000050860,EpiLC Only,Bound,Phospho1,Sperm-biased
+ENSMUSG00000051176,EpiLC Only,Unbound,Zfp42,unbiased
+ENSMUSG00000051257,EpiLC Only,Unbound,Trap1a,unbiased
+ENSMUSG00000051435,Brain Only,Unbound,Fhad1,Sperm-biased
+ENSMUSG00000053153,Brain Only,Bound,Spag16,Sperm-biased
+ENSMUSG00000053211,EpiLC Only,Unbound,Zfy1,Sperm-biased
+ENSMUSG00000053654,EpiLC Only,Unbound,Krt42,Sperm-biased
+ENSMUSG00000053909,EpiLC Only,Unbound,Rhox10,Sperm-biased
+ENSMUSG00000054753,EpiLC Only,Unbound,AU018091,unbiased
+ENSMUSG00000056436,Common,Bound,Cyct,unbiased
+ENSMUSG00000057719,EpiLC Only,Unbound,Sh3rf2,Sperm-biased
+ENSMUSG00000059854,Brain Only,Unbound,Hydin,Sperm-biased
+ENSMUSG00000062859,EpiLC Only,Unbound,Tcp11,Sperm-biased
+ENSMUSG00000062939,EpiLC Only,Unbound,Stat4,Sperm-biased
+ENSMUSG00000063409,Brain Only,Unbound,Lrrc43,Sperm-biased
+ENSMUSG00000063972,EpiLC Only,Unbound,Nr6a1,unbiased
+ENSMUSG00000064158,EpiLC Only,Unbound,Izumo1,Sperm-biased
+ENSMUSG00000068048,EpiLC Only,Unbound,Rhox9,unbiased
+ENSMUSG00000071470,Brain Only,Bound,Ccnb1ip1,unbiased
+ENSMUSG00000071773,EpiLC Only,Unbound,Rhox1,unbiased
+ENSMUSG00000072419,EpiLC Only,Unbound,Dppa2,unbiased
+ENSMUSG00000072770,EpiLC Only,Unbound,Acrbp,Sperm-biased
+ENSMUSG00000073894,EpiLC Only,Bound,Rbmxl2,unbiased
+ENSMUSG00000074212,EpiLC Only,Unbound,Dnajb14,unbiased
+ENSMUSG00000074817,EpiLC Only,Bound,Papolb,Sperm-biased
+ENSMUSG00000079022,Brain Only,Unbound,Col22a1,Sperm-biased
+ENSMUSG00000079330,EpiLC Only,Unbound,Lemd1,Sperm-biased
+ENSMUSG00000091614,EpiLC Only,Unbound,Tmem217,Sperm-biased
+ENSMUSG00000092837,EpiLC Only,Unbound,Rpph1,Sperm-biased
