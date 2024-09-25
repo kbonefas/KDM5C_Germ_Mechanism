@@ -1,6 +1,6 @@
 
 ---
-title: Supplement - Erosion of somatic tissue identity with loss of the X-linked intellectual disability factor KDM5C
+title: Supplement - Sexually dimorphic repression of germline identity by the X-linked intellectual disability gene KDM5C
 output: pdf_document
 geometry: margin = 1in
 font-size: 11pt
@@ -37,7 +37,7 @@ editor_options:
 
 **Supplementary table 4: KDM5C ChIP-seq in EpiLCs and PNCs.** 1) enrichPlot gene ontology results of KDM5C-bound promoters (see Methods) in epiblast-like cells (EpiLCs) and forebrain primary neuron cultures (PNCs). 2) HOMER known motif analysis of germline gene promoters (TSS &#177; 500 bp) bound by KDM5C . 3) HOMER known motif analysis of germline genes not bound by KDM5C. 
 
-**Supplementary table 5: Germline gene CpG islands and promoter CpG methylation.** 1) enrichPlot gene ontology results of germline genes with and without CpG islands (CGIs) within their promoter (TSS &#177; 500 bp). 2) methylKit whole genome bisulfite sequencing (WGBS) results table comparing germline gene promoter CpG methylation (TSS &#177; 500 bp) in male wild-type ESCs versus wild-type extended EpiLCs (exEpiLCs). 3) methylKit WGBS results table comparing germline gene promoter CpG methylation in male _Kdm5c_-KO versus wild-type exEpiLCs. 
+**Supplementary table 5: Germline gene CpG islands and promoter CpG methylation.** 1) enrichPlot gene ontology results of germline genes with and without CpG islands (CGIs) within their promoter (TSS &#177; 500 bp). 2) methylKit whole genome bisulfite sequencing (WGBS) results table comparing germline gene promoter CpG methylation (TSS &#177; 500 bp) in male wild-type ESCs versus wild-type extended EpiLCs (exEpiLCs). 3) methylKit WGBS results table comparing germline gene promoter CpG methylation in male _Kdm5c_-KO versus wild-type exEpiLCs. 4) enrichPlot gene ontology results of promoters hypomethylated in _Kdm5c_-KO exEpiLCs
 
 
 # Figures
