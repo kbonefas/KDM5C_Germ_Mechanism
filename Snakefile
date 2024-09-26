@@ -215,11 +215,11 @@ rule EpiLC_XXvsXY:
 		"results/DESeq2/DEGs_EpiLC_XXvsXY_XX5cHET.csv",
 		"results/DESeq2/DEGs_EpiLC_XXvsXY_XX5cKO.csv"
 	output:
-		"data/processed/EpiLC_XXvsXY_germDEGs.csv",
+		"results/EpiLC_XXvsXY_germDEGs.csv",
 		"results/figure_pieces/EpiLC_XXvsXY_germlineDEGs_euler.pdf",
 		"results/figure_pieces/EpiLC_XXvsXY_germlineDEGs_shared_chromo.pdf", 
 		"results/figure_pieces/EpiLC_XXvsXY_germlineDEGs_XXonly_chromo.pdf", 
-		"data/processed/EpiLC_XXvsXY_XXDEGs_chromosome.csv", #How many XX-specific DEGs are on each chromosome 
+		"results/EpiLC_XXvsXY_XXDEGs_chromosome.csv", #How many XX-specific DEGs are on each chromosome 
 		"results/figure_pieces/EpiLC_XXvsXY_germlineDEGs_histogram.pdf",
 		"results/EpiLC_XXvsXY_germlineDEGs_GO.csv",
 		"results/figure_pieces/EpiLC_XXvsXY_germlineDEGs_GO.pdf",
