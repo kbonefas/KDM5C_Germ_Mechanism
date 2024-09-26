@@ -106,7 +106,7 @@ chromo_DEG_count_list <- function(genies){
 library('ggpubr')
 chromo_hist <- function(chr_cnt_df, y_col_name, title_name, out){
 
-	p <- ggbarplot(chr_cnt_df, "chr", y_col_name, fill = "chr", color = "chr") + rotate_x_text(45)
+	p <- ggbarplot(chr_cnt_df, "chr", y_col_name, fill = "chr", color = "chr", ylim = c(0, 0.5)) + rotate_x_text(45)
 	pl <- ggpar(p, legend = "none", ylab = "# of genes/total", xlab = "Chromosome #", title = paste0("Location of ", title_name) )
 	ggsave(snakemake@output[[out]], plot = pl, width = 5, height = 4)
 

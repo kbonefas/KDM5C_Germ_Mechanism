@@ -212,7 +212,7 @@ germhist$samples <- factor(germhist$samples, levels = samples)
 print(germhist)
 
 library('ggpubr')
-q <- ggbarplot(germhist, x = "samples", y = "count", color = "samples", fill = "samples", ylim = c(0, 0.5), palette = EpiLCpalette, label = TRUE, lab.pos = "in", lab.col = "black")
+q <- ggbarplot(germhist, x = "samples", y = "count", color = "samples", fill = "samples", palette = EpiLCpalette, label = TRUE, lab.pos = "in", lab.col = "black")
 
 ggsave(snakemake@output[[6]], plot = q, width = 3, height = 3)
 
