@@ -122,16 +122,49 @@ chromo_hist(xxonly_chr, "DEG_ratio", "XX only germline DEGs", 4)
 #get histogram of all XX DEGs
 chromo_hist(XX_all_chr, "DEG_ratio", "all XX germline DEGs", 9)
 
+#fisher exact test for each chromosome
+ct = 1
+pvalues <- c()
+oddsratio <- c()
+for (m in XX_all_chr$chr){
 
-#save the chromosome results
+	#get that chromosome
+	df <- subset(XX_all_chr, chr == m)
+	df$DEGs
+	total_DEGs <- sum(XX_all_chr$DEGs)
+	total_germline <-sum(XX_all_chr$germline)
+
+	# for germline genes that are on each chromosome, how many are XX DEGs
+	# fisherdf <- data.frame("chr_yes" = c(chr_yes_DEG_yes, chr_yes_DEG_no), "chr_no" = c(chr_no_DEG_yes, chr_no_DEG_no), row.names = c("DEG_yes", "DEG_no"))
+
+	fisherdf <- data.frame("chr_yes" = c(df$DEGs, df$germline-df$DEGs), "chr_no" = c(total_DEGs-df$DEGs, total_germline-total_DEGs-(df$germline-df$DEGs)), row.names = c("DEG_yes", "DEG_no"))
+	print(fisherdf)
+
+	fishtest <- fisher.test(fisherdf)
+
+
+	pvalues[ct] <- fishtest$p.value
+	oddsratio[ct] <- fishtest$estimate[[1]]
+	ct <- ct + 1
+
+}
+		
+
+
+#add as column for fisher test pvalues and odds ratio
+XX_all_chr$pvalues <- pvalues
+XX_all_chr$oddsratio <- oddsratio
+
+
+#save the chromosome results for how many XX specific genes are on each chromosome
 write.table(XX_all_chr, snakemake@output[[5]], sep = ",", row.names = F)
 
 
 
 
-#percentage of germline DEGs on each chromsome for each sample
+#percentage of germline DEGs on each chromosome for each sample
 
-# number of DEGs on that chromsome/total number of germline DEGs for that sample * 100
+# number of DEGs on that chromosome/total number of germline DEGs for that sample * 100
 #need a dataframe with
 # sample chromosome percentage
 
@@ -179,7 +212,7 @@ germhist$samples <- factor(germhist$samples, levels = samples)
 print(germhist)
 
 library('ggpubr')
-q <- ggbarplot(germhist, x = "samples", y = "count", color = "samples", fill = "samples", palette = EpiLCpalette, label = TRUE, lab.pos = "in", lab.col = "black")
+q <- ggbarplot(germhist, x = "samples", y = "count", color = "samples", fill = "samples", ylim = c(0, 0.5), palette = EpiLCpalette, label = TRUE, lab.pos = "in", lab.col = "black")
 
 ggsave(snakemake@output[[6]], plot = q, width = 3, height = 3)
 
