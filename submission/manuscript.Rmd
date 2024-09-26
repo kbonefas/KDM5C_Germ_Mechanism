@@ -1,5 +1,5 @@
 ---
-title:  Sexually dimorphic repression of germline identity by the X-linked intellectual disability gene KDM5C
+title: The X-linked intellectual disability gene KDM5C is a sexually dimorphic repressor of germline identity
 output: pdf_document
 geometry: margin = 1in
 font-size: 11pt
