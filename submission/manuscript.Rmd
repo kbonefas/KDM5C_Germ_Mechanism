@@ -314,7 +314,7 @@ Genomic DNA (gDNA) from male na&#239;ve ESCs and extended EpiLCs was extracted u
 
 ## Data availability
 ### WGBS in wild-type and _Kdm5c_-KO ESCs and exEpiLCs
-Raw fastq files are deposited in the Sequence Read Archive (SRA) https://www.ncbi.nlm.nih.gov/sra under the bioProject PRJNA1165148.
+Raw fastq files are deposited in the Sequence Read Archive (SRA) https://www.ncbi.nlm.nih.gov/sra under the bioProject PRJNA1165148. https://www.ncbi.nlm.nih.gov/bioproject/PRJNA1165148
 
 ### Published datasets
 All published datasets are available at the Gene Expression Omnibus (GEO) https://www.ncbi.nlm.nih.gov/geo. Published RNA-seq datasets analyzed in this study included the male wild-type and _Kdm5c_-KO adult amygdala and hippocampus[@vallianatosMutuallySuppressiveRoles2020], available at GEO: GSE127722. Male and female wild-type, _Kdm5c_-KO, and _Kdm5c_-HET EpiLCs[@samantaActivationXistEvolutionarily2022] are available at GEO: GSE96797. 
