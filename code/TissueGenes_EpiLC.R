@@ -34,5 +34,16 @@ write.table(fisherdfs, snakemake@output[[4]], sep = ",", row.names = FALSE)
 ### save tissue-specific DEGs in a dataframe
 for(i in 1:length(titles)){
 	tissDEG <- tissue_genes(i)
-	write.table(tissDEG, snakemake@output[[i+4]], sep = ",", row.names = FALSE)
+	#all DEGs
+	DEGs <- read.csv(snakemake@input[[i]], sep =",")
+	# print(paste(n, "tissue DEGs:", nrow(tissue_DEGs)))
+	print(paste("all DEGs", nrow(DEGs)))
+	print(tail(DEGs))
+	#all DEGs together annotated
+	annot <- merge(DEGs, tissDEG, by = "ENSEMBL", all.x = T)
+	annot <- annot[!duplicated(annot), ]
+	print(paste("merge DEGs", nrow(annot)))
+	print(tail(annot))
+	#annot <- subset(annot, select = c("ENSEMBL", "baseMean.x", "log2FoldChange.x", "lfcSE.x ", "pvalue.x", "padj.x", "Direction.x", "SYMBOL.x", "tissue"))
+	write.table(annot, snakemake@output[[i+4]], sep = ",", row.names = FALSE)
 	}

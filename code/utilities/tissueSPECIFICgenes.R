@@ -41,12 +41,15 @@ source("code/utilities/parameters.R") #get cut off of log2fc
 tissue_genes <- function(n){
 	#first read in the DEG table 
 	DEGs <- read.csv(snakemake@input[[n]], sep =",")
-	DEGs <- subset(DEGs, log2FoldChange > l2fcco)
 	names(DEGs)[names(DEGs) == 'X'] <- 'ENSEMBL'
+	print(head(DEGs))
+
+	DEGs_up <- subset(DEGs, log2FoldChange > l2fcco)
 	#merge together, keeping all columns. Genes that aren't tissue specific will be NAs
-	tissue_DEGs <- merge(Tissues, DEGs, by = "ENSEMBL", all=T)
+	tissue_DEGs <- merge(Tissues, DEGs_up, by = "ENSEMBL", all=T)
 	tissue_DEGs <- subset(tissue_DEGs, ENSEMBL %in% DEGs$ENSEMBL)
-	# print("tissue DEGs:")
+	# tissue_DEGs <- merge(tissue_DEGs, DEGs, by = c("ENSEMBL", "SYMBOL", "baseMean", "log2FoldChange", "lfcSE", "pvalue", "padj", "Direction"), all=T)
+	# print(paste(n, "tissue DEGs:", nrow(tissue_DEGs)))
 	# print(head(tissue_DEGs))
 	return(tissue_DEGs)
 
