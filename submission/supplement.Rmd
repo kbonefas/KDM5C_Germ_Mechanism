@@ -40,7 +40,7 @@ editor_options:
 **Supplementary table 5: Germline gene CpG islands and promoter CpG methylation.** 1) enrichPlot gene ontology results of germline genes with and without CpG islands (CGIs) within their promoter (TSS &#177; 500 bp). 2) methylKit whole genome bisulfite sequencing (WGBS) results table comparing germline gene promoter CpG methylation (TSS &#177; 500 bp) in male wild-type ESCs versus wild-type extended EpiLCs (exEpiLCs). 3) methylKit WGBS results table comparing germline gene promoter CpG methylation in male _Kdm5c_-KO versus wild-type exEpiLCs. 4) enrichPlot gene ontology results of promoters hypomethylated in _Kdm5c_-KO exEpiLCs
 
 
-# Figures
+# Supplementary Figures
 \newpage
 \begin{figure}
   \centering
