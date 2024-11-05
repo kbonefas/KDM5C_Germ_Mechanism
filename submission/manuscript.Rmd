@@ -14,9 +14,10 @@ header-includes:
    - \renewcommand\linenumberfont{\normalfont\small}
    - \usepackage{setspace}
    - \usepackage{siunitx}
-   - \spacing{1.5}
+   - \spacing{2}
    - \pagenumbering{arabic}
    - \usepackage{indentfirst}
+   - \usepackage[style=alphabetic]{biblatex}
 
 bibliography: references.bib
 csl: cell-reports.csl
