@@ -1,5 +1,5 @@
 ---
-title: The X-linked intellectual disability gene KDM5C is a sex-biased brake against germline programs in somatic lineages
+title: KDM5C is a sex-biased brake against germline gene expression programs in somatic lineages
 output: pdf_document
 geometry: margin = 1in
 font-size: 11pt
