@@ -14,9 +14,10 @@ header-includes:
    - \renewcommand\linenumberfont{\normalfont\small}
    - \usepackage{setspace}
    - \usepackage{siunitx}
-   - \spacing{1.5}
+   - \spacing{2}
    - \pagenumbering{arabic}
    - \usepackage{indentfirst}
+   - \usepackage[style=alphabetic]{biblatex}
 
 bibliography: references.bib
 csl: cell-reports.csl
@@ -310,7 +311,7 @@ Locations of CpG islands were determined through the mm10 UCSC genome browser Cp
 ## Whole genome bisulfite sequencing (WGBS)
 Genomic DNA (gDNA) from male na&#239;ve ESCs and extended EpiLCs was extracted using the Wizard Genomic DNA Purification Kit (Promega A1120), following the instructions for Tissue Culture Cells. gDNA from two wild-types and two _Kdm5c_-KOs of each cell type was sent to Novogene for WGBS using the Illumina NovaSeq X Plus platform and sequenced for 150 bp paired-end reads (PE150). All samples had greater than 99% bisulfite conversion rates. Reads were adapter and quality trimmed with Trim Galore (v0.6.10) and aligned to the mm10 genome using Bismark[@kruegerBismarkFlexibleAligner2011] (v0.22.1). Analysis of differential methylation at gene promoters was perfomed using methylKit[@akalinMethylKitComprehensivePackage2012] (v1.28.0) with a minimum coverage of 3 paired reads, a percentage greater than 25% or less than -25%, and q-value less than 0.01. methylKit was also used to calculate average percentage methylation at germline gene promoters. Methylation bedgraph tracks were generated via Bismark and visualized using the UCSC genome browser[@nassarUCSCGenomeBrowser2023].
 
-## Data availability
+## Data access
 ### WGBS in wild-type and _Kdm5c_-KO ESCs and exEpiLCs
 Raw fastq files are deposited in the Sequence Read Archive (SRA) https://www.ncbi.nlm.nih.gov/sra under the bioProject PRJNA1165148. https://www.ncbi.nlm.nih.gov/bioproject/PRJNA1165148
 
@@ -321,6 +322,9 @@ Previously published ChIP-seq experiments included KDM5C binding in wild-type an
 
 ### Data analysis
 Scripts used to generate the results, tables, and figures of this study are available via the GitHub repository: https://github.com/kbonefas/KDM5C_Germ_Mechanism
+
+# Competing Interest
+S.I. is a member of the Scientific Advisory Board of KDM5C Advocacy, Research, Education & Support (KARES). All other authors declare no conflict of interest.
 
 # Acknowledgements
 We thank Drs. Sundeep Kalantry, Milan Samanta, and Rebecca Malcore for providing protocols and expertise in culturing mouse ESCs and EpiLCs, as well as providing the wild-type and _Kdm5c_-KO ESCs used in this study. We thank Dr. Jacob Mueller for his insight in germline gene regulation and directing us to the germline-depleted mouse models. We also thank Drs. Gabriel Corfas, Kenneth Kwan, Natalie Tronson, Michael Sutton, Stephanie Bielas, Donna Martin, and the members of the Iwase, Sutton, Bielas, and Martin labs for helpful discussions and critiques of the data. We thank members of the University of Michigan Reproductive Sciences Program for providing feedback throughout the development of this work. This work was supported by grants from the National Institutes of Health (NIH) National Institute of Neurological Disorders and Stroke (NS089896, 5R21NS104774, and NS116008 to S.I.), National institute of Mental Health (1R21MH135290 to S.I.), the Simons Foundation Autism Research Initiative (SFARI, SFI-AN-AR-Pilot-00005721 to S.I.), the Farrehi Family Foundation Grant (to S.I.), the University of Michigan Career Training in Reproductive Biology (NIH T32HD079342, to K.M.B.), the NIH Early Stage Training in the Neurosciences Training Grant (NIH T32NS076401 to K.M.B.), and the Michigan Predoctoral Training in Genetics Grant (NIH T32GM007544, to I.V.)
