@@ -332,9 +332,6 @@ We thank Drs. Sundeep Kalantry, Milan Samanta, and Rebecca Malcore for providing
 # Author Contributions
 K.M.B. and S.I. conceived the study and designed the experiments. I.V. generated the ESC and exEpiLC WGBS data. K.M.B performed all data analysis and all other experiments. The manuscript was written by K.M.B and S.I. and edited by K.M.B, S.I., and I.V. 
 
-# Declaration of Interest
-S.I. is a member of the Scientific Advisory Board of KDM5C Advocacy, Research, Education & Support (KARES). Other authors declare no conflict of interest.
-
 # References
 <div id="refs"></div>
 
