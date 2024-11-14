@@ -1,7 +1,7 @@
 # KDM5C is a sex-biased brake against germline gene expression programs in somatic lineages
 
 * PubMed Link: N/A
-* BioRxiv Link:
+* BioRxiv Link: https://www.biorxiv.org/content/10.1101/2024.11.08.622665v1
 
 ## Abstract
 
