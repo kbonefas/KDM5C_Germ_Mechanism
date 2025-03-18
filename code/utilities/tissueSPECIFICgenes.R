@@ -285,3 +285,49 @@ tissue_fisher <- function(td, n, title){
 }
 
 
+# td - tissue DEG list
+# all tissue genes
+# n - position of DEGs
+tissue_dot <- function(n, title){
+	#get list of DEGs
+	DEGs <- read.csv(snakemake@input[[n]], sep =",")
+	DEGs <- subset(DEGs, log2FoldChange > l2fcco)
+	names(DEGs)[names(DEGs) == 'X'] <- 'ENSEMBL'
+	print(head(DEGs))
+
+	#for every tissue, count how many are DEGs
+	pvalues <- c()
+	DEGnumb <- c()
+	oddsratio <- c()
+	cnt <- 1
+	for (t in unique(Tissues$tissue)){
+		Tissues_genes <- subset(Tissues, tissue == t)
+		
+		tissue_yes_DEG_yes <- nrow(subset(DEGs, ENSEMBL %in% Tissues_genes$ENSEMBL))
+
+		tissue_no_DEG_no <-  52452 - nrow(Tissues_genes) -  nrow(DEGs) # 52452 is the total number of genes tested
+
+		tissue_no_DEG_yes <- nrow(subset(DEGs, !(ENSEMBL %in% Tissues_genes$ENSEMBL)))
+
+		tissue_yes_DEG_no <- nrow(subset(Tissues_genes, !(ENSEMBL %in% DEGs$ENSEMBL)))
+
+		fisherdf <- data.frame("tissue_yes" = c(tissue_yes_DEG_yes, tissue_yes_DEG_no), "tissue_no" = c(tissue_no_DEG_yes, tissue_no_DEG_no), row.names = c("DEG_yes", "DEG_no"))
+		
+		fishtest <- fisher.test(fisherdf)
+		# print(paste0(title, " fisher results for ", t))
+		# print(fisherdf)
+		# print(fishtest)
+
+		pvalues[cnt] <- fishtest$p.value
+		DEGnumb[cnt] <- tissue_yes_DEG_yes
+		oddsratio[cnt] <- fishtest$estimate[[1]]
+
+		cnt <- cnt + 1
+
+	}
+	print(paste0(title, " fisher results"))
+	outdf <- data.frame(tissue = unique(Tissues$tissue), pvalue = pvalues, DEGnumb = DEGnumb, oddsratio = oddsratio, sample = rep(samples[i], length(unique(Tissues$tissue))))
+	print(outdf)
+	return(outdf)
+}
+
