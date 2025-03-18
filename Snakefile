@@ -382,8 +382,8 @@ rule ESC_EpiLC_5CKOcluster:
 		"data/processed/restable_ESCEpiLC_RA_5CKOvWT_96RA.csv",	
 		"data/raw/230919_ESCEpiLC_RA_gene_TPM.annot.txt",
 		"data/raw/SampleInfo_ESCEpiLC_RA.csv",
-		"../KDM5C_Germ_Mechanism/results/DESeq2/germDEGs/germDEGs_hip5cKO.csv",
-		"../KDM5C_Germ_Mechanism/results/DESeq2/germDEGs/germDEGs_amy5cKO.csv"
+		"results/DESeq2/germDEGs/germDEGs_hip5cKO.csv",
+		"results/DESeq2/germDEGs/germDEGs_amy5cKO.csv"
 	output:
 		"results/figure_pieces/ESCEpiLC_RA_allgermDEGs_hist.pdf",
 		"results/figure_pieces/ESCEpiLC_RA_5CKO_germ_heat_TPM.pdf",
