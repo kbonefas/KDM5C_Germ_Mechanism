@@ -337,6 +337,98 @@ rule KDM5C_chip_Stra8:
 		"code/ChIPseq_KDM5C_Stra8.R"
 
 ###################### Figure 5: Germline DEGs and RA signaling ############################
+
+#use DESeq2 to test which genes are significantly changed between WT and 5CKO for each condition 
+rule ESCEpiLC_RA_WTKO_DESeq2:
+	input:
+		cts = "data/raw/230919_ESCEpiLC_RA_gene_expected_count.annot.txt",
+		sampleinfo = "data/raw/SampleInfo_ESCEpiLC_RA.csv",
+		germ = germgenes
+	output:
+		"results/figure_pieces/PCA_ESCEpiLC_RA_5CKOvWT.pdf",
+		"data/processed/restable_ESCEpiLC_RA_5CKOvWT_0.csv",
+		"data/processed/restable_ESCEpiLC_RA_5CKOvWT_48RA.csv",		
+		"data/processed/restable_ESCEpiLC_RA_5CKOvWT_48NO.csv",
+		"data/processed/restable_ESCEpiLC_RA_5CKOvWT_96RA.csv",		
+		"data/processed/restable_ESCEpiLC_RA_5CKOvWT_96NO.csv",
+		"results/DESeq2/germDEGs/germDEGs_ESCEpiLC_RA_5CKOvWT_0.csv",
+		"results/DESeq2/germDEGs/germDEGs_ESCEpiLC_RA_5CKOvWT_48RA.csv",
+		"results/DESeq2/germDEGs/germDEGs_ESCEpiLC_RA_5CKOvWT_48NO.csv",
+		"results/DESeq2/germDEGs/germDEGs_ESCEpiLC_RA_5CKOvWT_96RA.csv",
+		"results/DESeq2/germDEGs/germDEGs_ESCEpiLC_RA_5CKOvWT_96NO.csv"
+	params:
+		alpha = PADJ
+	script:
+		"code/DESeq2_ESC_EpiLC_RA_WTvKO.R"
+
+rule ESC_EpiLC_markers:
+	input:
+		"data/raw/230919_ESCEpiLC_RA_gene_TPM.annot.txt", #annotated TPM for DESeq2
+		"data/raw/SampleInfo_ESCEpiLC_RA.csv"
+	output:
+		"results/figure_pieces/ESC_EpiLC_marker_heatmap_naive.pdf",
+		"results/figure_pieces/ESC_EpiLC_marker_heatmap_primed.pdf"
+	script:
+		"code/ESC_EpiLC_markers.R"
+
+#graphing of germline genes in ESC and EpiLCs
+rule ESC_EpiLC_5CKOcluster:
+	input:
+		germgenes,
+		"data/processed/restable_ESCEpiLC_RA_5CKOvWT_0.csv",	
+		"data/processed/restable_ESCEpiLC_RA_5CKOvWT_48NO.csv",
+		"data/processed/restable_ESCEpiLC_RA_5CKOvWT_48RA.csv",		
+		"data/processed/restable_ESCEpiLC_RA_5CKOvWT_96NO.csv",
+		"data/processed/restable_ESCEpiLC_RA_5CKOvWT_96RA.csv",	
+		"data/raw/230919_ESCEpiLC_RA_gene_TPM.annot.txt",
+		"data/raw/SampleInfo_ESCEpiLC_RA.csv",
+		"../KDM5C_Germ_Mechanism/results/DESeq2/germDEGs/germDEGs_hip5cKO.csv",
+		"../KDM5C_Germ_Mechanism/results/DESeq2/germDEGs/germDEGs_amy5cKO.csv"
+	output:
+		"results/figure_pieces/ESCEpiLC_RA_allgermDEGs_hist.pdf",
+		"results/figure_pieces/ESCEpiLC_RA_5CKO_germ_heat_TPM.pdf",
+		"results/ESCEpiLC_RA_5CKO_germ_TPM_clusters.csv",
+		"results/figure_pieces/ESCEpiLC_RA_5CKO_germ_heat_TPM_clustnumb.pdf",
+		"results/ESCEpiLC_RA_5CKO_germDEGs_96RAonly.csv",
+		"data/processed/ESCEpiLC_RA_germ_TPM_5CKOclusters_hip5cKODEGs.csv",
+		"data/processed/ESCEpiLC_RA_germ_TPM_5CKOclusters_amy5cKODEGs.csv",
+		"data/processed/ESCEpiLC_RA_5CKOclusters_1.bed",
+		"data/processed/ESCEpiLC_RA_5CKOclusters_2.bed",
+		"data/processed/ESCEpiLC_RA_5CKOclusters_3.bed",
+		"data/processed/ESCEpiLC_RA_5CKOclusters_4.bed",
+		"data/processed/ESCEpiLC_RA_5CKOclusters_5.bed",
+		"data/processed/ESCEpiLC_RA_5CKOclusters_6.bed",
+		"data/processed/ESCEpiLC_RA_5CKOclusters_7.bed",
+		"data/processed/ESCEpiLC_RA_5CKOclusters_8.bed"
+	params:
+		alpha = PADJ
+	script:
+		"code/ESC_EpiLC_5CKOcluster.R"
+
+#gene ontology of 5CKO clusters
+rule ESC_EpiLC_5CKOcluster_GO:
+	input:
+		"results/ESCEpiLC_RA_5CKO_germ_TPM_clusters.csv"
+	output:
+		"results/ESCEpiLC_RA_germ_TPM_5CKOclusters_GO.csv",
+		"results/figure_pieces/ESCEpiLC_RA_germ_TPM_5CKOclusters_GO.pdf"
+	script:
+		"code/ESC_EpiLC_5CKOcluster_GO.R"
+
+
+#TPM plot for RA+/- WT and 5CKO of whichever gene you input
+rule ESCEpiLC_RA_TPM:
+	input:
+		"data/raw/230919_ESCEpiLC_RA_gene_TPM.annot.txt",
+		"data/raw/SampleInfo_ESCEpiLC_RA.csv"
+	output:
+		"results/figure_pieces/ESCEpiLC_RA_germ_5CKO_RAgenesTPM.pdf",
+		"results/figure_pieces/ESCEpiLC_RA_germ_5CKOonly_RAgenesTPM.pdf",
+		"results/figure_pieces/ESCEpiLC_RA_TPM_genesofinterest.pdf"
+	script:
+		"code/ESC_EpiLC_RA_TPM.R"
+
+
 rule RA_ICC:
 	input:
 		"data/raw/Cell_Counts/Dazl_100nMRA/241009_Dazl_100nMRA.xlsx"
