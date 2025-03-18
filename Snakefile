@@ -57,6 +57,16 @@ rule brain_tissue_genes:
 	script:
 		"code/TissueGenes_AmyHip.R"
 
+rule tissue_genes_dot:
+	input:
+		"results/DESeq2/DEGs_amy5cKO.csv",
+		"results/DESeq2/DEGs_hip5cKO.csv",
+	output:
+		"results/figure_pieces/TissueSpecific_dot.pdf"
+	script:
+		"code/Tissue_genes_dot.R"
+
+
 
 ###################### Figure 2: Germline-enriched Genes ############################
 #gene ontology analysis of testis-enriched DEGs
