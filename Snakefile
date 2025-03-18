@@ -336,6 +336,16 @@ rule KDM5C_chip_Stra8:
 	script:
 		"code/ChIPseq_KDM5C_Stra8.R"
 
+###################### Figure 5: Germline DEGs and RA signaling ############################
+rule RA_ICC:
+	input:
+		"data/raw/Cell_Counts/Dazl_100nMRA/241009_Dazl_100nMRA.xlsx"
+	output:
+		"results/figure_pieces/RA_ICC_DAZL_100nMRA.pdf"
+	script:
+		"code/RA_ICCplots.R"
+
+
 ###################### Figure 6: KDM5C substrates, CGIs, and DNAme ############################
 rule GeneTSS:
 	input:
