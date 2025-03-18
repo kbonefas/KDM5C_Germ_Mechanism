@@ -337,7 +337,7 @@ rule KDM5C_chip_Stra8:
 		"code/ChIPseq_KDM5C_Stra8.R"
 
 ###################### Figure 5: Germline DEGs and RA signaling ############################
-
+germgenes = "data/processed/germGENES20.csv"
 #use DESeq2 to test which genes are significantly changed between WT and 5CKO for each condition 
 rule ESCEpiLC_RA_WTKO_DESeq2:
 	input:
