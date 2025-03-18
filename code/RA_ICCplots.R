@@ -12,15 +12,20 @@ DAZL_100nMRA$genotreat <- paste(DAZL_100nMRA$Genotype, DAZL_100nMRA$Treatment)
     #round to the nearest 2 decimal places
 DAZL_100nMRA$Percent <- round(DAZL_100nMRA$DAZL/DAZL_100nMRA$DAPI*100, digits = 2)
 
+
+#order the samples for plotting
+DAZL_100nMRA$genotreat <- factor(DAZL_100nMRA$genotreat, levels = c("WT DMSO", "5CKO DMSO", "WT RA", "5CKO RA"))
+
+
 print(head(DAZL_100nMRA))
 
 my_comparisons <- list(c("WT RA", "5CKO RA"), c("WT DMSO", "5CKO DMSO"), c("5CKO DMSO", "5CKO RA"), c("WT DMSO", "WT RA"))
 
-q <- ggbarplot(DAZL_100nMRA, x = 'genotreat', y = 'Percent', fill="genotreat", color = "genotreat", add = "mean_se",
+q <- ggbarplot(DAZL_100nMRA, x = 'genotreat', y = 'Percent', fill="genotreat", add = c("mean_se"),
     xlab = " ", ylab = "% DAZL+/DAPI+") + #palette = EpiLC_XY_palette
     #rremove("legend") +
     stat_compare_means(comparisons = my_comparisons, method="t.test", label = "p.signif") 
-q <- ggpar(q, x.text.angle = 25, font.main = "bold")
+q <- ggpar(q, x.text.angle = 25, font.main = "bold", legend = "right", legend.title = " ")
 
 # q <- facet(q, facet.by = "Symbol", nrow = 2)
 
