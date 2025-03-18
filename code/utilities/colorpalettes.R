@@ -46,7 +46,8 @@ allRA <- c("5CKO0" = ESC_XY_KO, "WT0" = ESC_XY_WT, "5CKO48" = EpiLC_XY_KO, "WT48
 RAtimes <- c("0" = ESC_XY_KO, "48" = EpiLC_XY_KO, "96" = EpiLC96_XY_KO)
 EpiLCRA_5cKO <- c(EpiLC_XY_KO, EpiLC96_XY_KO)
 EpiLCRA_WT <- c("48" = EpiLC_XY_WT, "96" = EpiLC96_XY_WT)
-genoRAcolors <- c("WT RA +" = "#d241b2" , "WT RA -" = "#404040", "5CKO RA +" = "#ff85e3" , "5CKO RA -" = "#8f8f8f" )
+genoRAcolors <- c("WT RA" = "#d241b2" , "WT DMSO" = "#404040", "5CKO RA" = "#ff85e3" , "5CKO DMSO" = "#8f8f8f")
+genoVAcolors <- c("WT VA +" = "#6140d1" , "WT VA -" = "#404040", "5CKO VA +" = "#987bfa" , "5CKO VA -" = "#c0bfbf")
 
 #palette for EpiLCs and P6 brain
 EpiLC_P6Brainpalette <- c("XYWT" = "#283454ff", "XY5cKO" = "#778cbfff", "XXWT" = "#732113ff", "XX5cHET" = "#e36752ff", "XX5cKO" = "#f0ada2ff")

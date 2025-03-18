@@ -21,13 +21,14 @@ print(head(DAZL_100nMRA))
 
 my_comparisons <- list(c("WT RA", "5CKO RA"), c("WT DMSO", "5CKO DMSO"), c("5CKO DMSO", "5CKO RA"), c("WT DMSO", "WT RA"))
 
+source("code/utilities/colorpalettes.R")
 q <- ggbarplot(DAZL_100nMRA, x = 'genotreat', y = 'Percent', fill="genotreat", add = c("mean_se"),
-    xlab = " ", ylab = "% DAZL+/DAPI+") + #palette = EpiLC_XY_palette
+    xlab = " ", ylab = "% DAZL+/DAPI+", palette = genoRAcolors) + 
     #rremove("legend") +
     stat_compare_means(comparisons = my_comparisons, method="t.test", label = "p.signif") 
 q <- ggpar(q, x.text.angle = 25, font.main = "bold", legend = "right", legend.title = " ")
 
 # q <- facet(q, facet.by = "Symbol", nrow = 2)
 
-ggsave(snakemake@output[[1]], plot = q, width = 6, height = 5)
+ggsave(snakemake@output[[1]], plot = q, width = 5, height = 4)
 
