@@ -316,27 +316,30 @@ rule KDM5C_chip_Stra8:
 ###################### Figure 5: Germline DEGs and RA signaling ############################
 germgenes = "data/processed/germGENES20.csv"
 #use DESeq2 to test which genes are significantly changed between WT and 5CKO for each condition 
-rule ESCEpiLC_RA_WTKO_DESeq2:
+rule ESCEpiLC_VA_WTKO_DESeq2:
 	input:
-		cts = "data/raw/230919_ESCEpiLC_RA_gene_expected_count.annot.txt",
-		sampleinfo = "data/raw/SampleInfo_ESCEpiLC_RA.csv",
+		cts = "data/raw/230919_ESCEpiLC_VA_gene_expected_count.annot.txt",
+		sampleinfo = "data/raw/SampleInfo_ESCEpiLC_VA.csv",
 		germ = germgenes
 	output:
-		"results/figure_pieces/PCA_ESCEpiLC_RA_5CKOvWT.pdf",
-		"data/processed/restable_ESCEpiLC_RA_5CKOvWT_0.csv",
-		"data/processed/restable_ESCEpiLC_RA_5CKOvWT_48RA.csv",		
-		"data/processed/restable_ESCEpiLC_RA_5CKOvWT_48NO.csv",
-		"data/processed/restable_ESCEpiLC_RA_5CKOvWT_96RA.csv",		
-		"data/processed/restable_ESCEpiLC_RA_5CKOvWT_96NO.csv",
-		"results/DESeq2/germDEGs/germDEGs_ESCEpiLC_RA_5CKOvWT_0.csv",
-		"results/DESeq2/germDEGs/germDEGs_ESCEpiLC_RA_5CKOvWT_48RA.csv",
-		"results/DESeq2/germDEGs/germDEGs_ESCEpiLC_RA_5CKOvWT_48NO.csv",
-		"results/DESeq2/germDEGs/germDEGs_ESCEpiLC_RA_5CKOvWT_96RA.csv",
-		"results/DESeq2/germDEGs/germDEGs_ESCEpiLC_RA_5CKOvWT_96NO.csv"
+		"results/figure_pieces/PCA_ESCEpiLC_VA_5CKOvWT.pdf",
+		"data/processed/restable_ESCEpiLC_VA_5CKOvWT_0.csv",
+		"data/processed/restable_ESCEpiLC_VA_5CKOvWT_48VA.csv",		
+		"data/processed/restable_ESCEpiLC_VA_5CKOvWT_48NO.csv",
+		"data/processed/restable_ESCEpiLC_VA_5CKOvWT_96VA.csv",		
+		"data/processed/restable_ESCEpiLC_VA_5CKOvWT_96NO.csv",
+		"results/DESeq2/germDEGs/germDEGs_ESCEpiLC_VA_5CKOvWT_0.csv",
+		"results/DESeq2/germDEGs/germDEGs_ESCEpiLC_VA_5CKOvWT_48RA.csv",
+		"results/DESeq2/germDEGs/germDEGs_ESCEpiLC_VA_5CKOvWT_48NO.csv",
+		"results/DESeq2/germDEGs/germDEGs_ESCEpiLC_VA_5CKOvWT_96RA.csv",
+		"results/DESeq2/germDEGs/germDEGs_ESCEpiLC_VA_5CKOvWT_96NO.csv",
+		"results/DESeq2/DEGs_nESC.csv",
+		"results/DESeq2/DEGs_EpiLC_48VA.csv",
+		"results/DESeq2/DEGs_exEpiLC_96VA.csv"
 	params:
 		alpha = PADJ
 	script:
-		"code/DESeq2_ESC_EpiLC_RA_WTvKO.R"
+		"code/DESeq2_ESC_EpiLC_VA_WTvKO.R"
 
 rule ESC_EpiLC_markers:
 	input:

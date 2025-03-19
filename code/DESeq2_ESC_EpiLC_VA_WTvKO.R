@@ -2,7 +2,7 @@
 
 #questions we want to address:
 	#what germline genes are differentially expressed in 5CKO ESCs and EpiLCs at each time point
-	#are those genes still expressed without RA?
+	#are those genes still expressed without VA?
 		#plot log2scale of counts/TPM? Heatmap of scaled TPM? Example gene?
 
 
@@ -19,7 +19,7 @@ print(SampleInfo)
 ##3) Set up and run DESeq2
 
 #create the coldata
-coldata <- data.frame(row.names = SampleInfo$ID, genotype = factor(SampleInfo$Genotype), timepoint = factor(SampleInfo$Timepoint), RA = SampleInfo$RA, batch = factor(SampleInfo$Batch))
+coldata <- data.frame(row.names = SampleInfo$ID, genotype = factor(SampleInfo$Genotype), timepoint = factor(SampleInfo$Timepoint), VA = SampleInfo$VA, batch = factor(SampleInfo$Batch))
 print(coldata)
 
 #order the column data to match the order of the samples in the cts file
@@ -39,7 +39,7 @@ dds <- DESeqDataSetFromMatrix(countData = cts,
                         design = ~ batch + genotype)
 
 #add in the other variables
-dds$group <- factor(paste0(dds$genotype, dds$timepoint, dds$RA))
+dds$group <- factor(paste0(dds$genotype, dds$timepoint, dds$VA))
 design(dds) <- ~ group
 #dds$genotype <- relevel(dds$genotype, ref ="WT")
 dds <- DESeq(dds)
@@ -50,19 +50,19 @@ dds <- DESeq(dds)
 vsd <- vst(dds, blind=TRUE)
 data <- plotPCA(vsd, intgroup=c("group"), returnData=TRUE)
 percentVar <- round(100 * attr(data, "percentVar"))
-   #adding region as a separate variable back in so that the shape of the point is dependent upon RA
-data <- data.frame(data, RA = coldata$RA, genotime = paste0(coldata$genotype, coldata$timepoint))
+   #adding region as a separate variable back in so that the shape of the point is dependent upon VA
+data <- data.frame(data, VA = coldata$VA, genotime = paste0(coldata$genotype, coldata$timepoint))
 print(head(data))
 
-data$RA[data$RA == 'RA'] <- 'RA +'
-data$RA[data$RA == 'NO'] <- 'RA -'
-data$RA[data$RA == ''] <- 'ESC'
+data$VA[data$VA == 'VA'] <- 'VA +'
+data$VA[data$VA == 'NO'] <- 'VA -'
+data$VA[data$VA == ''] <- 'ESC'
 
 library('ggplot2')
 library('ggpubr')
 
 source("code/utilities/colorpalettes.R")
-q <- ggscatter(data, "PC1", "PC2", color = "genotime", size = 4.5, palette = allRA, shape = "RA", title = "PCA of XY ESCs to EpiLCs, +/- Retinoic Acid", xlab = paste0("PC1: ",percentVar[1],"% variance"), ylab = paste0("PC2: ",percentVar[2],"% variance"))
+q <- ggscatter(data, "PC1", "PC2", color = "genotime", size = 4.5, palette = allVA, shape = "VA", title = "PCA of XY ESCs to EpiLCs, +/- Vitamin A", xlab = paste0("PC1: ",percentVar[1],"% variance"), ylab = paste0("PC2: ",percentVar[2],"% variance"))
 q <- q + theme_classic()
 	#Save the PCA plot
 ggsave(snakemake@output[[1]], plot = ggpar(q, legend = "right"), width = 5, height = 4)
@@ -73,7 +73,7 @@ germ <- read.csv(snakemake@input[["germ"]], sep = ",")
 source("code/utilities/parameters.R")
 l2fcco <- l2fcco_ESCEpiLC
 
-ratimes <- c("0", "48RA", "48NO", "96RA", "96NO")
+ratimes <- c("0", "48VA", "48NO", "96VA", "96NO")
 germDEGlist <- list()
 allgermDEGs <- data.frame()
 #all the results tables dataframes
@@ -103,9 +103,16 @@ for (i in 1:length(ratimes)){
 	allgermDEGs <- rbind(allgermDEGs, germDEGs[,1:2])
 }
 
-ratimesnames <- c("ESC", "RA48", "NO48", "RA96", "NO96")
+ratimesnames <- c("ESC", "VA48", "NO48", "VA96", "NO96")
 names(germDEGlist) <- ratimesnames
 names(resdfs) <- ratimesnames
+
+#get the DEGs for Basal conditions
+source("code/utilities/DESeq2_DEGs.R")
+nESC_DEGs <- DEGtable2(resdfs[["ESC"]], 12,snakemake@params[["alpha"]])
+EpiLC_DEGs <- DEGtable2(resdfs[["VA48"]], 13,snakemake@params[["alpha"]])
+exEpiLC_DEGs <- DEGtable2(resdfs[["VA96"]], 14,snakemake@params[["alpha"]])
+
 
 
 
