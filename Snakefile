@@ -444,8 +444,11 @@ rule brain_tissue_genes:
 
 rule tissue_genes_dot:
 	input:
+		"results/DESeq2/DEGs_nESC.csv",
+		"results/DESeq2/DEGs_EpiLC_48VA.csv",
+		"results/DESeq2/DEGs_exEpiLC_96VA.csv",
 		"results/DESeq2/DEGs_amy5cKO.csv",
-		"results/DESeq2/DEGs_hip5cKO.csv",
+		"results/DESeq2/DEGs_hip5cKO.csv"
 	output:
 		"results/figure_pieces/TissueSpecific_dot.pdf"
 	script:
