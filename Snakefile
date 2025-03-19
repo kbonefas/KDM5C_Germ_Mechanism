@@ -34,42 +34,8 @@ rule amyhipDESeq2:
 		"code/DESeq2_adultHIPAMY.R"
 
 
-#look at tissue-enriched gene expression
-rule brain_tissue_genes:
-	input:
-		"results/DESeq2/DEGs_amy5cKO.csv",
-		"results/DESeq2/DEGs_hip5cKO.csv",
-		"data/processed/restable_amy5cKO.csv",
-		"data/processed/restable_hip5cKO.csv"
 
-	output:
-		"results/figure_pieces/TissueSpecific_Volcano_amy5cKO.png",
-		"results/figure_pieces/TissueSpecific_Volcano_hip5cKO.png",
-		"results/figure_pieces/TissueSpecific_bar_amy5cKO.pdf",
-		"results/figure_pieces/TissueSpecific_bar_hip5cKO.pdf",
-		"results/figure_pieces/TissueSpecific_MAplot_amy5cKO.pdf",
-		"results/figure_pieces/TissueSpecific_MAplot_hip5cKO.pdf",
-		"data/processed/TissueSpecific_AMYHIP_numberofgenesDEGs.csv",
-		"data/processed/TestisDEGs_amyhip.csv",
-		"results/figure_pieces/TissueSpecific_bar_numbgenes.pdf",
-		"data/processed/TissueDEGs_amy5CKO.csv",
-		"data/processed/TissueDEGs_hip5CKO.csv"
-	script:
-		"code/TissueGenes_AmyHip.R"
-
-rule tissue_genes_dot:
-	input:
-		"results/DESeq2/DEGs_amy5cKO.csv",
-		"results/DESeq2/DEGs_hip5cKO.csv",
-	output:
-		"results/figure_pieces/TissueSpecific_dot.pdf"
-	script:
-		"code/Tissue_genes_dot.R"
-
-
-
-
-###################### Figure 2: Germline-enriched Genes ############################
+###################### Germline-enriched Genes ############################
 #gene ontology analysis of testis-enriched DEGs
 rule testisGO:
 	input:
@@ -116,7 +82,7 @@ rule germgenes:
 		"code/utilities/mouseGermlineGenes.R"
 
 
-###################### Figure 3: EpiLC vs Brain germline genes ############################
+###################### EpiLC vs Brain germline genes ############################
 
 #DESeq2 on male and female Kdm5c mutant EpiLCs
 rule EpiDESeq2_XXvsXY:
@@ -216,7 +182,7 @@ rule EpiLC_PGC:
 		"code/EpiLC_PGCgenes.R"
 
 
-################ Figure 4: male vs female EpiLCs ################
+################ male vs female EpiLCs ################
 
 #plot the overlap between XX and XY EpiLC 5cKO/HET DEGs and which chromosome
 rule EpiLC_XXvsXY:
@@ -449,7 +415,42 @@ rule RA_ICC:
 		"code/RA_ICCplots.R"
 
 
-###################### Figure 6: KDM5C substrates, CGIs, and DNAme ############################
+############# Tissue-enriched DEGs #############
+
+#look at tissue-enriched gene expression
+rule brain_tissue_genes:
+	input:
+		"results/DESeq2/DEGs_amy5cKO.csv",
+		"results/DESeq2/DEGs_hip5cKO.csv",
+		"data/processed/restable_amy5cKO.csv",
+		"data/processed/restable_hip5cKO.csv"
+	output:
+		"results/figure_pieces/TissueSpecific_Volcano_amy5cKO.png",
+		"results/figure_pieces/TissueSpecific_Volcano_hip5cKO.png",
+		"results/figure_pieces/TissueSpecific_bar_amy5cKO.pdf",
+		"results/figure_pieces/TissueSpecific_bar_hip5cKO.pdf",
+		"results/figure_pieces/TissueSpecific_MAplot_amy5cKO.pdf",
+		"results/figure_pieces/TissueSpecific_MAplot_hip5cKO.pdf",
+		"data/processed/TissueSpecific_AMYHIP_numberofgenesDEGs.csv",
+		"data/processed/TestisDEGs_amyhip.csv",
+		"results/figure_pieces/TissueSpecific_bar_numbgenes.pdf",
+		"data/processed/TissueDEGs_amy5CKO.csv",
+		"data/processed/TissueDEGs_hip5CKO.csv"
+	script:
+		"code/TissueGenes_AmyHip.R"
+
+rule tissue_genes_dot:
+	input:
+		"results/DESeq2/DEGs_amy5cKO.csv",
+		"results/DESeq2/DEGs_hip5cKO.csv",
+	output:
+		"results/figure_pieces/TissueSpecific_dot.pdf"
+	script:
+		"code/Tissue_genes_dot.R"
+
+
+
+###################### KDM5C substrates, CGIs, and DNAme ############################
 rule GeneTSS:
 	input:
 		"data/processed/germGENES20.csv",
