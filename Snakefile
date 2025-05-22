@@ -9,7 +9,7 @@
 
 ##padj cutoff for DESEq2
 PADJ = 0.01
-log2fc_CO = 1
+log2fc_CO = 0.5
 
 ##number of genotypes you're comparing to WT
 
