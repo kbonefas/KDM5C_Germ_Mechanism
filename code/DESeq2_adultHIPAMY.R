@@ -111,7 +111,7 @@ source('code/utilities/Enrichplot_GO.R')
 print(head(AMY_5CWT_DEGs))
 
 #gene ontology log2fc cut off
-GO_l2FCcuttoff <- 1
+GO_l2FCcuttoff <- snakemake@params[["lf2c"]]
 
 mapsize <- 5.5
 mapsizey <- 6

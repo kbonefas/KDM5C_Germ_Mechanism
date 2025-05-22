@@ -8,7 +8,9 @@
 ####################### Figure 1 #######################
 
 ##padj cutoff for DESEq2
-PADJ = 0.1
+PADJ = 0.01
+log2fc_CO = 1
+
 ##number of genotypes you're comparing to WT
 
 #generate DESeq2 results for 5CKO amygdala and hippocampus
@@ -19,6 +21,7 @@ rule amyhipDESeq2:
 		"data/raw/SampleInfo_amyhip.csv" 
 	params:
 		alpha = PADJ, #padj cutoff
+		lf2c = log2fc_CO
 	output:
 		"results/figure_pieces/PCA_HIPAMY.pdf", #PCA plot
 		#the results tables will be generated in alphabetical order 
