@@ -39,10 +39,13 @@ for (g in unique(SampleInfo$group)){
 library(dplyr)
 avgtpm_df <- bind_cols(avgtpm_df)
 print("avg TPM dataframe!")
-head(avgtpm_df)
+# head(avgtpm_df)
 
 #subset TPM for germline genes
 germ_avg <- subset(avgtpm_df, rownames(avgtpm_df) %in% germ$ENSEMBL)
+
+#remove genes unexpressed in any sample (> or equal to 1 in at least one column)
+germ_avg <- germ_avg[rowSums(germ_avg >= 1) >= 1, ]
 
 #order the columns
 germ_avg <- germ_avg[, c("WT_0", "5CKO_0", "WT_48NO", "5CKO_48NO", "WT_48VA", "5CKO_48VA", "WT_96NO", "5CKO_96NO", "WT_96VA", "5CKO_96VA")] 
@@ -53,6 +56,7 @@ print(head(germ_avg))
 germ_log2 <- log2(germ_avg+1)
 print("log2+1")
 print(head(germ_log2))
+
 
 
 #plot heatmap of germline genes
