@@ -1,4 +1,4 @@
-#see how the expression of germline DEGs is affected by RA
+#compare expression of ESC and EpiLC markers with and without VA
 tpm_all <- read.csv(snakemake@input[[1]], sep ="\t", row.names = 1)
 tpm <- tpm_all[4:ncol(tpm_all)] 
 print(head(tpm))
