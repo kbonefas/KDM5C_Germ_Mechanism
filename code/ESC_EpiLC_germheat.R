@@ -44,6 +44,10 @@ print("avg TPM dataframe!")
 #subset TPM for germline genes
 germ_avg <- subset(avgtpm_df, rownames(avgtpm_df) %in% germ$ENSEMBL)
 
+#subset for WT ESC values < 1 (unexpressed in ESCs)
+germ_avg <- subset(germ_avg, germ_avg$WT_0 < 1)
+
+
 #remove genes unexpressed in any sample (> or equal to 1 in at least one column)
 germ_avg <- germ_avg[rowSums(germ_avg >= 1) >= 1, ]
 
