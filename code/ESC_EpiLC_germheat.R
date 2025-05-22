@@ -80,3 +80,16 @@ p <- Heatmap(germ_log2, show_row_names = FALSE, show_column_names = TRUE, cluste
 pdf(file = snakemake@output[[1]], width = 8, height = 10)
 	draw(p)
 dev.off()
+
+
+
+#another heat map that groups WT time points together and 5CKO together
+#change column order
+germ_log2 <- germ_log2[, c("WT_0", "WT_48NO", "WT_48VA", "WT_96NO", "WT_96VA", "5CKO_0", "5CKO_48NO", "5CKO_48VA", "5CKO_96NO", "5CKO_96VA")] 
+
+p <- Heatmap(germ_log2, show_row_names = FALSE, show_column_names = TRUE, cluster_rows = TRUE, cluster_columns = FALSE, heatmap_legend_param = list(title = "log2 TPM + 1", legend_direction = "horizontal"), col = col_fun, column_split  = c(rep("WT", 5), rep("KO", 5)), column_title = "germline gene expression")
+
+
+pdf(file = snakemake@output[[2]], width = 8, height = 10)
+	draw(p)
+dev.off()

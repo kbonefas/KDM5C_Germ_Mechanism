@@ -361,7 +361,8 @@ rule ESC_EpiLC_germheat:
 		"data/raw/230919_ESCEpiLC_RA_gene_TPM.annot.txt", #TPM for WT and KO Esc to exEpiLC
 		"data/raw/SampleInfo_ESCEpiLC_VA.csv" #sample information
 	output:
-		"results/figure_pieces/ESC_EpiLC_germheat.pdf"
+		"results/figure_pieces/ESC_EpiLC_germheat.pdf",
+		"results/figure_pieces/ESC_EpiLC_germheat_WTKOgroup.pdf"
 	script:
 		"code/ESC_EpiLC_germheat.R"
 
