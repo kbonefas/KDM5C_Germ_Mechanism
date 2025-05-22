@@ -354,6 +354,17 @@ rule ESC_EpiLC_markers:
 	script:
 		"code/ESC_EpiLC_markers.R"
 
+
+rule ESC_EpiLC_germheat:
+	input:
+		"data/processed/germGENES20.csv", #germline genes
+		"data/raw/230919_ESCEpiLC_RA_gene_TPM.annot.txt", #TPM for WT and KO Esc to exEpiLC
+		"data/raw/SampleInfo_ESCEpiLC_VA.csv" #sample information
+	output:
+		"results/figure_pieces/ESC_EpiLC_germheat.pdf"
+	script:
+		"code/ESC_EpiLC_germheat.R"
+
 #graphing of germline genes in ESC and EpiLCs
 rule ESC_EpiLC_5CKOcluster:
 	input:
