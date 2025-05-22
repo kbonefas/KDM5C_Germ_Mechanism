@@ -18,7 +18,7 @@ GOmap <- function(degs, FCcutoff){
     library(org.Mm.eg.db)
     library(clusterProfiler)
     library(ggplot2)
-
+    print("making go map")
 
 	#make a dataframe with the first column ENSEMBL IDs and the second column log2FoldChange
 		#first and third columns of the degs table
@@ -28,9 +28,11 @@ GOmap <- function(degs, FCcutoff){
     geneList <- degs[,3]
     names(geneList) <- as.character(degs[,1])
     geneList <- sort(geneList, decreasing = TRUE)
+    print(head(geneList))
 
 	#get the names that meet the the cut-off value for log2fc
     de <- names(geneList)[geneList > FCcutoff]
+    print(de[1:10])
     #choose what organism and what type of ontology (biological process)
     ego <- enrichGO(de, keyType = 'ENSEMBL', OrgDb = "org.Mm.eg.db", ont="BP", readable=TRUE)
     
@@ -67,7 +69,7 @@ GOdot <- function(degs, FCcutoff){
     library(org.Mm.eg.db)
     library(clusterProfiler)
     library(ggplot2)
-
+    print("making go dot")
 
 	#make a dataframe with the first column ENSEMBL IDs and the second column log2FoldChange
 		#first and third columns of the degs table
@@ -80,6 +82,7 @@ GOdot <- function(degs, FCcutoff){
 
 	#get the names that meet the the cut-off value for log2fc
     de <- names(geneList)[geneList > FCcutoff]
+    print(de[1:10])
     #choose what organism and what type of ontology (biological process)
     ego <- enrichGO(de, keyType = 'ENSEMBL', OrgDb = "org.Mm.eg.db", ont="BP", readable=TRUE)
 	print(ego[, c("ID", "Description", "p.adjust")])
