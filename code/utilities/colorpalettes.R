@@ -42,7 +42,7 @@ EpiLC_XY_palette <- c("WT" = EpiLC_XY_WT, "5cKO" = EpiLC_XY_KO, "5CKO" = EpiLC_X
 
 
 #EpiLC with RA
-allRA <- c("5CKO0" = ESC_XY_KO, "WT0" = ESC_XY_WT, "5CKO48" = EpiLC_XY_KO, "WT48" = EpiLC_XY_WT, "5CKO96" = EpiLC96_XY_KO, "WT96" = EpiLC96_XY_WT)
+allVA <- c("5CKO0" = ESC_XY_KO, "WT0" = ESC_XY_WT, "5CKO48" = EpiLC_XY_KO, "WT48" = EpiLC_XY_WT, "5CKO96" = EpiLC96_XY_KO, "WT96" = EpiLC96_XY_WT)
 RAtimes <- c("0" = ESC_XY_KO, "48" = EpiLC_XY_KO, "96" = EpiLC96_XY_KO)
 EpiLCRA_5cKO <- c(EpiLC_XY_KO, EpiLC96_XY_KO)
 EpiLCRA_WT <- c("48" = EpiLC_XY_WT, "96" = EpiLC96_XY_WT)

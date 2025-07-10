@@ -111,10 +111,36 @@ source('code/utilities/Enrichplot_GO.R')
 print(head(AMY_5CWT_DEGs))
 
 #gene ontology log2fc cut off
-GO_l2FCcuttoff <- 0.5
+GO_l2FCcuttoff <- snakemake@params[["lf2c"]]
 
-ggsave(snakemake@output[[6]], plot = GOmap(AMY_5CWT_DEGs, GO_l2FCcuttoff), width = 9, height = 9)
-ggsave(snakemake@output[[7]], plot = GOmap(HIP_5CWT_DEGs, GO_l2FCcuttoff), width = 9, height = 9)
+mapsize <- 5.5
+mapsizey <- 6
 
-ggsave(snakemake@output[[8]], plot = GOdot(AMY_5CWT_DEGs, GO_l2FCcuttoff), width = 5.5, height = 7)
-ggsave(snakemake@output[[9]], plot = GOdot(HIP_5CWT_DEGs, GO_l2FCcuttoff), width = 5.5, height = 7)
+print("first")
+pdf(file = snakemake@output[[6]],   # The directory you want to save the file in
+    width = mapsize, # The width of the plot in inches
+    height = mapsizey) # The height of the plot in inches
+GOmap(AMY_5CWT_DEGs, GO_l2FCcuttoff)
+dev.off()
+
+print("second")
+pdf(file = snakemake@output[[7]],   # The directory you want to save the file in
+    width = mapsize, # The width of the plot in inches
+    height = mapsizey) # The height of the plot in inches
+GOmap(HIP_5CWT_DEGs, GO_l2FCcuttoff)
+dev.off()
+
+print("third")
+pdf(file = snakemake@output[[8]],   # The directory you want to save the file in
+    width = mapsize, # The width of the plot in inches
+    height = mapsizey) # The height of the plot in inches
+GOdot(AMY_5CWT_DEGs, GO_l2FCcuttoff)
+dev.off()
+
+
+print("fourth")
+pdf(file = snakemake@output[[9]],   # The directory you want to save the file in
+    width = mapsize, # The width of the plot in inches
+    height = mapsizey) # The height of the plot in inches
+ GOdot(HIP_5CWT_DEGs, GO_l2FCcuttoff)
+ dev.off()

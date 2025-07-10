@@ -8,7 +8,9 @@
 ####################### Figure 1 #######################
 
 ##padj cutoff for DESEq2
-PADJ = 0.1
+PADJ = 0.01
+log2fc_CO = 0.5
+
 ##number of genotypes you're comparing to WT
 
 #generate DESeq2 results for 5CKO amygdala and hippocampus
@@ -19,6 +21,7 @@ rule amyhipDESeq2:
 		"data/raw/SampleInfo_amyhip.csv" 
 	params:
 		alpha = PADJ, #padj cutoff
+		lf2c = log2fc_CO
 	output:
 		"results/figure_pieces/PCA_HIPAMY.pdf", #PCA plot
 		#the results tables will be generated in alphabetical order 
@@ -351,6 +354,18 @@ rule ESC_EpiLC_markers:
 	script:
 		"code/ESC_EpiLC_markers.R"
 
+
+rule ESC_EpiLC_germheat:
+	input:
+		"data/processed/germGENES20.csv", #germline genes
+		"data/raw/230919_ESCEpiLC_RA_gene_TPM.annot.txt", #TPM for WT and KO Esc to exEpiLC
+		"data/raw/SampleInfo_ESCEpiLC_VA.csv" #sample information
+	output:
+		"results/figure_pieces/ESC_EpiLC_germheat.pdf",
+		"results/figure_pieces/ESC_EpiLC_germheat_WTKOgroup.pdf"
+	script:
+		"code/ESC_EpiLC_germheat.R"
+
 #graphing of germline genes in ESC and EpiLCs
 rule ESC_EpiLC_5CKOcluster:
 	input:
@@ -444,8 +459,11 @@ rule brain_tissue_genes:
 
 rule tissue_genes_dot:
 	input:
+		"results/DESeq2/DEGs_nESC.csv",
+		"results/DESeq2/DEGs_EpiLC_48VA.csv",
+		"results/DESeq2/DEGs_exEpiLC_96VA.csv",
 		"results/DESeq2/DEGs_amy5cKO.csv",
-		"results/DESeq2/DEGs_hip5cKO.csv",
+		"results/DESeq2/DEGs_hip5cKO.csv"
 	output:
 		"results/figure_pieces/TissueSpecific_dot.pdf"
 	script:
