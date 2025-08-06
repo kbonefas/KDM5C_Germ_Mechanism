@@ -426,9 +426,11 @@ rule ESCEpiLC_RA_TPM:
 
 rule RA_ICC:
 	input:
-		"data/raw/Cell_Counts/Dazl_100nMRA/241009_Dazl_100nMRA.xlsx"
+		"data/raw/Cell_Counts/Dazl_100nMRA/241009_Dazl_100nMRA.xlsx",
+		"data/raw/Cell_Counts/STRA8_100nMRA/20250104_100nMRA_Stra8_Counts.xlsx"
 	output:
-		"results/figure_pieces/RA_ICC_DAZL_100nMRA.pdf"
+		"results/figure_pieces/RA_ICC_DAZL_100nMRA.pdf",
+		"results/figure_pieces/RA_ICC_STRA8_100nMRA.pdf"
 	script:
 		"code/RA_ICCplots.R"
 
