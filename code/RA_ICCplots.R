@@ -48,7 +48,7 @@ print(head(DAZL_avg))
 
 ##### Plotting
 #order the samples for plotting
-DAZL_100nMRA$genotreat <- factor(DAZL_100nMRA$genotreat, levels = c("WT DMSO", "5CKO DMSO", "WT RA", "5CKO RA"))
+DAZL_avg$genotreat <- factor(DAZL_avg$genotreat, levels = c("WT DMSO", "5CKO DMSO", "WT RA", "5CKO RA"))
 
 
 my_comparisons <- list(c("WT RA", "5CKO RA"), c("WT DMSO", "5CKO DMSO"), c("5CKO DMSO", "5CKO RA"), c("WT DMSO", "WT RA"))
@@ -114,7 +114,7 @@ print(head(STRA8_avg))
 
 ##### Plotting
 #order the samples for plotting
-STRA8_100nMRA$genotreat <- factor(STRA8_100nMRA$genotreat, levels = c("WT DMSO", "5CKO DMSO", "WT RA", "5CKO RA"))
+STRA8_avg$genotreat <- factor(STRA8_avg$genotreat, levels = c("WT DMSO", "5CKO DMSO", "WT RA", "5CKO RA"))
 
 
 my_comparisons <- list(c("WT RA", "5CKO RA"), c("WT DMSO", "5CKO DMSO"), c("5CKO DMSO", "5CKO RA"), c("WT DMSO", "WT RA"))
