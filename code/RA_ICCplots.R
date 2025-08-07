@@ -54,13 +54,14 @@ DAZL_avg$genotreat <- factor(DAZL_avg$genotreat, levels = c("WT DMSO", "5CKO DMS
 my_comparisons <- list(c("WT RA", "5CKO RA"), c("WT DMSO", "5CKO DMSO"), c("5CKO DMSO", "5CKO RA"), c("WT DMSO", "WT RA"))
 
 source("code/utilities/colorpalettes.R")
-q <- ggbarplot(DAZL_avg, x = 'genotreat', y = 'Avg_perc', fill="genotreat", add = c("mean_se", "jitter"),
+q <- ggbarplot(DAZL_avg, x = 'genotreat', y = 'Avg_perc', fill="genotreat", add = c("mean_se", "dotplot"),
     xlab = " ", ylab = "% DAZL+/DAPI+", palette = genoRAcolors) + 
     #rremove("legend") +
     stat_compare_means(comparisons = my_comparisons, method="t.test", label = "p.signif") 
 q <- ggpar(q, x.text.angle = 25, font.main = "bold", legend = "right", legend.title = " ")
 
 # q <- facet(q, facet.by = "Symbol", nrow = 2)
+
 
 ggsave(snakemake@output[[1]], plot = q, width = 5, height = 4)
 
@@ -120,7 +121,7 @@ STRA8_avg$genotreat <- factor(STRA8_avg$genotreat, levels = c("WT DMSO", "5CKO D
 my_comparisons <- list(c("WT RA", "5CKO RA"), c("WT DMSO", "5CKO DMSO"), c("5CKO DMSO", "5CKO RA"), c("WT DMSO", "WT RA"))
 
 source("code/utilities/colorpalettes.R")
-q <- ggbarplot(STRA8_avg, x = 'genotreat', y = 'Avg_perc', fill="genotreat", add = c("mean_se", "jitter"),
+q <- ggbarplot(STRA8_avg, x = 'genotreat', y = 'Avg_perc', fill="genotreat", add = c("mean_se", "dotplot"),
     xlab = " ", ylab = "% STRA8+/DAPI+", palette = genoRAcolors) + 
     #rremove("legend") +
     stat_compare_means(comparisons = my_comparisons, method="t.test", label = "p.signif") 
