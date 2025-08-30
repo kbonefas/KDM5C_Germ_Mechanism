@@ -93,3 +93,63 @@ p <- Heatmap(germ_log2, show_row_names = FALSE, show_column_names = TRUE, cluste
 pdf(file = snakemake@output[[2]], width = 8, height = 10)
 	draw(p)
 dev.off()
+
+
+
+#### plot z-scores instead
+
+#germ_avg - average tpm of all germline genes
+
+# get scaled FPKM 
+library(tidyverse)
+print("germ_avg")
+print(head(germ_avg))
+
+#scaled matrix
+hclust_matrix <- as.matrix(germ_avg) %>% 
+  # transpose the matrix so genes are as columns
+  t() %>% 
+  # apply scalling to each column of the matrix (genes)
+  scale() %>% 
+  # transpose back so genes are as rows again
+  t()
+
+# rownames(hclust_matrix) <- germ_avg$gene_short_name
+gene_dist <- dist(hclust_matrix)
+gene_hclust <- hclust(gene_dist, method = "complete")
+print("hclust_matrix")
+print(head(hclust_matrix))
+
+#plot heatmap of scaled TPM
+
+clustnumb <- 4
+library(circlize)
+col_fun = colorRamp2(0:max(hclust_matrix), hcl_palette = "Reds", reverse = TRUE)
+
+# #print(head(hclust_matrix_t))
+# p <- Heatmap(hclust_matrix, column_split = clustnumb, heatmap_legend_param = list(title = "Z-score FPKM"), col = col_fun)
+
+
+p <- Heatmap(hclust_matrix, show_row_names = FALSE, show_column_names = TRUE, cluster_rows = TRUE, cluster_columns = FALSE, heatmap_legend_param = list(title = "Z-score TPM", legend_direction = "horizontal"), col = col_fun, column_split  = c(rep("0", 2), rep("48 No Vit A", 2), rep("48 Vit A", 2), rep("96 No Vit A", 2), rep("96 Vit A", 2)), column_title = "germline gene expression")
+
+
+pdf(file = snakemake@output[[3]], width = 8, height = 10)
+	draw(p)
+dev.off()
+
+
+###zscore
+#another heat map that groups WT time points together and 5CKO together
+#change column order
+hclust_matrix <- hclust_matrix[, c("WT_0", "WT_48NO", "WT_48VA", "WT_96NO", "WT_96VA", "5CKO_0", "5CKO_48NO", "5CKO_48VA", "5CKO_96NO", "5CKO_96VA")] 
+
+p <- Heatmap(hclust_matrix, show_row_names = FALSE, show_column_names = TRUE, cluster_rows = TRUE, cluster_columns = FALSE, heatmap_legend_param = list(title = "Z-score TPM", legend_direction = "horizontal"), col = col_fun, column_split  = c(rep("WT", 5), rep("KO", 5)), column_title = "germline gene expression")
+
+
+#save the heatmap
+pdf(file = snakemake@output[[4]],   # The directory you want to save the file in
+    width = 8, # The width of the plot in inches
+    height = 6) # The height of the plot in inches
+draw(p)
+dev.off() 
+

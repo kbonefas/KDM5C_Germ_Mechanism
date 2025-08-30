@@ -362,7 +362,9 @@ rule ESC_EpiLC_germheat:
 		"data/raw/SampleInfo_ESCEpiLC_VA.csv" #sample information
 	output:
 		"results/figure_pieces/ESC_EpiLC_germheat.pdf",
-		"results/figure_pieces/ESC_EpiLC_germheat_WTKOgroup.pdf"
+		"results/figure_pieces/ESC_EpiLC_germheat_WTKOgroup.pdf",
+		"results/figure_pieces/ESC_EpiLC_germheat_Zscore.pdf",
+		"results/figure_pieces/ESC_EpiLC_germheat_Zscore_WTKOgroup.pdf"
 	script:
 		"code/ESC_EpiLC_germheat.R"
 
