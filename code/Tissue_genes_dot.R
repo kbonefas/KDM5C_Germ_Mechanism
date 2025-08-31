@@ -34,6 +34,6 @@ print(mingrad)
 #3) Plot
 library("ggplot2")
 p <- ggplot(tissuecount, aes(x=tissue, y = sample, color = pvalue, size = DEGnumb)) + labs(x = NULL, y = NULL) +
-  geom_point() + scale_color_gradient(low="orange", high="red", limits = c(mingrad, 0.05), na.value="gray80") + theme_classic() + theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) 
+  geom_point() + scale_color_gradient(low= "red", high="blue3", limits = c(mingrad, 0.05), na.value="gray80") + theme_classic() + theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) 
 
-ggsave(snakemake@output[[1]], plot = p, width = 7, height = 4)
+ggsave(snakemake@output[[1]], plot = p, width = 5.5, height = 2.5)
