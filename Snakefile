@@ -56,17 +56,17 @@ rule testisEXPR:
 			#raw data from https://pubmed.ncbi.nlm.nih.gov/23872635/  
 		"data/raw/Green2018_Testis_scRNAseq_Cell_Types.txt",
 			#raw data from https://pubmed.ncbi.nlm.nih.gov/30146481/
-		"data/processed/TestisDEGs_amyhip.csv"
+		"results/DESeq2/DEGs_nESC.csv",
+		"results/DESeq2/DEGs_EpiLC_48VA.csv",
+		"results/DESeq2/DEGs_exEpiLC_96VA.csv",
+		"results/DESeq2/DEGs_amy5cKO.csv",
+		"results/DESeq2/DEGs_hip5cKO.csv"
 	output:
 		"results/figure_pieces/testisEXPR_mueller.pdf",
-		"results/figure_pieces/testisEXPR_green.pdf"
+		"results/figure_pieces/testisEXPR_green.pdf",
+		"data/processed/TestisDEGs_all.csv"
 	script:
 		"code/testisEXPR_mueller_green.R"
-
-
-#plotting ovary DEGs in germline-depleted ovary 
-#rule ovaryEXPR:
-
 
 #generate list of germline-enriched genes based on expression cutoff
 rule germgenes:

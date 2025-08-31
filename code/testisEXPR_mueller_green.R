@@ -12,10 +12,28 @@ colnames(avg.fpkm) <- c("WT","WWv")
 avg.fpkm <- as.data.frame(avg.fpkm)
 
 #get the germline DEGs
-samplelist <- c("amy", "hip")
-testisDEGs <- read.csv(snakemake@input[[3]]) 
+samples <- c("nESC", "EpiLC", "exEpiLC", "Amygdala", "Hippocampus")
 
+source("code/utilities/tissueSPECIFICgenes.R")
+
+## get the testis genes that are dysregulated in all 5cKO smaples
+testisDEGs <- data.frame()
+for(i in 1:length(samples)){
+	tissDEG <- tissue_genes(i+2) 
+	#testis DEGs
+	TEdeg <- subset(tissDEG, tissue == "Testis")
+	TEdeg <- subset(TEdeg, select = c("ENSEMBL", "SYMBOL"))
+	testisDEGs <- rbind(testisDEGs, TEdeg)
+
+
+}
+
+#saving the testis DEGs
+testisDEGs <- unique(testisDEGs)
 print(head(testisDEGs))
+write.table(testisDEGs, snakemake@output[[3]], sep = ",", row.names = FALSE)
+
+
 print(nrow(testisDEGs))
 
 #get their expression in WT vs WWv
