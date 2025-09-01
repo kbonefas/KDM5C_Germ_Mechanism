@@ -38,7 +38,13 @@ head(ck)
 
 write.table(ck, snakemake@output[[length(samples) + 1]], row.names = FALSE, sep = ",")
 
-ggsave(snakemake@output[[length(samples) + 2]], plot = dotplot(ck, size = "Count"), width = 9, height = 5.5)
+p <- dotplot(ck, size = "Count") +
+  theme(axis.text.y = element_text(size=8)) +
+  scale_color_gradient(low = "blue3", high = "red")
+
+ggsave(snakemake@output[[length(samples) + 2]], p, width = 6, height = 5.5)
+
+
 
 
     #ego <- enrichGO(de, keyType = 'ENSEMBL', OrgDb = "org.Mm.eg.db", ont="BP", readable=TRUE)
