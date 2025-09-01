@@ -1,17 +1,26 @@
 #24.04.09 Gene ontology comparison between male Brain DEGs and EpiLC germline genes to demonstrate the different types of genes dysregulated
+#updated 25.09.01 to include all RNAseq datasets
 library(enrichplot)
 library(org.Mm.eg.db)
 library(clusterProfiler)
 library(ggplot2)
 
 # make a list with all the germline genes
+germ <- read.csv(snakemake@input[[1]], sep = ",", header = TRUE)
 
 #sample names, make sure order matches snakefile input
-samples <- c("EpiLC", "Amygdala", "Hippocampus")
+samples <- c("nESC", "EpiLC", "exEpiLC", "Amygdala", "Hippocampus")
 germDEGs <- list()
 
 for(i in 1:length(samples)){
-	DEGs <- read.csv(snakemake@input[[i]], sep = ",", header = TRUE)
+	DEGs <- read.csv(snakemake@input[[i+1]], sep = ",", header = TRUE)
+
+	#subset for germline DEGs
+	germDEGs <- subset(DEGs, DEGs$ENSEMBL %in% germ$ENSEMBL)
+	
+	#save the germ DEGs
+	write.table(snakemake@output[[i]], sep = ",", row.names = FALSE)
+
 	#get the ensembl names, put in the position of the list
 	germDEGs[[i]] <- DEGs[,1]
 }
@@ -24,9 +33,9 @@ ck <- compareCluster(geneCluster = germDEGs, fun = enrichGO,  OrgDb = "org.Mm.eg
 #ck <- setReadable(ck, OrgDb = "org.Mm.eg.db", keyType="ENSEMBL")
 head(ck) 
 
-write.table(ck, snakemake@output[[1]], row.names = FALSE, sep = ",")
+write.table(ck, snakemake@output[[length(samples) + 1]], row.names = FALSE, sep = ",")
 
-ggsave(snakemake@output[[2]], plot = dotplot(ck, size = "Count"), width = 9, height = 5.5)
+ggsave(snakemake@output[[length(samples) + 2]], plot = dotplot(ck, size = "Count"), width = 9, height = 5.5)
 
 
     #ego <- enrichGO(de, keyType = 'ENSEMBL', OrgDb = "org.Mm.eg.db", ont="BP", readable=TRUE)

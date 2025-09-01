@@ -148,6 +148,27 @@ rule BrainEpi_germDEGs:
 	script:
 		"code/utilities/germlineDEGs.R"
 
+
+#plot the gene ontology of EpiLC and brain DEGs
+rule GO_EpiLC_vs_Brain:
+	input:
+		"data/processed/germGENES20.csv",
+		"results/DESeq2/DEGs_nESC.csv",
+		"results/DESeq2/DEGs_EpiLC_48VA.csv",
+		"results/DESeq2/DEGs_exEpiLC_96VA.csv",
+		"results/DESeq2/DEGs_amy5cKO.csv",
+		"results/DESeq2/DEGs_hip5cKO.csv"
+	output:
+		"results/DESeq2/germDEGs/germDEGs_nESC.csv",
+		"results/DESeq2/germDEGs/germDEGs_EpiLC_48VA.csv",
+		"results/DESeq2/germDEGs/germDEGs_exEpiLC_96VA.csv",
+		"results/DESeq2/germDEGs/germDEGs_amy5cKO.csv",
+		"results/DESeq2/germDEGs/germDEGs_hip5cKO.csv",
+		"results/GO_germgenes.csv",
+		"results/figure_pieces/GO_germgenes.pdf"
+	script:
+		"code/GO_Compare_BrainEpiLC.R"
+
 #upset plot of the overlap between germline DEGs in the brain and EpilC RNAseq datasets
 rule Brain_EpiLC_Upset:
 	input:
@@ -159,18 +180,6 @@ rule Brain_EpiLC_Upset:
 		"results/figure_pieces/Upset_EpiLCBrain.pdf"
 	script:
 		"code/Upset_Brain_EpiLC.R"
-
-#plot the gene ontology of EpiLC and brain DEGs
-rule GO_EpiLC_vs_Brain:
-	input:
-		"results/DESeq2/germDEGs/germDEGs_EpiLC_XY5cKO.csv",
-		"results/DESeq2/germDEGs/germDEGs_amy5cKO.csv",
-		"results/DESeq2/germDEGs/germDEGs_hip5cKO.csv"
-	output:
-		"results/GO_EpiLC_vs_Brain.csv",
-		"results/figure_pieces/GO_EpiLC_vs_Brain.pdf"
-	script:
-		"code/GO_Compare_BrainEpiLC.R"
 
 #plot the expression of primordial germ cell markers in EpiLCs
 rule EpiLC_PGC:
