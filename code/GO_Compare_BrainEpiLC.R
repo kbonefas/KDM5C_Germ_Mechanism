@@ -11,7 +11,7 @@ print("germ")
 print(head(germ))
 
 #sample names, make sure order matches snakefile input
-samples <- c("nESC", "EpiLC", "exEpiLC", "Amygdala", "Hippocampus")
+samples <- c("nESC", "EpiLC", "exEpiLC", "AMY", "HIP")
 germDEGs <- list()
 
 for(i in 1:length(samples)){
