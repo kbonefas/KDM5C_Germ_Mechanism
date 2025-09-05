@@ -165,7 +165,8 @@ rule GO_EpiLC_vs_Brain:
 		"results/DESeq2/germDEGs/germDEGs_amy5cKO.csv",
 		"results/DESeq2/germDEGs/germDEGs_hip5cKO.csv",
 		"results/GO_germgenes.csv",
-		"results/figure_pieces/GO_germgenes.pdf"
+		"results/figure_pieces/GO_germgenes.pdf",
+		"results/figure_pieces/Upset_germDEGs.pdf"
 	script:
 		"code/GO_Compare_BrainEpiLC.R"
 

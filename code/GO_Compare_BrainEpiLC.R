@@ -48,3 +48,23 @@ ggsave(snakemake@output[[length(samples) + 2]], p, width = 6, height = 5.5)
 
 
     #ego <- enrichGO(de, keyType = 'ENSEMBL', OrgDb = "org.Mm.eg.db", ont="BP", readable=TRUE)
+##3) Calculate the overlap between groups
+
+#make an upset plot for the overlap
+library("UpSetR")
+BiocManager::install("UpSetR")
+
+modifiedupset <- function(samplelist){
+	upset(fromList(samplelist), order.by = "freq",  sets.x.label = "# Germline DEGs", mainbar.y.label = "# of Overlapping Germline DEGs", empty.intersections = "on")
+}
+
+
+
+#just male samples
+pdf(file = snakemake@output[[8]], width = 5.5, height = 5)
+
+upset(fromList(germDEGs), order.by = "freq",  sets.x.label = "# Germline DEGs", mainbar.y.label = "Overlapping Germline DEGs", text.scale = 2)
+
+dev.off()
+
+
