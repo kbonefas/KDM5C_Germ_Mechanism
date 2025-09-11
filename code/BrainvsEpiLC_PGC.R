@@ -143,7 +143,7 @@ makeplotdf <- function(genelist, tpm, si){
 }
 
 
-plotallTPM <- function(genelist, ymax){
+plotallTPM <- function(genelist){
 
 	#make the plotting df for ESC/EpiLC, AMY, and HIP
 	plotdf_ESCEpi <- makeplotdf(genelist, ESCEpi_TPM, ESCEpi_SI_VA)
@@ -171,11 +171,11 @@ plotallTPM <- function(genelist, ymax){
 	print(head(plotdf))
 
 	my_comparisons <- list(c("nESC_WT", "nESC_5CKO"), c("EpiLC_WT", "EpiLC_5CKO"), c("exEpiLC_WT", "exEpiLC_5CKO"), c("AMY_WT", "AMY_5CKO"), c("HIP_WT", "HIP_5CKO"))
-	q <- ggboxplot(plotdf, x = 'GenoTissue', y = 'TPM', color = "black", add.params = list(size = 1.25), fill="GenoTissue", 
+	q <- ggboxplot(plotdf, x = 'GenoTissue', y = 'TPM', color = "black", add.params = list(dotsize = 0.1), fill="GenoTissue", 
 		add =  "dotplot", xlab = " ", palette = wtKO_pallete) +
     	rremove("legend") +
     	stat_compare_means(comparisons = my_comparisons, method="t.test", label = "p.format") 
-	q <- ggpar(q, x.text.angle = 25, ylim = c(0,ymax), font.main = "bold.italic")
+	q <- ggpar(q, x.text.angle = 50, font.main = "bold.italic")
 	
 	return(q)
 }
@@ -184,7 +184,7 @@ plotallTPM <- function(genelist, ymax){
 
 
 #plot all pgc genes of interest:
-pgcplot <- plotallTPM(PGCgenes, 25)
+pgcplot <- plotallTPM(PGCgenes)
 
 ggsave(snakemake@output[[1]], plot = facet(pgcplot, facet.by = "Symbol", nrow = 1), width = 20, height = 3.5)
 
@@ -194,12 +194,12 @@ PGCgenes_small <- subset(PGCgenes, Symbol %in% c("Dazl", "Stra8",  "Stella (Dppa
 twocellgenes <- data.frame(ENSEMBL = c("ENSMUSG00000075046", "ENSMUSG00000054272", "ENSMUSG00000090714"), Symbol = c("Dux (Duxf3)", "Zscan4c", "Zscan4d"))
 
 
-pgc_small <- facet(plotallTPM(PGCgenes_small, 25), facet.by = "Symbol", nrow = 1)
-twocell <- facet(plotallTPM(twocellgenes, 10), facet.by = "Symbol", nrow = 1)
+pgc_small <- facet(plotallTPM(PGCgenes_small), facet.by = "Symbol", nrow = 1, scales = "free_y")
+twocell <- facet(plotallTPM(twocellgenes), facet.by = "Symbol", nrow = 1, scales = "free_y")
 
 
 library("gridExtra")
-ggsave(snakemake@output[[2]], plot = grid.arrange(grobs = list(pgc_small, twocell), nrow = 1), width = 20, height = 3.5)
+ggsave(snakemake@output[[2]], plot = grid.arrange(grobs = list(pgc_small, twocell), nrow = 2), width = 12, height = 8)
 
 
 
