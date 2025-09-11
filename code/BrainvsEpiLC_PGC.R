@@ -37,7 +37,7 @@ print(head(ESCEpi_TPM))
 ESCEpi_SI <- read.csv(snakemake@input[["ESCEpi_SI"]], sep =",") 
 rownames(ESCEpi_SI) <- ESCEpi_SI$ID
 
-#subset for only cells exposed to VA (normal culture condition)
+#subset for only cells exposed to VA or ESCs (normal culture condition)
 ESCEpi_SI_VA <- subset(ESCEpi_SI, ESCEpi_SI$VA != "NO")
 
 #make a variable with the cell type
