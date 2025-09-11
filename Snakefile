@@ -1,4 +1,3 @@
-
 ########################################################
 #                                                      #
 #     Snakefile for KDM5C Germline Mechanism Paper     #
@@ -183,16 +182,18 @@ rule Brain_EpiLC_Upset:
 		"code/Upset_Brain_EpiLC.R"
 
 #plot the expression of primordial germ cell markers in EpiLCs
-rule EpiLC_PGC:
+rule PGC_genes:
 	input:
-		"data/raw/EpiLC_gene_TPM.txt",
-		"data/raw/SampleInfo_EpiLC.csv"
+		ESCEpi = "data/raw/230919_ESCEpiLC_RA_gene_TPM.annot.txt",
+		AMY = "data/raw/AMY_gene_TPM.txt",
+		HIP = "data/raw/HIP_gene_TPM.txt",
+		ESCEpi_SI = "data/raw/SampleInfo_ESCEpiLC_VA.csv",
+		AMYHIP_SI = "data/raw/SampleInfo_amyhip.csv"
 	output:
-		"results/figure_pieces/EpiLC_PGCmarkers_XY_supplement.pdf",
-		"results/figure_pieces/EpiLC_PGC_2Cell_markers_XY.pdf",
-		"results/figure_pieces/EpiLC_piRNAgenes_TPM_XY.pdf"		
+		"results/figure_pieces/PGCmarkers_allsequencing_supplement.pdf",
+		"results/figure_pieces/PGC_allsequencing_2Cell_markers.pdf"
 	script:
-		"code/EpiLC_PGCgenes.R"
+		"code/BrainvsEpiLC_PGC.R"
 
 
 ################ male vs female EpiLCs ################

@@ -50,11 +50,57 @@ ESCEpi_SI_VA <- subset(ESCEpi_SI_VA, select = c("Sample", "GenoTissue"))
 print("ESCEpi_SI_VA")
 print(ESCEpi_SI_VA)
 
-################ AMY and HIP #############
+# ################ AMY and HIP #############
+#amygdala
 AMY_TPM <- read.csv(file = snakemake@input[["AMY"]], sep ="\t", row.names = 1)
-ESCEpi_TPM <- ESCEpi_TPM[4:ncol(ESCEpi_TPM)] 
-print("ESCEpi_TPM")
-print(head(ESCEpi_TPM))
+
+#remove extraneous info from sample names
+colnames(AMY_TPM) <- gsub(".TPM", "", colnames(AMY_TPM))
+colnames(AMY_TPM) <- gsub("Sample", "", colnames(AMY_TPM))
+print("AMY_TPM")
+head(AMY_TPM)
+
+
+
+#hippocampus
+HIP_TPM <- read.csv(file = snakemake@input[["HIP"]], sep ="\t", row.names = 1)
+#remove extraneous info from sample names
+colnames(HIP_TPM) <- gsub(".TPM", "", colnames(HIP_TPM))
+colnames(HIP_TPM) <- gsub("Sample", "", colnames(HIP_TPM))
+print("HIP_TPM")
+head(HIP_TPM)
+
+#make the sample naming scheme in the sample information sheet match the column names of the TPM file
+AMYHIP_SI <- read.csv(snakemake@input[["AMYHIP_SI"]], sep =",") 
+
+AMYHIP_SI$Sample <- gsub("_WT", "", AMYHIP_SI$Sample)
+AMYHIP_SI$Sample <- gsub("_5cKO", "", AMYHIP_SI$Sample)
+print("AMYHIP_SI")
+head(AMYHIP_SI)
+
+#add in the amygdala sample information from the ear tag #s
+AMY_info <- data.frame(Sample = c("AMY2572", "AMY2622", "AMY2816", "AMY2818", "AMY2879", "AMY2881", "AMY2886", "AMYNT3"), Genotype = c("WT", "5CKO", "5CKO", "5CKO", "WT", "WT", "WT", "5CKO")) 
+AMY_info$Reigon <- rep("amygdala", nrow(AMY_info))
+AMY_info$Type <- rep("paired.end", nrow(AMY_info))
+print("AMY_info")
+print(AMY_info)
+
+AMYHIP_SI <- rbind(AMYHIP_SI, AMY_info)
+AMYHIP_SI$Tissue <- ifelse(AMYHIP_SI$Reigon == "hippocampus", "HIP", ifelse(AMYHIP_SI$Reigon == "amygdala", "AMY", "uh oh"))
+print("AMYHIP_SI new amy ids")
+print(AMYHIP_SI)
+
+# rename 5cKO to 5CKO
+AMYHIP_SI$Genotype[AMYHIP_SI$Genotype == "5cKO"] <- "5CKO"
+
+
+AMYHIP_SI$GenoTissue <-  paste0(AMYHIP_SI$Tissue, "_", AMYHIP_SI$Genotype)
+AMYHIP_SI <- subset(AMYHIP_SI, select = c("Sample", "GenoTissue"))
+print("AMYHIP_SI genotissue")
+print(AMYHIP_SI)
+# rownames(AMYHIP_SI) <- AMYHIP_SI$ID
+
+
 
 
 
@@ -88,28 +134,33 @@ makeplotdf <- function(genelist, tpm, si){
 		plotdf <- rbind(plotdf, tempdf)
 	}
 	plotdf <- merge(plotdf, si, by = "Sample")
+	print("plotdf")
+	print(head(plotdf))
 	return(plotdf)
 
 }
 
 
-
-
-
 plotallTPM <- function(genelist, ymax){
-
 
 	#make the plotting df for ESC/EpiLC, AMY, and HIP
 	plotdf_ESCEpi <- makeplotdf(genelist, ESCEpi_TPM, ESCEpi_SI_VA)
+	print("plotdf_ESCEpi")
 	print(head(plotdf_ESCEpi))
 
+	plotdf_AMY <- makeplotdf(genelist, AMY_TPM, AMYHIP_SI)
+	print("plotdf_AMY")
+	print(head(plotdf_AMY))
 
+	plotdf_HIP <- makeplotdf(genelist, HIP_TPM, AMYHIP_SI)
+	print("plotdf_HIP")
+	print(head(plotdf_HIP))
 
-
-
-	#order the factor levels so WT plots first and rename 5cKO
-	plotdf$Genotype[plotdf$Genotype == "5cKO"] <- "5CKO"
-	plotdf$Genotype <- factor(plotdf$Genotype, levels = c("WT", "5CKO"))
+	#merge all the dfs together
+	plotdf <- rbind(plotdf_ESCEpi, plotdf_AMY, plotdf_HIP)
+	
+	#order the plotting dataframe
+	plotdf$GenoTissue <- factor(plotdf$GenoTissue, levels = c("nESC_WT", "nESC_5CKO", "EpiLC_WT", "EpiLC_5CKO", "exEpiLC_WT", "exEpiLC_5CKO", "AMY_WT", "AMY_5CKO","HIP_WT", "HIP_5CKO"))
 
 	#order genes
 	plotdf$Symbol <- factor(plotdf$Symbol, levels = genelist[,2])
@@ -117,9 +168,9 @@ plotallTPM <- function(genelist, ymax){
 	print("All plotting df:")
 	print(head(plotdf))
 
-	my_comparisons <- list(c("WT", "5CKO"))
-	q <- ggboxplot(plotdf, x = 'Genotype', y = 'TPM', color = "black", add.params = list(size = 1.25), fill="Genotype", 
-		add =  "dotplot", xlab = " ", palette = EpiLC_XY_palette) +
+	my_comparisons <- list(c("nESC_WT", "nESC_5CKO"), c("EpiLC_WT", "EpiLC_5CKO"), c("exEpiLC_WT", "exEpiLC_5CKO"), c("AMY_WT", "AMY_5CKO"), c("HIP_WT", "HIP_5CKO"))
+	q <- ggboxplot(plotdf, x = 'GenoTissue', y = 'TPM', color = "black", add.params = list(size = 1.25), fill="GenoTissue", 
+		add =  "dotplot", xlab = " ", palette = wtKO_pallete) +
     	rremove("legend") +
     	stat_compare_means(comparisons = my_comparisons, method="t.test", label = "p.format") 
 	q <- ggpar(q, x.text.angle = 25, ylim = c(0,ymax), font.main = "bold.italic")
@@ -130,56 +181,8 @@ plotallTPM <- function(genelist, ymax){
 
 
 
-
-
-#### plot just the male samples, using facet
-#generates a tpm plot based on a gene dataframe that has the ensembl IDs in the first column
-#ymax - maximum y value
-# plotEpiLCTPM <- function(genelist, ymax){
-# 	#get the genes that match by ensembl ID
-# 	EpiLC_pgc_TPM <- subset(EpiLC_TPM, rownames(EpiLC_TPM) %in% genelist[,1])
-# 	#make a new dataframe with  columns being the sample, genotype, and TPM
-# 	t_EpiLC_pgc_TPM <- t(EpiLC_pgc_TPM)
-# 	print(head(t_EpiLC_pgc_TPM))
-
-# 	plotdf <- data.frame()
-
-# 	for (i in genelist[,1]){
-# 		geneID <- subset(genelist, ENSEMBL == i)
-# 		tempdf <- data.frame(Sample = rownames(t_EpiLC_pgc_TPM), TPM = t_EpiLC_pgc_TPM[,i], ENSEMBL = rep(i, length(rownames(t_EpiLC_pgc_TPM))), Symbol = rep(geneID[,2],  length(rownames(t_EpiLC_pgc_TPM))))
-
-# 		plotdf <- rbind(plotdf, tempdf)
-# 	}
-
-
-# 	plotdf <- merge(plotdf, EpiLC_SI, by = "Sample")
-
-# 	#subset for just males
-# 	plotdf <- subset(plotdf, plotdf$Sex == "XY")
-# 	#order the factor levels so WT plots first and rename 5cKO
-# 	plotdf$Genotype[plotdf$Genotype == "5cKO"] <- "5CKO"
-# 	plotdf$Genotype <- factor(plotdf$Genotype, levels = c("WT", "5CKO"))
-
-# 	#order genes
-# 	plotdf$Symbol <- factor(plotdf$Symbol, levels = genelist[,2])
-
-# 	print("All plotting df:")
-# 	print(head(plotdf))
-
-# 	my_comparisons <- list(c("WT", "5CKO"))
-# 	q <- ggboxplot(plotdf, x = 'Genotype', y = 'TPM', color = "black", add.params = list(size = 1.25), fill="Genotype", 
-# 		add =  "dotplot", xlab = " ", palette = EpiLC_XY_palette) +
-#     	rremove("legend") +
-#     	stat_compare_means(comparisons = my_comparisons, method="t.test", label = "p.format") 
-# 	q <- ggpar(q, x.text.angle = 25, ylim = c(0,ymax), font.main = "bold.italic")
-	
-# 	return(q)
-# }
-
-
-
 #plot all pgc genes of interest:
-pgcplot <- plotEpiLCTPM(PGCgenes, 25)
+pgcplot <- plotallTPM(PGCgenes, 25)
 
 ggsave(snakemake@output[[1]], plot = facet(pgcplot, facet.by = "Symbol", nrow = 1), width = 6, height = 2.5)
 
@@ -189,20 +192,20 @@ PGCgenes_small <- subset(PGCgenes, Symbol %in% c("Dazl", "Stra8",  "Stella (Dppa
 twocellgenes <- data.frame(ENSEMBL = c("ENSMUSG00000075046", "ENSMUSG00000054272", "ENSMUSG00000090714"), Symbol = c("Dux (Duxf3)", "Zscan4c", "Zscan4d"))
 
 
-pgc_small <- facet(plotEpiLCTPM(PGCgenes_small, 25), facet.by = "Symbol", nrow = 1)
-twocell <- facet(plotEpiLCTPM(twocellgenes, 10), facet.by = "Symbol", nrow = 1)
+pgc_small <- facet(plotallTPM(PGCgenes_small, 25), facet.by = "Symbol", nrow = 1)
+twocell <- facet(plotallTPM(twocellgenes, 10), facet.by = "Symbol", nrow = 1)
 
 
 library("gridExtra")
-ggsave(snakemake@output[[2]], plot = grid.arrange(grobs = list(pgc_small, twocell), nrow = 1), width = 7, height = 2.5)
+ggsave(snakemake@output[[2]], plot = grid.arrange(grobs = list(pgc_small, twocell), nrow = 1), width = 10, height = 2.5)
 
 
 
-#piRNA genes
-piRNAgenes <- data.frame(ENSEMBL = c("ENSMUSG00000021758", "ENSMUSG00000033644", "ENSMUSG00000009628", "ENSMUSG00000035517"), Symbol = c("Ddx4 (Mvh)", "Piwil2 (Mili)", "Tex15", "Tdrd7"))
+# #piRNA genes
+# piRNAgenes <- data.frame(ENSEMBL = c("ENSMUSG00000021758", "ENSMUSG00000033644", "ENSMUSG00000009628", "ENSMUSG00000035517"), Symbol = c("Ddx4 (Mvh)", "Piwil2 (Mili)", "Tex15", "Tdrd7"))
 
-piRNA <- facet(plotEpiLCTPM(piRNAgenes, 10), facet.by = "Symbol", nrow = 1)
-ggsave(snakemake@output[[3]], plot = piRNA, width = 5, height = 2.5)
+# piRNA <- facet(plotEpiLCTPM(piRNAgenes, 10), facet.by = "Symbol", nrow = 1)
+# ggsave(snakemake@output[[3]], plot = piRNA, width = 5, height = 2.5)
 
 
 
