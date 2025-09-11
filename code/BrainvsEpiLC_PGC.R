@@ -38,7 +38,7 @@ ESCEpi_SI <- read.csv(snakemake@input[["ESCEpi_SI"]], sep =",")
 rownames(ESCEpi_SI) <- ESCEpi_SI$ID
 
 #subset for only cells exposed to VA (normal culture condition)
-ESCEpi_SI_VA <- subset(ESCEpi_SI, ESCEpi_SI$VA == "VA")
+ESCEpi_SI_VA <- subset(ESCEpi_SI, ESCEpi_SI$VA != "NO")
 
 #make a variable with the cell type
 ESCEpi_SI_VA$Tissue <- ifelse(ESCEpi_SI_VA$Timepoint == "0", "nESC", ifelse(ESCEpi_SI_VA$Timepoint == "48", "EpiLC", ifelse(ESCEpi_SI_VA$Timepoint == "96", "exEpiLC", "uh oh" )))
