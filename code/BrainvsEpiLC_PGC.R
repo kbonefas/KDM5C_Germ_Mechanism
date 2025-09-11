@@ -186,7 +186,7 @@ plotallTPM <- function(genelist, ymax){
 #plot all pgc genes of interest:
 pgcplot <- plotallTPM(PGCgenes, 25)
 
-ggsave(snakemake@output[[1]], plot = facet(pgcplot, facet.by = "Symbol", nrow = 1), width = 6, height = 2.5)
+ggsave(snakemake@output[[1]], plot = facet(pgcplot, facet.by = "Symbol", nrow = 1), width = 20, height = 3.5)
 
 
 #plot just a few germline drivers and 2-cell state drivers
@@ -199,7 +199,7 @@ twocell <- facet(plotallTPM(twocellgenes, 10), facet.by = "Symbol", nrow = 1)
 
 
 library("gridExtra")
-ggsave(snakemake@output[[2]], plot = grid.arrange(grobs = list(pgc_small, twocell), nrow = 1), width = 10, height = 2.5)
+ggsave(snakemake@output[[2]], plot = grid.arrange(grobs = list(pgc_small, twocell), nrow = 1), width = 20, height = 3.5)
 
 
 
