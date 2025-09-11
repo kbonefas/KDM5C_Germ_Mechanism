@@ -58,3 +58,7 @@ sequenced_tissues_palette <- c("EpiLC" = EpiLC_XY_KO , "P6 Ctx and Hip" = P6HIPC
 liverbrain_palette <- c("Both" = germcolor, "Liver" = P6LIVER_KO, "Brain" = P6HIPCTX_XY_KO)
 #imprinted genes 
 imp_palette <- c("Maternal" = "#fc7cd3" , "Paternal" = "#4aaeff")
+
+
+#WT vs KO
+wtKO_pallete <- c(ESC_5CKO = ESC_XY_KO, ESC_WT = ESC_XY_WT, EpiLC_WT = EpiLC_XY_WT, EpiLC_5CKO = EpiLC_XY_KO, exEpiLC_WT = EpiLC96_XY_WT, exEpiLC_5CKO = EpiLC96_XY_KO, AMY_WT = AMYWT, AMY_5CKO = AMYKO, HIP_WT = HIPWT, HIP_5CKO = HIPKO)
