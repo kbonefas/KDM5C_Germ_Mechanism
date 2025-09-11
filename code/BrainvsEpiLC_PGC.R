@@ -45,6 +45,7 @@ ESCEpi_SI_VA$Tissue <- ifelse(ESCEpi_SI_VA$Timepoint == "0", "nESC", ifelse(ESCE
 ESCEpi_SI_VA$GenoTissue <- paste0(ESCEpi_SI_VA$Tissue, "_", ESCEpi_SI_VA$Genotype)
 
 #keep only the needed columns
+ESCEpi_SI_VA$Sample <- ESCEpi_SI_VA$ID
 ESCEpi_SI_VA <- subset(ESCEpi_SI_VA, select = c("Sample", "GenoTissue"))
 
 print("ESCEpi_SI_VA")
@@ -53,6 +54,7 @@ print(ESCEpi_SI_VA)
 # ################ AMY and HIP #############
 #amygdala
 AMY_TPM <- read.csv(file = snakemake@input[["AMY"]], sep ="\t", row.names = 1)
+AMY_TPM <- format_ensemb(AMY_TPM)
 
 #remove extraneous info from sample names
 colnames(AMY_TPM) <- gsub(".TPM", "", colnames(AMY_TPM))
@@ -64,6 +66,7 @@ head(AMY_TPM)
 
 #hippocampus
 HIP_TPM <- read.csv(file = snakemake@input[["HIP"]], sep ="\t", row.names = 1)
+HIP_TPM <- format_ensemb(HIP_TPM)
 #remove extraneous info from sample names
 colnames(HIP_TPM) <- gsub(".TPM", "", colnames(HIP_TPM))
 colnames(HIP_TPM) <- gsub("Sample", "", colnames(HIP_TPM))
@@ -133,10 +136,9 @@ makeplotdf <- function(genelist, tpm, si){
 
 		plotdf <- rbind(plotdf, tempdf)
 	}
-	plotdf <- merge(plotdf, si, by = "Sample")
-	print("plotdf")
-	print(head(plotdf))
-	return(plotdf)
+	plotdf2 <- merge(plotdf, si, by = "Sample")
+
+	return(plotdf2)
 
 }
 
