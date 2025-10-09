@@ -48,7 +48,7 @@ library("ggplot2")
 library("ggpubr")
 
 pdf(file = snakemake@output[[1]],   # The directory you want to save the file in
-    width = 4.25, # The width of the plot in inches
+    width = 4, # The width of the plot in inches
     height = 4) # The height of the plot in inches
 ggplot(wwv_fpkm, aes(x=WT, y=WWv)) + 
   geom_point(size = 3, color = "#2A7AFF", shape = wwv_fpkm$shape, show.legend = TRUE, alpha = 0.2)+
