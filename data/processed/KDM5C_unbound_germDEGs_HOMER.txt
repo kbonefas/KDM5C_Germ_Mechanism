@@ -3,13 +3,10 @@ Calcoco2
 Rhox6
 Tex14
 Cpsf4l
-Tekt1
 Esx1
 Rfx2
 Fgf8
-Meig1
 Lrrc34
-Spata18
 Stra8
 Dkkl1
 4930519F16Rik
@@ -22,13 +19,10 @@ Sh3glb1
 Xkr8
 Tcfl5
 Sccpdh
-Ttc16
 Syngr4
 Hesx1
 Dnali1
-Naa11
 Dppa3
-Catsperg2
 Rd3
 Bag5
 Zfp42
@@ -39,10 +33,8 @@ Krt42
 Rhox10
 AU018091
 Sh3rf2
-Hydin
 Tcp11
 Stat4
-Lrrc43
 Nr6a1
 Izumo1
 Rhox9
@@ -50,7 +42,5 @@ Rhox1
 Dppa2
 Acrbp
 Dnajb14
-Col22a1
 Lemd1
-Tmem217
 Rpph1

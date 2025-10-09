@@ -545,6 +545,7 @@ rule Germ_CGI:
 		"results/figure_pieces/WGBS_CGI_GO.pdf",
 		"data/processed/germ_CGI_HOMER.txt",
 		"data/processed/germ_noCGI_HOMER.txt",
+		"results/figure_pieces/CGI_all_germ.pdf"
 	script:
 		"code/WGBS_germ_CGI.R"
 

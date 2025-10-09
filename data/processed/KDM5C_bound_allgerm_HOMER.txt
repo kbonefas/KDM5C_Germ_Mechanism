@@ -18,7 +18,6 @@ Taf7l
 Tex15
 Tex11
 Dazl
-4931428F04Rik
 Dyrk3
 Zpbp2
 Akap1
@@ -60,7 +59,6 @@ Boll
 Spata3
 4921504E06Rik
 Odf2
-1700037H04Rik
 Fsip1
 Zdbf2
 Lrrcc1
@@ -79,7 +77,6 @@ Agbl5
 Brdt
 1700016H13Rik
 Piwil1
-4921507P07Rik
 Prok2
 Ccdc91
 Tdrd12
@@ -198,12 +195,10 @@ Gm9
 Wdfy1
 Rbmxl2
 Lekr1
-4931440P22Rik
 Papolb
 Hus1b
 Oxct2a
 Oxct2b
-Ccdc105
 Zfp541
 Stard6
 Dnajb3

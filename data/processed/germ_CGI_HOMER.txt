@@ -27,7 +27,6 @@ Ubxn11
 Ttll5
 Elof1
 Chrne
-4931428F04Rik
 Dyrk3
 Pom121l2
 Zpbp2
@@ -102,7 +101,6 @@ Meig1
 Odf2
 Ak8
 Phospho2
-1700037H04Rik
 Fsip1
 Nphp1
 Fam110a
@@ -119,7 +117,6 @@ Spaca1
 Zfp37
 Wdr31
 Aptx
-1110017D15Rik
 Tesk1
 Dmrtb1
 Ccdc30
@@ -135,7 +132,6 @@ Brdt
 1700016H13Rik
 Piwil1
 Ccdc136
-4921507P07Rik
 Stra8
 1700003E16Rik
 Prok2
@@ -177,7 +173,6 @@ Chrna5
 Rnf38
 Rnf126
 Trpm8
-9530077C05Rik
 Siah2
 Iqce
 Alx1
@@ -220,8 +215,6 @@ Ulk4
 Otud3
 Ankrd42
 Sox5
-D11Wsu47e
-Lrrc29
 Zic5
 Pramel1
 Efhc1
@@ -232,7 +225,6 @@ Oscp1
 Zfyve1
 Hfm1
 Setx
-Casc1
 1700019D03Rik
 Pld6
 Fmn1
@@ -264,7 +256,6 @@ Pdha2
 Utf1
 Eno4
 Fbxo43
-Nupl2
 Mex3d
 Tprn
 Dcun1d3
@@ -281,7 +272,6 @@ Prkg1
 Rnaseh2a
 Spag16
 Krt42
-1700016K19Rik
 Kdm4d
 Nkx2-4
 Pnma1
@@ -326,7 +316,6 @@ Fbxo39
 Lrrc8b
 Ccnyl1
 Rabepk
-1700086L19Rik
 Tbpl1
 Rnls
 Rimbp3
@@ -335,13 +324,11 @@ Rbmxl2
 Svip
 Dnajb14
 Lekr1
-4931440P22Rik
 Papolb
 Mageb3
 Wfdc3
 Oxct2a
 Oxct2b
-Ccdc105
 Zfp541
 Ccdc13
 Lemd1
@@ -351,6 +338,5 @@ Mir1199
 Dnajb3
 Dpy19l2
 Rad51ap2
-Tepp
 Dynlt1a
 Dynlt1f

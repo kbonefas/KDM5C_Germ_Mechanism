@@ -4,6 +4,7 @@
 
 # Visualize genomic locations using ChIPseeker
 library(ChIPseeker)
+# BiocManager::install("ChIPseeker")
 library(TxDb.Mmusculus.UCSC.mm10.knownGene)
 txdb <- TxDb.Mmusculus.UCSC.mm10.knownGene
 library(clusterProfiler)
@@ -131,3 +132,58 @@ ggsave(snakemake@output[[5]], plot = dotplot(ck, showCategory = 10), width = 5, 
 ### Save the gene names for HOMER motif analysis
 write.table(subset(germ, Promo_CGI == "CGI")[,"SYMBOL"], snakemake@output[[6]], sep = "\t", col.names = FALSE, row.names = FALSE, quote = FALSE)
 write.table(subset(germ, Promo_CGI == "no")[,"SYMBOL"], snakemake@output[[7]], sep = "\t", col.names = FALSE, row.names = FALSE, quote = FALSE)
+
+
+
+#also plot how many out of all genes have CGIs
+	#CGI_ENSEMBL = # of genes that have CGIs
+	# total # of genes (should be based on TxDb.Mmusculus.UCSC.mm10.knownGene annotation?)
+
+	#get all promoters 
+all_promoter <- as.data.frame(getPromoters(TxDb=txdb, upstream=promorange, downstream=promorange))
+
+print(paste("all_promoter #:", nrow(all_promoter)))
+print(head(all_promoter))
+
+
+#percentage of promoters with CGIs
+#length(CGI_ENSEMBL)/nrow(all_promoter)
+
+
+#get the percentage of all germline genes with promoter CGIs and those bound or unbound by KDM5C
+plotdf2 <- data.frame(Gene_type = c(rep("All genes", 2)), CpG_island = c("no", "CGI"))
+print("plotdf2")
+print(plotdf2)
+
+# All genes		no
+# All genes		CGI
+# All germ		no
+# All germ		CGI
+
+all_CGI <- length(CGI_ENSEMBL)/nrow(all_promoter)*100
+
+#raw percentages
+plotdf2$raw <- c(100 - all_CGI, all_CGI)
+plotdf2$Percent <- as.integer(round(plotdf2$raw))
+print("plotdf2")
+print(plotdf2)
+
+
+#add the percentages for all germ to plotdf2
+allgerm <- subset(plotdf, plotdf$Kdm5c_binding == "All germ")
+allgerm <- subset(allgerm, select = c("Kdm5c_binding", "CpG_island", "CGIPercent_plot", "Percent"))
+colnames(allgerm) <- c("Gene_type", "CpG_island", "raw", "Percent")
+plotdf2 <- rbind(plotdf2, allgerm)
+
+print("plotdf2")
+print(plotdf2)
+
+#plot the results in a bar graph
+#set plotting order
+plotdf2$Gene_type <- factor(plotdf2$Gene_type, levels = c("All genes", "All germ"))
+
+library("ggpubr")
+all_p <- ggbarplot(plotdf2, "Gene_type", "Percent", fill = "CpG_island", color = "CpG_island", palette = c("no" = "#ff8a7a", "CGI" = "#f93a0b"),
+		title = "CpG islands at mm10 promoters", label = TRUE, lab.col = "white", lab.vjust = 1, xlab = " ", ylab = "% of genes", orientation = "vert") 
+
+ggsave(snakemake@output[[8]], all_p, width = 3, height = 4)

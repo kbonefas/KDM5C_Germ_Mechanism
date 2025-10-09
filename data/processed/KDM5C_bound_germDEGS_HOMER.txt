@@ -1,4 +1,3 @@
-Rnf17
 Hsf2bp
 Mea1
 Msh4
@@ -25,7 +24,6 @@ Pramel1
 Cdkn2a
 Fam178b
 Phospho1
-Spag16
 Cyct
 Ccnb1ip1
 Rbmxl2
