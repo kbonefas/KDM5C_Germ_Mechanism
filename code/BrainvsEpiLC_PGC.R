@@ -110,7 +110,8 @@ print(AMYHIP_SI)
 
 
 ###3) Make a dataframe with the gene info and the ENSEMBL ID
-PGCgenes <- data.frame(ENSEMBL = c("ENSMUSG00000010592","ENSMUSG00000029848", "ENSMUSG00000021758", "ENSMUSG00000046323","ENSMUSG00000025492"), Symbol = c("Dazl", "Stra8",  "Mvh (Ddx4)", "Stella (Dppa3)", "Fragilis (Ifitm3)"))
+# PGCgenes <- data.frame(ENSEMBL = c("ENSMUSG00000010592","ENSMUSG00000029848", "ENSMUSG00000021758", "ENSMUSG00000046323","ENSMUSG00000025492"), Symbol = c("Dazl", "Stra8",  "Mvh (Ddx4)", "Stella (Dppa3)", "Fragilis (Ifitm3)"))
+PGCgenes <- data.frame(ENSEMBL = c("ENSMUSG00000010592","ENSMUSG00000021758"), Symbol = c("Dazl", "Mvh (Ddx4)"))
 
 
 ###4) Function to make boxplot of expression in WT and 5cKO
@@ -186,7 +187,7 @@ plotallTPM <- function(genelist){
 #plot all pgc genes of interest:
 pgcplot <- plotallTPM(PGCgenes)
 
-ggsave(snakemake@output[[1]], plot = facet(pgcplot, facet.by = "Symbol", nrow = 1), width = 20, height = 3.5)
+ggsave(snakemake@output[[1]], plot = facet(pgcplot, facet.by = "Symbol", scales = "free_y", nrow = 1), width = 8, height = 4)
 
 
 #plot just a few germline drivers and 2-cell state drivers
