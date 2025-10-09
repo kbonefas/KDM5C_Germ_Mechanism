@@ -45,17 +45,27 @@ wwv_fpkm$shape <- ifelse(wwv_fpkm$WT>300, 9, 16)
 wwv_fpkm$WT[wwv_fpkm$WT>300] <- 300
 
 library("ggplot2")
+library("ggpubr")
 
 pdf(file = snakemake@output[[1]],   # The directory you want to save the file in
     width = 4.25, # The width of the plot in inches
     height = 4) # The height of the plot in inches
 ggplot(wwv_fpkm, aes(x=WT, y=WWv)) + 
-  geom_point(size = 3, color = "#2A7AFF", shape = wwv_fpkm$shape, show.legend = TRUE)+
+  geom_point(size = 3, color = "#2A7AFF", shape = wwv_fpkm$shape, show.legend = TRUE, alpha = 0.2)+
   geom_abline(intercept = 0, slope = 1, 
               linetype="dashed", size=0.75)+
   xlim(c(0, 300)) + ylim(c(0,300))+
-  labs(x = "Wild-type FPKM", y = "W/Wv (Germ cell depleted) FPKM", title = "Expression of testis DEGs \n with germ cell depletion" )
+  labs(x = "Wild-type FPKM", y = "W/Wv (Germ cell depleted) FPKM", title = "Expression of testis DEGs \n with germ cell depletion" )+
+  theme_classic()
 dev.off()
+
+
+# pdf(file = snakemake@output[[1]],   # The directory you want to save the file in
+#     width = 4.25, # The width of the plot in inches
+#     height = 4) # The height of the plot in inches
+# ggscatter(wwv_fpkm, "WT", "WWv", color = "#2A7AFF")
+# dev.off()
+
 
 
 
