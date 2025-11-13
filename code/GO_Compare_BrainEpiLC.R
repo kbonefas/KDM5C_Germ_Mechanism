@@ -45,6 +45,16 @@ p <- dotplot(ck, size = "Count") +
 ggsave(snakemake@output[[length(samples) + 2]], p, width = 6, height = 5.5)
 
 
+### simplify the clusters 
+simple <- simplify(ck)
+p2 <- dotplot(simple, size = "Count") +
+  theme(axis.text.y = element_text(size=8)) +
+  scale_color_gradient(low = "blue3", high = "red")
+
+ggsave(snakemake@output[[9]], p2, width = 6, height = 5.5)
+
+
+
 
 
     #ego <- enrichGO(de, keyType = 'ENSEMBL', OrgDb = "org.Mm.eg.db", ont="BP", readable=TRUE)
