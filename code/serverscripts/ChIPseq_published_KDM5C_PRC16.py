@@ -46,3 +46,10 @@ deeptoolswrap(germregions, KDM5C1, 'KDM5C1')
 deeptoolswrap(germregions, KDM5C2, 'KDM5C2')
 deeptoolswrap(germregions, MGA, 'MGA')
 deeptoolswrap(germregions, PCGF6, 'PCGF6')
+
+
+#### Also do all of the marks together so they're organized at the same regions
+command = 'computeMatrix reference-point -S Bigwig_Analysis/Agarwal_KDM5C_rep1.bw Bigwig_Analysis/Agarwal_KDM5C_rep2.bw Bigwig_Analysis/Stielow_MGA.bw Bigwig_Analysis/Stielow_PCGF6.bw - R TSS_window_3000bp_all_germ.bed --referencePoint center -a {WINDOW} -b {WINDOW} -o ESC_KDM5C_PRC16_germ_matrix.mat.gz'.format(WINDOW = 3000)
+
+os.system(command)
+os.system("plotHeatmap -m ESC_KDM5C_PRC16_germ_matrix.mat.gz -out ESC_KDM5C_PRC16_germ_heatmap.pdf --perGroup --colorMap RdPu --refPointLabel TSS --missingDataColor white --plotFileFormat pdf")
