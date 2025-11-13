@@ -34,7 +34,7 @@ def deeptoolswrap(regions, bigwigs, name):
 		title = "{NAME}_{COORD}".format(NAME = name, COORD = coord)
 		
 		#make the average plot --perGroup splits by bedfile so all bigwigs are plotted on same graph
-		os.system('plotProfile -m {OUT}_matrix.mat.gz -out {OUT}_profile.pdf --perGroup --refPointLabel TSS --samplesLabel IP Ctrl --plotTitle {TITLE} --plotWidth 10 --plotHeight 10 --plotFileFormat pdf'.format(OUT = out, TITLE = title))
+		os.system('plotProfile -m {OUT}_matrix.mat.gz -out {OUT}_profile.pdf --perGroup --refPointLabel TSS --samplesLabel {NAME} Ctrl --plotTitle {TITLE} --plotWidth 10 --plotHeight 10 --plotFileFormat pdf'.format(NAME = name, OUT = out, TITLE = title))
 		
 		#make heatmap plot
 		os.system('plotHeatmap -m {OUT}_matrix.mat.gz -out {OUT}_heatmap.pdf --perGroup --yMax 40 --zMax 60 --colorMap RdPu --refPointLabel TSS --missingDataColor white --samplesLabel Kdm5c_WT Kdm5c_KO --plotTitle {TITLE} --heatmapHeight 14 --heatmapWidth 5 --plotFileFormat pdf'.format(OUT = out, TITLE = title))
