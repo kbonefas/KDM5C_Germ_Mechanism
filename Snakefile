@@ -366,19 +366,6 @@ rule ESC_EpiLC_markers:
 	script:
 		"code/ESC_EpiLC_markers.R"
 
-#make an upset plot of the DEGs at different time points, merging
-rule ESC_EpiLC_upset:
-	input:
-		germgenes,
-		"results/DESeq2/germDEGs/germDEGs_ESCEpiLC_VA_5CKOvWT_0.csv",
-		"results/DESeq2/germDEGs/germDEGs_ESCEpiLC_VA_5CKOvWT_48VA.csv",
-		"results/DESeq2/germDEGs/germDEGs_ESCEpiLC_VA_5CKOvWT_48NO.csv",
-		"results/DESeq2/germDEGs/germDEGs_ESCEpiLC_VA_5CKOvWT_96VA.csv",
-		"results/DESeq2/germDEGs/germDEGs_ESCEpiLC_VA_5CKOvWT_96NO.csv"
-	script:
-		"code/ESC_EpiLC_UpSET.R"
-
-
 rule ESC_EpiLC_germheat:
 	input:
 		"data/processed/germGENES20.csv", #germline genes
@@ -615,6 +602,20 @@ rule WGBS_hist:
 		"results/figure_pieces/WGBS_hist_percMeth_5CKO.pdf"
 	script:
 		"code/WGBS_germ_hist.R"
+
+
+#make an upset plot of the DEGs at different time points, with KDM5C binding
+rule ESC_EpiLC_upset:
+	input:
+		germgenes,
+		"results/DESeq2/germDEGs/germDEGs_ESCEpiLC_VA_5CKOvWT_0.csv",
+		"results/DESeq2/germDEGs/germDEGs_ESCEpiLC_VA_5CKOvWT_48RA.csv",
+		"results/DESeq2/germDEGs/germDEGs_ESCEpiLC_VA_5CKOvWT_48NO.csv",
+		"results/DESeq2/germDEGs/germDEGs_ESCEpiLC_VA_5CKOvWT_96RA.csv",
+		"results/DESeq2/germDEGs/germDEGs_ESCEpiLC_VA_5CKOvWT_96NO.csv"
+	script:
+		"code/ESC_EpiLC_UpSET.R"
+
 
 
 ###################### Render the manuscript ############################
