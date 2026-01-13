@@ -2,8 +2,8 @@
 
 #read in the DEGs
 samples <- c("ESC", "48VA", "48NO", "96VA", "96NO")
-for(i in samples){
-    DEGs <- read.csv(snakemake@input[[1+i]], sep = ",", rownames = TRUE)
+for(i in 1:length(samples)){
+    DEGs <- read.csv(snakemake@input[[1+i]], sep = ",", row.names = 1)
     print(head(DEGs))
 }
 
