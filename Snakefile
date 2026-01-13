@@ -366,6 +366,18 @@ rule ESC_EpiLC_markers:
 	script:
 		"code/ESC_EpiLC_markers.R"
 
+#make an upset plot of the DEGs at different time points, merging
+rule ESC_EpiLC_upset:
+	input:
+		germgenes,
+		"results/DESeq2/germDEGs/germDEGs_ESCEpiLC_VA_5CKOvWT_0.csv",
+		"results/DESeq2/germDEGs/germDEGs_ESCEpiLC_VA_5CKOvWT_48VA.csv",
+		"results/DESeq2/germDEGs/germDEGs_ESCEpiLC_VA_5CKOvWT_48NO.csv",
+		"results/DESeq2/germDEGs/germDEGs_ESCEpiLC_VA_5CKOvWT_96VA.csv",
+		"results/DESeq2/germDEGs/germDEGs_ESCEpiLC_VA_5CKOvWT_96NO.csv"
+	script:
+		"code/ESC_EpiLC_UpSET.R"
+
 
 rule ESC_EpiLC_germheat:
 	input:
