@@ -6,3 +6,7 @@ for(i in samples){
     DEGs <- read.csv(snakemake@input[[1+i]], sep = ",", rownames = TRUE)
     print(head(DEGs))
 }
+
+germ <- read.csv(snakemake@input[[1]])
+print("germline genes")
+print(head(germ))
