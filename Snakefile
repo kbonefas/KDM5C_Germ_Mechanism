@@ -614,7 +614,10 @@ rule ESC_EpiLC_upset:
 		"results/DESeq2/germDEGs/germDEGs_ESCEpiLC_VA_5CKOvWT_96NO.csv",
 		"results/DESeq2/germDEGs/germDEGs_ESCEpiLC_VA_5CKOvWT_96RA.csv"
 	output:
-		"results/figure_pieces/ESC_EpiLC_germupset.pdf"
+		"results/figure_pieces/ESC_EpiLC_germupset.pdf",
+		"results/figure_pieces/ESC_EpiLC_germDEGs_euler.pdf",
+		"results/figure_pieces/ESC_EpiLC_germDEGs_euler_unique.pdf",
+		"results/figure_pieces/ESC_EpiLC_germupset_normal.pdf"
 	script:
 		"code/ESC_EpiLC_UpSET.R"
 

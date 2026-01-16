@@ -23,7 +23,7 @@ modifiedupset <- function(samplelist){
 	upset(fromList(samplelist), order.by = "freq",  sets.x.label = "# Germline DEGs", mainbar.y.label = "# of Overlapping Germline DEGs", empty.intersections = "on")
 }
 
-pdf(file = snakemake@output[[1]], width = 8, height = 5)
+pdf(file = snakemake@output[[1]], width = 8, height = 6)
 
 upset(fromList(DEGs), order.by = "freq",  sets.x.label = "# germline DEGs", mainbar.y.label = "# in group", text.scale = 2, sets = samples, mb.ratio = c(0.55, 0.45), keep.order = TRUE)
 
@@ -38,10 +38,58 @@ dev.off()
 
 
 
-#plotting
+#plotting euler
 library("ggplot2")
 
 
+
+library("eulerr")
+source("code/utilities/colorpalettes.R")
+
+
+#subset the DEGs for just the RA treatment (aka "normal" differentiation)
+    #just the unique ones?
+DEGs_normal <- DEGs[c("ESC", "48VA", "96VA")] 
+    #instead of doing Euler could do bar plot of the unique ones with darker shading for KDM5C binding - doesn't show overlap, would need to do another upset bar plot or something
+    #take the unique DEGs and plot KDM5C binding vs shared 
+
+###upset plot of normal genes
+pdf(file = snakemake@output[[4]], width = 8, height = 6)
+
+upset(fromList(DEGs_normal), order.by = "freq",  sets.x.label = "# germline DEGs", mainbar.y.label = "# in group", text.scale = 2, sets = c("ESC", "48VA", "96VA"), mb.ratio = c(0.55, 0.45), keep.order = TRUE)
+
+dev.off()
+
+KDM5C_bound <- subset(germ, germ$KDM5C_binding == "Bound")
+DEGs_normal_KDM5C <- DEGs_normal
+DEGs_normal_KDM5C[["KDM5C_binding"]] <- KDM5C_bound$ENSEMBL
+
+together <- euler(DEGs_normal_KDM5C)
+
+q <- plot(together, quantities = TRUE, labels = list(font = 4))
+#fills = c(EpiLC_XY_KO, EpiLC_XX_HET, EpiLC_XX_KO)
+
+library("ggplot2")
+ggsave(snakemake@output[[2]], plot = q, width = 4, height = 4)
+
+## only unique DEGs
+#subset the DEGs for just the RA treatment (aka "normal" differentiation)
+    #just the unique ones?
+
+DEGs_unique <- lapply(DEGs_normal, unique)
+# print(DEGs_unique)
+
+names(DEGs_unique) <- c("ESC", "48VA", "96VA")
+
+
+DEGs_unique[["KDM5C_binding"]] <- KDM5C_bound$ENSEMBL
+
+together <- euler(DEGs_unique)
+
+u <- plot(together, quantities = TRUE, labels = list(font = 4))
+#fills = c(EpiLC_XY_KO, EpiLC_XX_HET, EpiLC_XX_KO)
+
+ggsave(snakemake@output[[3]], plot = u, width = 4, height = 4)
 
 
 
