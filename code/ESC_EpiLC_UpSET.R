@@ -53,12 +53,6 @@ DEGs_normal <- DEGs[c("ESC", "48VA", "96VA")]
     #instead of doing Euler could do bar plot of the unique ones with darker shading for KDM5C binding - doesn't show overlap, would need to do another upset bar plot or something
     #take the unique DEGs and plot KDM5C binding vs shared 
 
-###upset plot of normal genes
-pdf(file = snakemake@output[[4]], width = 8, height = 6)
-
-upset(fromList(DEGs_normal), order.by = "freq",  sets.x.label = "# germline DEGs", mainbar.y.label = "# in group", text.scale = 2, sets = c("ESC", "48VA", "96VA"), mb.ratio = c(0.55, 0.45), keep.order = TRUE)
-
-dev.off()
 
 KDM5C_bound <- subset(germ, germ$KDM5C_binding == "Bound")
 DEGs_normal_KDM5C <- DEGs_normal
@@ -91,6 +85,13 @@ u <- plot(together, quantities = TRUE, labels = list(font = 4))
 
 ggsave(snakemake@output[[3]], plot = u, width = 4, height = 4)
 
+
+###upset plot of normal genes
+pdf(file = snakemake@output[[4]], width = 8, height = 6)
+
+upset(fromList(DEGs_unique), order.by = "freq",  sets.x.label = "# germline DEGs", mainbar.y.label = "# in group", text.scale = 2, sets = c("ESC", "48VA", "96VA"), mb.ratio = c(0.55, 0.45), keep.order = TRUE)
+
+dev.off()
 
 
 
