@@ -609,10 +609,10 @@ rule ESC_EpiLC_upset:
 	input:
 		"results/KDM5C_binding_allgerm_CGI.csv",
 		"results/DESeq2/germDEGs/germDEGs_ESCEpiLC_VA_5CKOvWT_0.csv",
-		"results/DESeq2/germDEGs/germDEGs_ESCEpiLC_VA_5CKOvWT_48RA.csv",
 		"results/DESeq2/germDEGs/germDEGs_ESCEpiLC_VA_5CKOvWT_48NO.csv",
-		"results/DESeq2/germDEGs/germDEGs_ESCEpiLC_VA_5CKOvWT_96RA.csv",
+		"results/DESeq2/germDEGs/germDEGs_ESCEpiLC_VA_5CKOvWT_48RA.csv",
 		"results/DESeq2/germDEGs/germDEGs_ESCEpiLC_VA_5CKOvWT_96NO.csv"
+		"results/DESeq2/germDEGs/germDEGs_ESCEpiLC_VA_5CKOvWT_96RA.csv",
 	output:
 		"results/figure_pieces/ESC_EpiLC_germupset.pdf"
 	script:

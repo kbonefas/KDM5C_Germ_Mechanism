@@ -5,7 +5,7 @@ print(head(germ))
 
 DEGs <- list()
 #read in the DEGs
-samples <- c("ESC", "48VA", "48NO", "96VA", "96NO")
+samples <- c("ESC", "48NO", "48VA", "96NO", "96VA")
 for(i in 1:length(samples)){
     df <- read.csv(snakemake@input[[1+i]], sep = ",", row.names = 1)
     print(head(df))
@@ -25,12 +25,17 @@ modifiedupset <- function(samplelist){
 
 pdf(file = snakemake@output[[1]], width = 8, height = 5)
 
-upset(fromList(DEGs), order.by = "freq",  sets.x.label = "# Germline DEGs", mainbar.y.label = "Overlapping Germline DEGs", empty.intersections = "on", text.scale = 2)
+upset(fromList(DEGs), order.by = "freq",  sets.x.label = "# Germline DEGs", mainbar.y.label = "Overlapping Germline DEGs", empty.intersections = "on", text.scale = 2, sets = c("Action", "Adventure", "Comedy", "Drama", "Mystery", 
+    "Thriller", "Romance", "War", "Western"), mb.ratio = c(0.55, 0.45), order.by = "freq", 
+    keep.order = TRUE)
 
 dev.off()
 
-
-
+#vignette: https://cran.r-project.org/web/packages/UpSetR/vignettes/basic.usage.html
+#need a cagetory row in my upset list??? that has the category KDM5C bound
+    #are you even able to do it in list format
+# apparently you can do scatter plots with UpsetR
+# Comparing two sets in a whole: https://github.com/hms-dbmi/UpSetR?tab=readme-ov-file
 
 
 
