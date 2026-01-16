@@ -25,9 +25,7 @@ modifiedupset <- function(samplelist){
 
 pdf(file = snakemake@output[[1]], width = 8, height = 5)
 
-upset(fromList(DEGs), order.by = "freq",  sets.x.label = "# Germline DEGs", mainbar.y.label = "Overlapping Germline DEGs", empty.intersections = "on", text.scale = 2, sets = c("Action", "Adventure", "Comedy", "Drama", "Mystery", 
-    "Thriller", "Romance", "War", "Western"), mb.ratio = c(0.55, 0.45), order.by = "freq", 
-    keep.order = TRUE)
+upset(fromList(DEGs), order.by = "freq",  sets.x.label = "# Germline DEGs", mainbar.y.label = "Overlapping Germline DEGs", empty.intersections = "on", text.scale = 2, sets = samples, mb.ratio = c(0.55, 0.45), order.by = "freq", keep.order = TRUE, group.by = "sets")
 
 dev.off()
 
