@@ -612,12 +612,16 @@ rule ESC_EpiLC_upset:
 		"results/DESeq2/germDEGs/germDEGs_ESCEpiLC_VA_5CKOvWT_48NO.csv",
 		"results/DESeq2/germDEGs/germDEGs_ESCEpiLC_VA_5CKOvWT_48RA.csv",
 		"results/DESeq2/germDEGs/germDEGs_ESCEpiLC_VA_5CKOvWT_96NO.csv",
-		"results/DESeq2/germDEGs/germDEGs_ESCEpiLC_VA_5CKOvWT_96RA.csv"
+		"results/DESeq2/germDEGs/germDEGs_ESCEpiLC_VA_5CKOvWT_96RA.csv",
+		"data/raw/Green_2018_logAvgNormalizedExpression_GermCell.csv"
+			#from green 2018 (https://pubmed.ncbi.nlm.nih.gov/30146481/)
+				# GSE112393_MergedAdultMouseST25_12GermCellClusters_AllGeneExp
 	output:
 		"results/figure_pieces/ESC_EpiLC_germupset.pdf",
 		"results/figure_pieces/ESC_EpiLC_germDEGs_euler.pdf",
 		"results/figure_pieces/ESC_EpiLC_germDEGs_euler_unique.pdf",
-		"results/figure_pieces/ESC_EpiLC_germupset_normal.pdf"
+		"results/figure_pieces/ESC_EpiLC_germupset_normal.pdf",
+		"results/figure_pieces/ESC_EpiLC_germDEGs_unique_greenStages.pdf"
 	script:
 		"code/ESC_EpiLC_UpSET.R"
 

@@ -98,10 +98,11 @@ DEGs_unique[["shared"]] <- Reduce(intersect, DEGs)
 # unique_96VA <- 
 # 96only <- unique_within_list <- lapply(my_list_with_dups, unique)
 
+DEGs_unique_kdm5c <- DEGs_unique
 
-DEGs_unique[["KDM5C_bound"]] <- KDM5C_bound$ENSEMBL
+DEGs_unique_kdm5c[["KDM5C_bound"]] <- KDM5C_bound$ENSEMBL
 
-together <- euler(DEGs_unique)
+together <- euler(DEGs_unique_kdm5c)
 
 u <- plot(together, quantities = TRUE, labels = list(font = 4))
 #fills = c(EpiLC_XY_KO, EpiLC_XX_HET, EpiLC_XX_KO)
@@ -115,6 +116,105 @@ pdf(file = snakemake@output[[4]], width = 8, height = 6)
 upset(fromList(DEGs_unique), order.by = "freq",  sets.x.label = "# germline DEGs", mainbar.y.label = "# in group", text.scale = 2, sets = c("ESC", "48VA", "96VA"), mb.ratio = c(0.55, 0.45), keep.order = TRUE)
 
 dev.off()
+
+
+
+
+################### germ CGI stage 
+#expression of genes in spermatogenesis stages
+greengerm <- read.csv(snakemake@input[[7]], sep = ",")
+
+#plotting df columns:
+	#germ cell stage
+	#transient or silent
+	#average expression (for all transient or silent)
+green_plot <- data.frame()
+expression <- c(samples, "shared")
+print(expression)
+
+for(i in expression){
+	germ_gene <- subset(germ, germ$ENSEMBL %in% DEGs_unique[[i]])
+
+    symbols <- germ_gene$SYMBOL
+	#for every gene symbol, get the expression value and add it to the dataframe
+	for(k in symbols){
+		expr <- subset(greengerm, greengerm$SYMBOL == k)
+	
+		germexpr <- c(t(expr[1,2:ncol(expr)])) #values of the expression
+		
+		#get the name of the germ cell stage and the means of expression, skipping the first column (gene symbols)
+		df <- data.frame(Stage = colnames(greengerm)[2:ncol(greengerm)], GermExpr = germexpr, Group = rep(i, ncol(greengerm)-1))
+
+		green_plot <- rbind(green_plot, df)
+
+	}
+		
+}
+
+print(head(green_plot))
+
+library('ggpubr')
+
+my_comparisons <- expression
+p <- ggboxplot(green_plot, "Stage", "GermExpr", fill = "Group",  title = "Average expression in germ cell stages", ylab = "log(Avg of Normalized Expression + 1)", xlab = "Stage of Spermatogenesis", outlier.shape = NA, ylim = c(0,5)) +
+	stat_compare_means(aes(label=..p.signif.., group=Group), method="wilcox.test", label.y = 4, size = 8) +
+	font("xy.text", size = 24) + font("title", size = 35, face = "bold") + font("xlab", size = 24) + font("ylab", size = 24)
+
+#palette = c("#f93a0b", "#ff8a7a"),
+p <- ggpar(p, legend = "top", legend.title = "DEG group")
+
+ggsave(snakemake@output[[5]], p, width = 20, height = 8)
+
+
+## heatmap of expression across stages
+	#multiple heatmaps of each developmental stage stacked on top 
+#make a hclust matrix for each stage, have the genes expression in CGI vs no. 
+
+#for every germ cell stage, get the germ cell expression and for CGI and CGI no genes
+
+#make 2 heatmaps (CGI vs no), split by germ cell stage. Use the same scale for both so they can be compared to each other
+
+#each column is a germ cell stage, each row is a gene, values are the expression
+library(ComplexHeatmap)
+library(circlize)
+
+expression <- c("CGI", "no")
+#setting the range of colors
+heat_color = colorRamp2(range(subset(greengerm, select = c(-SYMBOL))), hcl_palette = "Reds", reverse = TRUE)
+
+
+for(i in 1:length(expression)){
+	symbols <- subset(germ, Promo_CGI == expression[i])[,"SYMBOL"]
+
+	df <- subset(greengerm, greengerm$SYMBOL %in% symbols)
+	row.names(df) <- df$SYMBOL
+	plotmatrix <- subset(df, select = c(-SYMBOL))
+	p <- Heatmap(plotmatrix, show_row_names = FALSE, column_title = paste("Germline genes with", expression[i]), cluster_columns = FALSE, heatmap_legend_param = list(title = "log(Avg of Normalized Expression + 1)"), col = heat_color)
+	
+
+	pdf(file = snakemake@output[[i+1]],   # The directory you want to save the file in
+    	width = 10, # The width of the plot in inches
+    	height = 10) # The height of the plot in inches
+		draw(p)
+	dev.off()
+		
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ############### stacked barplot of kdm5c binding unique DEGs
 # allgerm <- subset(plotdf, plotdf$Kdm5c_binding == "All germ")
