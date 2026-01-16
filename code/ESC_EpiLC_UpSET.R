@@ -19,9 +19,9 @@ names(DEGs) <- samples
 #### plot simple upset
 library("UpSetR")
 
-modifiedupset <- function(samplelist){
-	upset(fromList(samplelist), order.by = "freq",  sets.x.label = "# Germline DEGs", mainbar.y.label = "# of Overlapping Germline DEGs", empty.intersections = "on")
-}
+# modifiedupset <- function(samplelist){
+# 	upset(fromList(samplelist), order.by = "freq",  sets.x.label = "# Germline DEGs", mainbar.y.label = "# of Overlapping Germline DEGs", empty.intersections = "on")
+# }
 
 pdf(file = snakemake@output[[1]], width = 8, height = 6)
 
@@ -56,7 +56,7 @@ DEGs_normal <- DEGs[c("ESC", "48VA", "96VA")]
 
 KDM5C_bound <- subset(germ, germ$KDM5C_binding == "Bound")
 DEGs_normal_KDM5C <- DEGs_normal
-DEGs_normal_KDM5C[["KDM5C_binding"]] <- KDM5C_bound$ENSEMBL
+DEGs_normal_KDM5C[["KDM5C_bound"]] <- KDM5C_bound$ENSEMBL
 
 together <- euler(DEGs_normal_KDM5C)
 
@@ -67,16 +67,39 @@ library("ggplot2")
 ggsave(snakemake@output[[2]], plot = q, width = 4, height = 4)
 
 ## only unique DEGs
-#subset the DEGs for just the RA treatment (aka "normal" differentiation)
-    #just the unique ones?
-
-DEGs_unique <- lapply(DEGs_normal, unique)
+#need unique DEGs
+# DEGs_unique <- Reduce(setdiff, DEGs)
 # print(DEGs_unique)
 
-names(DEGs_unique) <- c("ESC", "48VA", "96VA")
+DEGs_unique <- list()
 
 
-DEGs_unique[["KDM5C_binding"]] <- KDM5C_bound$ENSEMBL
+for(i in 1:length(samples)){
+    #the samples that aren't the one you're testing
+    others <- samples[samples != samples[i]]
+    print(others)
+
+    #get all the genes that are in the group not in your list
+    others_colapse <- unlist(DEGs[others])
+    
+    DEGs_unique[[i]] <- setdiff(DEGs[[i]], others_colapse)
+
+}
+
+names(DEGs_unique) <- samples
+
+print("DEGs_unique")
+
+print(DEGs_unique)
+
+#shared 
+DEGs_unique[["shared"]] <- Reduce(intersect, DEGs)
+
+# unique_96VA <- 
+# 96only <- unique_within_list <- lapply(my_list_with_dups, unique)
+
+
+DEGs_unique[["KDM5C_bound"]] <- KDM5C_bound$ENSEMBL
 
 together <- euler(DEGs_unique)
 
@@ -92,6 +115,40 @@ pdf(file = snakemake@output[[4]], width = 8, height = 6)
 upset(fromList(DEGs_unique), order.by = "freq",  sets.x.label = "# germline DEGs", mainbar.y.label = "# in group", text.scale = 2, sets = c("ESC", "48VA", "96VA"), mb.ratio = c(0.55, 0.45), keep.order = TRUE)
 
 dev.off()
+
+############### stacked barplot of kdm5c binding unique DEGs
+# allgerm <- subset(plotdf, plotdf$Kdm5c_binding == "All germ")
+# allgerm <- subset(allgerm, select = c("Kdm5c_binding", "CpG_island", "CGIPercent_plot", "Percent"))
+# colnames(allgerm) <- c("Gene_type", "CpG_island", "raw", "Percent")
+# plotdf2 <- rbind(plotdf2, allgerm)
+
+#columns - time point, KDM5C binding status (KDM5C_binding), #, percent
+# one column - 96hrs, Kdm5c_bound, # bound, % of total
+# 2nd column - 96hrs, Kdm5c_unbound, # unbound, %  of total
+
+
+
+
+#plot the results in a bar graph
+#set plotting order
+# plotdf2$Gene_type <- factor(plotdf2$Gene_type, levels = c("All genes", "All germ"))
+
+# library("ggpubr")
+# all_p <- ggbarplot(plotdf2, "Gene_type", "Percent", fill = "CpG_island", color = "CpG_island", palette = c("no" = "#ff8a7a", "CGI" = "#f93a0b"),
+# 		title = "CpG islands at mm10 promoters", label = TRUE, lab.col = "white", lab.vjust = 1, xlab = " ", ylab = "% of genes", orientation = "vert") 
+
+# ggsave(snakemake@output[[8]], all_p, width = 3, height = 4)
+
+
+
+
+
+
+
+
+
+
+
 
 
 
