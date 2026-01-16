@@ -58,7 +58,7 @@ q <- ggbarplot(DAZL_avg, x = 'genotreat', y = 'Avg_perc', fill="genotreat", add 
     xlab = " ", ylab = "% DAZL+/DAPI+", palette = genoRAcolors) + 
     #rremove("legend") +
     stat_compare_means(comparisons = my_comparisons, method="t.test", label = "p.signif") 
-q <- ggpar(q, x.text.angle = 25, font.main = "bold", legend = "right", legend.title = " ")
+q <- ggpar(q, x.text.angle = 25, ylim = c(0,100), font.main = "bold", legend = "right", legend.title = " ")
 
 # q <- facet(q, facet.by = "Symbol", nrow = 2)
 
@@ -125,7 +125,7 @@ q <- ggbarplot(STRA8_avg, x = 'genotreat', y = 'Avg_perc', fill="genotreat", add
     xlab = " ", ylab = "% STRA8+/DAPI+", palette = genoRAcolors) + 
     #rremove("legend") +
     stat_compare_means(comparisons = my_comparisons, method="t.test", label = "p.signif") 
-q <- ggpar(q, x.text.angle = 25, font.main = "bold", legend = "right", legend.title = " ")
+q <- ggpar(q, x.text.angle = 25, ylim = c(0,100), font.main = "bold", legend = "right", legend.title = " ")
 
 # q <- facet(q, facet.by = "Symbol", nrow = 2)
 
