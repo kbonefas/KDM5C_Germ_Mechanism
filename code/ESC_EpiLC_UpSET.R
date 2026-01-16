@@ -29,6 +29,7 @@ upset(fromList(DEGs), order.by = "freq",  sets.x.label = "# germline DEGs", main
 
 dev.off()
 
+
 #vignette: https://cran.r-project.org/web/packages/UpSetR/vignettes/basic.usage.html
 #need a cagetory row in my upset list??? that has the category KDM5C bound
     #are you even able to do it in list format
