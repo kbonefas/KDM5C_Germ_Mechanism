@@ -28,9 +28,9 @@ rule amyhipDESeq2:
 		"data/processed/restable_hip5cKO.csv",
 		"results/DESeq2/DEGs_amy5cKO.csv",
 		"results/DESeq2/DEGs_hip5cKO.csv",
-		"results/figure_pieces/GOmap_amy.pdf",
+		# "results/figure_pieces/GOmap_amy.pdf",
 		"results/figure_pieces/GOmap_hip.pdf",
-		"results/figure_pieces/GOdot_amy.pdf",
+		# "results/figure_pieces/GOdot_amy.pdf",
 		"results/figure_pieces/GOdot_hip.pdf"
 	script:
 		"code/DESeq2_adultHIPAMY.R"

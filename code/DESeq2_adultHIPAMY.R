@@ -116,30 +116,30 @@ GO_l2FCcuttoff <- snakemake@params[["lf2c"]]
 mapsize <- 5.5
 mapsizey <- 6
 
-print("first")
-pdf(file = snakemake@output[[6]],   # The directory you want to save the file in
-    width = mapsize, # The width of the plot in inches
-    height = mapsizey) # The height of the plot in inches
-GOmap(AMY_5CWT_DEGs, GO_l2FCcuttoff)
-dev.off()
+# print("first")
+# pdf(file = snakemake@output[[6]],   # The directory you want to save the file in
+#     width = mapsize, # The width of the plot in inches
+#     height = mapsizey) # The height of the plot in inches
+# GOmap(AMY_5CWT_DEGs, GO_l2FCcuttoff)
+# dev.off()
 
 print("second")
-pdf(file = snakemake@output[[7]],   # The directory you want to save the file in
+pdf(file = snakemake@output[[6]],   # The directory you want to save the file in
     width = mapsize, # The width of the plot in inches
     height = mapsizey) # The height of the plot in inches
 GOmap(HIP_5CWT_DEGs, GO_l2FCcuttoff)
 dev.off()
 
-print("third")
-pdf(file = snakemake@output[[8]],   # The directory you want to save the file in
-    width = mapsize, # The width of the plot in inches
-    height = mapsizey) # The height of the plot in inches
-GOdot(AMY_5CWT_DEGs, GO_l2FCcuttoff)
-dev.off()
+# print("third")
+# pdf(file = snakemake@output[[7]],   # The directory you want to save the file in
+#     width = mapsize, # The width of the plot in inches
+#     height = mapsizey) # The height of the plot in inches
+# GOdot(AMY_5CWT_DEGs, GO_l2FCcuttoff)
+# dev.off()
 
 
 print("fourth")
-pdf(file = snakemake@output[[9]],   # The directory you want to save the file in
+pdf(file = snakemake@output[[7]],   # The directory you want to save the file in
     width = mapsize, # The width of the plot in inches
     height = mapsizey) # The height of the plot in inches
  GOdot(HIP_5CWT_DEGs, GO_l2FCcuttoff)
