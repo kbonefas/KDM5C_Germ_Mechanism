@@ -1,7 +1,7 @@
 #script for getting bed files of the TSS and TES for genes of interest - input is the gtf file used in RNA/ChIPseq quantification
 
 library("rtracklayer")
-gtf <- rtracklayer::import('../../gencode.vM21.annotation.gtf') #gtf file used in ChIPseq quantification
+gtf <- rtracklayer::import('data/raw/gencode.vM21.annotation.gtf') #gtf file used in ChIPseq quantification
 gtf_df <- as.data.frame(gtf)
 # print(head(gtf_df))
 

@@ -518,6 +518,7 @@ rule KDM5C_ESCtoEpiLC:
 	script:
 		"code/KDM5C_ESCtoEpiLC.R"
 
+
 ############## KDM5C WGBS ######################
 
 #make the bed file for calculating methylation changes
@@ -548,6 +549,16 @@ rule Germ_CGI:
 		"results/figure_pieces/CGI_all_germ.pdf"
 	script:
 		"code/WGBS_germ_CGI.R"
+
+rule CGI_bed:
+	input:
+		"results/KDM5C_binding_allgerm_CGI.csv"
+	output:
+		"data/processed/TSS_germ_CGI.bed",
+		"data/processed/TSS_germ_CGIfree.bed"
+	script:
+		"code/CGI_bed.R"
+
 
 #stage of germ cell development CGI vs non-CGI genes are expressed 
 rule Germ_CGI_stage:
