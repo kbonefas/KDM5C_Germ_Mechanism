@@ -432,7 +432,8 @@ rule ESCEpiLC_RA_TPM:
 	output:
 		"results/figure_pieces/ESCEpiLC_VA_germ_5CKO_RAgenesTPM.pdf",
 		"results/figure_pieces/ESCEpiLC_VA_germ_5CKOonly_RAgenesTPM.pdf",
-		"results/figure_pieces/ESCEpiLC_VA_TPM_genesofinterest.pdf"
+		"results/figure_pieces/ESCEpiLC_VA_TPM_genesofinterest.pdf",
+		"results/figure_pieces/ESCEpiLC_VA_TPM_germregulators.pdf"
 	script:
 		"code/ESC_EpiLC_RA_TPM.R"
 

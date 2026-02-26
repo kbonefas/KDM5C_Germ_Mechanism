@@ -189,3 +189,21 @@ library("gridExtra")
 print("making the tpm plots:")
 ggsave(snakemake@output[[3]], plot = grid.arrange(grobs = exprTPM, nrow = 4), width = 8, height = 12)
 #warnings()
+
+
+
+#genes of interest
+geneielistie <- c("Kdm5c", "Mga", "Pcgf6", "Dnmt3b", "Dnmt3a", "Rfx2", "Cyp26b1", "Pou5f1", "Rec8", "Rxra")
+
+#empty lists to store the plots
+exprTPM <- list()
+count <- 1
+for (g in geneielistie){
+	exprTPM[[count]] <- tpm_plot(g)
+	count <- count + 1
+}
+
+library("gridExtra")
+print("making the tpm plots:")
+ggsave(snakemake@output[[4]], plot = grid.arrange(grobs = exprTPM, nrow = 2), width = 20, height = 6)
+#warnings()
