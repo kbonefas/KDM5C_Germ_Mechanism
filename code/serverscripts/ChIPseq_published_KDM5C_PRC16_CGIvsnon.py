@@ -52,7 +52,7 @@ import glob
 command = 'computeMatrix reference-point -S Bigwig_Analysis/Agarwal_KDM5C_rep1.bw Bigwig_Analysis/Agarwal_KDM5C_rep2.bw Bigwig_Analysis/Stielow_MGA.bw Bigwig_Analysis/Stielow_PCGF6.bw -R TSS_germ_CGI.bed TSS_germ_CGIfree.bed --referencePoint center -a {WINDOW} -b {WINDOW} -o ESC_KDM5C_PRC16_germ_matrix_2.mat.gz'.format(WINDOW = 3000)
 
 os.system(command)
-os.system("plotHeatmap -m ESC_KDM5C_PRC16_germ_matrix_2.mat.gz -out ESC_germ_KDM5C_TFs_CGIsplit.pdf --colorMap RdPu --refPointLabel TSS --missingDataColor white --plotFileFormat pdf  --heatmapHeight 20 --heatmapWidth 4 -legendLocation upper-center")
+os.system("plotHeatmap -m ESC_KDM5C_PRC16_germ_matrix_2.mat.gz -out ESC_germ_KDM5C_TFs_CGIsplit.pdf --colorMap RdPu --refPointLabel TSS --missingDataColor white --plotFileFormat pdf  --heatmapHeight 20 --heatmapWidth 4 --legendLocation upper-center")
 
 
 command = 'computeMatrix reference-point -S Bigwig_Analysis/Blackledge_H2AK119ub1.bw Bigwig_Analysis/Blackledge_H3K27me3.bw Bigwig_Analysis/ENCODE_H3K9me3.bw -R TSS_germ_CGI.bed TSS_germ_CGIfree.bed --referencePoint center -a {WINDOW} -b {WINDOW} -o ESC_KDM5C_PRC16_germ_matrix_3.mat.gz'.format(WINDOW = 3000)
