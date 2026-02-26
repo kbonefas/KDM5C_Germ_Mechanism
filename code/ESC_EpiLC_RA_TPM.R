@@ -12,10 +12,10 @@ SampleInfo <- read.csv(snakemake@input[[2]], sep =",")
 rownames(SampleInfo) <- SampleInfo$ID
 
 #set up the plotting variables
-SampleInfo$RA[SampleInfo$RA == 'RA'] <- 'VA +'
-SampleInfo$RA[SampleInfo$RA == 'NO'] <- 'VA -'
+SampleInfo$VA[SampleInfo$VA == 'VA'] <- 'VA +'
+SampleInfo$VA[SampleInfo$VA == 'NO'] <- 'VA -'
 
-SampleInfo$genoRA <- paste(SampleInfo$Genotype, SampleInfo$RA)
+SampleInfo$genoRA <- paste(SampleInfo$Genotype, SampleInfo$VA)
 SampleInfo$Timepoint <- as.factor(SampleInfo$Timepoint)
 
 #make a line plot of the TPM of germline genes of interest
@@ -36,8 +36,8 @@ tpm_plot <- function(geneID){
 	
 	#EpiLCs with and without RA begin at the same starting point because they were differentiated from ESCs without RA 
 		#make duplicate values for 0 hrs
-	no0 <- subset(geneofinterest, RA != "")
-	fix0 <- subset(geneofinterest, RA == "")
+	no0 <- subset(geneofinterest, VA != "")
+	fix0 <- subset(geneofinterest, VA == "")
 	fix0_RA <- fix0
 	fix0_RA$genoRA <- paste(fix0_RA$Genotype, "VA +")
 	fix0_NO <- fix0
@@ -64,10 +64,10 @@ tpm_plot <- function(geneID){
 	#label.y = c(y0, y48, y96) 
 
 
-	pgerm <- ggline(fixed0, x = "Timepoint", y = "TPM",  palette = genoRAcolors, shape = "genoRA", color = "genoRA", size = 1, point.size = 1.5, add = "mean_se", title = paste0(geneID)) 
+	pgerm <- ggline(fixed0, x = "Timepoint", y = "TPM",  palette = genoVAcolors, shape = "genoRA", color = "genoRA", size = 1, point.size = 1.5, add = "mean_se", title = paste0(geneID)) 
 	#stat_compare_means(comparisons = my_comparisons, label = "p.signif")
 
-	pgerm <- ggpar(pgerm, ylim = c(0, ceiling(max(fixed0$TPM)*1.1)), legend = "right", font.main = "italic", xlab = "hrs differentiation", legend.title = "Genotype/RA")
+	pgerm <- ggpar(pgerm, ylim = c(0, ceiling(max(fixed0$TPM)*1.1)), legend = "right", font.main = "italic", xlab = "hrs differentiation", legend.title = "Genotype/VA")
 	return(pgerm)
 
 }
@@ -89,8 +89,8 @@ tpm_plot_5C <- function(geneID){
 	geneofinterest <- merge(geneofinterest, SampleInfo, by = "ID")
 	
 	#because plotting is dumb, add duplicate values for 0 hrs (one with RA and one without)
-	no0 <- subset(geneofinterest, RA != "")
-	fix0 <- subset(geneofinterest, RA == "")
+	no0 <- subset(geneofinterest, VA != "")
+	fix0 <- subset(geneofinterest, VA == "")
 	fix0_RA <- fix0
 	fix0_RA$genoRA <- paste(fix0_RA$Genotype, "VA +")
 	fix0_NO <- fix0
@@ -117,7 +117,7 @@ tpm_plot_5C <- function(geneID){
 	#label.y = c(y0, y48, y96)
 
 
-	pgerm <- ggline(fixed0_5C, x = "Timepoint", y = "TPM",  palette = genoRAcolors, shape = "genoRA", color = "genoRA", size = 1, point.size = 1.5, add = "mean_se", title = paste0(geneID)) +
+	pgerm <- ggline(fixed0_5C, x = "Timepoint", y = "TPM",  palette = genoVAcolors, shape = "genoRA", color = "genoRA", size = 1, point.size = 1.5, add = "mean_se", title = paste0(geneID)) +
 	stat_compare_means(aes(group = genoRA), method = "t.test", label = "p.signif", label.y = c(y0, y48, y96))
 
 	pgerm <- ggpar(pgerm, ylim = c(0, ceiling(max(fixed0_5C$TPM)*1.1)), legend = "right", font.main = "italic", xlab = "hrs differentiation", legend.title = "Genotype/VA") 

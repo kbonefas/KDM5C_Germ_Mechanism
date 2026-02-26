@@ -428,11 +428,11 @@ rule ESC_EpiLC_5CKOcluster_GO:
 rule ESCEpiLC_RA_TPM:
 	input:
 		"data/raw/230919_ESCEpiLC_RA_gene_TPM.annot.txt",
-		"data/raw/SampleInfo_ESCEpiLC_RA.csv"
+		"data/raw/SampleInfo_ESCEpiLC_VA.csv"
 	output:
-		"results/figure_pieces/ESCEpiLC_RA_germ_5CKO_RAgenesTPM.pdf",
-		"results/figure_pieces/ESCEpiLC_RA_germ_5CKOonly_RAgenesTPM.pdf",
-		"results/figure_pieces/ESCEpiLC_RA_TPM_genesofinterest.pdf"
+		"results/figure_pieces/ESCEpiLC_VA_germ_5CKO_RAgenesTPM.pdf",
+		"results/figure_pieces/ESCEpiLC_VA_germ_5CKOonly_RAgenesTPM.pdf",
+		"results/figure_pieces/ESCEpiLC_VA_TPM_genesofinterest.pdf"
 	script:
 		"code/ESC_EpiLC_RA_TPM.R"
 
