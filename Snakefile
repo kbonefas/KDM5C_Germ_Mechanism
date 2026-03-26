@@ -356,6 +356,21 @@ rule ESCEpiLC_VA_WTKO_DESeq2:
 	script:
 		"code/DESeq2_ESC_EpiLC_VA_WTvKO.R"
 
+#are germline genes within 5cKO significantly upregulated with VA
+rule ESCEpiLC_VA_l2fc2:
+	input:
+		germgenes,
+		"data/processed/restable_ESCEpiLC_VA_5CKOvWT_48VA.csv",		
+		"data/processed/restable_ESCEpiLC_VA_5CKOvWT_48NO.csv",
+		"data/processed/restable_ESCEpiLC_VA_5CKOvWT_96VA.csv",		
+		"data/processed/restable_ESCEpiLC_VA_5CKOvWT_96NO.csv"
+	output:
+		"results/figure_pieces/ESCEpiLC_VA_L2FC_48.pdf",
+		"results/figure_pieces/ESCEpiLC_VA_L2FC_96.pdf"
+	script:
+		"code/ESC_EpiLC_VA_l2fc.R"
+
+
 rule ESC_EpiLC_markers:
 	input:
 		"data/raw/230919_ESCEpiLC_RA_gene_TPM.annot.txt", #annotated TPM for DESeq2
