@@ -37,7 +37,7 @@ def motifSearch(MOTIF, GENES):
 	else:
 		header = ""
 		
-	os.system("perl {HOMER}bin/findMotifs.pl {GENES} mouse {OUTDIR}/ -find {header}{MOTIF}.motif > {OUTDIR}/{MOTIF}_instances_findMotifs_{CLEAN}.txt".format(HOMER = HOMER, MOTIF = MOTIF, header = header, GENES = GENES, OUTDIR = outdir, CLEAN = clean))
+	os.system("perl {HOMER}bin/findMotifs.pl {GENES} mouse {OUTDIR}/ -find {header}{MOTIF}.motif -region -500,500 > {OUTDIR}/{MOTIF}_instances_findMotifs_{CLEAN}.txt".format(HOMER = HOMER, MOTIF = MOTIF, header = header, GENES = GENES, OUTDIR = outdir, CLEAN = clean))
 
 	#os.system("perl {HOMER}bin/annotatePeaks.pl tss mm10 -list {GENES} -m {header}{MOTIF}.motif -size -500,500 > {OUTDIR}/{MOTIF}_instances_annoPeaks_300_300_{CLEAN}.txt".format(HOMER = HOMER, MOTIF = MOTIF, GENES = GENES, header = header, OUTDIR = outdir, CLEAN = clean))
 	

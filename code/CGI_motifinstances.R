@@ -21,7 +21,7 @@ print(head(germ_KDM5C))
 	#Motifs
 	#Percentage
 
-motifdf <- data.frame(Kdm5c_binding = c(rep("CGI", 4), rep("noCGI", 4)), Motifs = c("E2F", "E-box", "Both", "Neither"))
+motifdf <- data.frame(Kdm5c_binding = c(rep("CGI", 4), rep("no", 4)), Motifs = c("E2F", "E-box", "Both", "Neither"))
 print(motifdf)
 
 
@@ -60,11 +60,17 @@ Neither_unbound <- germ_KDM5C_unbound[!germ_KDM5C_unbound %in% E2F_unbound & !ge
 
 motifdf$Count <- c(length(E2F_only_bound), length(Ebox_only_bound), length(Both_bound), length(Neither_bound), length(E2F_only_unbound), length(Ebox_only_unbound), length(Both_unbound), length(Neither_unbound))
 
+print("motifdf")
+motifdf
+
+#percentages
 
 motifdf$Percent_plot <- ifelse(motifdf$Kdm5c_binding == "CGI", (motifdf$Count/(length(E2F_only_bound) + length(Ebox_only_bound) + length(Both_bound) + length(Neither_bound))) * 100, ifelse(motifdf$Kdm5c_binding == "no", (motifdf$Count/(length(E2F_only_unbound) + length(Ebox_only_unbound) + length(Both_unbound) + length(Neither_unbound))) * 100, 0))
 
 
 motifdf$Percent <-as.integer(round(motifdf$Percent_plot))
+
+motifdf
 
 
 #save the plots in an empty list
