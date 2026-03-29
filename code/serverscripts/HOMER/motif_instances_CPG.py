@@ -2,6 +2,9 @@
 #activate blueberry conda env to get python 3
 #have to run without nohup to avoid the running output being put on the top of the file
 
+#need to first make custom promoters
+# homer loadPromoters.pl -name wider_mm10 -org mouse -id refseq -fasta ../../data/references/mouse/mm10/m10.fa -offset 2000
+
 #24.07.23 - using my custom e2f and ebox motifs
 
 import sys
@@ -37,7 +40,9 @@ def motifSearch(MOTIF, GENES):
 	else:
 		header = ""
 		
-	os.system("perl {HOMER}bin/findMotifs.pl {GENES} mouse {OUTDIR}/ -find {header}{MOTIF}.motif -region -500,500 > {OUTDIR}/{MOTIF}_instances_findMotifs_{CLEAN}.txt".format(HOMER = HOMER, MOTIF = MOTIF, header = header, GENES = GENES, OUTDIR = outdir, CLEAN = clean))
+	#os.system("perl {HOMER}bin/findMotifs.pl {GENES} mouse {OUTDIR}/ -find {header}{MOTIF}.motif -start 500 -end 500 > {OUTDIR}/{MOTIF}_instances_findMotifs_{CLEAN}.txt".format(HOMER = HOMER, MOTIF = MOTIF, header = header, GENES = GENES, OUTDIR = outdir, CLEAN = clean))
+
+	os.system("homer loadPromoters.pl -name wider_mm10 -id ensembl -org mouse -id  -genome mm10 -offset 2000 -a FIND -m {header}{MOTIF}.motif -start 500 -end 500 > {OUTDIR}/{MOTIF}_instances_findMotifs_{CLEAN}.txt".format(HOMER = HOMER, MOTIF = MOTIF, header = header, GENES = GENES, OUTDIR = outdir, CLEAN = clean))
 
 	#os.system("perl {HOMER}bin/annotatePeaks.pl tss mm10 -list {GENES} -m {header}{MOTIF}.motif -size -500,500 > {OUTDIR}/{MOTIF}_instances_annoPeaks_300_300_{CLEAN}.txt".format(HOMER = HOMER, MOTIF = MOTIF, GENES = GENES, header = header, OUTDIR = outdir, CLEAN = clean))
 	
