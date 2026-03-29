@@ -13,3 +13,7 @@ germ_CGIfree <-  subset(germ, germ$Promo_CGI == "no")
 
 geneTSSwindow(germ_CGI$ENSEMBL, 1, WIND)
 geneTSSwindow(germ_CGIfree$ENSEMBL, 2, WIND)
+
+
+geneTSSwindow(germ_CGI$ENSEMBL, 3, 500)
+geneTSSwindow(germ_CGIfree$ENSEMBL, 4, 500)

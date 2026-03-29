@@ -40,9 +40,9 @@ def motifSearch(MOTIF, GENES):
 	else:
 		header = ""
 		
-	#os.system("perl {HOMER}bin/findMotifs.pl {GENES} mouse {OUTDIR}/ -find {header}{MOTIF}.motif -start 500 -end 500 > {OUTDIR}/{MOTIF}_instances_findMotifs_{CLEAN}.txt".format(HOMER = HOMER, MOTIF = MOTIF, header = header, GENES = GENES, OUTDIR = outdir, CLEAN = clean))
+	os.system("perl {HOMER}bin/findMotifs.pl {GENES} mouse {OUTDIR}/ -find {header}{MOTIF}.motif -start 500 -end 500 > {OUTDIR}/{MOTIF}_instances_findMotifs_{CLEAN}.txt".format(HOMER = HOMER, MOTIF = MOTIF, header = header, GENES = GENES, OUTDIR = outdir, CLEAN = clean))
 
-	os.system("homer loadPromoters.pl -name wider_mm10 -id ensembl -org mouse -id  -genome mm10 -offset 2000 -a FIND -m {header}{MOTIF}.motif -start 500 -end 500 > {OUTDIR}/{MOTIF}_instances_findMotifs_{CLEAN}.txt".format(HOMER = HOMER, MOTIF = MOTIF, header = header, GENES = GENES, OUTDIR = outdir, CLEAN = clean))
+	# os.system("homer loadPromoters.pl -name wider_mm10 -id ensembl -org mouse -s /workdir/data/references/mouse/mm10/mm10.fa -offset 2000 -a FIND -m {header}{MOTIF}.motif -start 500 -end 500 > {OUTDIR}/{MOTIF}_instances_findMotifs_{CLEAN}.txt".format(HOMER = HOMER, MOTIF = MOTIF, header = header, GENES = GENES, OUTDIR = outdir, CLEAN = clean))
 
 	#os.system("perl {HOMER}bin/annotatePeaks.pl tss mm10 -list {GENES} -m {header}{MOTIF}.motif -size -500,500 > {OUTDIR}/{MOTIF}_instances_annoPeaks_300_300_{CLEAN}.txt".format(HOMER = HOMER, MOTIF = MOTIF, GENES = GENES, header = header, OUTDIR = outdir, CLEAN = clean))
 	
@@ -54,7 +54,7 @@ def motifSearch(MOTIF, GENES):
 
 #get input files of gene list
 #input file needs to be a .txt file with the gene IDs in the first column, and no quotes around them.
-GENES = ["HOMER/germ_CGI_HOMER.txt", "HOMER/germ_noCGI_HOMER.txt"]
+GENES = ["HOMER/TSS_500_germ_CGI.bed", "HOMER/TSS_500_germ_CGIfree.bed"]
 
 
 

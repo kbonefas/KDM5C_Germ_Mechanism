@@ -588,7 +588,9 @@ rule CGI_bed:
 		"results/KDM5C_binding_allgerm_CGI.csv"
 	output:
 		"data/processed/TSS_germ_CGI.bed",
-		"data/processed/TSS_germ_CGIfree.bed"
+		"data/processed/TSS_germ_CGIfree.bed",
+		"data/processed/TSS_500_germ_CGI.bed",
+		"data/processed/TSS_500_germ_CGIfree.bed"
 	script:
 		"code/CGI_bed.R"
 
