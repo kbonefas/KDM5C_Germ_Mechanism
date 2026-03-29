@@ -1,0 +1,119 @@
+GeneID	PromoterID	Offset	Sequence	Motif Name	Strand	MotifScore	Unigene	Refseq	Ensembl	Name	Alias	Orf	Chr	Description	Type
+74469	NM_028958	-49	CACGTG	Ebox	+	8.299739		NM_028958	ENSMUSG00000009596	Taf7l	4933438I11Rik|Taf2q	-	X E3|X 56.18 cM	TATA-box binding protein associated factor 7 like	protein-coding
+74469	NM_028958	-44	CACGTG	Ebox	-	8.299739		NM_028958	ENSMUSG00000009596	Taf7l	4933438I11Rik|Taf2q	-	X E3|X 56.18 cM	TATA-box binding protein associated factor 7 like	protein-coding
+83561	NM_031387	-88	CACGTG	Ebox	+	8.299739		NM_031387	ENSMUSG00000025081	Tdrd1	MTR-1	-	19 D2|19 52.0 cM	tudor domain containing 1	protein-coding
+83561	NM_031387	-83	CACGTG	Ebox	-	8.299739		NM_031387	ENSMUSG00000025081	Tdrd1	MTR-1	-	19 D2|19 52.0 cM	tudor domain containing 1	protein-coding
+17344	NM_008602	8	CACGTG	Ebox	+	8.299739		NM_008602	ENSMUSG00000025423	Pias2	ARIP3|DIP|Dib|Miz1|PIASxalpha|PIASxalpha6|PIASxb|PIASxbeta|SIZ2	-	18 E3|18 52.07 cM	protein inhibitor of activated STAT 2	protein-coding
+17344	NM_008602	13	CACGTG	Ebox	-	8.299739		NM_008602	ENSMUSG00000025423	Pias2	ARIP3|DIP|Dib|Miz1|PIASxalpha|PIASxalpha6|PIASxb|PIASxbeta|SIZ2	-	18 E3|18 52.07 cM	protein inhibitor of activated STAT 2	protein-coding
+66530	NM_024432	-54	CACGTG	Ebox	+	8.299739		NM_024432	ENSMUSG00000019578	Ubxn6	1200008L11Rik|2210415J11Rik|Ubxd1|Ubxdc2	-	17 D|17 29.14 cM	UBX domain protein 6	protein-coding
+66530	NM_024432	-49	CACGTG	Ebox	-	8.299739		NM_024432	ENSMUSG00000019578	Ubxn6	1200008L11Rik|2210415J11Rik|Ubxd1|Ubxdc2	-	17 D|17 29.14 cM	UBX domain protein 6	protein-coding
+17256	NM_010787	-280	CACGTG	Ebox	+	8.299739		NM_010787	ENSMUSG00000002768	Mea1	Mea-1	-	17 C|17 22.9 cM	male enhanced antigen 1	protein-coding
+17256	NM_010787	-275	CACGTG	Ebox	-	8.299739		NM_010787	ENSMUSG00000002768	Mea1	Mea-1	-	17 C|17 22.9 cM	male enhanced antigen 1	protein-coding
+74369	NM_028897	-72	CACGTG	Ebox	+	8.299739		NM_028897	ENSMUSG00000068117	Mei1	4932408F18Rik|mei1	-	15 E1|15 38.41 cM	meiotic double-stranded break formation protein 1	protein-coding
+74369	NM_028897	-67	CACGTG	Ebox	-	8.299739		NM_028897	ENSMUSG00000068117	Mei1	4932408F18Rik|mei1	-	15 E1|15 38.41 cM	meiotic double-stranded break formation protein 1	protein-coding
+30054	NM_001033043	-30	CACGTG	Ebox	+	8.299739		NM_001033043	ENSMUSG00000000365	Rnf17	MMIP-2|Mmip2|TDRD4	-	14 C3|14 28.21 cM	ring finger protein 17	protein-coding
+30054	NM_001033043	-25	CACGTG	Ebox	-	8.299739		NM_001033043	ENSMUSG00000000365	Rnf17	MMIP-2|Mmip2|TDRD4	-	14 C3|14 28.21 cM	ring finger protein 17	protein-coding
+75751	NM_024267	8	CACGTG	Ebox	+	8.299739		NM_024267	ENSMUSG00000002319	Ipo4	8430408O15Rik|Imp4a|RanBP4	-	14 C3|14 28.19 cM	importin 4	protein-coding
+75751	NM_024267	13	CACGTG	Ebox	-	8.299739		NM_024267	ENSMUSG00000002319	Ipo4	8430408O15Rik|Imp4a|RanBP4	-	14 C3|14 28.19 cM	importin 4	protein-coding
+13206	NM_010029	-29	CACGTG	Ebox	+	8.299739		NM_010029	ENSMUSG00000021758	Ddx4	Mvh|VASA	-	13 D2.2|13 63.87 cM	DEAD box helicase 4	protein-coding
+13206	NM_010029	-24	CACGTG	Ebox	-	8.299739		NM_010029	ENSMUSG00000021758	Ddx4	Mvh|VASA	-	13 D2.2|13 63.87 cM	DEAD box helicase 4	protein-coding
+218232	NM_207232	-31	CACGTG	Ebox	+	8.299739		NM_207232	ENSMUSG00000038042	Ptpdc1	Naa-1|Ptpcd1	-	13 A5|13 24.86 cM	protein tyrosine phosphatase domain containing 1	protein-coding
+218232	NM_207232	-26	CACGTG	Ebox	-	8.299739		NM_207232	ENSMUSG00000038042	Ptpdc1	Naa-1|Ptpcd1	-	13 A5|13 24.86 cM	protein tyrosine phosphatase domain containing 1	protein-coding
+110616	NM_029705	-90	CACGTG	Ebox	+	8.299739		NM_029705	ENSMUSG00000021189	Atxn3	2210008M02Rik|ATX3|MJD1|Mjd|Sca3|ataxin-3	-	12 E|12 51.32 cM	ataxin 3	protein-coding
+110616	NM_029705	-19	CACGTG	Ebox	+	8.299739		NM_029705	ENSMUSG00000021189	Atxn3	2210008M02Rik|ATX3|MJD1|Mjd|Sca3|ataxin-3	-	12 E|12 51.32 cM	ataxin 3	protein-coding
+110616	NM_029705	-14	CACGTG	Ebox	-	8.299739		NM_029705	ENSMUSG00000021189	Atxn3	2210008M02Rik|ATX3|MJD1|Mjd|Sca3|ataxin-3	-	12 E|12 51.32 cM	ataxin 3	protein-coding
+110616	NM_029705	-85	CACGTG	Ebox	-	8.299739		NM_029705	ENSMUSG00000021189	Atxn3	2210008M02Rik|ATX3|MJD1|Mjd|Sca3|ataxin-3	-	12 E|12 51.32 cM	ataxin 3	protein-coding
+75266	NM_029227	-25	CACGTG	Ebox	+	8.299739		NM_029227	ENSMUSG00000021078	Tomm20l	4930553D19Rik	-	12 C2|12 29.39 cM	translocase of outer mitochondrial membrane 20-like	protein-coding
+75266	NM_029227	-20	CACGTG	Ebox	-	8.299739		NM_029227	ENSMUSG00000021078	Tomm20l	4930553D19Rik	-	12 C2|12 29.39 cM	translocase of outer mitochondrial membrane 20-like	protein-coding
+74675	NM_029049	-33	CACGTG	Ebox	+	8.299739		NM_029049	ENSMUSG00000039198	Ptchd3	4930451E13Rik|4933440L20Rik|RNDEu-3	-	11 E2|11 87.9 cM	patched domain containing 3	protein-coding
+74675	NM_029049	-28	CACGTG	Ebox	-	8.299739		NM_029049	ENSMUSG00000039198	Ptchd3	4930451E13Rik|4933440L20Rik|RNDEu-3	-	11 E2|11 87.9 cM	patched domain containing 3	protein-coding
+237928	NM_153104	-215	CACGTG	Ebox	+	8.299739		NM_153104	ENSMUSG00000050860	Phospho1	D11Moh36|Phospo1	-	11 D|11 59.01 cM	phosphatase, orphan 1	protein-coding
+237928	NM_153104	-210	CACGTG	Ebox	-	8.299739		NM_153104	ENSMUSG00000050860	Phospho1	D11Moh36|Phospo1	-	11 D|11 59.01 cM	phosphatase, orphan 1	protein-coding
+21689	NM_011569	-292	CACGTG	Ebox	+	8.299739		NM_011569	ENSMUSG00000020799	Tekt1	MT14	-	11 B4|11 44.03 cM	tektin 1	protein-coding
+21689	NM_011569	-287	CACGTG	Ebox	-	8.299739		NM_011569	ENSMUSG00000020799	Tekt1	MT14	-	11 B4|11 44.03 cM	tektin 1	protein-coding
+53422	NM_016875	-262	CACGTG	Ebox	+	8.299739		NM_016875	ENSMUSG00000018554	Ybx2	Msy2	-	11 B3|11 42.93 cM	Y box protein 2	protein-coding
+53422	NM_016875	-257	CACGTG	Ebox	-	8.299739		NM_016875	ENSMUSG00000018554	Ybx2	Msy2	-	11 B3|11 42.93 cM	Y box protein 2	protein-coding
+194908	NM_183139	-33	CACGTG	Ebox	+	8.299739		NM_183139	ENSMUSG00000043648	Pld6	4933433K01Rik|Gm10|Zuc|mZuc|mitoPLD	-	11 B1.3|11 37.79 cM	phospholipase D family member 6	protein-coding
+194908	NM_183139	-28	CACGTG	Ebox	-	8.299739		NM_183139	ENSMUSG00000043648	Pld6	4933433K01Rik|Gm10|Zuc|mZuc|mitoPLD	-	11 B1.3|11 37.79 cM	phospholipase D family member 6	protein-coding
+74309	NM_152818	-107	CACGTG	Ebox	+	8.299739		NM_152818	ENSMUSG00000020435	Osbp2	1700095P05Rik|C630001G20Rik|Gm244|ORP-4|OSBPL1	-	11 A1|11 2.6 cM	oxysterol binding protein 2	protein-coding
+74309	NM_152818	-102	CACGTG	Ebox	-	8.299739		NM_152818	ENSMUSG00000020435	Osbp2	1700095P05Rik|C630001G20Rik|Gm244|ORP-4|OSBPL1	-	11 A1|11 2.6 cM	oxysterol binding protein 2	protein-coding
+20962	NM_011517	-64	CACGTG	Ebox	+	8.299739		NM_011517	ENSMUSG00000020059	Sycp3	Cor1|Scp3	-	10 C1|10 43.94 cM	synaptonemal complex protein 3	protein-coding
+20962	NM_011517	-43	CACGTG	Ebox	+	8.299739		NM_011517	ENSMUSG00000020059	Sycp3	Cor1|Scp3	-	10 C1|10 43.94 cM	synaptonemal complex protein 3	protein-coding
+20962	NM_011517	-38	CACGTG	Ebox	-	8.299739		NM_011517	ENSMUSG00000020059	Sycp3	Cor1|Scp3	-	10 C1|10 43.94 cM	synaptonemal complex protein 3	protein-coding
+20962	NM_011517	-59	CACGTG	Ebox	-	8.299739		NM_011517	ENSMUSG00000020059	Sycp3	Cor1|Scp3	-	10 C1|10 43.94 cM	synaptonemal complex protein 3	protein-coding
+237400	NM_198615	-195	CACGTG	Ebox	+	8.299739		NM_198615	ENSMUSG00000048696	Mex3d	Rkhd1	-	10 C1|10 39.72 cM	mex3 RNA binding family member D	protein-coding
+237400	NM_198615	-117	CACGTG	Ebox	+	8.299739		NM_198615	ENSMUSG00000048696	Mex3d	Rkhd1	-	10 C1|10 39.72 cM	mex3 RNA binding family member D	protein-coding
+237400	NM_198615	-112	CACGTG	Ebox	-	8.299739		NM_198615	ENSMUSG00000048696	Mex3d	Rkhd1	-	10 C1|10 39.72 cM	mex3 RNA binding family member D	protein-coding
+237400	NM_198615	-190	CACGTG	Ebox	-	8.299739		NM_198615	ENSMUSG00000048696	Mex3d	Rkhd1	-	10 C1|10 39.72 cM	mex3 RNA binding family member D	protein-coding
+74052	NM_028735	-56	CACGTG	Ebox	+	8.299739		NM_028735	ENSMUSG00000032514	Ttc21a	4921538N17Rik|Thm2	-	9 F4|9 71.33 cM	tetratricopeptide repeat domain 21A	protein-coding
+74052	NM_028735	-51	CACGTG	Ebox	-	8.299739		NM_028735	ENSMUSG00000032514	Ttc21a	4921538N17Rik|Thm2	-	9 F4|9 71.33 cM	tetratricopeptide repeat domain 21A	protein-coding
+260408	NM_153172	-8	CACGTG	Ebox	+	8.299739		NM_153172	ENSMUSG00000047257	Prss45	Tespl|Tessp5	-	9 F2|9 60.79 cM	serine protease 45	protein-coding
+260408	NM_153172	-3	CACGTG	Ebox	-	8.299739		NM_153172	ENSMUSG00000047257	Prss45	Tespl|Tessp5	-	9 F2|9 60.79 cM	serine protease 45	protein-coding
+28135	NM_001081122	-174	CACGTG	Ebox	+	8.299739		NM_001081122	ENSMUSG00000032534	Cep63	4921501M07|AL450317.13gm1|CD20R|D9Mgc41|D9Mgc48e|ET2	-	9 F1|9 54.61 cM	centrosomal protein 63	protein-coding
+28135	NM_001081122	-169	CACGTG	Ebox	-	8.299739		NM_001081122	ENSMUSG00000032534	Cep63	4921501M07|AL450317.13gm1|CD20R|D9Mgc41|D9Mgc48e|ET2	-	9 F1|9 54.61 cM	centrosomal protein 63	protein-coding
+66654	NM_025687	-93	CACGTG	Ebox	+	8.299739		NM_025687	ENSMUSG00000032065	Tex12	5730518K06Rik	-	9 A5.3|9 27.75 cM	testis expressed 12	protein-coding
+66654	NM_025687	-88	CACGTG	Ebox	-	8.299739		NM_025687	ENSMUSG00000032065	Tex12	5730518K06Rik	-	9 A5.3|9 27.75 cM	testis expressed 12	protein-coding
+320752	NM_001166207	-51	CACGTG	Ebox	+	8.299739		NM_001166207	ENSMUSG00000085576	Dpy19l2	4932443J21Rik|Gm18376	-	9 A4|9 10.22 cM	dpy-19 like 2	protein-coding
+320752	NM_001166207	-46	CACGTG	Ebox	-	8.299739		NM_001166207	ENSMUSG00000085576	Dpy19l2	4932443J21Rik|Gm18376	-	9 A4|9 10.22 cM	dpy-19 like 2	protein-coding
+100009600	NM_001103168	-125	CACGTG	Ebox	+	8.299739		NM_001103168	ENSMUSG00000079681	Zglp1	Glp1	-	9 A3|9 7.7 cM	zinc finger, GATA-like protein 1	protein-coding
+100009600	NM_001103168	-120	CACGTG	Ebox	-	8.299739		NM_001103168	ENSMUSG00000079681	Zglp1	Glp1	-	9 A3|9 7.7 cM	zinc finger, GATA-like protein 1	protein-coding
+75773	NM_029428	-14	CACGTG	Ebox	+	8.299739		NM_029428	ENSMUSG00000024266	Adad2	4930403J07Rik	-	8 E1|8 68.05 cM	adenosine deaminase domain containing 2	protein-coding
+75773	NM_029428	-5	CACGTG	Ebox	+	8.299739		NM_029428	ENSMUSG00000024266	Adad2	4930403J07Rik	-	8 E1|8 68.05 cM	adenosine deaminase domain containing 2	protein-coding
+75773	NM_029428	0	CACGTG	Ebox	-	8.299739		NM_029428	ENSMUSG00000024266	Adad2	4930403J07Rik	-	8 E1|8 68.05 cM	adenosine deaminase domain containing 2	protein-coding
+75773	NM_029428	-9	CACGTG	Ebox	-	8.299739		NM_029428	ENSMUSG00000024266	Adad2	4930403J07Rik	-	8 E1|8 68.05 cM	adenosine deaminase domain containing 2	protein-coding
+76572	NM_029660	-221	CACGTG	Ebox	+	8.299739		NM_029660	ENSMUSG00000073894	Rbmxl2	1700012H05Rik|Hnrnpg-t	-	7 E3|7 56.1 cM	RNA binding motif protein, X-linked-like 2	protein-coding
+76572	NM_029660	-216	CACGTG	Ebox	-	8.299739		NM_029660	ENSMUSG00000073894	Rbmxl2	1700012H05Rik|Hnrnpg-t	-	7 E3|7 56.1 cM	RNA binding motif protein, X-linked-like 2	protein-coding
+13549	NM_010092	-282	CACGTG	Ebox	+	8.299739		NM_010092	ENSMUSG00000002409	Dyrk1b	Mirk	-	7 A3|7 16.67 cM	dual-specificity tyrosine phosphorylation regulated kinase 1b	protein-coding
+13549	NM_010092	-80	CACGTG	Ebox	+	8.299739		NM_010092	ENSMUSG00000002409	Dyrk1b	Mirk	-	7 A3|7 16.67 cM	dual-specificity tyrosine phosphorylation regulated kinase 1b	protein-coding
+13549	NM_010092	-27	CACGTG	Ebox	+	8.299739		NM_010092	ENSMUSG00000002409	Dyrk1b	Mirk	-	7 A3|7 16.67 cM	dual-specificity tyrosine phosphorylation regulated kinase 1b	protein-coding
+13549	NM_010092	-22	CACGTG	Ebox	-	8.299739		NM_010092	ENSMUSG00000002409	Dyrk1b	Mirk	-	7 A3|7 16.67 cM	dual-specificity tyrosine phosphorylation regulated kinase 1b	protein-coding
+13549	NM_010092	-75	CACGTG	Ebox	-	8.299739		NM_010092	ENSMUSG00000002409	Dyrk1b	Mirk	-	7 A3|7 16.67 cM	dual-specificity tyrosine phosphorylation regulated kinase 1b	protein-coding
+13549	NM_010092	-277	CACGTG	Ebox	-	8.299739		NM_010092	ENSMUSG00000002409	Dyrk1b	Mirk	-	7 A3|7 16.67 cM	dual-specificity tyrosine phosphorylation regulated kinase 1b	protein-coding
+112406	NM_053208	-4	CACGTG	Ebox	+	8.299739		NM_053208	ENSMUSG00000058709	Egln2	0610011A13Rik|Hif-p4h-1|Ier4|Phd1|SM-20	-	7 A3|7 15.83 cM	egl-9 family hypoxia-inducible factor 2	protein-coding
+112406	NM_053208	1	CACGTG	Ebox	-	8.299739		NM_053208	ENSMUSG00000058709	Egln2	0610011A13Rik|Hif-p4h-1|Ier4|Phd1|SM-20	-	7 A3|7 15.83 cM	egl-9 family hypoxia-inducible factor 2	protein-coding
+50501	NM_015768	-270	CACGTG	Ebox	+	8.299739		NM_015768	ENSMUSG00000030069	Prok2	Bv8|PK2|Prok1	-	6 D3|6 46.29 cM	prokineticin 2	protein-coding
+50501	NM_015768	-135	CACGTG	Ebox	+	8.299739		NM_015768	ENSMUSG00000030069	Prok2	Bv8|PK2|Prok1	-	6 D3|6 46.29 cM	prokineticin 2	protein-coding
+50501	NM_015768	-130	CACGTG	Ebox	-	8.299739		NM_015768	ENSMUSG00000030069	Prok2	Bv8|PK2|Prok1	-	6 D3|6 46.29 cM	prokineticin 2	protein-coding
+50501	NM_015768	-265	CACGTG	Ebox	-	8.299739		NM_015768	ENSMUSG00000030069	Prok2	Bv8|PK2|Prok1	-	6 D3|6 46.29 cM	prokineticin 2	protein-coding
+71093	NM_153778	-230	CACGTG	Ebox	+	8.299739		NM_153778	ENSMUSG00000037621	Atoh8	4933425C05Rik|Hath6|Math6|bHLHa21|okadin	-	6 C1|6 32.27 cM	atonal bHLH transcription factor 8	protein-coding
+71093	NM_153778	-225	CACGTG	Ebox	-	8.299739		NM_153778	ENSMUSG00000037621	Atoh8	4933425C05Rik|Hath6|Math6|bHLHa21|okadin	-	6 C1|6 32.27 cM	atonal bHLH transcription factor 8	protein-coding
+15401	NM_008265	-240	CACGTG	Ebox	+	8.299739		NM_008265	ENSMUSG00000000942	Hoxa4	Hox-1.4	-	6 B3|6 25.4 cM	homeobox A4	protein-coding
+15401	NM_008265	-235	CACGTG	Ebox	-	8.299739		NM_008265	ENSMUSG00000000942	Hoxa4	Hox-1.4	-	6 B3|6 25.4 cM	homeobox A4	protein-coding
+77485	NM_029916	-120	CACGTG	Ebox	+	8.299739		NM_029916	ENSMUSG00000023403	Stk31	C330007K24Rik	-	6 B2.3|6 23.87 cM	serine threonine kinase 31	protein-coding
+77485	NM_029916	-115	CACGTG	Ebox	-	8.299739		NM_029916	ENSMUSG00000023403	Stk31	C330007K24Rik	-	6 B2.3|6 23.87 cM	serine threonine kinase 31	protein-coding
+50878	NM_016964	-170	CACGTG	Ebox	+	8.299739		NM_016964	ENSMUSG00000036928	Stag3	SA-2	-	5 G2|5 77.01 cM	STAG3 cohesin complex component	protein-coding
+50878	NM_016964	-165	CACGTG	Ebox	-	8.299739		NM_016964	ENSMUSG00000036928	Stag3	SA-2	-	5 G2|5 77.01 cM	STAG3 cohesin complex component	protein-coding
+57749	NM_021311	-179	CACGTG	Ebox	+	8.299739		NM_021311	ENSMUSG00000029423	Piwil1	MIWI	-	5 G1.3|5 67.86 cM	piwi-like RNA-mediated gene silencing 1	protein-coding
+57749	NM_021311	-154	CACGTG	Ebox	+	8.299739		NM_021311	ENSMUSG00000029423	Piwil1	MIWI	-	5 G1.3|5 67.86 cM	piwi-like RNA-mediated gene silencing 1	protein-coding
+57749	NM_021311	-149	CACGTG	Ebox	-	8.299739		NM_021311	ENSMUSG00000029423	Piwil1	MIWI	-	5 G1.3|5 67.86 cM	piwi-like RNA-mediated gene silencing 1	protein-coding
+57749	NM_021311	-174	CACGTG	Ebox	-	8.299739		NM_021311	ENSMUSG00000029423	Piwil1	MIWI	-	5 G1.3|5 67.86 cM	piwi-like RNA-mediated gene silencing 1	protein-coding
+114642	NM_054054	-78	CACGTG	Ebox	+	8.299739		NM_054054	ENSMUSG00000029279	Brdt	7420412D09Rik|Brd6|Fsrg3	-	5 E5|5 52.23 cM	bromodomain, testis-specific	protein-coding
+114642	NM_054054	-73	CACGTG	Ebox	-	8.299739		NM_054054	ENSMUSG00000029279	Brdt	7420412D09Rik|Brd6|Fsrg3	-	5 E5|5 52.23 cM	bromodomain, testis-specific	protein-coding
+73162	NM_028453	-54	CACGTG	Ebox	+	8.299739		NM_028453	ENSMUSG00000041161	Otud3	3110030K17Rik	-	4 D3|4 70.57 cM	OTU domain containing 3	protein-coding
+73162	NM_028453	-49	CACGTG	Ebox	-	8.299739		NM_028453	ENSMUSG00000041161	Otud3	3110030K17Rik	-	4 D3|4 70.57 cM	OTU domain containing 3	protein-coding
+67586	NM_026257	-84	CACGTG	Ebox	+	8.299739		NM_026257	ENSMUSG00000012126	Ubxn11	4930506L07Rik|D4Bwg1540e|Soc|Soci|Ubxd5	-	4 D2.3|4 66.5 cM	UBX domain protein 11	protein-coding
+67586	NM_026257	-79	CACGTG	Ebox	-	8.299739		NM_026257	ENSMUSG00000012126	Ubxn11	4930506L07Rik|D4Bwg1540e|Soc|Soci|Ubxd5	-	4 D2.3|4 66.5 cM	UBX domain protein 11	protein-coding
+71354	NM_023597	-87	CACGTG	Ebox	+	8.299739		NM_023597	ENSMUSG00000028391	Wdr31	5430402I10Rik|spWD	-	4 B3|4 33.14 cM	WD repeat domain 31	protein-coding
+71354	NM_023597	-82	CACGTG	Ebox	-	8.299739		NM_023597	ENSMUSG00000028391	Wdr31	5430402I10Rik|spWD	-	4 B3|4 33.14 cM	WD repeat domain 31	protein-coding
+20957	NM_011516	-94	CACGTG	Ebox	+	8.299739		NM_011516	ENSMUSG00000027855	Sycp1	SCP1	-	3 F2.2|3 45.25 cM	synaptonemal complex protein 1	protein-coding
+20957	NM_011516	-89	CACGTG	Ebox	-	8.299739		NM_011516	ENSMUSG00000027855	Sycp1	SCP1	-	3 F2.2|3 45.25 cM	synaptonemal complex protein 1	protein-coding
+67981	NM_026489	-57	CACGTG	Ebox	+	8.299739		NM_026489	ENSMUSG00000028109	Hormad1	4921522K05Rik|Nohma	-	3 F2.1|3 40.74 cM	HORMA domain containing 1	protein-coding
+67981	NM_026489	-20	CACGTG	Ebox	+	8.299739		NM_026489	ENSMUSG00000028109	Hormad1	4921522K05Rik|Nohma	-	3 F2.1|3 40.74 cM	HORMA domain containing 1	protein-coding
+67981	NM_026489	-15	CACGTG	Ebox	-	8.299739		NM_026489	ENSMUSG00000028109	Hormad1	4921522K05Rik|Nohma	-	3 F2.1|3 40.74 cM	HORMA domain containing 1	protein-coding
+67981	NM_026489	-52	CACGTG	Ebox	-	8.299739		NM_026489	ENSMUSG00000028109	Hormad1	4921522K05Rik|Nohma	-	3 F2.1|3 40.74 cM	HORMA domain containing 1	protein-coding
+73333	NM_178386	-93	CACGTG	Ebox	+	8.299739		NM_178386	ENSMUSG00000069041	Slc25a31	1700034J06Rik|Ant4|Sfec	-	3 B|3 19.5 cM	solute carrier family 25 (mitochondrial carrier; adenine nucleotide translocator), member 31	protein-coding
+73333	NM_178386	-88	CACGTG	Ebox	-	8.299739		NM_178386	ENSMUSG00000069041	Slc25a31	1700034J06Rik|Ant4|Sfec	-	3 B|3 19.5 cM	solute carrier family 25 (mitochondrial carrier; adenine nucleotide translocator), member 31	protein-coding
+21400	NM_009326	-159	CACGTG	Ebox	+	8.299739		NM_009326	ENSMUSG00000059540	Tcea2	S-II-T1|SII-T1|Tceat	-	2 H4|2 103.72 cM	transcription elongation factor A (SII), 2	protein-coding
+21400	NM_009326	-154	CACGTG	Ebox	-	8.299739		NM_009326	ENSMUSG00000059540	Tcea2	S-II-T1|SII-T1|Tceat	-	2 H4|2 103.72 cM	transcription elongation factor A (SII), 2	protein-coding
+228770	NM_001040689	-108	CACGTG	Ebox	+	8.299739		NM_001040689	ENSMUSG00000032852	Rspo4	A730099F22|A930029K19Rik	-	2 G3|2 74.83 cM	R-spondin 4	protein-coding
+228770	NM_001040689	-103	CACGTG	Ebox	-	8.299739		NM_001040689	ENSMUSG00000032852	Rspo4	A730099F22|A930029K19Rik	-	2 G3|2 74.83 cM	R-spondin 4	protein-coding
+14536	NM_010264	-285	CACGTG	Ebox	+	8.299739		NM_010264	ENSMUSG00000063972	Nr6a1	1700113M01Rik|Gcnf|NCNF|RTR	-	2 B|2 24.42 cM	nuclear receptor subfamily 6, group A, member 1	protein-coding
+14536	NM_010264	-280	CACGTG	Ebox	-	8.299739		NM_010264	ENSMUSG00000063972	Nr6a1	1700113M01Rik|Gcnf|NCNF|RTR	-	2 B|2 24.42 cM	nuclear receptor subfamily 6, group A, member 1	protein-coding
+110957	NM_033077	-284	CACGTG	Ebox	+	8.299739		NM_033077	ENSMUSG00000039224	D1Pas1	DDX3XL|Pl10	-	1 H5|1 90.09 cM	DNA segment, Chr 1, Pasteur Institute 1	protein-coding
+110957	NM_033077	-279	CACGTG	Ebox	-	8.299739		NM_033077	ENSMUSG00000039224	D1Pas1	DDX3XL|Pl10	-	1 H5|1 90.09 cM	DNA segment, Chr 1, Pasteur Institute 1	protein-coding
+98558	NM_175296	-223	CACGTG	Ebox	+	8.299739		NM_175296	ENSMUSG00000040629	Mael	4933405K18Rik	-	1 H2.3|1 73.56 cM	maelstrom spermatogenic transposon silencer	protein-coding
+98558	NM_175296	-218	CACGTG	Ebox	-	8.299739		NM_175296	ENSMUSG00000040629	Mael	4933405K18Rik	-	1 H2.3|1 73.56 cM	maelstrom spermatogenic transposon silencer	protein-coding
+75388	NM_029267	-293	CACGTG	Ebox	+	8.299739		NM_029267	ENSMUSG00000025977	Boll	4930554P13Rik|4930597B14Rik	-	1 C1.2|1 28.08 cM	boule homolog, RNA binding protein	protein-coding
+75388	NM_029267	-288	CACGTG	Ebox	-	8.299739		NM_029267	ENSMUSG00000025977	Boll	4930554P13Rik|4930597B14Rik	-	1 C1.2|1 28.08 cM	boule homolog, RNA binding protein	protein-coding
+78016	NM_030025	-31	CACGTG	Ebox	+	8.299739		NM_030025	ENSMUSG00000025983	Ccdc150	4930511H11Rik	-	1 C1.1|1 27.06 cM	coiled-coil domain containing 150	protein-coding
+78016	NM_030025	-26	CACGTG	Ebox	-	8.299739		NM_030025	ENSMUSG00000025983	Ccdc150	4930511H11Rik	-	1 C1.1|1 27.06 cM	coiled-coil domain containing 150	protein-coding

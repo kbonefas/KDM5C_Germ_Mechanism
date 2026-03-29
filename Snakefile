@@ -304,6 +304,24 @@ rule KDM5C_chip_HOMER:
 	script:
 		"code/ChIPseq_KDM5C_HOMER.R"
 
+rule CGI_HOMER:
+	input:
+		#all of the kdm5c bound and unbound germ degs
+		"results/KDM5C_binding_allgerm_CGI.csv",
+
+		#germline genes with Ebox and E2f motifs near TSS
+		"data/raw/HOMER/E2F_instances_findMotifs_germ_CGI.txt",
+		"data/raw/HOMER/Ebox_instances_findMotifs_germ_CGI.txt",
+		"data/raw/HOMER/E2F_instances_findMotifs_germ_noCGI.txt",
+		"data/raw/HOMER/Ebox_instances_findMotifs_KDM5C_germ_noCGI..txt",
+		"data/raw/HOMER/xbox_instances_findMotifs_KDM5C_germ_CGI.txt",
+		"data/raw/HOMER/xbox_instances_findMotifs_KDM5C_germ_noCGI..txt"
+	output:
+		"results/figure_pieces/KDM5C_ChIPseq_HOMER_e2febox_perc_bar.pdf",
+		"results/figure_pieces/KDM5C_ChIPseq_HOMER_xbox_perc_bar.pdf"
+	script:
+		"code/ChIPseq_KDM5C_HOMER.R"
+
 rule KDM5C_ChIP_Rfx2:
 	input:
 		"data/raw/EpiLC_gene_TPM.txt",
