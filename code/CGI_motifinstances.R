@@ -52,7 +52,9 @@ Both_unbound <- E2F_unbound[E2F_unbound %in% Ebox_unbound]
 E2F_only_unbound <- E2F_unbound[!E2F_unbound %in% Ebox_unbound]
 Ebox_only_unbound <- Ebox_unbound[!Ebox_unbound %in% E2F_unbound]
 
-germ_KDM5C_unbound <- subset(germ_KDM5C, germ_KDM5C$KDM5C_binding == "no")$ENSEMBL
+germ_KDM5C_unbound <- subset(germ_KDM5C, germ_KDM5C$Promo_CGI == "no")$ENSEMBL
+print("kdm5c germ with no CGI - germ_KDM5C_unbound")
+print(head(germ_KDM5C_unbound))
 Neither_unbound <- germ_KDM5C_unbound[!germ_KDM5C_unbound %in% E2F_unbound & !germ_KDM5C_unbound %in% Ebox_unbound]
 
 
@@ -92,10 +94,18 @@ xbox_df <- data.frame(Kdm5c_binding = rep(c("CGI", "no"), 2), Xbox_status = c(re
 xbox_KDM5C_bound <- unique(read.csv(snakemake@input[[6]], sep = "\t")$Ensembl)
 xbox_KDM5C_unbound <- unique(read.csv(snakemake@input[[7]], sep = "\t")$Ensembl)
 
+print("xbox_noCGI")
+print(head(xbox_KDM5C_unbound))
+
+#CGI loci without X box motifs
 No_KDM5C_bound <- germ_KDM5C_bound[!germ_KDM5C_bound %in% xbox_KDM5C_bound]
+#non-CGI loci with without x box motifs
 No_KDM5C_unbound <- germ_KDM5C_unbound[!germ_KDM5C_unbound %in% xbox_KDM5C_unbound]
 
 xbox_df$Count <- c(length(xbox_KDM5C_bound), length(xbox_KDM5C_unbound), length(No_KDM5C_bound), length(No_KDM5C_unbound))
+
+
+#percentage is the number of CGI genes with X box motifs  
 
 xbox_df$Percent_plot <- ifelse(xbox_df$Kdm5c_binding == "CGI", xbox_df$Count/sum(subset(xbox_df, xbox_df$Kdm5c_binding == "CGI")$Count) * 100, ifelse(xbox_df$Kdm5c_binding == "no", xbox_df$Count/sum(subset(xbox_df, xbox_df$Kdm5c_binding == "no")$Count) * 100, 0))
 
@@ -106,7 +116,7 @@ xbox_df
 xbox_df$Xbox_status <- factor(xbox_df$Xbox_status, level = c("X-box", "No"))
 
 q <- ggbarplot(xbox_df, "Kdm5c_binding", "Percent", fill = "Xbox_status", color = "Xbox_status", palette = c("steelblue1", "steelblue4"),
-title = "All germline genes", label = TRUE, lab.col = "black", lab.vjust = 1, xlab = "KDM5C Binding at Promoter", ylab = "% of genes", orientation = "vert") 
+title = "All germline genes", label = TRUE, lab.col = "black", lab.vjust = 1, xlab = "CGI status", ylab = "% of genes", orientation = "vert") 
 
 ggsave(snakemake@output[[2]], q, width = 4, height = 4)
 

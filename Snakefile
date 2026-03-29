@@ -313,14 +313,14 @@ rule CGI_HOMER:
 		"data/raw/HOMER/E2F_instances_findMotifs_germ_CGI.txt",
 		"data/raw/HOMER/Ebox_instances_findMotifs_germ_CGI.txt",
 		"data/raw/HOMER/E2F_instances_findMotifs_germ_noCGI.txt",
-		"data/raw/HOMER/Ebox_instances_findMotifs_KDM5C_germ_noCGI..txt",
-		"data/raw/HOMER/xbox_instances_findMotifs_KDM5C_germ_CGI.txt",
-		"data/raw/HOMER/xbox_instances_findMotifs_KDM5C_germ_noCGI..txt"
+		"data/raw/HOMER/Ebox_instances_findMotifs_germ_noCGI.txt",
+		"data/raw/HOMER/xbox_instances_findMotifs_germ_CGI.txt",
+		"data/raw/HOMER/xbox_instances_findMotifs_germ_noCGI.txt"
 	output:
-		"results/figure_pieces/KDM5C_ChIPseq_HOMER_e2febox_perc_bar.pdf",
-		"results/figure_pieces/KDM5C_ChIPseq_HOMER_xbox_perc_bar.pdf"
+		"results/figure_pieces/CGI_HOMER_e2febox_perc_bar.pdf",
+		"results/figure_pieces/CGI_HOMER_xbox_perc_bar.pdf"
 	script:
-		"code/ChIPseq_KDM5C_HOMER.R"
+		"code/CGI_motifinstances.R"
 
 rule KDM5C_ChIP_Rfx2:
 	input:
