@@ -310,12 +310,12 @@ rule CGI_HOMER:
 		"results/KDM5C_binding_allgerm_CGI.csv",
 
 		#germline genes with Ebox and E2f motifs near TSS
-		"data/raw/HOMER/E2F_instances_findMotifs_germ_CGI.txt",
-		"data/raw/HOMER/Ebox_instances_findMotifs_germ_CGI.txt",
-		"data/raw/HOMER/E2F_instances_findMotifs_germ_noCGI.txt",
-		"data/raw/HOMER/Ebox_instances_findMotifs_germ_noCGI.txt",
-		"data/raw/HOMER/xbox_instances_findMotifs_germ_CGI.txt",
-		"data/raw/HOMER/xbox_instances_findMotifs_germ_noCGI.txt"
+		"data/raw/HOMER/E2F_instances_findMotifs_TSS_500_germ_CGI.txt",
+		"data/raw/HOMER/Ebox_instances_findMotifs_TSS_500_germ_CGI.txt",
+		"data/raw/HOMER/E2F_instances_findMotifs_TSS_500_germ_noCGI.txt",
+		"data/raw/HOMER/Ebox_instances_findMotifs_TSS_500_germ_noCGI.txt",
+		"data/raw/HOMER/xbox_instances_findMotifs_TSS_500_germ_CGI.txt",
+		"data/raw/HOMER/xbox_instances_findMotifs_TSS_500_germ_noCGI.txt"
 	output:
 		"results/figure_pieces/CGI_HOMER_e2febox_perc_bar.pdf",
 		"results/figure_pieces/CGI_HOMER_xbox_perc_bar.pdf"

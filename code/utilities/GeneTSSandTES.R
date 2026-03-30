@@ -43,13 +43,13 @@ geneTSSandTES <- function(goi, n){
 #n - location of output table in snakefile
 geneTSSwindow <- function(goi, n, window){
 	#regions of interest
-	roi <- subset(gtf_df, ENSEMBL %in% goi, select = c(seqnames, TSS))
+	roi <- subset(gtf_df, ENSEMBL %in% goi, select = c(seqnames, TSS, gene_name))
 	
 	#Add and subtract the window from the TSS
 	roi$TSS_up <- roi$TSS - window
 	roi$TSS_down <- roi$TSS + window
 
-	write.table(roi[,c("seqnames","TSS_up", "TSS_down")], snakemake@output[[n]], sep = "\t", row.names = FALSE, col.names=FALSE, quote = FALSE)
+	write.table(roi[,c("seqnames","TSS_up", "TSS_down", "gene_name")], snakemake@output[[n]], sep = "\t", row.names = FALSE, col.names=FALSE, quote = FALSE)
 
 }
 

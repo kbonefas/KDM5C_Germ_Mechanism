@@ -40,7 +40,7 @@ def motifSearch(MOTIF, GENES):
 	else:
 		header = ""
 		
-	os.system("perl {HOMER}bin/findMotifs.pl {GENES} mouse {OUTDIR}/ -find {header}{MOTIF}.motif -start 500 -end 500 > {OUTDIR}/{MOTIF}_instances_findMotifs_{CLEAN}.txt".format(HOMER = HOMER, MOTIF = MOTIF, header = header, GENES = GENES, OUTDIR = outdir, CLEAN = clean))
+	os.system("perl {HOMER}bin/findMotifsGenome.pl {GENES} mm10 {OUTDIR}/ -find {header}{MOTIF}.motif -size 500 > {OUTDIR}/{MOTIF}_instances_findMotifs_{CLEAN}.txt".format(HOMER = HOMER, MOTIF = MOTIF, header = header, GENES = GENES, OUTDIR = outdir, CLEAN = clean))
 
 	# os.system("homer loadPromoters.pl -name wider_mm10 -id ensembl -org mouse -s /workdir/data/references/mouse/mm10/mm10.fa -offset 2000 -a FIND -m {header}{MOTIF}.motif -start 500 -end 500 > {OUTDIR}/{MOTIF}_instances_findMotifs_{CLEAN}.txt".format(HOMER = HOMER, MOTIF = MOTIF, header = header, GENES = GENES, OUTDIR = outdir, CLEAN = clean))
 
