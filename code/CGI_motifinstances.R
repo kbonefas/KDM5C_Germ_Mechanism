@@ -27,32 +27,32 @@ print(motifdf)
 
 #read in the instances
 
-# get unique ensembl ids
+# get unique SYMBOL ids
 
 #e2f bound
-E2F_bound <- unique(read.csv(snakemake@input[[2]], sep = "\t")$Ensembl)
+E2F_bound <- unique(read.csv(snakemake@input[[2]], sep = "\t")$PositionID)
 #ebox bound
-Ebox_bound <- unique(read.csv(snakemake@input[[3]], sep = "\t")$Ensembl)
+Ebox_bound <- unique(read.csv(snakemake@input[[3]], sep = "\t")$PositionID)
 
 Both_bound <- E2F_bound[E2F_bound %in% Ebox_bound]
 E2F_only_bound <- E2F_bound[!E2F_bound %in% Ebox_bound]
 Ebox_only_bound <- Ebox_bound[!Ebox_bound %in% E2F_bound]
 
-germ_KDM5C_bound <- subset(germ_KDM5C, germ_KDM5C$Promo_CGI == "CGI")$ENSEMBL
+germ_KDM5C_bound <- subset(germ_KDM5C, germ_KDM5C$Promo_CGI == "CGI")$SYMBOL
 Neither_bound <- germ_KDM5C_bound[!(germ_KDM5C_bound %in% E2F_bound & germ_KDM5C_bound %in% Ebox_bound)]
 
 
 
 #e2f unbound
-E2F_unbound <- unique(read.csv(snakemake@input[[4]], sep = "\t")$Ensembl)
+E2F_unbound <- unique(read.csv(snakemake@input[[4]], sep = "\t")$PositionID)
 #ebox unbound
-Ebox_unbound <- unique(read.csv(snakemake@input[[5]], sep = "\t")$Ensembl)
+Ebox_unbound <- unique(read.csv(snakemake@input[[5]], sep = "\t")$PositionID)
 
 Both_unbound <- E2F_unbound[E2F_unbound %in% Ebox_unbound]
 E2F_only_unbound <- E2F_unbound[!E2F_unbound %in% Ebox_unbound]
 Ebox_only_unbound <- Ebox_unbound[!Ebox_unbound %in% E2F_unbound]
 
-germ_KDM5C_unbound <- subset(germ_KDM5C, germ_KDM5C$Promo_CGI == "no")$ENSEMBL
+germ_KDM5C_unbound <- subset(germ_KDM5C, germ_KDM5C$Promo_CGI == "no")$SYMBOL
 print("kdm5c germ with no CGI - germ_KDM5C_unbound")
 print(head(germ_KDM5C_unbound))
 Neither_unbound <- germ_KDM5C_unbound[!germ_KDM5C_unbound %in% E2F_unbound & !germ_KDM5C_unbound %in% Ebox_unbound]
@@ -97,8 +97,8 @@ ggsave(snakemake@output[[1]], motifbar(motifdf, "Percent", "All germline genes")
 xbox_df <- data.frame(Kdm5c_binding = rep(c("CGI", "no"), 2), Xbox_status = c(rep("X-box",2), rep("No", 2)))
 
 #####
-xbox_KDM5C_bound <- unique(read.csv(snakemake@input[[6]], sep = "\t")$Ensembl)
-xbox_KDM5C_unbound <- unique(read.csv(snakemake@input[[7]], sep = "\t")$Ensembl)
+xbox_KDM5C_bound <- unique(read.csv(snakemake@input[[6]], sep = "\t")$PositionID)
+xbox_KDM5C_unbound <- unique(read.csv(snakemake@input[[7]], sep = "\t")$PositionID)
 
 print("xbox_noCGI")
 print(head(xbox_KDM5C_unbound))

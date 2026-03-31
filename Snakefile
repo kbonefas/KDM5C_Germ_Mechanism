@@ -310,12 +310,12 @@ rule CGI_HOMER:
 		"results/KDM5C_binding_allgerm_CGI.csv",
 
 		#germline genes with Ebox and E2f motifs near TSS
-		"data/raw/HOMER/E2F_instances_findMotifs_TSS_500_germ_CGI.txt",
-		"data/raw/HOMER/Ebox_instances_findMotifs_TSS_500_germ_CGI.txt",
-		"data/raw/HOMER/E2F_instances_findMotifs_TSS_500_germ_noCGI.txt",
-		"data/raw/HOMER/Ebox_instances_findMotifs_TSS_500_germ_noCGI.txt",
-		"data/raw/HOMER/xbox_instances_findMotifs_TSS_500_germ_CGI.txt",
-		"data/raw/HOMER/xbox_instances_findMotifs_TSS_500_germ_noCGI.txt"
+		"data/raw/HOMER/E2F_instances_findMotifs_TSS_500_germ_CGI.bed.txt",
+		"data/raw/HOMER/Ebox_instances_findMotifs_TSS_500_germ_CGI.bed.txt",
+		"data/raw/HOMER/E2F_instances_findMotifs_TSS_500_germ_CGIfree.bed.txt",
+		"data/raw/HOMER/Ebox_instances_findMotifs_TSS_500_germ_CGIfree.bed.txt",
+		"data/raw/HOMER/xbox_instances_findMotifs_TSS_500_germ_CGI.bed.txt",
+		"data/raw/HOMER/xbox_instances_findMotifs_TSS_500_germ_CGIfree.bed.txt"
 	output:
 		"results/figure_pieces/CGI_HOMER_e2febox_perc_bar.pdf",
 		"results/figure_pieces/CGI_HOMER_xbox_perc_bar.pdf"
@@ -380,7 +380,8 @@ rule ESCEpiLC_VA_l2fc2:
 		"data/processed/restable_ESCEpiLC_VA_5CKOvWT_48VA.csv",		
 		"data/processed/restable_ESCEpiLC_VA_5CKOvWT_48NO.csv",
 		"data/processed/restable_ESCEpiLC_VA_5CKOvWT_96VA.csv",		
-		"data/processed/restable_ESCEpiLC_VA_5CKOvWT_96NO.csv"
+		"data/processed/restable_ESCEpiLC_VA_5CKOvWT_96NO.csv",
+		"data/raw/Kojima_eLife_Stra8_bound_genes.csv"
 	output:
 		"results/figure_pieces/ESCEpiLC_VA_L2FC_48.pdf",
 		"results/figure_pieces/ESCEpiLC_VA_L2FC_96.pdf"
