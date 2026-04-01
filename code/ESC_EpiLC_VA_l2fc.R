@@ -28,21 +28,31 @@ library(ggpubr)
 ##Stra8 bound genes
 Stra8 <- read.csv(snakemake@input[[6]], sep = ",")
 
+#DAZL regulated genes
+library("readxl")
+Dazl <- data.frame(read_excel(snakemake@input[[7]], sheet = 5))
+Dazl <- subset(Dazl, Dazl$DAZL.target == "DAZL.target")
+print("Dazl")
+print(head(Dazl))
+
 
 l2fc_scatter <- function(df, TITLE){
     colnames(df)[colnames(df) == 'Row.names'] <- 'ENSEMBL'
     df2 <- merge(df, germ, by = "ENSEMBL") 
     df2$Stra8 <- ifelse(df2$ENSEMBL %in% Stra8$ENSEMBL, "yes", "no" )
+    df2$Dazl <- ifelse(df2$SYMBOL %in% Dazl$Gene.id, "Dazl", "no" )
     print(head(df2))
-    ggscatter(df2, x = "NO_L2FC", y = "VA_L2FC",
-        color = "Stra8", palette = c("red","gray"), size = 2.5, alpha = 0.25, # Points color, shape and size
+    p <- ggscatter(df2, x = "NO_L2FC", y = "VA_L2FC",
+        color = "Dazl", palette = c("blue","gray"), size = 2.5, alpha = 0.25, # Points color, shape and size
         add = "reg.line",  # Add regressin line
         add.params = list(color = "red", fill = "gray"), # Customize reg. line
         conf.int = TRUE, # Add confidence interval
-        cor.coef = TRUE, # Add correlation coefficient. see ?stat_cor
         cor.coeff.args = list(method = "pearson", label.x = 3, label.sep = "\n"),
         title = TITLE
-        ) + geom_abline(intercept = 0, slope = 1, linetype="dashed", size=0.75)
+        ) + geom_abline(intercept = 0, slope = 1, linetype="solid", size=0.75)
+
+    p + geom_hline(yintercept = 0, linetype = "dashed", color = "black") + 
+    geom_vline(xintercept = 0, linetype = "dashed", color = "black")
 }
 
 ggsave(snakemake@output[[1]], ggpar(l2fc_scatter(hrs48, "48hrs"), xlim = c(-2,4), ylim = c(-2,4)), width = 5, height = 5)
