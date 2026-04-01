@@ -308,7 +308,7 @@ rule CGI_HOMER:
 	input:
 		#all of the kdm5c bound and unbound germ degs
 		"results/KDM5C_binding_allgerm_CGI.csv",
-
+		
 		#germline genes with Ebox and E2f motifs near TSS
 		"data/raw/HOMER/E2F_instances_findMotifs_TSS_500_germ_CGI.bed.txt",
 		"data/raw/HOMER/Ebox_instances_findMotifs_TSS_500_germ_CGI.bed.txt",

@@ -25,14 +25,19 @@ print(head(hrs48))
 #make a scatterplot
 library(ggpubr)
 
+##Stra8 bound genes
+Stra8 <- read.csv(snakemake@input[[6]], sep = ",")
+
+
 l2fc_scatter <- function(df, TITLE){
     colnames(df)[colnames(df) == 'Row.names'] <- 'ENSEMBL'
     df2 <- merge(df, germ, by = "ENSEMBL") 
+    df2$Stra8 <- ifelse(df2$ENSEMBL %in% Stra8$ENSEMBL, "yes", "no" )
     print(head(df2))
     ggscatter(df2, x = "NO_L2FC", y = "VA_L2FC",
-        color = "black", size = 2.5, # Points color, shape and size
+        color = "Stra8", palette = c("red","gray"), size = 2.5, alpha = 0.25, # Points color, shape and size
         add = "reg.line",  # Add regressin line
-        add.params = list(color = "red", fill = "lightgray"), # Customize reg. line
+        add.params = list(color = "red", fill = "gray"), # Customize reg. line
         conf.int = TRUE, # Add confidence interval
         cor.coef = TRUE, # Add correlation coefficient. see ?stat_cor
         cor.coeff.args = list(method = "pearson", label.x = 3, label.sep = "\n"),
