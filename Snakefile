@@ -341,7 +341,8 @@ rule KDM5C_chip_Stra8:
 
 	output:
 		"results/figure_pieces/KDM5C_ChIPseq_Stra8_targets.pdf",
-		"results/figure_pieces/KDM5C_ChIPseq_Stra8_CpG_island.pdf"
+		"results/figure_pieces/KDM5C_ChIPseq_Stra8_CpG_island.pdf",
+		"results/figure_pieces/KDM5C_
 	script:
 		"code/ChIPseq_KDM5C_Stra8.R"
 
