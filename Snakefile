@@ -341,8 +341,7 @@ rule KDM5C_chip_Stra8:
 
 	output:
 		"results/figure_pieces/KDM5C_ChIPseq_Stra8_targets.pdf",
-		"results/figure_pieces/KDM5C_ChIPseq_Stra8_CpG_island.pdf",
-		"results/figure_pieces/KDM5C_
+		"results/figure_pieces/KDM5C_ChIPseq_Stra8_CpG_island.pdf"
 	script:
 		"code/ChIPseq_KDM5C_Stra8.R"
 
@@ -585,6 +584,17 @@ rule Germ_CGI:
 		"results/figure_pieces/CGI_all_germ.pdf"
 	script:
 		"code/WGBS_germ_CGI.R"
+
+
+#CGI status for different categories
+rule CGI_categories:
+	input:
+		"results/KDM5C_binding_allgerm_CGI.csv",
+		"data/raw/Kojima_eLife_Stra8_bound_genes.csv"
+	output:
+		"results/figure_pieces/CGI_Stra8.pdf"
+	script:
+		"code/CGI_categories.R"
 
 rule CGI_bed:
 	input:

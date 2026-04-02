@@ -100,37 +100,37 @@ ggsave(snakemake@output[[2]], grid.arrange(grobs = CGI_plots, ncol = 2), width =
 	#b = genes with CGIs
 #labels = either "ENSEMBL" or "SYMBOL"
 
-germ_percent_bar <- function(a, b, labels){
-	#total number of genes
-	together <- unique(c(a, b))
+# germ_percent_bar <- function(a, b, labels){
+# 	#total number of genes
+# 	together <- unique(c(a, b))
 
-	#instances of a that are in b
-	#of all the germline genes that are stra8 targets (a), how many are in that have CGIs (b)
-	a_in_b <- as.integer(round(length(a[a %in% b])/length(a)))
-	print("")
-	print(a_in_b)
+# 	#instances of a that are in b
+# 	#of all the germline genes that are stra8 targets (a), how many are in that have CGIs (b)
+# 	a_in_b <- as.integer(round(length(a[a %in% b])/length(a)))
+# 	print("")
+# 	print(a_in_b)
 
 	
-	#how many that aren't stra8 targets have CGIs
-	if(labels == "ENSEMBL"){
-		IDs <- germ_KDM5C$ENSEMBL
-		nota <- IDs[!(IDs %in% a)]
-	} else if(labels == "SYMBOL"){
-		IDs <- germ_KDM5C$SYMBOL
-		nota <- IDs[!(IDs %in% a)]
-	} else {
-		print("whoops I broke")
-	}
-	print("nota")
-	print(head(nota))
+# 	#how many that aren't stra8 targets have CGIs
+# 	if(labels == "ENSEMBL"){
+# 		IDs <- germ_KDM5C$ENSEMBL
+# 		nota <- IDs[!(IDs %in% a)]
+# 	} else if(labels == "SYMBOL"){
+# 		IDs <- germ_KDM5C$SYMBOL
+# 		nota <- IDs[!(IDs %in% a)]
+# 	} else {
+# 		print("whoops I broke")
+# 	}
+# 	print("nota")
+# 	print(head(nota))
 
-	nota_in_b <- as.integer(round(length(nota[nota %in% b])/length(nota)))
+# 	nota_in_b <- as.integer(round(length(nota[nota %in% b])/length(nota)))
 
-	### make the categories, name the categories, subtract percents
+# 	### make the categories, name the categories, subtract percents
 	
-	df <- data.frame(Kdm5c_binding = c(rep("Bound", 2), rep("Unbound", 2)),  Stra8_binding = rep(c("Bound", "Unbound"), 2))
-	df$Stra8_Count <- c(nrow(subset(germ_KDM5C_Stra8, germ_KDM5C_Stra8$KDM5C_binding == "Bound" & germ_KDM5C_Stra8$STRA8_bound == "STRA8-bound")) , nrow(subset(germ_KDM5C_Stra8, germ_KDM5C_Stra8$KDM5C_binding == "Bound" & germ_KDM5C_Stra8$STRA8_bound == "not STRA8-bound")), nrow(subset(germ_KDM5C_Stra8, germ_KDM5C_Stra8$KDM5C_binding == "Unbound" & germ_KDM5C_Stra8$STRA8_bound == "STRA8-bound")), nrow(subset(germ_KDM5C_Stra8, germ_KDM5C_Stra8$KDM5C_binding == "Unbound" & germ_KDM5C_Stra8$STRA8_bound == "not STRA8-bound")))
+# 	df <- data.frame(Kdm5c_binding = c(rep("Bound", 2), rep("Unbound", 2)),  Stra8_binding = rep(c("Bound", "Unbound"), 2))
+# 	df$Stra8_Count <- c(nrow(subset(germ_KDM5C_Stra8, germ_KDM5C_Stra8$KDM5C_binding == "Bound" & germ_KDM5C_Stra8$STRA8_bound == "STRA8-bound")) , nrow(subset(germ_KDM5C_Stra8, germ_KDM5C_Stra8$KDM5C_binding == "Bound" & germ_KDM5C_Stra8$STRA8_bound == "not STRA8-bound")), nrow(subset(germ_KDM5C_Stra8, germ_KDM5C_Stra8$KDM5C_binding == "Unbound" & germ_KDM5C_Stra8$STRA8_bound == "STRA8-bound")), nrow(subset(germ_KDM5C_Stra8, germ_KDM5C_Stra8$KDM5C_binding == "Unbound" & germ_KDM5C_Stra8$STRA8_bound == "not STRA8-bound")))
 
 
-}
+# }
 
