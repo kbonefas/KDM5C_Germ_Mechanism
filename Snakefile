@@ -590,9 +590,11 @@ rule Germ_CGI:
 rule CGI_categories:
 	input:
 		"results/KDM5C_binding_allgerm_CGI.csv",
-		"data/raw/Kojima_eLife_Stra8_bound_genes.csv"
+		"data/raw/Kojima_eLife_Stra8_bound_genes.csv",
+		"data/raw/Mikedis_elife_elife-56523-fig3-data2-v2.xlsx"
 	output:
-		"results/figure_pieces/CGI_Stra8.pdf"
+		"results/figure_pieces/CGI_Stra8.pdf",
+		"results/figure_pieces/CGI_DAZL.pdf"
 	script:
 		"code/CGI_categories.R"
 

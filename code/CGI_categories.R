@@ -18,6 +18,7 @@ motifbar <- function(colum, TITLE, FILL, COLORS){
 
 stra8colors <- c("yes" = "firebrick1", "no" = "brown4")
 cgicolors <- c("no" = "aquamarine4", "CGI" = "aquamarine3")
+dazlcolors = c("yes" = "steelblue1", "no"  = "steelblue4")
 
 
 
@@ -27,7 +28,7 @@ cgicolors <- c("no" = "aquamarine4", "CGI" = "aquamarine3")
 	#b = genes with CGIs
 #labels = either "ENSEMBL" or "SYMBOL"
 
-germ_percent_bar <- function(a, b, labels, NAME){
+germ_percent_bar <- function(a, b, labels, NAME, PALETTE){
 	#total number of genes
 	together <- unique(c(a, b))
 	print("together")
@@ -66,16 +67,16 @@ germ_percent_bar <- function(a, b, labels, NAME){
 	nota_in_b <- as.integer(round(length(nota[nota %in% b])/length(nota)*100))
 
 	### make the categories, name the categories, subtract percents
-	df <- data.frame(CGI_status = c(rep("CGI", 2), rep("no", 2)),  Overlap = rep(c("yes", "no"), 2))
+	df <- data.frame(CGI_status = c(rep("CGI", 2), rep("no", 2)),  overlap = rep(c("yes", "no"), 2))
 	df$percent <- c(a_in_b, 100-a_in_b, nota_in_b, 100-nota_in_b)
 
 	print(df)
-
+	df$overlap <- factor(df$overlap, levels = c("yes", "no"))
 
 	
 	q <- ggbarplot(df, "CGI_status", "percent",
-	fill = "Overlap", color = "Overlap", palette = stra8colors,
-	title = paste0(NAME, " overlap"), label = TRUE, lab.col = "black", lab.vjust = 1, xlab = "CGI statusr", ylab = "% of genes", orientation = "vert") 
+	fill = "overlap", color = "overlap", palette = PALETTE,
+	title = paste0(NAME, " overlap"), label = TRUE, lab.col = "black", lab.vjust = 1, xlab = "CGI status", ylab = "% of genes", orientation = "vert") 
 
 	return(q)
 }
@@ -88,6 +89,16 @@ CGI_genes <- subset(germ, germ$Promo_CGI == "CGI")
 
 
 library("ggpubr")
-ggsave(snakemake@output[[1]], germ_percent_bar(Stra8$ENSEMBL, CGI_genes$ENSEMBL, "ENSEMBL", "Stra8"), width = 4.5, height = 4)
+ggsave(snakemake@output[[1]], germ_percent_bar(Stra8$ENSEMBL, CGI_genes$ENSEMBL, "ENSEMBL", "Stra8", stra8colors), width = 4.5, height = 4)
+print("finsihed stra8")
 
+#do the same thing for Dazl
+library("readxl")
+Dazl <- data.frame(read_excel(snakemake@input[[3]], sheet = 5))
+print(head(Dazl))
+Dazl <- subset(Dazl, Dazl$DAZL.target == "DAZL.target")
+print("Dazl")
+print(head(Dazl))
+
+ggsave(snakemake@output[[2]], germ_percent_bar(Dazl$Gene.id, CGI_genes$SYMBOL, "SYMBOL", "Dazl", dazlcolors), width = 4.5, height = 4)
 
