@@ -586,7 +586,7 @@ rule Germ_CGI:
 		"code/WGBS_germ_CGI.R"
 
 
-#CGI status for different categories
+#CGI status for different categories (Stra8 and Dazl binding)
 rule CGI_categories:
 	input:
 		"results/KDM5C_binding_allgerm_CGI.csv",
@@ -597,6 +597,14 @@ rule CGI_categories:
 		"results/figure_pieces/CGI_DAZL.pdf"
 	script:
 		"code/CGI_categories.R"
+
+#CpG content across germline genes 
+rule CpG_germ:
+	output:
+		"results/figure_pieces/CpG_allPromo.pdf"
+	script:
+		"code/CpG_germ.R"
+
 
 rule CGI_bed:
 	input:
