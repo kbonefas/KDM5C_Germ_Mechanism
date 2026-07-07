@@ -187,3 +187,46 @@ all_p <- ggbarplot(plotdf2, "Gene_type", "Percent", fill = "CpG_island", color =
 		title = "CpG islands at mm10 promoters", label = TRUE, lab.col = "white", lab.vjust = 1, xlab = " ", ylab = "% of genes", orientation = "vert") 
 
 ggsave(snakemake@output[[8]], all_p, width = 3, height = 4)
+
+### 2026.07.07
+## add % egg biased and % sperm biased genes with CGIs to the plot
+
+germ_sperm <- subset(germ, germ$sexBias == "Sperm-biased")
+germ_egg <- subset(germ, germ$sexBias == "Egg-biased")
+
+
+
+#get the percentage of all germline genes with promoter CGIs and those bound or unbound by KDM5C
+plotdf3 <- data.frame(Gene_type = c(rep("Sperm-biased", 2), rep("Egg-biased", 2)), CpG_island = c("no", "CGI", "no", "CGI"))
+print("plotdf3")
+print(plotdf3)
+
+# All genes		no
+# All genes		CGI
+# All germ		no
+# All germ		CGI
+
+all_CGI_sperm <- nrow(subset(germ_sperm, germ_sperm$Promo_CGI == "CGI"))/nrow(germ_sperm)*100
+all_CGI_egg <- nrow(subset(germ_egg, germ_egg$Promo_CGI == "CGI"))/nrow(germ_egg)*100
+
+#raw percentages
+plotdf3$raw <- c(100 - all_CGI_sperm, all_CGI_sperm, 100 - all_CGI_egg, all_CGI_egg)
+plotdf3$Percent <- as.integer(round(plotdf3$raw))
+print("plotdf3 percentages")
+print(plotdf3)
+
+#add the percentages for all germ and all genes to plotdf3
+plotdf3 <- rbind(plotdf3, plotdf2)
+
+print("plotdf3 merged")
+print(plotdf3)
+
+#plot the results in a bar graph
+#set plotting order
+plotdf3$Gene_type <- factor(plotdf3$Gene_type, levels = c("All genes", "All germ", "Sperm-biased", "Egg-biased"))
+
+library("ggpubr")
+all_p <- ggbarplot(plotdf3, "Gene_type", "Percent", fill = "CpG_island", color = "CpG_island", palette = c("no" = "#ff8a7a", "CGI" = "#f93a0b"),
+		title = "CpG islands at mm10 promoters", label = TRUE, lab.col = "white", lab.vjust = 1, xlab = " ", ylab = "% of genes", orientation = "vert") 
+
+ggsave(snakemake@output[[9]], all_p, width = 6, height = 4)
