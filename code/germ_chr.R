@@ -13,6 +13,7 @@ germ <- read.csv(snakemake@input[[1]], header = TRUE, stringsAsFactors = FALSE)
 source("code/utilities/GeneTSSandTES.R")
 library("GenomicRanges")
 
+
 GR_list <- list()
 
 #for loop to iterate through the categories
@@ -37,7 +38,7 @@ for(i in 1:length(unique(germ$sexBias))){
 
 
 library("GenomicDistributions")
-
+library("GenomicDistributionsData")
 # First, calculate the distribution:
 queryList <- GRangesList(unbiased=GR_list[[3]], sperm=GR_list[[1]], egg=GR_list[[2]])
 x2 <- calcChromBinsRef(queryList, "mm10")
