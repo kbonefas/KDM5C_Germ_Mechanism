@@ -68,4 +68,15 @@ geneTSS_df <- function(goi, window){
 
 }
 
+#return results as a dataframe
+geneTSSandTES_df <- function(goi){
+	#split the gene_id column into ensembl and variant names
+
+	#regions of interest
+	roi <- subset(gtf_df, ENSEMBL %in% goi, select = c(seqnames, TSS, TES))
+	print('regions of interest')
+	print(tail(roi))
+
+	return(roi)
+}
 

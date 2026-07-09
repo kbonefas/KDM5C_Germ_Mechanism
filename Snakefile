@@ -587,6 +587,16 @@ rule Germ_CGI:
 	script:
 		"code/WGBS_germ_CGI.R"
 
+## chromosome distribution of different types of germline genes
+rule germ_chr:
+	input:
+		"results/KDM5C_binding_allgerm_CGI.csv"
+	output:
+		"results/figure_pieces/germ_chromosome_distribution.pdf"
+	script:
+		"code/germ_chr.R"
+
+
 
 #CGI status for different categories (Stra8 and Dazl binding)
 rule CGI_categories:
