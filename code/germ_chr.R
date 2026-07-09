@@ -26,7 +26,7 @@ for(i in 1:length(unique(germ$sexBias))){
     gene_coords <- geneTSSandTES_df(goi = germ_subset$ENSEMBL)
 
     #3) make a genomic ranges object for the genes
-    query <- makeGRangesFromDataFrame(gene_coords, keep.extra.columns = TRUE, seqnames.field = "seqnames", start.field = "TSS", end.field = "TES")
+    query <- makeGRangesFromDataFrame(gene_coords, keep.extra.columns = TRUE, seqnames.field = "seqnames", start.field = "start", end.field = "end")
 	print(head(query))
 
     #4) save the genomic ranges object to a list
