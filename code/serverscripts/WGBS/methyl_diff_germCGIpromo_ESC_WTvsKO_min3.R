@@ -57,7 +57,7 @@ treat[g] <- ifelse(cell[g] == "KO", 1, ifelse(cell[g] == "WT", 0, NA))
   
   #read in the files
 myobj <- methRead(location = samp_list, sample.id = ID_list, assembly="mm10", treatment = treat,
-                   context="CpG", mincov = 3)
+                   context="CpG", mincov = 3, dbdir = "methylDB_output", save.db = TRUE)
 #filter based on read coverage
 myobj <- filterByCoverage(myobj,lo.count=3,lo.perc=NULL,
                     hi.count=NULL,hi.perc=99.9)
@@ -83,11 +83,11 @@ METHoverBED <- function(bedfile, outname){
 	head(dm.regions)
 
 	#methylation results for all regions, similar to results table for DESeq2
-	write.table(dm.regions, paste0("../results/methylKit/WGBS_restab_regionCounts_", outname,"_min3_WTvsKO_EpiLC.csv"), sep = ',', row.names = FALSE, quote = FALSE)
+	write.table(dm.regions, paste0("../results/methylKit/WGBS_restab_regionCounts_", outname,"_min3_WTvsKO_esc.csv"), sep = ',', row.names = FALSE, quote = FALSE)
 
 	#get just the significant ones - should be like the DESeq2 DEGs
 	myDiff_regions <- getMethylDiff(dm.regions, difference=25, qvalue=qval)
-	write.table(myDiff_regions, paste0("../results/methylKit/WGBS_getmethyldiff_", outname,"_p25_min3_q01_WTvsKO_EpiLC.csv"), sep = ',', row.names = FALSE, quote = FALSE)
+	write.table(myDiff_regions, paste0("../results/methylKit/WGBS_getmethyldiff_", outname,"_p25_min3_q01_WTvsKO_esc.csv"), sep = ',', row.names = FALSE, quote = FALSE)
 
 }
 
