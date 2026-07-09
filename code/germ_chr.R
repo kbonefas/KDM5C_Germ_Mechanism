@@ -45,7 +45,7 @@ x2 <- calcChromBinsRef(queryList, "mm10")
 
 #7) plot
 
-pdf(file = snakemake@output[[1]], width = 10, height = 10)
+pdf(file = snakemake@output[[1]], width = 8, height = 4.5)
 	plotChromBins(x2)
 dev.off()
 
