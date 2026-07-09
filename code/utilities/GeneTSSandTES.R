@@ -10,6 +10,8 @@ library(tidyr)
 print(head(gtf_df))
 gtf_df <- subset(gtf_df, type == "gene")
 
+
+
 #need to switch the start and end if the gene is on the minus strand instead of +
 gtf_df$TSS <- ifelse(gtf_df$strand == "+", gtf_df$start, gtf_df$end)
 gtf_df$TES <- ifelse(gtf_df$strand == "+", gtf_df$end, gtf_df$start)
@@ -73,7 +75,7 @@ geneTSSandTES_df <- function(goi){
 	#split the gene_id column into ensembl and variant names
 
 	#regions of interest
-	roi <- subset(gtf_df, ENSEMBL %in% goi, select = c(seqnames, TSS, TES))
+	roi <- subset(gtf_df, ENSEMBL %in% goi, select = c(seqnames, start, end))
 	print('regions of interest')
 	print(tail(roi))
 
