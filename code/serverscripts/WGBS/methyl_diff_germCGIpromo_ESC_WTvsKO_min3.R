@@ -3,7 +3,12 @@
 #https://www.bioconductor.org/packages/release/bioc/vignettes/methylKit/inst/doc/methylKit.html
 #https://nbis-workshop-epigenomics.readthedocs.io/en/latest/content/tutorials/methylationSeq/Seq_Tutorial.html
 #https://compgenomr.github.io/book/extracting-interesting-regions-differential-methylation-and-segmentation.html
-#run from command line by 'Rscript [nameofscript].R'
+
+
+#file location /nfs/siwase2/BONEFAS/240717_WGBS_KDM5C_ESCexEpiLC/code/methyl_diff_germCGIpromo_ESC_WTvsKO_min3.R
+#run from command line within code directory by 'Rscript methyl_diff_germCGIpromo_ESC_WTvsKO_min3.R'
+
+
 
 #qvalue cut off
 qval <- 0.01
