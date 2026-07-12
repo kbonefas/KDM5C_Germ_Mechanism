@@ -111,7 +111,7 @@ united_dmC <- unite(myobj, destrand=TRUE)
 dm.C <- calculateDiffMeth(united_dmC, mc.cores = 8)
 myDiff10p <- getMethylDiff(dm.C, difference=25, qvalue=qval)
 #make a bedgraph file of the differences
-bedgraph(myDiff10p, col.name = "meth.diff", file.name = "../results/methylKit/bedgraph_diff_WTvsKO_EpiLC_p25_min3_q01_notpooled.bed")  
+bedgraph(myDiff10p, col.name = "meth.diff", file.name = "../results/methylKit/bedgraph_diff_WTvsKO_esc_p25_min3_q01_notpooled.bed")  
   
 
 
