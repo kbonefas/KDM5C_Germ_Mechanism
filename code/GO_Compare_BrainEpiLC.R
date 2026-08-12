@@ -75,9 +75,9 @@ differentiation <- c( "AMY", "HIP", "NPC", "exEpiLC", "EpiLC", "nESC")
 germDEGs2 <- germDEGs[differentiation]
 print(head(germDEGs2))
 
-pdf(file = snakemake@output[[length(samples) + 3]], width = 7, height = 5.5)
+pdf(file = snakemake@output[[length(samples) + 3]], width = 8, height = 5.5)
 
-upset(fromList(germDEGs2), order.by = "freq",  sets.x.label = "# germline DEGs", mainbar.y.label = "# in group", text.scale = 2, sets = differentiation, mb.ratio = c(0.55, 0.45), keep.order = TRUE)
+upset(fromList(germDEGs2), order.by = "freq",  sets.x.label = "# germline DEGs", mainbar.y.label = "# in group", text.scale = 2, sets = differentiation, mb.ratio = c(0.7, 0.3), keep.order = TRUE)
 
 dev.off()
 
