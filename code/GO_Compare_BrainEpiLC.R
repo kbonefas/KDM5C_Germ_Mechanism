@@ -29,7 +29,7 @@ for(i in 1:length(samples)){
 }
 
 names(germDEGs) <- samples
-print(head(germDEGs))
+
 
 #now run the gene ontology comparison
 ck <- compareCluster(geneCluster = germDEGs, fun = enrichGO,  OrgDb = "org.Mm.eg.db", keyType="ENSEMBL", ont="BP")
@@ -62,18 +62,22 @@ ggsave(snakemake@output[[length(samples) + 4]], p2, width = 6, height = 5.5)
 
 #make an upset plot for the overlap
 library("UpSetR")
-BiocManager::install("UpSetR")
+# BiocManager::install("UpSetR")
 
 modifiedupset <- function(samplelist){
-	upset(fromList(samplelist), order.by = "freq",  sets.x.label = "# Germline DEGs", mainbar.y.label = "# of Overlapping Germline DEGs", empty.intersections = "on")
+	upset(fromList(samplelist), sets.x.label = "# Germline DEGs", mainbar.y.label = "# of Overlapping Germline DEGs")
 }
 
 
+#print(germ in)
+#change the plotting order
+differentiation <- c( "AMY", "HIP", "NPC", "exEpiLC", "EpiLC", "nESC")
+germDEGs2 <- germDEGs[differentiation]
+print(head(germDEGs2))
 
-#just male samples
-pdf(file = snakemake@output[[length(samples) + 3]], width = 5.5, height = 5)
+pdf(file = snakemake@output[[length(samples) + 3]], width = 7, height = 5.5)
 
-upset(fromList(germDEGs), order.by = "freq",  sets.x.label = "# Germline DEGs", mainbar.y.label = "Overlapping Germline DEGs", text.scale = 2)
+upset(fromList(germDEGs2), order.by = "freq",  sets.x.label = "# germline DEGs", mainbar.y.label = "# in group", text.scale = 2, sets = differentiation, mb.ratio = c(0.55, 0.45), keep.order = TRUE)
 
 dev.off()
 
