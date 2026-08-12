@@ -147,6 +147,18 @@ rule EpiLC_tissue_genes:
 # 	script:
 # 		"code/utilities/germlineDEGs.R"
 
+#get germline DEGs from NPCs
+rule germ_NPCs:
+	input:
+		"data/processed/restable_NPCs_WT-scrvsKO-scr.csv"
+	params:
+		alpha = PADJ
+	output:
+		"results/DESeq2/DEGs_NPCs.csv"
+	script:
+		"code/germ_NPCs.R"
+
+
 
 #plot the gene ontology of EpiLC and brain DEGs
 rule GO_EpiLC_vs_Brain:
@@ -155,12 +167,14 @@ rule GO_EpiLC_vs_Brain:
 		"results/DESeq2/DEGs_nESC.csv",
 		"results/DESeq2/DEGs_EpiLC_48VA.csv",
 		"results/DESeq2/DEGs_exEpiLC_96VA.csv",
+		"results/DESeq2/DEGs_NPCs.csv",
 		"results/DESeq2/DEGs_amy5cKO.csv",
 		"results/DESeq2/DEGs_hip5cKO.csv"
 	output:
 		"results/DESeq2/germDEGs/germDEGs_nESC.csv",
 		"results/DESeq2/germDEGs/germDEGs_EpiLC_48VA.csv",
 		"results/DESeq2/germDEGs/germDEGs_exEpiLC_96VA.csv",
+		"results/DESeq2/germDEGs/germDEGs_NPCs.csv",
 		"results/DESeq2/germDEGs/germDEGs_amy5cKO.csv",
 		"results/DESeq2/germDEGs/germDEGs_hip5cKO.csv",
 		"results/GO_germgenes.csv",

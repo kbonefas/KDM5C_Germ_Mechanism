@@ -11,7 +11,7 @@ print("germ")
 print(head(germ))
 
 #sample names, make sure order matches snakefile input
-samples <- c("nESC", "EpiLC", "exEpiLC", "AMY", "HIP")
+samples <- c("nESC", "EpiLC", "exEpiLC", "NPC", "AMY", "HIP")
 germDEGs <- list()
 
 for(i in 1:length(samples)){
@@ -51,7 +51,7 @@ p2 <- dotplot(simple, size = "Count") +
   theme(axis.text.y = element_text(size=8)) +
   scale_color_gradient(low = "blue3", high = "red")
 
-ggsave(snakemake@output[[9]], p2, width = 6, height = 5.5)
+ggsave(snakemake@output[[length(samples) + 4]], p2, width = 6, height = 5.5)
 
 
 
@@ -71,7 +71,7 @@ modifiedupset <- function(samplelist){
 
 
 #just male samples
-pdf(file = snakemake@output[[8]], width = 5.5, height = 5)
+pdf(file = snakemake@output[[length(samples) + 3]], width = 5.5, height = 5)
 
 upset(fromList(germDEGs), order.by = "freq",  sets.x.label = "# Germline DEGs", mainbar.y.label = "Overlapping Germline DEGs", text.scale = 2)
 
@@ -110,7 +110,7 @@ p <- ggplot(data, aes(x="", y=percent, fill=group)) +
   geom_text(aes(label = labels), position = position_stack(vjust = 0.5), color = "white") +
   scale_fill_manual(values=c("DEG" = germcolor, "non-DEG" = "#194219"))
 
-pdf(file = snakemake@output[[10]], width = 5.5, height = 5)
+pdf(file = snakemake@output[[length(samples) + 5]], width = 5.5, height = 5)
 
 p
 
