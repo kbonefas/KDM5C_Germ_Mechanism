@@ -1,0 +1,3 @@
+SampleID,Tissue,Factor,Condition,Replicate,bamReads,bamControl,Peaks,PeakCaller
+KDM5C_rep1,ESC,KDM5C,KDM5C,1,bam/sort_Agarwal_KDM5C_rep1.bam,bam/sort_Agarwal_Input_merged.bam,macs2/Agarwal_KDM5C_rep1_peaks.narrowPeak,macs
+KDM5C_rep2,ESC,KDM5C,KDM5C,2,bam/sort_Agarwal_KDM5C_rep2.bam,bam/sort_Agarwal_Input_merged.bam,macs2/Agarwal_KDM5C_rep2_peaks.narrowPeak,macs

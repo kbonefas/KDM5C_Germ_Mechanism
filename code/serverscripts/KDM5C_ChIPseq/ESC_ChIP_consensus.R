@@ -11,15 +11,15 @@ sample_sheet <- data.frame(SampleID = names,
     Factor = rep("KDM5C", 2),
     Condition = rep("KDM5C", 2),
     Replicate = c("1", "2"),
-    bamReads = c(),
-    bamControl = rep(Controls, 2),
-    Peaks = snakemake@input[["peaks"]],
+    bamReads = c("bam/sort_Agarwal_KDM5C_rep1.bam", "bam/sort_Agarwal_KDM5C_rep2.bam"),
+    bamControl = rep("bam/sort_Agarwal_Input_merged.bam", 2),
+    Peaks = c("macs2/Agarwal_KDM5C_rep1_peaks.narrowPeak", "macs2/Agarwal_KDM5C_rep2_peaks.narrowPeak"),
     PeakCaller = rep("macs", 2)
 )
 
 print(head(sample_sheet))
 
-write.table(sample_sheet, "Agarwahl_ESC_sample_sheet.csv", quote = FALSE, sep = ",", row.names = FALSE)
+write.table(sample_sheet, "Agarwal_ESC_sample_sheet.csv", quote = FALSE, sep = ",", row.names = FALSE)
 
 ## 26.07.20 - get consensus peaks from MACS3 ChIPseq bed files - Snakemake
 #made script more robust
@@ -42,7 +42,14 @@ print(getwd())
 peaks <- dba(sampleSheet=sample_sheet)
 print(head(peaks))
 
-consensus_peaks <- dba.peakset(peaks, consensus = DBA_CONDITION, minOverlap = 1, bRetrieve = TRUE)
+# Step 1: Generate the consensus peaksets from your conditions
+peaks <- dba.peakset(peaks, consensus = DBA_CONDITION, minOverlap = 1)
+
+# Step 2: Use dba() to mask out everything except the consensus sets
+consensus_only_object <- dba(peaks, mask = peaks$masks$Consensus)
+
+# Step 3: Retrieve the clean consensus peak intervals as a GRanges object
+consensus_peaks <- dba.peakset(consensus_only_object, bRetrieve = TRUE)
 consensus_peaks <- as.data.frame(consensus_peaks)
 print("consensus_peaks:")
 print(head(consensus_peaks))
@@ -50,6 +57,6 @@ print(head(consensus_peaks))
 #just the bedfile coordinates
 consensus_peaks_df <- consensus_peaks[c(1:3)]
 print(head(consensus_peaks_df))
-write.table(consensus_peaks_df, file="Agarwahl_ESC_KDM5C_consensus_peaks.bed", sep = "\t", quote = FALSE, col.names = FALSE, row.names = FALSE)
+write.table(consensus_peaks_df, file="Agarwal_ESC_KDM5C_consensus_peaks.bed", sep = "\t", quote = FALSE, col.names = FALSE, row.names = FALSE)
 
 
