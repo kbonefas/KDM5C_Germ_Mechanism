@@ -1,11 +1,9 @@
-Rnf17
 Hsf2bp
 Mea1
 Msh4
 Zbtb32
 Tex15
 Dazl
-4930524B15Rik
 Samd4
 Tdh
 Dmc1
@@ -14,9 +12,7 @@ Sohlh2
 Hormad1
 Ube2j1
 Tdrd12
-Stk33
 Dnaja4
-Ttc21a
 D1Pas1
 Tex19.1
 Sec1
@@ -25,8 +21,6 @@ Pramel1
 Cdkn2a
 Fam178b
 Phospho1
-Spag16
 Cyct
-Ccnb1ip1
 Rbmxl2
 Papolb

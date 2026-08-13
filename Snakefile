@@ -265,8 +265,11 @@ rule eggvssperm:
 
 
 ###################### Figure 5: ChIPseq KDM5C EpiLC vs PNC ############################
-rule KDM5C_chip:
+#pESC KDM5C ChIP-seq
+
+rule KDM5C_chip_ESCs:
 	input:
+		"data/processed/Agarwal_ESC_KDM5C_consensus_peaks.bed",
 		"data/raw/ChIPseq_mm10_EpiLC_WTnoKO_consensus_peaks.bed",
 		"data/raw/ChIPseq_mm10_PNC_WTnoKO_consensus_peaks.bed",
 		"results/DESeq2/germDEGs/germDEGs_amy5cKO.csv",
@@ -274,6 +277,7 @@ rule KDM5C_chip:
 		"results/DESeq2/germDEGs/germDEGs_EpiLC_XY5cKO.csv",
 		"data/processed/germGENES20.csv"
 	output:
+		"data/processed/KDM5C_ChIPseq_boundpromoters_ESC.csv",
 		"data/processed/KDM5C_ChIPseq_boundpromoters_EpiLC.csv",
 		"data/processed/KDM5C_ChIPseq_boundpromoters_PNC.csv",
 		"results/figure_pieces/KDM5C_ChIPseq_peaklocation.pdf",
@@ -286,7 +290,30 @@ rule KDM5C_chip:
 		"data/processed/KDM5C_unbound_allgerm_HOMER.txt",
 		"results/figure_pieces/KDM5C_ChIPseq_germ_euler.pdf"
 	script:
-		"code/ChIPseq_KDM5C_EpiLC_PNC.R"
+		"code/ChIPseq_KDM5C_ESC_EpiLC_PNC.R"
+
+# rule KDM5C_chip:
+# 	input:
+# 		"data/raw/ChIPseq_mm10_EpiLC_WTnoKO_consensus_peaks.bed",
+# 		"data/raw/ChIPseq_mm10_PNC_WTnoKO_consensus_peaks.bed",
+# 		"results/DESeq2/germDEGs/germDEGs_amy5cKO.csv",
+# 		"results/DESeq2/germDEGs/germDEGs_hip5cKO.csv",
+# 		"results/DESeq2/germDEGs/germDEGs_EpiLC_XY5cKO.csv",
+# 		"data/processed/germGENES20.csv"
+# 	output:
+# 		"data/processed/KDM5C_ChIPseq_boundpromoters_EpiLC.csv",
+# 		"data/processed/KDM5C_ChIPseq_boundpromoters_PNC.csv",
+# 		"results/figure_pieces/KDM5C_ChIPseq_peaklocation.pdf",
+# 		"results/figure_pieces/KDM5C_ChIPseq_boundgermDEGs.pdf",
+# 		"results/KDM5C_binding_germDEGs_EpiLC.csv",
+# 		"data/processed/KDM5C_bound_germDEGS_HOMER.txt",
+# 		"data/processed/KDM5C_unbound_germDEGs_HOMER.txt",
+# 		"results/KDM5C_binding_allgerm_EpiLC.csv",
+# 		"data/processed/KDM5C_bound_allgerm_HOMER.txt",
+# 		"data/processed/KDM5C_unbound_allgerm_HOMER.txt",
+# 		"results/figure_pieces/KDM5C_ChIPseq_germ_euler.pdf"
+# 	script:
+# 		"code/ChIPseq_KDM5C_EpiLC_PNC.R"
 
 rule KDM5C_chip_GO:
 	input:
