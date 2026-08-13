@@ -53,7 +53,7 @@ for (i in 1:length(samples)){
 library("ggplot2")
 library("gridExtra")
 library("ggpubr")
-ggsave(snakemake@output[[length(samples) + 1]], grid.arrange(grobs = annoplot, nrow = length(samples)), width = 6, height = 12)
+ggsave(snakemake@output[[length(samples) + 1]], grid.arrange(grobs = annoplot, nrow = length(samples)), width = 6, height = 8)
 
 
 
