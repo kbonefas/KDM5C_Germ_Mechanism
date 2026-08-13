@@ -13,8 +13,8 @@
 
 
 #read in narrowpeak file
-peaks <- c("data/processed/MACS3/Agarwal_KDM5C_rep1_peaks.narrowPeak", 
-            "data/processed/MACS3/Agarwal_KDM5C_rep2_peaks.narrowPeak")
+peaks <- c("../../data/kdm5c/macs2/Agarwal_KDM5C_rep1_peaks.narrowPeak", 
+            "../../data/kdm5c/macs2/Agarwal_KDM5C_rep2_peaks.narrowPeak")
 for (i in 1:length(peaks)){
     narrow <- read.csv(peaks[i], sep = "\t", header = FALSE)
 colnames(narrow) <- c("chrom", "chromStart", "chromEnd", "name", "score", "strand", "signalValue", "pValue", "qValue", "peak")
@@ -39,5 +39,5 @@ print("highest")
 print(head(narrow_order, 10))
 
 
-write.table(narrow_sub, paste0("data/processed/MACS3/Agarwal_KDM5C_rep", i, "_peaks.narrowPeak"), sep = "\t", quote = FALSE, row.names = FALSE, col.names = FALSE)
+write.table(narrow_sub, paste0("../../data/kdm5c/macs2/Agarwal_KDM5C_rep", i, "_filtered_peaks.narrowPeak"), sep = "\t", quote = FALSE, row.names = FALSE, col.names = FALSE)
 }
