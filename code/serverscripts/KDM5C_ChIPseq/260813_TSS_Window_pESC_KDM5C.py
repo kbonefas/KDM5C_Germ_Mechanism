@@ -6,12 +6,13 @@ import sys
 import glob
 
 #bigwigs
-ESC = ['../../data/kdm5c/bigwig/SMCX_WT_Merged_IP_mm10.bw','../../data/kdm5c/bigwigSMCX_KO_Merged_IP_mm10.bw']
+ESC_1 = ['../../data/kdm5c/bigwig/Agarwal_KDM5C_rep1.bw','../../data/kdm5c/bigwig/Agarwal_Input_rep1.bw']
+ESC_2 = ['../../data/kdm5c/bigwig/Agarwal_KDM5C_rep2.bw','../../data/kdm5c/bigwig/Agarwal_Input_rep2.bw']
 
 
 
 #bedfile of the region that you want to plot
-germregions = ["../../kdm5c/bigwig/TSS_window_3000bp_all_germ.bed"]
+germregions = ["../../data/kdm5c/bigwig/TSS_window_3000bp_all_germ.bed"]
 
 #wrap all the deeptools fucntions together
 #regions - gene coordinates
@@ -21,7 +22,7 @@ def deeptoolswrap(regions, bigwigs, name):
 	for i in regions:
 
 		#name of the output - ID is the bigwig id, coord is the bed cooridnates
-		coord = i.replace("../../kdm5c/bigwig/", "")
+		coord = i.replace("../../data/kdm5c/bigwig/", "")
 		coord = coord.replace(".bed", "")
 		
 		window = 3000
@@ -40,4 +41,5 @@ def deeptoolswrap(regions, bigwigs, name):
 		#os.system("plotHeatmap -m {OUT}_matrix.mat.gz --colorList 'white, #63344c' 'white, #63344c' 'white, #275c62' 'white, #275c62' --missingDataColor white --heatmapHeight 14 --heatmapWidth 5 -out {OUT}_heatmap.pdf".format(MATRIX = MATRIX, NAME = NAME))
 
 # --yMax 40 --zMax 60
-deeptoolswrap(germregions, ESC, 'pESC')
+deeptoolswrap(germregions, ESC_1, 'pESC_1')
+deeptoolswrap(germregions, ESC_2, 'pESC_2')
