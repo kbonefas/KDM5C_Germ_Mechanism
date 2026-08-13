@@ -25,7 +25,7 @@ colnames(narrow) <- c("chrom", "chromStart", "chromEnd", "name", "score", "stran
 
 
 #subset for loci that have a signalValue greater than the cut off
-narrow_sub <- subset(narrow, narrow$qValue >= 4)
+narrow_sub <- subset(narrow, narrow$qValue >= 10)
 
 #sort the peak file by lowest to highest qValue
 narrow_order <- narrow_sub[order(narrow_sub$qValue),]
