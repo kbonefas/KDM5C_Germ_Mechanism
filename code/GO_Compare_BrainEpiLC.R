@@ -19,7 +19,7 @@ for(i in 1:length(samples)){
 	print(head(DEGs))
 
 	#subset for germline DEGs
-	germDEGs1 <- subset(DEGs, DEGs$ENSEMBL %in% germ$ENSEMBL)
+	germDEGs1 <- subset(DEGs, DEGs$ENSEMBL %in% germ$ENSEMBL & DEGs$log2FoldChange > 0)
 	
 	#save the germ DEGs
 	write.table(germDEGs1, snakemake@output[[i]], sep = ",", row.names = FALSE)
