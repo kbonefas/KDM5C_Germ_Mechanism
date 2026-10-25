@@ -293,6 +293,17 @@ rule KDM5C_chip_ESCs:
 		"code/ChIPseq_KDM5C_ESC_EpiLC_PNC.R"
 
 
+rule KDM5C_bound_germ:
+	input:
+		"data/processed/KDM5C_ChIPseq_boundpromoters_ESC.csv",
+		"data/processed/KDM5C_ChIPseq_boundpromoters_EpiLC.csv",
+		"data/processed/germGENES20.csv"
+	output:
+		"results/KDM5C_binding_allgerm.csv"
+	script:
+		"code/ChIPseq_KDM5C_bound_germ.R"
+
+
 rule KDM5C_chip_GO_ESC:
 	input:
 		"data/processed/KDM5C_ChIPseq_boundpromoters_ESC.csv",
