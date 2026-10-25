@@ -617,7 +617,7 @@ rule WGBS_germ_regions:
 rule Germ_CGI:
 	input:
 		"data/raw/CGI_UCSC.bed",
-		"results/KDM5C_binding_allgerm_EpiLC.csv"
+		"results/KDM5C_binding_allgerm.csv"
 	output:
 		"data/processed/CGI_UCSC_all_germ.bed",
 		"results/KDM5C_binding_allgerm_CGI.csv",

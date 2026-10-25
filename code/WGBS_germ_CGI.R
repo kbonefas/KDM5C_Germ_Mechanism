@@ -1,4 +1,3 @@
-
 ### 24.07.26 compare binding locations of KDM5C ChIp-seq peaks and number of germline genes bound for CGI and CGI-free germline genes
 
 
@@ -50,6 +49,7 @@ print(CGI_ENSEMBL[1:5])
 
 #read in the germline genes list with KDM5C binding at promoter
 germ <- read.csv(snakemake@input[[2]], sep = ",")
+print(head(germ))
 
 ### save a bed file of the CGI regions that are at germline gene promoters
 germ_promo_CGI_bed <- promo[promo$ENSEMBL %in% germ$ENSEMBL,]
@@ -62,7 +62,7 @@ write.table(germ, snakemake@output[[2]], sep = ",",  row.names = FALSE)
 
 
 #get the percentage of all germline genes with promoter CGIs and those bound or unbound by KDM5C
-plotdf <- data.frame(Kdm5c_binding = c(rep("KDM5C-Bound", 2), rep("KDM5C-Unbound", 2), rep("All germ", 2)),  CpG_island = rep(c("no", "CGI"), 3))
+plotdf <- data.frame(Kdm5c_binding = c(rep("KDM5C-Bound", 2), rep("KDM5C-Unbound", 2), rep("pESC-bound", 2), rep("EpiLC-bound", 2), rep("All germ", 2)),  CpG_island = rep(c("no", "CGI"), 5))
 plotdf
 # Kdm5c-Bound	no
 # Kdm5c-Bound	CGI
@@ -71,30 +71,45 @@ plotdf
 # All germ		no
 # All germ		CGI
 
-plotdf$CGI_Count <- c(nrow(subset(germ, germ$KDM5C_binding == "Bound" & germ$Promo_CGI == "no")), 
-						nrow(subset(germ, germ$KDM5C_binding == "Bound" & germ$Promo_CGI == "CGI")),
-						nrow(subset(germ, germ$KDM5C_binding == "Unbound" & germ$Promo_CGI == "no")),
-						nrow(subset(germ, germ$KDM5C_binding == "Unbound" & germ$Promo_CGI == "CGI")),
+#ways in which kdm5c_bound loci are namned
+KDM5C_bound_names <- c("pESC&EpiLC", "EpiLC_only", "pESC_only")
+pESC_bound_names <- c("pESC&EpiLC", "pESC_only")
+EpiLC_bound_names <- c("pESC&EpiLC", "EpiLC_only")
+
+
+plotdf$CGI_Count <- c(nrow(subset(germ, germ$Kdm5c_binding %in% KDM5C_bound_names & germ$Promo_CGI == "no")), 
+						nrow(subset(germ, germ$Kdm5c_binding %in% KDM5C_bound_names & germ$Promo_CGI == "CGI")),
+						nrow(subset(germ, germ$Kdm5c_binding == "Unbound" & germ$Promo_CGI == "no")),
+						nrow(subset(germ, germ$Kdm5c_binding == "Unbound" & germ$Promo_CGI == "CGI")),
+						nrow(subset(germ, germ$Kdm5c_binding %in% pESC_bound_names & germ$Promo_CGI == "no")), 
+						nrow(subset(germ, germ$Kdm5c_binding %in% pESC_bound_names & germ$Promo_CGI == "CGI")),
+						nrow(subset(germ, germ$Kdm5c_binding %in% EpiLC_bound_names & germ$Promo_CGI == "no")), 
+						nrow(subset(germ, germ$Kdm5c_binding %in% EpiLC_bound_names & germ$Promo_CGI == "CGI")),
 						nrow(subset(germ, germ$Promo_CGI == "no")),
 						nrow(subset(germ, germ$Promo_CGI == "CGI")))
 
 
 #percentage of each category
 plotdf$CGIPercent_plot <- ifelse(plotdf$Kdm5c_binding == "KDM5C-Bound", plotdf$CGI_Count/sum(subset(plotdf, plotdf$Kdm5c_binding == "KDM5C-Bound")$CGI_Count) * 100, 
-								ifelse(plotdf$Kdm5c_binding == "KDM5C-Unbound", plotdf$CGI_Count/sum(subset(plotdf, plotdf$Kdm5c_binding == "KDM5C-Unbound")$CGI_Count) * 100,
-								ifelse(plotdf$Kdm5c_binding == "All germ", plotdf$CGI_Count/nrow(germ) * 100, 0)))
+	ifelse(plotdf$Kdm5c_binding == "pESC-bound", plotdf$CGI_Count/sum(subset(plotdf, plotdf$Kdm5c_binding == "pESC-bound")$CGI_Count) * 100, 
+		ifelse(plotdf$Kdm5c_binding == "EpiLC-bound", plotdf$CGI_Count/sum(subset(plotdf, plotdf$Kdm5c_binding == "EpiLC-bound")$CGI_Count) * 100, 
+			ifelse(plotdf$Kdm5c_binding == "KDM5C-Unbound", plotdf$CGI_Count/sum(subset(plotdf, plotdf$Kdm5c_binding == "KDM5C-Unbound")$CGI_Count) * 100,
+					ifelse(plotdf$Kdm5c_binding == "All germ", plotdf$CGI_Count/nrow(germ) * 100, 0)))))
 
 plotdf$Percent <- as.integer(round(plotdf$CGIPercent_plot))
-plotdf
+print("plotdf")
+print(plotdf)
+
 
 
 #plot the results in a bar graph
 #set plotting order
-plotdf$Kdm5c_binding <- factor(plotdf$Kdm5c_binding, levels = c("All germ", "KDM5C-Bound", "KDM5C-Unbound"))
+plotdf$Kdm5c_binding <- factor(plotdf$Kdm5c_binding, levels = c("All germ", "KDM5C-Unbound", "KDM5C-Bound", "pESC-bound", "EpiLC-bound"))
 
 library("ggpubr")
-q <- ggbarplot(plotdf, "Kdm5c_binding", "Percent", fill = "CpG_island", color = "CpG_island", palette = c("no" = "aquamarine4", "CGI" = "aquamarine3"),
-		title = "CpG islands at germline gene promoters", label = TRUE, lab.col = "black", lab.vjust = 1, xlab = " ", ylab = "% of genes", orientation = "vert") 
+q <- ggbarplot(plotdf, "Kdm5c_binding", "Percent", fill = "CpG_island", color = "CpG_island", palette = c("no" = "#ff8a7a", "CGI" = "#f93a0b"),
+		title = "CpG islands at germline gene promoters", label = TRUE, lab.col = "white", lab.vjust = 1, xlab = " ", ylab = "% of genes", orientation = "vert") +
+		scale_x_discrete(labels = c("All germ" = "All germ", "KDM5C-Unbound" = "Unbound", "KDM5C-Bound" = "Bound", "pESC-bound" = "pESC", "EpiLC-bound" = "EpiLC"))
 
 ggsave(snakemake@output[[3]], q, width = 5, height = 4)
 
